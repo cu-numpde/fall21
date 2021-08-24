@@ -1,6 +1,6 @@
 # CSCI-5636 Numerical Solution of Partial Differential Equations
 
-View the [documentation site](https://cu-numpde.github.io/fall21)
+View the [documentation site](https://cu-numpde.github.io/fall21).
 
 ## License
 
