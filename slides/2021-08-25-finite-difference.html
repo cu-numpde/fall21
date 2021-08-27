@@ -1,0 +1,452 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-08-25 Finite Difference Intro &#8212; Numerical Solution of Partial Differential Equations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-08-27 Finite Difference 2" href="2021-08-27-finite-difference-2.html" />
+    <link rel="prev" title="2021-08-23 First Day" href="2021-08-23-first-day.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Solution of Partial Differential Equations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../slides.html">
+   Slides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-23-first-day.html">
+     2021-08-23 First Day
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-08-25 Finite Difference Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-27-finite-difference-2.html">
+     2021-08-27 Finite Difference 2
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/slides/2021-08-25-finite-difference.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cu-numpde/fall21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cu-numpde/fall21/issues/new?title=Issue%20on%20page%20%2Fslides/2021-08-25-finite-difference.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cu-numpde/fall21/main?urlpath=tree/slides/2021-08-25-finite-difference.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2021-08-25 Finite Difference Intro
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#last-time">
+     Last time
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#today">
+     Today
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#consider-the-boundary-value-problem-find-u">
+   Consider the boundary value problem: find
+   <span class="math notranslate nohighlight">
+    \(u\)
+   </span>
+   :
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-difference-collocation-approach-to-solve-u">
+   Finite Difference/collocation approach to solve
+   <span class="math notranslate nohighlight">
+    \(u\)
+   </span>
+   :
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computing-a-derivative">
+   Computing a derivative
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#how-accurate-is-it">
+   How accurate is it?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#activity-on-stability-and-accuracy-computing-derivatives">
+   Activity on stability and accuracy computing derivatives
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="finite-difference-intro">
+<h1>2021-08-25 Finite Difference Intro<a class="headerlink" href="#finite-difference-intro" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="last-time">
+<h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>General shape of PDE solvers and stakeholders</p></li>
+<li><p>Comparing/plotting cost and accuracy</p></li>
+<li><p>Learning strategy</p></li>
+</ul>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Evaluating derivatives</p></li>
+<li><p>Taylor series and truncation error</p></li>
+<li><p>Stability</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="consider-the-boundary-value-problem-find-u">
+<h1>Consider the boundary value problem: find <span class="math notranslate nohighlight">\(u\)</span>:<a class="headerlink" href="#consider-the-boundary-value-problem-find-u" title="Permalink to this headline">¶</a></h1>
+<div class="amsmath math notranslate nohighlight" id="equation-df898641-6e36-42e3-ab38-b648a7621ce7">
+<span class="eqno">(3)<a class="headerlink" href="#equation-df898641-6e36-42e3-ab38-b648a7621ce7" title="Permalink to this equation">¶</a></span>\[\begin{gather} -\frac{d^2 u}{dx^2} = f(x) \quad x \in \Omega = (-1,1) \\
+u(-1) = a \quad \frac{du}{dx}(1) = b .
+\end{gather}\]</div>
+<p>We say</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> is the “forcing”</p></li>
+<li><p>the left boundary condition is Dirichlet</p></li>
+<li><p>the right boundary condition is Neumann</p></li>
+</ul>
+<p>We need to choose</p>
+<ul class="simple">
+<li><p>how to represent <span class="math notranslate nohighlight">\(u(x)\)</span>, including evaluating it on the boundary,</p></li>
+<li><p>how to compute derivatives of <span class="math notranslate nohighlight">\(u\)</span>,</p></li>
+<li><p>in what sense to ask for the differential equation to be satisfied,</p></li>
+<li><p>where to evaluate <span class="math notranslate nohighlight">\(f(x)\)</span> or integrals thereof,</p></li>
+<li><p>how to enforce boundary conditions.</p></li>
+</ul>
+</div>
+<div class="section" id="finite-difference-collocation-approach-to-solve-u">
+<h1>Finite Difference/collocation approach to solve <span class="math notranslate nohighlight">\(u\)</span>:<a class="headerlink" href="#finite-difference-collocation-approach-to-solve-u" title="Permalink to this headline">¶</a></h1>
+<div class="amsmath math notranslate nohighlight" id="equation-2cd3ae1e-85e7-4675-adfd-5feaa80614ca">
+<span class="eqno">(4)<a class="headerlink" href="#equation-2cd3ae1e-85e7-4675-adfd-5feaa80614ca" title="Permalink to this equation">¶</a></span>\[\begin{gather} -\frac{d^2 u}{dx^2} = f(x) \quad x \in \Omega = (-1,1) \\
+u(-1) = a \quad \frac{du}{dx}(1) = b .
+\end{gather}\]</div>
+<ul class="simple">
+<li><p>Represent the function <span class="math notranslate nohighlight">\(u(x)\)</span> by its values <span class="math notranslate nohighlight">\(u_i = u(x_i)\)</span> at a discrete set of points $<span class="math notranslate nohighlight">\( -1 = x_1 &lt; x_2 &lt; \dotsb &lt; x_n = 1 . \)</span>$</p>
+<ul>
+<li><p>The FD framework does not uniquely specify the solution values at other points</p></li>
+</ul>
+</li>
+<li><p>Compute derivatives at <span class="math notranslate nohighlight">\(x_i\)</span> via differencing formulas involving a finite number of neighbor points (independent of the total number of points <span class="math notranslate nohighlight">\(n\)</span>).</p></li>
+<li><p>FD methods ask for the differential equation to be satisfied pointwise at each <span class="math notranslate nohighlight">\(x_i\)</span> in the interior of the domain.</p></li>
+<li><p>Evaluate the forcing term <span class="math notranslate nohighlight">\(f\)</span> pointwise at <span class="math notranslate nohighlight">\(x_i\)</span>.</p></li>
+<li><p>Approximate derivatives at discrete boundary points (<span class="math notranslate nohighlight">\(x_n = 1\)</span> above), typically using one-sided differencing formulas.</p></li>
+</ul>
+</div>
+<div class="section" id="computing-a-derivative">
+<h1>Computing a derivative<a class="headerlink" href="#computing-a-derivative" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Plots</span>
+
+<span class="n">n</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">h</span> <span class="o">=</span> <span class="mi">6</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">sin</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:circle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-08-25-finite-difference_7_0.svg" src="../_images/2021-08-25-finite-difference_7_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">u_x</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">fd_u_x</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="o">/</span> <span class="n">h</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u_x</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">fd_u_x</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:circle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-08-25-finite-difference_8_0.svg" src="../_images/2021-08-25-finite-difference_8_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="how-accurate-is-it">
+<h1>How accurate is it?<a class="headerlink" href="#how-accurate-is-it" title="Permalink to this headline">¶</a></h1>
+<p>Without loss of generality, we’ll approximate <span class="math notranslate nohighlight">\(u'(x_i = 0)\)</span>, taking <span class="math notranslate nohighlight">\(h = x_{i+1} - x_i\)</span>.</p>
+<div class="math notranslate nohighlight">
+\[ u(x) = u(0) + u'(0)x + u''(0)x^2/2! + O(x^3)\]</div>
+<p>and substitute into the differencing formula
+$<span class="math notranslate nohighlight">\( \begin{split} u'(0) \approx \frac{u(h) - u(0)}{h} = h^{-1} \Big( u(0) + u'(0) h + u''(0)h^2/2 + O(h^3) - u(0) \Big) \\
+= u'(0) + u''(0)h/2 + O(h^2) . \end{split}\)</span><span class="math notranslate nohighlight">\(
+Evidently the error in this approximation is \)</span>u’’(0)h/2 + O(h^2)$. We say this method is <em>first order accurate</em>.</p>
+</div>
+<div class="section" id="activity-on-stability-and-accuracy-computing-derivatives">
+<h1>Activity on stability and accuracy computing derivatives<a class="headerlink" href="#activity-on-stability-and-accuracy-computing-derivatives" title="Permalink to this headline">¶</a></h1>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cu-numpde/fall21",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./slides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="2021-08-23-first-day.html" title="previous page">2021-08-23 First Day</a>
+    <a class='right-next' id="next-link" href="2021-08-27-finite-difference-2.html" title="next page">2021-08-27 Finite Difference 2</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jed Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>

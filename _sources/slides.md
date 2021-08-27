@@ -5,7 +5,7 @@ You can view them here, or open them to interact.
 
 ## Environment
 
-This explaims how I configure my environment in case you wish to install and use the slides locally, or adapt these tools for your own use.
+This explains how I configure my environment in case you wish to install and use the slides locally, or adapt these tools for your own use.
 
 ### Install Dependencies
 
