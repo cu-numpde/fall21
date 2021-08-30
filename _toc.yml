@@ -8,3 +8,7 @@ chapters:
 - file: slides
   sections:
   - file: slides/2021-08-23-first-day.ipynb
+  - file: slides/2021-08-25-finite-difference.ipynb
+  - file: slides/2021-08-27-finite-difference-2.ipynb
+  - file: slides/2021-08-30-high-order.ipynb
+  - file: slides/2021-09-01-boundaries-and-fourier.ipynb
