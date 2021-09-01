@@ -316,6 +316,16 @@
    Fourier analysis of stencils
   </a>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#numerically-computing-symbols">
+   Numerically computing symbols
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#stencils-of-high-order-operators">
+   Stencils of high-order operators
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -342,7 +352,7 @@
 <ul class="simple">
 <li><p>More on boundary conditions</p></li>
 <li><p>Fourier methods for analyzing finite difference methods</p></li>
-<li><p>Variable coefficients</p></li>
+<li><p>Discussion</p></li>
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -600,8 +610,8 @@ after dividing by 2 and moving the boundary term to the right hand side.</p>
 <h1>Fourier analysis of stencils<a class="headerlink" href="#fourier-analysis-of-stencils" title="Permalink to this headline">¶</a></h1>
 <p>Consider the plane waves <span class="math notranslate nohighlight">\(\phi(x, \theta) = e^{i\theta x}\)</span>.</p>
 <p>Sample <span class="math notranslate nohighlight">\(\phi\)</span> on a discrete grid <span class="math notranslate nohighlight">\(x = \mathbb Z\)</span> and apply the stencil</p>
-<div class="amsmath math notranslate nohighlight" id="equation-c3fbe151-3b03-4b39-a185-e8f858282a81">
-<span class="eqno">(7)<a class="headerlink" href="#equation-c3fbe151-3b03-4b39-a185-e8f858282a81" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2e480669-6663-48d6-b2fe-f39a1bcf38e4">
+<span class="eqno">(7)<a class="headerlink" href="#equation-2e480669-6663-48d6-b2fe-f39a1bcf38e4" title="Permalink to this equation">¶</a></span>\[\begin{align}
 S \phi(x, \theta) &amp;= s_{-1} \phi(x-1, \theta) + s_{0} \phi(x, \theta) + s_1 \phi(x+1,\theta) \\
 &amp;= \Big( s_{-1} e^{-i\theta} + s_0 + s_{1} e^{i\theta} \Big) \phi(x, \theta)
 \end{align}\]</div>
@@ -617,6 +627,82 @@ What is the symbol of the continuous second derivative?</p>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/2021-09-01-boundaries-and-fourier_26_0.svg" src="../_images/2021-09-01-boundaries-and-fourier_26_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="numerically-computing-symbols">
+<h1>Numerically computing symbols<a class="headerlink" href="#numerically-computing-symbols" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">symbol</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">length</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">1</span>
+        <span class="n">error</span><span class="p">(</span><span class="s">&quot;Length of stencil must be odd&quot;</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">÷</span> <span class="mi">2</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="p">(</span><span class="mi">1</span><span class="nb">im</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">w</span><span class="o">:</span><span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="n">theta</span><span class="o">&#39;</span><span class="p">)</span>
+    <span class="n">vec</span><span class="p">(</span><span class="n">S</span> <span class="o">*</span> <span class="n">phi</span><span class="p">)</span> <span class="c"># not! (S * phi)&#39;</span>
+<span class="k">end</span>
+
+<span class="n">symbol</span><span class="p">([</span><span class="o">-</span><span class="mf">.5</span> <span class="mi">0</span> <span class="mf">.5</span><span class="p">],</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="nb">pi</span><span class="p">,</span> <span class="nb">pi</span><span class="p">,</span> <span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10-element Vector{ComplexF64}:
+ 0.0 - 1.2246467991473532e-16im
+ 0.0 - 0.6427876096865395im
+ 0.0 - 0.9848077530122081im
+ 0.0 - 0.8660254037844388im
+ 0.0 - 0.34202014332566877im
+ 0.0 + 0.34202014332566877im
+ 0.0 + 0.8660254037844385im
+ 0.0 + 0.9848077530122081im
+ 0.0 + 0.6427876096865395im
+ 0.0 + 1.2246467991473532e-16im
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">plot_symbol</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">deriv</span><span class="p">,</span> <span class="n">n_theta</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="nb">pi</span><span class="p">,</span> <span class="nb">pi</span><span class="p">,</span> <span class="n">n_theta</span><span class="p">)</span>
+    <span class="n">sym</span> <span class="o">=</span> <span class="n">symbol</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+    <span class="n">rsym</span> <span class="o">=</span> <span class="n">real</span><span class="o">.</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="nb">im</span><span class="p">)</span><span class="o">^</span><span class="n">deriv</span> <span class="o">*</span> <span class="n">sym</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">rsym</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:circle</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;stencil&quot;</span><span class="p">)</span>
+    <span class="n">plot!</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">th</span> <span class="o">-&gt;</span> <span class="n">th</span><span class="o">^</span><span class="n">deriv</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;exact&quot;</span><span class="p">)</span>
+    <span class="n">fig</span>
+<span class="k">end</span>
+
+<span class="n">plot_symbol</span><span class="p">([</span><span class="o">-</span><span class="mf">.5</span> <span class="mi">0</span> <span class="mf">.5</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plot_symbol</span><span class="p">([</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">1</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-01-boundaries-and-fourier_29_0.svg" src="../_images/2021-09-01-boundaries-and-fourier_29_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="stencils-of-high-order-operators">
+<h1>Stencils of high-order operators<a class="headerlink" href="#stencils-of-high-order-operators" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span><span class="o">:</span><span class="mi">3</span>
+<span class="n">plot_symbol</span><span class="p">(</span><span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-01-boundaries-and-fourier_31_0.svg" src="../_images/2021-09-01-boundaries-and-fourier_31_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">1</span>
+<span class="n">plot_symbol</span><span class="p">(</span><span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-01-boundaries-and-fourier_32_0.svg" src="../_images/2021-09-01-boundaries-and-fourier_32_0.svg" /></div>
 </div>
 </div>
 
