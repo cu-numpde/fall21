@@ -11,4 +11,5 @@ chapters:
   - file: slides/2021-08-25-finite-difference.ipynb
   - file: slides/2021-08-27-finite-difference-2.ipynb
   - file: slides/2021-08-30-high-order.ipynb
-  - file: slides/2021-09-01-boundaries-and-fourier.ipynb
+  - file: slides/2021-09-01-convergence-and-boundaries.ipynb
+  - file: slides/2021-09-03-fourier.ipynb

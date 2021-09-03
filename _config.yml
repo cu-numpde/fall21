@@ -5,7 +5,7 @@ title: Numerical Solution of Partial Differential Equations
 author: Jed Brown
 logo: img/cu-numpde.svg
 
-exclude_patterns: [VENV/*, README.md]
+exclude_patterns: [VENV/*, README.md, activities/*]
 
 parse:
   myst_enable_extensions:
