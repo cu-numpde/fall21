@@ -54,7 +54,7 @@
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="2021-09-01 Boundaries and Fourier methods" href="2021-09-01-boundaries-and-fourier.html" />
+    <link rel="next" title="2021-09-01 Boundaries and Fourier methods" href="2021-09-01-convergence-and-boundaries.html" />
     <link rel="prev" title="2021-08-27 Finite Difference 2" href="2021-08-27-finite-difference-2.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -129,8 +129,13 @@
     </a>
    </li>
    <li class="toctree-l2">
-    <a class="reference internal" href="2021-09-01-boundaries-and-fourier.html">
+    <a class="reference internal" href="2021-09-01-convergence-and-boundaries.html">
      2021-09-01 Boundaries and Fourier methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-03-fourier.html">
+     2021-09-03 Convergence and Fourier analysis
     </a>
    </li>
   </ul>
@@ -868,8 +873,8 @@ When building a matrix system for the BVP, we can implement this boundary condit
 <p>We’re given the coefficients <span class="math notranslate nohighlight">\(c = V^{-1} u\)</span> of the polynomial
 $<span class="math notranslate nohighlight">\(p(x) = c_0 + c_1 x + c_2 x^2 + \dotsb.\)</span>$
 What is</p>
-<div class="amsmath math notranslate nohighlight" id="equation-cdde5df7-f98f-4581-967d-00ba5fc31ee8">
-<span class="eqno">(5)<a class="headerlink" href="#equation-cdde5df7-f98f-4581-967d-00ba5fc31ee8" title="Permalink to this equation">¶</a></span>\[\begin{align} p(0) &amp;= c_0 \\
+<div class="amsmath math notranslate nohighlight" id="equation-0d8bae0d-a81e-4a52-90fe-b598fa3c8483">
+<span class="eqno">(5)<a class="headerlink" href="#equation-0d8bae0d-a81e-4a52-90fe-b598fa3c8483" title="Permalink to this equation">¶</a></span>\[\begin{align} p(0) &amp;= c_0 \\
 p'(0) &amp;= c_1 \\ 
 p''(0) &amp;= c_2 \cdot 2\\
 p^{(k)}(0) &amp;= c_k \cdot k! .
@@ -1130,8 +1135,8 @@ after dividing by 2 and moving the boundary term to the right hand side.</p>
 <h1>Fourier analysis of stencils<a class="headerlink" href="#fourier-analysis-of-stencils" title="Permalink to this headline">¶</a></h1>
 <p>Consider the plane waves <span class="math notranslate nohighlight">\(\phi(x, \theta) = e^{i\theta x}\)</span>.</p>
 <p>Sample <span class="math notranslate nohighlight">\(\phi\)</span> on a discrete grid <span class="math notranslate nohighlight">\(x = \mathbb Z\)</span> and apply the stencil</p>
-<div class="amsmath math notranslate nohighlight" id="equation-98370c57-5ee2-448f-96b1-f9056916095a">
-<span class="eqno">(6)<a class="headerlink" href="#equation-98370c57-5ee2-448f-96b1-f9056916095a" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2cd75157-0f5c-4111-8fea-4eb2a6621355">
+<span class="eqno">(6)<a class="headerlink" href="#equation-2cd75157-0f5c-4111-8fea-4eb2a6621355" title="Permalink to this equation">¶</a></span>\[\begin{align}
 S \phi(x, \theta) &amp;= s_{-1} \phi(x-1, \theta) + s_{0} \phi(x, \theta) + s_1 \phi(x+1,\theta) \\
 &amp;= \Big( s_{-1} e^{-i\theta} + s_0 + s_{1} e^{i\theta} \Big) \phi(x, \theta)
 \end{align}\]</div>
@@ -1176,7 +1181,7 @@ What is the symbol of the continuous second derivative?</p>
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="2021-08-27-finite-difference-2.html" title="previous page">2021-08-27 Finite Difference 2</a>
-    <a class='right-next' id="next-link" href="2021-09-01-boundaries-and-fourier.html" title="next page">2021-09-01 Boundaries and Fourier methods</a>
+    <a class='right-next' id="next-link" href="2021-09-01-convergence-and-boundaries.html" title="next page">2021-09-01 Boundaries and Fourier methods</a>
 
         </div>
         

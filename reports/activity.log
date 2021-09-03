@@ -17,23 +17,47 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-function convergence_order(h0, e0, h1, e1)
-    hratio = h1/h0
-    eratio = e1/e0
+function poisson_sym(x, spoints, forcing; leftbc=(0, zero), rightbc=(0, zero))
+    n = length(x)
+    L = zeros(n, n)
+    rhs = forcing.(x)
+    # This loop will need to be modified to go above second order accuracy.
+    for i in 2:n-1
+        jleft = min(max(1, i-spoints÷2), n-spoints+1)
+        js = jleft : jleft + spoints - 1
+        L[i, js] = -fdstencil(x[js], x[i], 2)
+    end
+    # You'll need to handle boundary conditions here to achieve second order accuracy
+    # I suggest going case by case as in:
+    #
+    #   if leftbc[1] == 0 # Dirichlet at left endpoint
+    #       ... set L and rhs accordingly
+    #   elseif leftbc[1] == 1 # Neumann at left endpoint
+    #       ...
+    #   end
+    #
+    # Always test the simplest case first. So homogeneous Dirichlet, inhomogeneous Dirichlet,
+    # homogeneous Neumann, inhomogeneous Neumann.
     # YOUR CODE HERE
     error("No answer given")
+    L, rhs
 end
 
-convergence_order(hs[end-6], errors1[end-6], hs[end-7], errors1[end-7])
+L, rhs = poisson_sym(LinRange(-1, 1, 5), 3, one, leftbc=(0, x -> .5), rightbc=(1, x -> -.5))
+display(L)
+display(rhs)
+x = LinRange(-1, 1, 10)
+L, rhs = poisson_sym(x, 3, one, leftbc=(0, x -> .5), rightbc=(0, x -> -.5))
+plot(x, L \ rhs, marker=:circle)
 ------------------
 
 No answer given
 
 Stacktrace:
- [1] convergence_order(h0::Float64, e0::Float64, h1::Float64, e1::Float64)
-   @ Main ./In[5]:5
+ [1] poisson_sym(x::LinRange{Float64}, spoints::Int64, forcing::Function; leftbc::Tuple{Int64, var"#15#17"}, rightbc::Tuple{Int64, var"#16#18"})
+   @ Main ./In[2]:23
  [2] top-level scope
-   @ In[5]:8
+   @ In[2]:27
  [3] eval
    @ ./boot.jl:360 [inlined]
  [4] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
