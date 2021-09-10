@@ -1,0 +1,935 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-09-10 Chebyshev collocation &#8212; Numerical Solution of Partial Differential Equations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2021-09-03 Convergence and Fourier analysis" href="2021-09-03-fourier.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Solution of Partial Differential Equations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../slides.html">
+   Slides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-23-first-day.html">
+     2021-08-23 First Day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-25-finite-difference.html">
+     2021-08-25 Finite Difference Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-27-finite-difference-2.html">
+     2021-08-27 Finite Difference 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-30-high-order.html">
+     2021-08-30 High order and boundaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-01-convergence-and-boundaries.html">
+     2021-09-01 Boundaries and Fourier methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-03-fourier.html">
+     2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/slides/2021-09-10-chebyshev.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cu-numpde/fall21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cu-numpde/fall21/issues/new?title=Issue%20on%20page%20%2Fslides/2021-09-10-chebyshev.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cu-numpde/fall21/main?urlpath=tree/slides/2021-09-10-chebyshev.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2021-09-10 Chebyshev collocation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#last-time">
+     Last time
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#today">
+     Today
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-matrix-transformations">
+   Visualizing matrix transformations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualizing-the-singular-value-decomposition">
+   Visualizing the Singular Value Decomposition
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#condition-number-of-interpolation">
+   Condition number of interpolation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#the-bad-singular-vectors">
+   The bad singular vectors
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#choosing-the-source-points">
+   Choosing the source points
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#condition-number-of-interpolation-on-cosrange-points">
+   Condition number of interpolation on
+   <code class="docutils literal notranslate">
+    <span class="pre">
+     CosRange
+    </span>
+   </code>
+   points
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#vandermonde-conditioning-stable-algorithms">
+   Vandermonde conditioning, stable algorithms
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#chebyshev-polynomials">
+   Chebyshev polynomials
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#derivation-of-chebyshev-polynomials-supplemental">
+   Derivation of Chebyshev polynomials (supplemental)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#lagrange-interpolating-polynomials">
+   Lagrange interpolating polynomials
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#differentiating-via-chebyshev">
+   Differentiating via Chebyshev
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-a-bvp-on-chebyshev-nodes">
+   Solving a BVP on Chebyshev nodes
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spectral-exponential-convergence">
+   “spectral” (exponential) convergence
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="chebyshev-collocation">
+<h1>2021-09-10 Chebyshev collocation<a class="headerlink" href="#chebyshev-collocation" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="last-time">
+<h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Hands-on/discussion of Dirichlet and Neumann boundary conditions</p></li>
+</ul>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Conditioning and stability of polynomial interpolation</p></li>
+<li><p>Runge Phenomenon</p></li>
+<li><p>Chebyshev differentiation</p></li>
+<li><p>Chebyshev-based solver for the Poisson problem</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Plots</span>
+<span class="k">using</span> <span class="n">LinearAlgebra</span>
+
+<span class="k">function</span> <span class="n">vander</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">nothing</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">===</span> <span class="nb">nothing</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">k</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span><span class="o">:</span><span class="n">k</span>
+        <span class="n">V</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">V</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">.*</span> <span class="n">x</span>
+    <span class="k">end</span>
+    <span class="n">V</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="s">&quot;kth derivative stencil from source to target&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">source</span> <span class="o">.-</span> <span class="n">target</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">vander</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">&#39;</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">/</span> <span class="n">V</span>
+<span class="k">end</span>
+
+
+<span class="k">function</span> <span class="n">poisson</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">spoints</span><span class="p">,</span> <span class="n">forcing</span><span class="p">;</span> <span class="n">left</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">right</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">forcing</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">jleft</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="n">spoints÷2</span><span class="p">),</span> <span class="n">n</span><span class="o">-</span><span class="n">spoints</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="n">jleft</span> <span class="o">:</span> <span class="n">jleft</span> <span class="o">+</span> <span class="n">spoints</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">js</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">js</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">spoints</span><span class="p">]</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">spoints</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">left</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="n">spoints</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">spoints</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">right</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">left</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">right</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+    <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>poisson (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualizing-matrix-transformations">
+<h1>Visualizing matrix transformations<a class="headerlink" href="#visualizing-matrix-transformations" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">peanut</span><span class="p">()</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+    <span class="n">r</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="mf">.4</span><span class="o">*</span><span class="n">sin</span><span class="o">.</span><span class="p">(</span><span class="mi">3</span><span class="o">*</span><span class="n">theta</span><span class="p">)</span> <span class="o">+</span> <span class="mf">.6</span><span class="o">*</span><span class="n">sin</span><span class="o">.</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">r</span> <span class="o">.*</span> <span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">r</span> <span class="o">.*</span> <span class="n">sin</span><span class="o">.</span><span class="p">(</span><span class="n">theta</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="k">end</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">peanut</span><span class="p">()</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">aspect_ratio</span><span class="o">=</span><span class="ss">:equal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_3_0.svg" src="../_images/2021-09-10-chebyshev_3_0.svg" /></div>
+</div>
+<p>Group these points into a <span class="math notranslate nohighlight">\(2\times n\)</span> matrix <span class="math notranslate nohighlight">\(X\)</span>. Note that multiplication by any matrix <span class="math notranslate nohighlight">\(A\)</span> is applied to each column separately, i.e.,</p>
+<div class="math notranslate nohighlight">
+\[ A \underbrace{\Bigg[ \mathbf x_1 \Bigg| \mathbf x_2 \Bigg| \dotsb \Bigg]}_X = \Bigg[ A \mathbf x_1 \Bigg| A \mathbf x_2 \Bigg| \dotsb \Bigg] \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="n">y</span><span class="p">]</span><span class="o">&#39;</span>
+<span class="n">size</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(2, 50)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualizing-the-singular-value-decomposition">
+<h1>Visualizing the Singular Value Decomposition<a class="headerlink" href="#visualizing-the-singular-value-decomposition" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">tplot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="n">peanut</span><span class="p">()</span>
+    <span class="n">X</span> <span class="o">=</span> <span class="p">[</span><span class="n">x</span> <span class="n">y</span><span class="p">]</span><span class="o">&#39;</span>
+    <span class="n">Y</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">X</span>
+    <span class="n">scatter</span><span class="p">(</span><span class="n">X</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">],</span> <span class="n">X</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">:</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;input&quot;</span><span class="p">,</span> <span class="n">aspect_ratio</span><span class="o">=</span><span class="ss">:equal</span><span class="p">)</span>
+    <span class="n">scatter!</span><span class="p">(</span><span class="n">Y</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">],</span> <span class="n">Y</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">:</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;output&quot;</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">A</span> <span class="o">=</span> <span class="n">randn</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">svdvals</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="n">tplot</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2-element Vector{Float64}:
+ 1.0579468242585781
+ 0.16252130662509728
+</pre></div>
+</div>
+<img alt="../_images/2021-09-10-chebyshev_7_1.svg" src="../_images/2021-09-10-chebyshev_7_1.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">tplot</span><span class="p">(</span><span class="n">U</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_8_0.svg" src="../_images/2021-09-10-chebyshev_8_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="condition-number-of-interpolation">
+<h1>Condition number of interpolation<a class="headerlink" href="#condition-number-of-interpolation" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
+<span class="n">source</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">vander</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">vander</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">P</span>
+<span class="n">svdvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20-element Vector{Float64}:
+ 4141.821782242258
+  756.1886115511251
+   11.201394439549022
+    5.200366811388276
+    2.3263899155788184
+    2.2886531575729756
+    2.2826626548130866
+    2.2826582312601693
+    2.282657730773899
+    2.2826577307583387
+    2.282657729732408
+    2.2826577141930864
+    2.2825938632314635
+    2.2823522003466126
+    2.248454974008582
+    2.2449230243848635
+    1.9014541632797317
+    1.7794033223590953
+    1.0093167855418923
+    1.0064482710880027
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">runge</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">runge</span><span class="o">.</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">([</span><span class="n">runge</span><span class="p">,</span>
+        <span class="n">x</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">vander</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">P</span> <span class="o">*</span> <span class="n">y</span><span class="p">)[</span><span class="mi">1</span><span class="p">]])</span>
+<span class="c"># plot!(target, A * y)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_11_0.svg" src="../_images/2021-09-10-chebyshev_11_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="the-bad-singular-vectors">
+<h1>The bad singular vectors<a class="headerlink" href="#the-bad-singular-vectors" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ A = U \Sigma V^T \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">11</span>
+<span class="n">source</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">vander</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">vander</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">P</span>
+<span class="n">U</span><span class="p">,</span> <span class="n">S</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">svd</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">S</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11-element Vector{Float64}:
+ 34.77706851205646
+ 11.13125653860815
+  3.2006228235799146
+  3.155189114518782
+  3.146427056066729
+  3.146390542844362
+  3.1459494752515185
+  2.900733962570112
+  2.700731526422513
+  1.2170432449283035
+  1.1628054393968779
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">scatter</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">V</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">U</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_14_0.svg" src="../_images/2021-09-10-chebyshev_14_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="choosing-the-source-points">
+<h1>Choosing the source points<a class="headerlink" href="#choosing-the-source-points" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">CosRange</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">.+</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>CosRange (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">15</span>
+<span class="n">source</span> <span class="o">=</span> <span class="n">CosRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">vander</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="n">vander</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">P</span>
+<span class="n">svdvals</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>15-element Vector{Float64}:
+ 3.3224452579600543
+ 3.2951489624388866
+ 3.2390224008180537
+ 3.181109040401762
+ 3.0703313983113376
+ 2.9872800167945326
+ 2.8121577830547233
+ 2.705974980412334
+ 2.458141299101599
+ 2.3201773057791897
+ 2.01732010538979
+ 1.790374810469325
+ 1.5900555135937617
+ 1.0373676954022644
+ 1.0310696201759286
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">runge</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mi">10</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">runge</span><span class="o">.</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">([</span><span class="n">runge</span><span class="p">,</span>
+        <span class="n">x</span> <span class="o">-&gt;</span> <span class="p">(</span><span class="n">vander</span><span class="p">([</span><span class="n">x</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="n">P</span> <span class="o">*</span> <span class="n">y</span><span class="p">)[</span><span class="mi">1</span><span class="p">]])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_18_0.svg" src="../_images/2021-09-10-chebyshev_18_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="condition-number-of-interpolation-on-cosrange-points">
+<h1>Condition number of interpolation on <code class="docutils literal notranslate"><span class="pre">CosRange</span></code> points<a class="headerlink" href="#condition-number-of-interpolation-on-cosrange-points" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">interpolate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="o">=</span><span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">))</span> <span class="o">=</span> <span class="n">vander</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">length</span><span class="p">(</span><span class="n">source</span><span class="p">))</span> <span class="o">/</span> <span class="n">vander</span><span class="p">(</span><span class="n">source</span><span class="p">)</span>
+
+<span class="n">plot_cond</span><span class="p">(</span><span class="n">mat</span><span class="p">,</span> <span class="n">points</span><span class="p">)</span> <span class="o">=</span> <span class="n">plot!</span><span class="p">([</span>
+        <span class="n">cond</span><span class="p">(</span><span class="n">mat</span><span class="p">(</span><span class="n">points</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)))</span>
+        <span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="mi">30</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="si">$mat</span><span class="s">/</span><span class="si">$points</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
+
+<span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Interpolation condition numbers&quot;</span><span class="p">)</span>
+<span class="n">plot_cond</span><span class="p">(</span><span class="n">interpolate</span><span class="p">,</span> <span class="kt">LinRange</span><span class="p">)</span>
+<span class="n">plot_cond</span><span class="p">(</span><span class="n">interpolate</span><span class="p">,</span> <span class="n">CosRange</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_20_0.svg" src="../_images/2021-09-10-chebyshev_20_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="vandermonde-conditioning-stable-algorithms">
+<h1>Vandermonde conditioning, stable algorithms<a class="headerlink" href="#vandermonde-conditioning-stable-algorithms" title="Permalink to this headline">¶</a></h1>
+<p>It is possible for interpolation to be well-conditioned, but construct it from ill-conditioned pieces.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Vandermonde condition numbers&quot;</span><span class="p">)</span>
+<span class="n">plot_cond</span><span class="p">(</span><span class="n">vander</span><span class="p">,</span> <span class="kt">LinRange</span><span class="p">)</span>
+<span class="n">plot_cond</span><span class="p">(</span><span class="n">vander</span><span class="p">,</span> <span class="n">CosRange</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_22_0.svg" src="../_images/2021-09-10-chebyshev_22_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="chebyshev-polynomials">
+<h1>Chebyshev polynomials<a class="headerlink" href="#chebyshev-polynomials" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">vander_chebyshev</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="nb">nothing</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">isnothing</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c"># Square by default</span>
+    <span class="k">end</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span>
+        <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">end</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="mi">3</span><span class="o">:</span><span class="n">n</span>
+        <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">.*</span> <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="n">T</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vander_chebyshev (generic function with 2 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">title</span><span class="o">=</span><span class="s">&quot;Vandermonde condition numbers&quot;</span><span class="p">)</span>
+<span class="n">plot_cond</span><span class="p">(</span><span class="n">vander</span><span class="p">,</span> <span class="kt">LinRange</span><span class="p">)</span>
+<span class="n">plot_cond</span><span class="p">(</span><span class="n">vander</span><span class="p">,</span> <span class="n">CosRange</span><span class="p">)</span>
+<span class="n">plot_cond</span><span class="p">(</span><span class="n">vander_chebyshev</span><span class="p">,</span> <span class="kt">LinRange</span><span class="p">)</span>
+<span class="n">plot_cond</span><span class="p">(</span><span class="n">vander_chebyshev</span><span class="p">,</span> <span class="n">CosRange</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_25_0.svg" src="../_images/2021-09-10-chebyshev_25_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="derivation-of-chebyshev-polynomials-supplemental">
+<h1>Derivation of Chebyshev polynomials (supplemental)<a class="headerlink" href="#derivation-of-chebyshev-polynomials-supplemental" title="Permalink to this headline">¶</a></h1>
+<p>Chebyshev polynomials are defined for non-negative integar <span class="math notranslate nohighlight">\(n\)</span> as $<span class="math notranslate nohighlight">\( T_n(x) = \cos (n \arccos(x)) .\)</span><span class="math notranslate nohighlight">\(
+This turns out to be a polynomial, but it's not obvious why.
+Recall \)</span><span class="math notranslate nohighlight">\( \cos(a + b) = \cos a \cos b - \sin a \sin b .\)</span><span class="math notranslate nohighlight">\(
+Let \)</span>y = \arccos x<span class="math notranslate nohighlight">\( and check
+\)</span><span class="math notranslate nohighlight">\( \begin{split}
+    T_{n+1}(x) &amp;= \cos \big( (n+1) y \big) = \cos ny \cos y - \sin ny \sin y \\
+    T_{n-1}(x) &amp;= \cos \big( (n-1) y \big) = \cos ny \cos y + \sin ny \sin y
+\end{split}\)</span><span class="math notranslate nohighlight">\(
+Adding these together produces
+\)</span><span class="math notranslate nohighlight">\( T_{n+1}(x) + T_{n-1}(x) = 2\cos ny \cos y = 2 x \cos ny = 2 x T_n(x) \)</span><span class="math notranslate nohighlight">\(
+which yields a convenient recurrence:
+\)</span><span class="math notranslate nohighlight">\(\begin{split}
+T_0(x) &amp;= 1 \\
+T_1(x) &amp;= x \\
+T_{n+1}(x) &amp;= 2 x T_n(x) - T_{n-1}(x)
+\end{split}\)</span>$</p>
+</div>
+<div class="section" id="lagrange-interpolating-polynomials">
+<h1>Lagrange interpolating polynomials<a class="headerlink" href="#lagrange-interpolating-polynomials" title="Permalink to this headline">¶</a></h1>
+<p>Find the unique polynomial that is 0 at all but one <code class="docutils literal notranslate"><span class="pre">source</span></code> point.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">11</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">one</span><span class="o">.</span><span class="p">(</span><span class="n">source</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;LinRange&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_28_0.svg" src="../_images/2021-09-10-chebyshev_28_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">source</span> <span class="o">=</span> <span class="n">CosRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">13</span><span class="p">)</span>
+<span class="n">target</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">200</span><span class="p">)</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">one</span><span class="o">.</span><span class="p">(</span><span class="n">source</span><span class="p">),</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;CosRange&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">target</span><span class="p">,</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_29_0.svg" src="../_images/2021-09-10-chebyshev_29_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="differentiating-via-chebyshev">
+<h1>Differentiating via Chebyshev<a class="headerlink" href="#differentiating-via-chebyshev" title="Permalink to this headline">¶</a></h1>
+<p>We can differentiate Chebyshev polynomials using the recurrence</p>
+<div class="math notranslate nohighlight">
+\[ \frac{T_k'(x)}{k} = 2 T_{k-1}(x) + \frac{T_{k-2}'(x)}{k-2} \]</div>
+<p>which we can differentiate to evaluate higher derivatives.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">chebdiff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="nb">nothing</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">vander_chebyshev</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">dT</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">dT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">2</span><span class="o">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">one</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">3</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">dT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">end</span>
+    <span class="n">ddT</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">ddT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">.=</span> <span class="mi">4</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">3</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">ddT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">ddT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">end</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">dT</span><span class="p">,</span> <span class="n">ddT</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>chebdiff (generic function with 2 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">CosRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">T</span><span class="p">,</span> <span class="n">dT</span><span class="p">,</span> <span class="n">ddT</span> <span class="o">=</span> <span class="n">chebdiff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">c</span> <span class="o">=</span> <span class="n">T</span> <span class="o">\</span> <span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="mi">3</span><span class="n">x</span><span class="p">)</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">dT</span> <span class="o">*</span> <span class="n">c</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="mi">3</span><span class="n">sin</span><span class="p">(</span><span class="mi">3</span><span class="n">x</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_32_0.svg" src="../_images/2021-09-10-chebyshev_32_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="solving-a-bvp-on-chebyshev-nodes">
+<h1>Solving a BVP on Chebyshev nodes<a class="headerlink" href="#solving-a-bvp-on-chebyshev-nodes" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">poisson_cheb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">rhsfunc</span><span class="p">,</span> <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">CosRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">dT</span><span class="p">,</span> <span class="n">ddT</span> <span class="o">=</span> <span class="n">chebdiff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="o">-</span><span class="n">ddT</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">rhsfunc</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">deriv</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span> <span class="k">in</span>
+            <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="n">leftbc</span><span class="o">...</span><span class="p">),</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">rightbc</span><span class="o">...</span><span class="p">)]</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">index</span><span class="p">,</span><span class="o">:</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dT</span><span class="p">)[</span><span class="n">deriv</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">index</span><span class="p">,</span><span class="o">:</span><span class="p">]</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="k">end</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">L</span> <span class="o">/</span> <span class="n">T</span><span class="p">,</span> <span class="n">rhs</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>poisson_cheb (generic function with 3 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">manufactured</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">tanh</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">)</span>
+<span class="n">d_manufactured</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">cosh</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">)</span><span class="o">^-</span><span class="mi">2</span>
+<span class="n">mdd_manufactured</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">8</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">cosh</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">poisson_cheb</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="n">mdd_manufactured</span><span class="p">,</span>
+    <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">manufactured</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">d_manufactured</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">A</span> <span class="o">\</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">manufactured</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomright</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_35_0.svg" src="../_images/2021-09-10-chebyshev_35_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="spectral-exponential-convergence">
+<h1>“spectral” (exponential) convergence<a class="headerlink" href="#spectral-exponential-convergence" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">poisson_error</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">poisson_cheb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">mdd_manufactured</span><span class="p">,</span> <span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">manufactured</span><span class="p">),</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">d_manufactured</span><span class="p">))</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">A</span> <span class="o">\</span> <span class="n">rhs</span>
+    <span class="n">norm</span><span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="n">manufactured</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">Inf</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">ns</span> <span class="o">=</span> <span class="mi">3</span><span class="o">:</span><span class="mi">20</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">poisson_error</span><span class="o">.</span><span class="p">(</span><span class="n">ns</span><span class="p">)),</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
+<span class="n">ps</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">2</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">plot!</span><span class="p">([</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">^-</span><span class="n">p</span> <span class="k">for</span> <span class="n">p</span> <span class="k">in</span> <span class="n">ps</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">map</span><span class="p">(</span><span class="n">p</span> <span class="o">-&gt;</span> <span class="s">&quot;</span><span class="se">\$</span><span class="s">n^{-</span><span class="si">$p</span><span class="s">}</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">ps</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-10-chebyshev_37_0.svg" src="../_images/2021-09-10-chebyshev_37_0.svg" /></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cu-numpde/fall21",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./slides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="2021-09-03-fourier.html" title="previous page">2021-09-03 Convergence and Fourier analysis</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jed Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
