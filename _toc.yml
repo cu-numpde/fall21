@@ -13,3 +13,4 @@ chapters:
   - file: slides/2021-08-30-high-order.ipynb
   - file: slides/2021-09-01-convergence-and-boundaries.ipynb
   - file: slides/2021-09-03-fourier.ipynb
+  - file: slides/2021-09-10-chebyshev.ipynb
