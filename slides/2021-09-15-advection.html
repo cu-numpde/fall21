@@ -1,0 +1,1002 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-09-15 Advection and stability &#8212; Numerical Solution of Partial Differential Equations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-09-17 Advection" href="2021-09-17-nonlinear.html" />
+    <link rel="prev" title="2021-09-13 Variable coefficients" href="2021-09-13-coefficients.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Solution of Partial Differential Equations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../slides.html">
+   Slides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-23-first-day.html">
+     2021-08-23 First Day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-25-finite-difference.html">
+     2021-08-25 Finite Difference Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-27-finite-difference-2.html">
+     2021-08-27 Finite Difference 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-30-high-order.html">
+     2021-08-30 High order and boundaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-01-convergence-and-boundaries.html">
+     2021-09-01 Boundaries and Fourier methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-03-fourier.html">
+     2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-nonlinear.html">
+     2021-09-17 Advection
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/slides/2021-09-15-advection.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cu-numpde/fall21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cu-numpde/fall21/issues/new?title=Issue%20on%20page%20%2Fslides/2021-09-15-advection.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cu-numpde/fall21/main?urlpath=tree/slides/2021-09-15-advection.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2021-09-15 Advection and stability
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#last-time">
+     Last time
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#today">
+     Today
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variable-coefficients">
+   Variable coefficients
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-naive-finite-difference-solver">
+   A naive finite difference solver
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#discretizing-in-conservative-form">
+   Discretizing in conservative form
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#compare-conservative-vs-non-divergence-forms">
+   Compare conservative vs non-divergence forms
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#continuity-of-flux">
+   Continuity of flux
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#manufactured-solutions-with-discontinuous-coefficients">
+   Manufactured solutions with discontinuous coefficients
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#solving-with-the-smoothed-step-kappa">
+   Solving with the smoothed step
+   <span class="math notranslate nohighlight">
+    \(\kappa\)
+   </span>
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convergence">
+   Convergence
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advection">
+   Advection
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-boundary-conditions-can-be-specified-on-the-steady-state-t-to-infty-problem">
+     What boundary conditions can be specified on the steady-state (
+     <span class="math notranslate nohighlight">
+      \(t\to\infty\)
+     </span>
+     ) problem?
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-is-the-steady-state-solution">
+     What is the steady state solution?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advection-diffusion-with-chebyshev">
+   Advection-diffusion with Chebyshev
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#advection-diffusion-with-conservative-fd">
+   Advection-diffusion with conservative FD
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#experiments-the-cell-peclet-number">
+   Experiments, The (cell) Péclet number
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#upwinded-discretization">
+   Upwinded discretization
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#try-it-for-robustness">
+   Try it for robustness
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="advection-and-stability">
+<h1>2021-09-15 Advection and stability<a class="headerlink" href="#advection-and-stability" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="last-time">
+<h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Variable coefficients</p></li>
+<li><p>Conservative/divergence form vs non-divergence forms</p></li>
+<li><p>Verification with discontinuities</p></li>
+</ul>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Advection and boundary layers</p></li>
+<li><p>The (cell) Péclet number and oscillations</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Plots</span>
+<span class="k">using</span> <span class="n">LinearAlgebra</span>
+
+<span class="k">function</span> <span class="n">vander</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">nothing</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">k</span> <span class="o">===</span> <span class="nb">nothing</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">k</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="o">=</span> <span class="mi">2</span><span class="o">:</span><span class="n">k</span>
+        <span class="n">V</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">V</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">.*</span> <span class="n">x</span>
+    <span class="k">end</span>
+    <span class="n">V</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">source</span><span class="p">,</span> <span class="n">target</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="s">&quot;kth derivative stencil from source to target&quot;</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">source</span> <span class="o">.-</span> <span class="n">target</span>
+    <span class="n">V</span> <span class="o">=</span> <span class="n">vander</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">&#39;</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="n">k</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">factorial</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">/</span> <span class="n">V</span>
+<span class="k">end</span>
+
+
+<span class="k">function</span> <span class="n">poisson</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">spoints</span><span class="p">,</span> <span class="n">forcing</span><span class="p">;</span> <span class="n">left</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">right</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">forcing</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">jleft</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="n">spoints÷2</span><span class="p">),</span> <span class="n">n</span><span class="o">-</span><span class="n">spoints</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="n">jleft</span> <span class="o">:</span> <span class="n">jleft</span> <span class="o">+</span> <span class="n">spoints</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">js</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">js</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">spoints</span><span class="p">]</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">spoints</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">left</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="n">spoints</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">spoints</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">right</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">left</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">right</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+    <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span>
+<span class="k">end</span>
+
+<span class="n">CosRange</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">.+</span> <span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="mi">2</span> <span class="o">*</span> <span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="n">n</span><span class="p">))</span>
+
+<span class="k">function</span> <span class="n">vander_chebyshev</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="nb">nothing</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">isnothing</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c"># Square by default</span>
+    <span class="k">end</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">1</span>
+        <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">end</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="mi">3</span><span class="o">:</span><span class="n">n</span>
+        <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">x</span> <span class="o">.*</span> <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">k</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">k</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="n">T</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">chebdiff</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="o">=</span><span class="nb">nothing</span><span class="p">)</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">vander_chebyshev</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">m</span><span class="p">,</span> <span class="n">n</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">dT</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">dT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">2</span><span class="o">:</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">one</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="mi">4</span><span class="o">*</span><span class="n">x</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">3</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">dT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">dT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">end</span>
+    <span class="n">ddT</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">ddT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">3</span><span class="p">]</span> <span class="o">.=</span> <span class="mi">4</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">3</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">ddT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">j</span> <span class="o">*</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="n">dT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+</span> <span class="n">ddT</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="p">(</span><span class="n">j</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="k">end</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">dT</span><span class="p">,</span> <span class="n">ddT</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">poisson_cheb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">rhsfunc</span><span class="p">,</span> <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">CosRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">dT</span><span class="p">,</span> <span class="n">ddT</span> <span class="o">=</span> <span class="n">chebdiff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">dT</span> <span class="o">/=</span> <span class="n">T</span>
+    <span class="n">ddT</span> <span class="o">/=</span> <span class="n">T</span>
+    <span class="n">T</span> <span class="o">/=</span> <span class="n">T</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="o">-</span><span class="n">ddT</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">rhsfunc</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">deriv</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span> <span class="k">in</span>
+            <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="n">leftbc</span><span class="o">...</span><span class="p">),</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">rightbc</span><span class="o">...</span><span class="p">)]</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">index</span><span class="p">,</span><span class="o">:</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dT</span><span class="p">)[</span><span class="n">deriv</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">index</span><span class="p">,</span><span class="o">:</span><span class="p">]</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="k">end</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>┌ Info: Precompiling Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80]
+└ @ Base loading.jl:1342
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>poisson_cheb (generic function with 3 methods)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="variable-coefficients">
+<h1>Variable coefficients<a class="headerlink" href="#variable-coefficients" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Heat conduction: steel, brick, wood, foam</p></li>
+<li><p>Electrical conductivity: copper, rubber, air</p></li>
+<li><p>Elasticity: steel, rubber, concrete, rock</p></li>
+<li><p>Linearization of nonlinear materials</p>
+<ul>
+<li><p>ketchup, glacier ice, rocks (mantle/lithosphere)</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">kappa_step</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mf">.1</span> <span class="o">+</span> <span class="mf">.9</span> <span class="o">*</span> <span class="p">(</span><span class="n">x</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">.55</span> <span class="o">+</span> <span class="mf">.45</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">epsilon</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">([</span><span class="n">kappa_step</span><span class="p">,</span> <span class="n">kappa_tanh</span><span class="p">],</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ylims</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;κ&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>┌ Info: Precompiling GR_jll [d2c73de3-f751-5644-a686-071e5b155ba9]
+└ @ Base loading.jl:1342
+</pre></div>
+</div>
+<img alt="../_images/2021-09-15-advection_4_1.svg" src="../_images/2021-09-15-advection_4_1.svg" /></div>
+</div>
+</div>
+<div class="section" id="a-naive-finite-difference-solver">
+<h1>A naive finite difference solver<a class="headerlink" href="#a-naive-finite-difference-solver" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Conservative (divergence) form</p></th>
+<th class="head"><p>Non-divergence form</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(-(\kappa u_x)_x = 0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\kappa u_{xx} - \kappa_x u_x = 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">poisson_nondivergence</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">spoints</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">forcing</span><span class="p">;</span> <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">))</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">forcing</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">kappax</span> <span class="o">=</span> <span class="n">kappa</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">jleft</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="n">spoints÷2</span><span class="p">),</span> <span class="n">n</span><span class="o">-</span><span class="n">spoints</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="n">jleft</span> <span class="o">:</span> <span class="n">jleft</span> <span class="o">+</span> <span class="n">spoints</span> <span class="o">-</span> <span class="mi">1</span>
+        <span class="n">kappa_x</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">js</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">kappax</span><span class="p">[</span><span class="n">js</span><span class="p">]</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">js</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">js</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">2</span><span class="p">)</span> <span class="o">.*</span> <span class="n">kappax</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">-</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">js</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">kappa_x</span>
+    <span class="k">end</span>
+    <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">spoints</span><span class="p">]</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="n">spoints</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">leftbc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">leftbc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">:</span><span class="p">]</span> <span class="o">*=</span> <span class="n">kappax</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">,</span><span class="n">n</span><span class="o">-</span><span class="n">spoints</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="o">-</span><span class="n">spoints</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">],</span> <span class="n">rightbc</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="k">if</span> <span class="n">rightbc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">1</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">n</span><span class="p">,</span> <span class="o">:</span><span class="p">]</span> <span class="o">*=</span> <span class="n">kappax</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">leftbc</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="n">n</span><span class="p">]</span> <span class="o">=</span> <span class="n">rightbc</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="n">x</span><span class="p">[</span><span class="n">n</span><span class="p">])</span>
+    <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>poisson_nondivergence (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="discretizing-in-conservative-form">
+<h1>Discretizing in conservative form<a class="headerlink" href="#discretizing-in-conservative-form" title="Permalink to this headline">¶</a></h1>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Conservative (divergence) form</p></th>
+<th class="head"><p>Non-divergence form</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(-(\kappa u_x)_x = 0\)</span></p></td>
+<td><p><span class="math notranslate nohighlight">\(-\kappa u_{xx} - \kappa_x u_x = 0\)</span></p></td>
+</tr>
+</tbody>
+</table>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">poisson_conservative</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">forcing</span><span class="p">;</span> <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">xstag</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">forcing</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">kappa_stag</span> <span class="o">=</span> <span class="n">kappa</span><span class="o">.</span><span class="p">(</span><span class="n">xstag</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">flux_L</span> <span class="o">=</span> <span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">flux_R</span> <span class="o">=</span> <span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="o">-</span><span class="n">fdstencil</span><span class="p">(</span><span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="n">flux_L</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">flux_R</span><span class="o">...</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="k">if</span> <span class="n">leftbc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">leftbc</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">]</span> <span class="o">-=</span> <span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+        <span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">.=</span> <span class="mi">0</span>
+    <span class="k">end</span>
+    <span class="k">if</span> <span class="n">rightbc</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">==</span> <span class="mi">0</span>
+        <span class="n">L</span><span class="p">[</span><span class="k">end</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="k">end</span><span class="p">]</span> <span class="o">=</span> <span class="n">rightbc</span><span class="p">[</span><span class="mi">2</span><span class="p">](</span><span class="n">x</span><span class="p">[</span><span class="k">end</span><span class="p">])</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-=</span> <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">*</span> <span class="n">rhs</span><span class="p">[</span><span class="k">end</span><span class="p">]</span>
+        <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">.=</span> <span class="mi">0</span>
+    <span class="k">end</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>poisson_conservative (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="compare-conservative-vs-non-divergence-forms">
+<h1>Compare conservative vs non-divergence forms<a class="headerlink" href="#compare-conservative-vs-non-divergence-forms" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">forcing</span> <span class="o">=</span> <span class="n">zero</span> <span class="c"># one</span>
+<span class="n">kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">.01</span><span class="p">)</span> <span class="o">=</span> <span class="mf">.55</span> <span class="o">+</span> <span class="mf">.45</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">epsilon</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">poisson_conservative</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">kappa_tanh</span><span class="p">,</span>
+    <span class="n">forcing</span><span class="p">,</span> <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">one</span><span class="p">))</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomright</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-15-advection_10_0.svg" src="../_images/2021-09-15-advection_10_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">poisson_nondivergence</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">kappa_tanh</span><span class="p">,</span>
+    <span class="n">forcing</span><span class="p">,</span> <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">one</span><span class="p">))</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomright</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-15-advection_11_0.svg" src="../_images/2021-09-15-advection_11_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="continuity-of-flux">
+<h1>Continuity of flux<a class="headerlink" href="#continuity-of-flux" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">forcing</span> <span class="o">=</span> <span class="n">zero</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">poisson_conservative</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">kappa_step</span><span class="p">,</span>
+    <span class="n">forcing</span><span class="p">,</span> <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">one</span><span class="p">))</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomright</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-15-advection_13_0.svg" src="../_images/2021-09-15-advection_13_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">xstag</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">])</span> <span class="o">./</span> <span class="mi">2</span>
+<span class="n">du</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">])</span> <span class="o">./</span> <span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">xstag</span><span class="p">,</span> <span class="p">[</span><span class="n">du</span> <span class="o">.*</span> <span class="n">kappa_step</span><span class="o">.</span><span class="p">(</span><span class="n">xstag</span><span class="p">)],</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">ylims</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-15-advection_14_0.svg" src="../_images/2021-09-15-advection_14_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="manufactured-solutions-with-discontinuous-coefficients">
+<h1>Manufactured solutions with discontinuous coefficients<a class="headerlink" href="#manufactured-solutions-with-discontinuous-coefficients" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>We need to be able to evaluate derivatives of the flux <span class="math notranslate nohighlight">\(-\kappa u_x\)</span>.</p></li>
+<li><p>A physically-realizable solution would have continuous flux, but we we’d have to be making a physical solution to have that in verification.</p></li>
+<li><p>Idea: replace the discontinuous function with a continuous one with a rapid transition.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">.55</span> <span class="o">+</span> <span class="mf">.45</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">epsilon</span><span class="p">)</span>
+<span class="n">d_kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span> <span class="o">=</span> <span class="mf">.45</span><span class="o">/</span><span class="n">epsilon</span> <span class="o">*</span> <span class="n">cosh</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">epsilon</span><span class="p">)</span><span class="o">^-</span><span class="mi">2</span>
+<span class="n">plot</span><span class="p">([</span><span class="n">kappa_tanh</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-15-advection_16_0.svg" src="../_images/2021-09-15-advection_16_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="solving-with-the-smoothed-step-kappa">
+<h1>Solving with the smoothed step <span class="math notranslate nohighlight">\(\kappa\)</span><a class="headerlink" href="#solving-with-the-smoothed-step-kappa" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">.01</span><span class="p">)</span> <span class="o">=</span> <span class="mf">.55</span> <span class="o">+</span> <span class="mf">.45</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="n">x</span> <span class="o">/</span> <span class="n">epsilon</span><span class="p">)</span>
+<span class="n">d_kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">epsilon</span><span class="o">=</span><span class="mf">.01</span><span class="p">)</span> <span class="o">=</span> <span class="mf">.45</span><span class="o">/</span><span class="n">epsilon</span> <span class="o">*</span> <span class="n">cosh</span><span class="p">(</span><span class="n">x</span><span class="o">/</span><span class="n">epsilon</span><span class="p">)</span><span class="o">^-</span><span class="mi">2</span>
+<span class="n">manufactured</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">tanh</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="n">d_manufactured</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">cosh</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span><span class="o">.^-</span><span class="mi">2</span>
+<span class="n">flux_manufactured_kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">d_manufactured</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">function</span> <span class="n">forcing_manufactured_kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="mi">8</span> <span class="o">*</span> <span class="n">tanh</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">)</span> <span class="o">/</span> <span class="n">cosh</span><span class="p">(</span><span class="mi">2</span><span class="n">x</span><span class="p">)</span><span class="o">^</span><span class="mi">2</span> <span class="o">*</span> <span class="n">kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span>
+    <span class="n">d_kappa_tanh</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">*</span> <span class="n">d_manufactured</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">poisson_conservative</span><span class="p">(</span><span class="mi">200</span><span class="p">,</span> <span class="n">kappa_tanh</span><span class="p">,</span>
+    <span class="n">forcing_manufactured_kappa_tanh</span><span class="p">,</span>
+    <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">manufactured</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">manufactured</span><span class="p">))</span>
+<span class="n">u</span> <span class="o">=</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomright</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;Error </span><span class="si">$</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="n">manufactured</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">Inf</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">([</span><span class="n">manufactured</span> <span class="n">flux_manufactured_kappa_tanh</span> <span class="n">forcing_manufactured_kappa_tanh</span> <span class="n">kappa_tanh</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-15-advection_18_0.svg" src="../_images/2021-09-15-advection_18_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="convergence">
+<h1>Convergence<a class="headerlink" href="#convergence" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">poisson_error</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">spoints</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">poisson_conservative</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kappa_tanh</span><span class="p">,</span>
+        <span class="n">forcing_manufactured_kappa_tanh</span><span class="p">,</span>
+        <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">manufactured</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">manufactured</span><span class="p">))</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span>
+    <span class="n">norm</span><span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="n">manufactured</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">Inf</span><span class="p">)</span>
+<span class="k">end</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">.^</span> <span class="p">(</span><span class="mi">3</span><span class="o">:</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">poisson_error</span><span class="o">.</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="n">n</span><span class="o">^-</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">1/n^2</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-15-advection_20_0.svg" src="../_images/2021-09-15-advection_20_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="advection">
+<h1>Advection<a class="headerlink" href="#advection" title="Permalink to this headline">¶</a></h1>
+<p>Advection represents transport in a “wind” <span class="math notranslate nohighlight">\(w\)</span>. The time-dependent model is
+$<span class="math notranslate nohighlight">\( u_t + (w u)_x = 0 \)</span><span class="math notranslate nohighlight">\(
+for which \)</span>u(t,x) = u(0, x - tw)$.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">u0</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="nd">@.</span> <span class="n">tanh</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="n">usolution</span><span class="p">(</span><span class="n">t</span><span class="p">,</span><span class="n">x</span><span class="p">;</span> <span class="n">w</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span> <span class="o">=</span> <span class="nd">@.</span> <span class="n">u0</span><span class="p">(</span><span class="n">x</span> <span class="o">-</span> <span class="n">t</span><span class="o">*</span><span class="n">w</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">usolution</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span> <span class="k">for</span> <span class="n">t</span> <span class="k">in</span> <span class="mi">0</span><span class="o">:</span><span class="mf">.2</span><span class="o">:</span><span class="mi">2</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-09-15-advection_22_0.svg" src="../_images/2021-09-15-advection_22_0.svg" /></div>
+</div>
+<div class="section" id="what-boundary-conditions-can-be-specified-on-the-steady-state-t-to-infty-problem">
+<h2>What boundary conditions can be specified on the steady-state (<span class="math notranslate nohighlight">\(t\to\infty\)</span>) problem?<a class="headerlink" href="#what-boundary-conditions-can-be-specified-on-the-steady-state-t-to-infty-problem" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="what-is-the-steady-state-solution">
+<h2>What is the steady state solution?<a class="headerlink" href="#what-is-the-steady-state-solution" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="section" id="advection-diffusion-with-chebyshev">
+<h1>Advection-diffusion with Chebyshev<a class="headerlink" href="#advection-diffusion-with-chebyshev" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ -u_{xx} + (wu)_x = f \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">advdiff_cheb</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">rhsfunc</span><span class="p">,</span> <span class="n">leftbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">),</span> <span class="n">rightbc</span><span class="o">=</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">zero</span><span class="p">))</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">CosRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">T</span><span class="p">,</span> <span class="n">dT</span><span class="p">,</span> <span class="n">ddT</span> <span class="o">=</span> <span class="n">chebdiff</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">dT</span> <span class="o">/=</span> <span class="n">T</span>
+    <span class="n">ddT</span> <span class="o">/=</span> <span class="n">T</span>
+    <span class="n">T</span> <span class="o">/=</span> <span class="n">T</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="o">-</span><span class="n">ddT</span> <span class="o">+</span> <span class="n">wind</span> <span class="o">*</span> <span class="n">dT</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">rhsfunc</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">index</span><span class="p">,</span> <span class="n">deriv</span><span class="p">,</span> <span class="n">func</span><span class="p">)</span> <span class="k">in</span>
+            <span class="p">[(</span><span class="mi">1</span><span class="p">,</span> <span class="n">leftbc</span><span class="o">...</span><span class="p">),</span> <span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">rightbc</span><span class="o">...</span><span class="p">)]</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">index</span><span class="p">,</span><span class="o">:</span><span class="p">]</span> <span class="o">=</span> <span class="p">(</span><span class="n">T</span><span class="p">,</span> <span class="n">dT</span><span class="p">)[</span><span class="n">deriv</span><span class="o">+</span><span class="mi">1</span><span class="p">][</span><span class="n">index</span><span class="p">,</span><span class="o">:</span><span class="p">]</span>
+        <span class="n">rhs</span><span class="p">[</span><span class="n">index</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">index</span><span class="p">])</span>
+    <span class="k">end</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>advdiff_cheb (generic function with 3 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">advdiff_cheb</span><span class="p">(</span><span class="mi">25</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
+<span class="nd">@show</span> <span class="n">minimum</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>minimum(diff(x)) = 0.008555138626189618
+</pre></div>
+</div>
+<img alt="../_images/2021-09-15-advection_26_1.svg" src="../_images/2021-09-15-advection_26_1.svg" /></div>
+</div>
+</div>
+<div class="section" id="advection-diffusion-with-conservative-fd">
+<h1>Advection-diffusion with conservative FD<a class="headerlink" href="#advection-diffusion-with-conservative-fd" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[(- \kappa u_x + wu)_x = f\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">advdiff_conservative</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">forcing</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">xstag</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">forcing</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">kappa_stag</span> <span class="o">=</span> <span class="n">kappa</span><span class="o">.</span><span class="p">(</span><span class="n">xstag</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">flux_L</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">wind</span> <span class="o">*</span> <span class="p">[</span><span class="mf">.5</span> <span class="mf">.5</span><span class="p">]</span>
+        <span class="n">flux_R</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">wind</span> <span class="o">*</span> <span class="p">[</span><span class="mf">.5</span> <span class="mf">.5</span><span class="p">]</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="n">flux_L</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">flux_R</span><span class="o">...</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">.=</span> <span class="mi">0</span>
+    <span class="n">L</span><span class="p">[</span><span class="k">end</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="k">end</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">.=</span> <span class="mi">0</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>advdiff_conservative (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="experiments-the-cell-peclet-number">
+<h1>Experiments, The (cell) <a class="reference external" href="https://en.wikipedia.org/wiki/P%C3%A9clet_number">Péclet number</a><a class="headerlink" href="#experiments-the-cell-peclet-number" title="Permalink to this headline">¶</a></h1>
+<div class="amsmath math notranslate nohighlight" id="equation-85e785fa-5c47-45fe-9465-d3e2b4123451">
+<span class="eqno">(9)<a class="headerlink" href="#equation-85e785fa-5c47-45fe-9465-d3e2b4123451" title="Permalink to this equation">¶</a></span>\[\begin{align}
+(- \kappa u_x + wu)_x &amp;= f &amp; \mathrm{Pe}_h &amp;= \frac{h \lvert w \rvert}{\kappa}
+\end{align}\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span><span class="o">/</span><span class="n">n</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">wind</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">advdiff_conservative</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
+<span class="nd">@show</span> <span class="n">minimum</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;ratio </span><span class="si">$</span><span class="p">(</span><span class="n">wind</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="n">kappa</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>minimum(diff(x)) = 0.06896551724137923
+</pre></div>
+</div>
+<img alt="../_images/2021-09-15-advection_30_1.svg" src="../_images/2021-09-15-advection_30_1.svg" /></div>
+</div>
+</div>
+<div class="section" id="upwinded-discretization">
+<h1>Upwinded discretization<a class="headerlink" href="#upwinded-discretization" title="Permalink to this headline">¶</a></h1>
+<p>Idea: incoming <strong>advective flux</strong> should depend only on upwind value, outgoing should depend only on my value.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">advdiff_upwind</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">forcing</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">xstag</span> <span class="o">=</span> <span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">])</span> <span class="o">/</span> <span class="mi">2</span>
+    <span class="n">L</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">forcing</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">kappa_stag</span> <span class="o">=</span> <span class="n">kappa</span><span class="o">.</span><span class="p">(</span><span class="n">xstag</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
+        <span class="n">flux_L</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">flux_R</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
+            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>
+        <span class="n">js</span> <span class="o">=</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span>
+        <span class="n">weights</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="n">flux_L</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">flux_R</span><span class="o">...</span><span class="p">]</span>
+    <span class="k">end</span>
+    <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">L</span><span class="p">[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">.=</span> <span class="mi">0</span>
+    <span class="n">L</span><span class="p">[</span><span class="k">end</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="n">rhs</span><span class="p">[</span><span class="k">end</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">.=</span> <span class="mi">0</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>advdiff_upwind (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="try-it-for-robustness">
+<h1>Try it for robustness<a class="headerlink" href="#try-it-for-robustness" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">30</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span><span class="o">/</span><span class="n">n</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">wind</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">advdiff_upwind</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
+<span class="nd">@show</span> <span class="n">minimum</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;ratio </span><span class="si">$</span><span class="p">(</span><span class="n">wind</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="n">kappa</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>minimum(diff(x)) = 0.06896551724137923
+</pre></div>
+</div>
+<img alt="../_images/2021-09-15-advection_34_1.svg" src="../_images/2021-09-15-advection_34_1.svg" /></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cu-numpde/fall21",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./slides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="2021-09-13-coefficients.html" title="previous page">2021-09-13 Variable coefficients</a>
+    <a class='right-next' id="next-link" href="2021-09-17-nonlinear.html" title="next page">2021-09-17 Advection</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jed Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
