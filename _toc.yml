@@ -14,3 +14,6 @@ chapters:
   - file: slides/2021-09-01-convergence-and-boundaries.ipynb
   - file: slides/2021-09-03-fourier.ipynb
   - file: slides/2021-09-10-chebyshev.ipynb
+  - file: slides/2021-09-13-coefficients.ipynb
+  - file: slides/2021-09-15-advection.ipynb
+  - file: slides/2021-09-17-sparsity.ipynb
