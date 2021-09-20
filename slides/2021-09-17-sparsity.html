@@ -54,6 +54,7 @@
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-09-20 Nonlinear solvers" href="2021-09-20-nonlinear.html" />
     <link rel="prev" title="2021-09-15 Advection and stability" href="2021-09-15-advection.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -155,6 +156,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
     </a>
    </li>
   </ul>
@@ -378,77 +384,6 @@
    Assembly cost
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#nonlinear-problems-and-rootfinding">
-   Nonlinear problems and rootfinding
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#an-algorithm-bisection">
-   An algorithm: Bisection
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#bisection">
-   Bisection
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#how-fast-does-it-converge">
-   How fast does it converge?
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#let-s-plot-the-error">
-   Let’s plot the error
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convergence-classes">
-   Convergence classes
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#bisection-a-q-linearly-convergent-b-r-linearly-convergent-c-neither">
-     Bisection: A = q-linearly convergent, B = r-linearly convergent, C = neither
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#remarks-on-bisection">
-   Remarks on bisection
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#newton-raphson-method">
-     Newton-Raphson Method
-    </a>
-   </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#an-implementation">
-   An implementation
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#that-s-really-fast">
-   That’s really fast!
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#convergence-of-fixed-point-iteration">
-   Convergence of fixed-point iteration
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#exercise">
-     Exercise
-    </a>
-   </li>
-  </ul>
- </li>
 </ul>
 
             </nav>
@@ -548,8 +483,8 @@
 </div>
 <div class="section" id="experiments-the-peclet-number">
 <h1>Experiments, The <a class="reference external" href="https://en.wikipedia.org/wiki/P%C3%A9clet_number">Péclet number</a><a class="headerlink" href="#experiments-the-peclet-number" title="Permalink to this headline">¶</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-efbd7898-0662-488c-8755-0520d9ba4ba8">
-<span class="eqno">(10)<a class="headerlink" href="#equation-efbd7898-0662-488c-8755-0520d9ba4ba8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-cfadf1a0-a002-4d3e-af04-1d4a78fb671a">
+<span class="eqno">(10)<a class="headerlink" href="#equation-cfadf1a0-a002-4d3e-af04-1d4a78fb671a" title="Permalink to this equation">¶</a></span>\[\begin{align}
 (- \kappa u_x + wu)_x &amp;= f &amp; \mathrm{Pe}_h &amp;= \frac{h \lvert w \rvert}{\kappa}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -583,9 +518,9 @@
     <span class="n">kappa_stag</span> <span class="o">=</span> <span class="n">kappa</span><span class="o">.</span><span class="p">(</span><span class="n">xstag</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
         <span class="n">flux_L</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
-            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>  <span class="c"># &lt;--- was [.5 .5]</span>
+            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mf">.75</span> <span class="mf">.25</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>  <span class="c"># &lt;--- was [.5 .5]</span>
         <span class="n">flux_R</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
-            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>  <span class="c"># &lt;--- was [.5 .5]</span>
+            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mf">.75</span> <span class="mf">.25</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>  <span class="c"># &lt;--- was [.5 .5]</span>
         <span class="n">weights</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">L</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="n">flux_L</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">flux_R</span><span class="o">...</span><span class="p">]</span>
     <span class="k">end</span>
@@ -613,7 +548,7 @@
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">40</span><span class="p">;</span> <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span><span class="o">/</span><span class="n">n</span>
 <span class="n">kappa</span> <span class="o">=</span> <span class="mi">1</span>
-<span class="n">wind</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">wind</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">advdiff_upwind</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
 <span class="nd">@show</span> <span class="n">minimum</span><span class="p">(</span><span class="n">diff</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;Pe_h </span><span class="si">$</span><span class="p">(</span><span class="n">wind</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="n">kappa</span><span class="p">)</span><span class="s">&quot;</span><span class="p">)</span>
@@ -634,13 +569,17 @@
 <h1>How expensive is <code class="docutils literal notranslate"><span class="pre">\</span></code>?<a class="headerlink" href="#how-expensive-is" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">advdiff_upwind</span><span class="p">(</span><span class="mi">2500</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
-<span class="nd">@time</span> <span class="n">L</span> <span class="o">\</span> <span class="n">x</span><span class="p">;</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">advdiff_upwind</span><span class="p">(</span><span class="mi">5000</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
+<span class="nd">@timev</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span><span class="p">;</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.245868 seconds (281.78 k allocations: 63.741 MiB, 4.41% gc time, 53.85% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1.670357 seconds (6 allocations: 190.792 MiB)
+elapsed time (ns): 1670356501
+bytes allocated:   200060272
+pool allocs:       3
+malloc() calls:    3
 </pre></div>
 </div>
 </div>
@@ -649,20 +588,21 @@
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">elapsed_solve</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">advdiff_upwind</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
-    <span class="nd">@elapsed</span> <span class="n">L</span> <span class="o">\</span> <span class="n">x</span>
+    <span class="nd">@elapsed</span> <span class="n">L</span> <span class="o">\</span> <span class="n">rhs</span>
 <span class="k">end</span>
-<span class="n">ns</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>
+<span class="n">ns</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">6</span><span class="p">)</span> <span class="o">*</span> <span class="mi">1000</span>
 <span class="n">times</span> <span class="o">=</span> <span class="n">elapsed_solve</span><span class="o">.</span><span class="p">(</span><span class="n">ns</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5-element Vector{Float64}:
- 0.009809337
- 0.191767221
- 0.191993296
- 0.436256845
- 0.813480552
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6-element Vector{Float64}:
+ 0.012454447
+ 0.083467243
+ 0.334782038
+ 0.534024244
+ 1.20161831
+ 1.406723185
 </pre></div>
 </div>
 </div>
@@ -670,18 +610,12 @@
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">scatter</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">times</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
-<span class="n">plot!</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="p">(</span><span class="n">ns</span><span class="o">/</span><span class="mi">3000</span><span class="p">)</span><span class="o">.^</span><span class="mi">3</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="p">[(</span><span class="n">ns</span><span class="o">/</span><span class="mi">3000</span><span class="p">)</span><span class="o">.^</span><span class="mi">2</span><span class="p">,</span> <span class="p">(</span><span class="n">ns</span><span class="o">/</span><span class="mi">3000</span><span class="p">)</span><span class="o">.^</span><span class="mi">3</span><span class="p">],</span> <span class="n">xrange</span><span class="o">=</span><span class="p">(</span><span class="mf">1e3</span><span class="p">,</span> <span class="mf">1e4</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>┌ Warning: No strict ticks found
-└ @ PlotUtils /home/jed/.julia/packages/PlotUtils/n4I4Q/src/ticks.jl:295
-┌ Warning: No strict ticks found
-└ @ PlotUtils /home/jed/.julia/packages/PlotUtils/n4I4Q/src/ticks.jl:295
-</pre></div>
-</div>
-<img alt="../_images/2021-09-17-sparsity_14_1.svg" src="../_images/2021-09-17-sparsity_14_1.svg" /></div>
+<img alt="../_images/2021-09-17-sparsity_14_0.svg" src="../_images/2021-09-17-sparsity_14_0.svg" /></div>
 </div>
 <div class="section" id="how-long-would-n-10000-take-to-solve">
 <h2>How long would <span class="math notranslate nohighlight">\(n=10000\)</span> take to solve?<a class="headerlink" href="#how-long-would-n-10000-take-to-solve" title="Permalink to this headline">¶</a></h2>
@@ -694,7 +628,7 @@
 <h1>Sparsity<a class="headerlink" href="#sparsity" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">advdiff_upwind</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span> <span class="o">=</span> <span class="n">advdiff_upwind</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">one</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">one</span><span class="p">)</span>
 <span class="n">spy</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="p">(</span><span class="ss">:square</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="ss">:bwr</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -809,17 +743,17 @@ A.rowval = [1, 3, 2, 1, 2, 3]
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">sparse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span>
-       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">.06</span><span class="p">])</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">sparse</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span>
+       <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mf">.4</span><span class="p">,</span> <span class="mf">5.1</span><span class="p">,</span> <span class="mf">.06</span><span class="p">,</span> <span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3×4 SparseMatrixCSC{Float64, Int64} with 6 stored entries:
- 1.0   ⋅     ⋅   -2.0
-  ⋅   3.14   ⋅    0.4
- 5.1   ⋅     ⋅    0.06
+ 11.0   ⋅     ⋅   -2.0
+   ⋅   3.14   ⋅    0.4
+  5.1   ⋅     ⋅    0.06
 </pre></div>
 </div>
 </div>
@@ -840,13 +774,13 @@ A.rowval = [1, 3, 2, 1, 2, 3]
     <span class="n">rhs</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="n">n</span><span class="p">]]</span> <span class="o">.=</span> <span class="mi">0</span> <span class="c"># boundary condition</span>
     <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">2</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span>
         <span class="n">flux_L</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
-            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>  <span class="c"># &lt;--- was [.5 .5]</span>
+            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>
         <span class="n">flux_R</span> <span class="o">=</span> <span class="o">-</span><span class="n">kappa_stag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">*</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span> <span class="o">+</span>
-            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>  <span class="c"># &lt;--- was [.5 .5]</span>
+            <span class="n">wind</span> <span class="o">*</span> <span class="p">(</span><span class="n">wind</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="o">?</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">:</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">])</span>
         <span class="n">weights</span> <span class="o">=</span> <span class="n">fdstencil</span><span class="p">(</span><span class="n">xstag</span><span class="p">[</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="mi">1</span><span class="p">)</span>
         <span class="n">append!</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">,</span><span class="n">i</span><span class="p">])</span>
         <span class="n">append!</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span>
-        <span class="n">append!</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="n">flux_L</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">flux_R</span><span class="o">...</span><span class="p">])</span>
+        <span class="n">append!</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">weights</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span>  <span class="p">[</span><span class="n">flux_L</span><span class="o">...</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="n">weights</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">*</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="n">flux_R</span><span class="o">...</span><span class="p">])</span>
     <span class="k">end</span>
     <span class="n">L</span> <span class="o">=</span> <span class="n">sparse</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
     <span class="n">x</span><span class="p">,</span> <span class="n">L</span><span class="p">,</span> <span class="n">rhs</span>
@@ -889,276 +823,30 @@ A.rowval = [1, 3, 2, 1, 2, 3]
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.317975 seconds (708.34 k allocations: 803.497 MiB, 15.63% gc time)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.123003 seconds (698.92 k allocations: 44.198 MiB, 35.98% gc time)
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="nonlinear-problems-and-rootfinding">
-<h1>Nonlinear problems and rootfinding<a class="headerlink" href="#nonlinear-problems-and-rootfinding" title="Permalink to this headline">¶</a></h1>
-<p>We want to solve problems like
-$<span class="math notranslate nohighlight">\( -(|u_x|^{p-2} u_x)_x + (u^2)_x = 0 \)</span>$</p>
-<p>For linear problems, we found <span class="math notranslate nohighlight">\(u\)</span> such that <span class="math notranslate nohighlight">\(L u = b\)</span> using linear algebra.</p>
-<p>For nonlinear problems, we’ll need to find <span class="math notranslate nohighlight">\(u\)</span> such that <span class="math notranslate nohighlight">\(F(u) = 0\)</span>.</p>
-</div>
-<div class="section" id="an-algorithm-bisection">
-<h1>An algorithm: Bisection<a class="headerlink" href="#an-algorithm-bisection" title="Permalink to this headline">¶</a></h1>
-<p>Bisection is a rootfinding technique that starts with an interval <span class="math notranslate nohighlight">\([a,b]\)</span> containing a root and does not require derivatives. Suppose <span class="math notranslate nohighlight">\(f\)</span> is continuous. What is a <strong>sufficient</strong> condition for <span class="math notranslate nohighlight">\(f\)</span> to have a root on <span class="math notranslate nohighlight">\([a,b]\)</span>?</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">hasroot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="p">(</span><span class="n">b</span><span class="p">)</span> <span class="o">&lt;</span> <span class="mi">0</span>
-
-<span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span>  <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span>
-<span class="n">plot</span><span class="p">([</span><span class="n">f</span><span class="p">,</span> <span class="n">x</span><span class="o">-&gt;</span><span class="mi">0</span><span class="p">],</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">))</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/2021-09-17-sparsity_37_0.svg" src="../_images/2021-09-17-sparsity_37_0.svg" /></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">hasroot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="bisection">
-<h1>Bisection<a class="headerlink" href="#bisection" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
-    <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="k">if</span> <span class="n">abs</span><span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span>
-        <span class="k">return</span> <span class="n">mid</span>
-    <span class="k">elseif</span> <span class="n">hasroot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">mid</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
-    <span class="k">else</span>
-        <span class="k">return</span> <span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
-    <span class="k">end</span>
-<span class="k">end</span>
-
-<span class="n">x0</span> <span class="o">=</span> <span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">)</span>
-<span class="n">x0</span><span class="p">,</span> <span class="n">f</span><span class="p">(</span><span class="n">x0</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.7390861511230469, -1.7035832658995886e-6)
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="how-fast-does-it-converge">
-<h1>How fast does it converge?<a class="headerlink" href="#how-fast-does-it-converge" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">bisect_hist</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">)</span>
-    <span class="n">mid</span> <span class="o">=</span> <span class="p">(</span><span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">)</span> <span class="o">/</span> <span class="mi">2</span>
-    <span class="k">if</span> <span class="n">abs</span><span class="p">(</span><span class="n">b</span> <span class="o">-</span> <span class="n">a</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span>
-        <span class="k">return</span> <span class="p">[</span><span class="n">mid</span><span class="p">]</span>
-    <span class="k">elseif</span> <span class="n">hasroot</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">mid</span><span class="p">)</span>
-        <span class="k">return</span> <span class="n">prepend!</span><span class="p">(</span><span class="n">bisect_hist</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">a</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">tol</span><span class="p">),</span> <span class="p">[</span><span class="n">mid</span><span class="p">])</span>
-    <span class="k">else</span>
-        <span class="k">return</span> <span class="n">prepend!</span><span class="p">(</span><span class="n">bisect_hist</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">mid</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">tol</span><span class="p">),</span> <span class="p">[</span><span class="n">mid</span><span class="p">])</span>
-    <span class="k">end</span>
-<span class="k">end</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>bisect_hist (generic function with 1 method)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.543603 seconds (708.34 k allocations: 803.497 MiB, 19.04% gc time)
+  0.195921 seconds (698.92 k allocations: 44.198 MiB, 35.39% gc time)
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">bisect_hist</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">spzeros</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">A</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="n">A</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>17-element Vector{Float64}:
- 1.0
- 0.0
- 0.5
- 0.75
- 0.625
- 0.6875
- 0.71875
- 0.734375
- 0.7421875
- 0.73828125
- 0.740234375
- 0.7392578125
- 0.73876953125
- 0.739013671875
- 0.7391357421875
- 0.73907470703125
- 0.739105224609375
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5×5 SparseMatrixCSC{Float64, Int64} with 1 stored entry:
+ 3.0   ⋅    ⋅    ⋅    ⋅ 
+  ⋅    ⋅    ⋅    ⋅    ⋅ 
+  ⋅    ⋅    ⋅    ⋅    ⋅ 
+  ⋅    ⋅    ⋅    ⋅    ⋅ 
+  ⋅    ⋅    ⋅    ⋅    ⋅ 
 </pre></div>
 </div>
 </div>
-</div>
-</div>
-<div class="section" id="let-s-plot-the-error">
-<h1>Let’s plot the error<a class="headerlink" href="#let-s-plot-the-error" title="Permalink to this headline">¶</a></h1>
-<div class="math notranslate nohighlight">
-\[ \lvert \texttt{bisect}^k(f, a, b) - r \rvert, \quad k = 1, 2, \dotsc \]</div>
-<p>where <span class="math notranslate nohighlight">\(r\)</span> is the true root, <span class="math notranslate nohighlight">\(f(r) = 0\)</span>.</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">r</span> <span class="o">=</span> <span class="n">bisect</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1e-14</span><span class="p">)</span> <span class="c"># what are we trusting?</span>
-<span class="n">hist</span> <span class="o">=</span> <span class="n">bisect_hist</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">)</span>
-<span class="n">scatter</span><span class="p">(</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">hist</span> <span class="o">.-</span> <span class="n">r</span><span class="p">),</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
-<span class="n">ks</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
-<span class="n">scatter!</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">.^</span> <span class="n">ks</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<img alt="../_images/2021-09-17-sparsity_45_0.svg" src="../_images/2021-09-17-sparsity_45_0.svg" /></div>
-</div>
-<p>Evidently the error <span class="math notranslate nohighlight">\(e_k = x_k - x_*\)</span> after <span class="math notranslate nohighlight">\(k\)</span> bisections satisfies the bound
-$<span class="math notranslate nohighlight">\( |e^k| \le c 2^{-k} . \)</span>$</p>
-</div>
-<div class="section" id="convergence-classes">
-<h1>Convergence classes<a class="headerlink" href="#convergence-classes" title="Permalink to this headline">¶</a></h1>
-<p>A convergent rootfinding algorithm produces a sequence of approximations <span class="math notranslate nohighlight">\(x_k\)</span> such that $<span class="math notranslate nohighlight">\(\lim_{k \to \infty} x_k \to x_*\)</span><span class="math notranslate nohighlight">\( where \)</span>f(x_<em>) = 0<span class="math notranslate nohighlight">\(.  For analysis, it is convenient to define the errors \)</span>e_k = x_k - x_</em><span class="math notranslate nohighlight">\(. We say that an iterative algorithm is **\)</span>q<span class="math notranslate nohighlight">\(-linearly convergent** if \)</span><span class="math notranslate nohighlight">\(\lim_{k \to \infty} |e_{k+1}| / |e_k| = \rho &lt; 1.\)</span><span class="math notranslate nohighlight">\(  (The \)</span>q<span class="math notranslate nohighlight">\( is for &quot;quotient&quot;.)  A smaller convergence factor \)</span>\rho<span class="math notranslate nohighlight">\( represents faster convergence.  A slightly weaker condition (\)</span>r<span class="math notranslate nohighlight">\(-linear convergence or just **linear convergence**) is that
-\)</span><span class="math notranslate nohighlight">\( |e_k| \le \epsilon_k \)</span><span class="math notranslate nohighlight">\(
-for all sufficiently large \)</span>k<span class="math notranslate nohighlight">\( when the sequence \)</span>{\epsilon_k}<span class="math notranslate nohighlight">\( converges \)</span>q$-linearly to 0.</p>
-<div class="section" id="bisection-a-q-linearly-convergent-b-r-linearly-convergent-c-neither">
-<h2>Bisection: A = q-linearly convergent, B = r-linearly convergent, C = neither<a class="headerlink" href="#bisection-a-q-linearly-convergent-b-r-linearly-convergent-c-neither" title="Permalink to this headline">¶</a></h2>
-</div>
-</div>
-<div class="section" id="remarks-on-bisection">
-<h1>Remarks on bisection<a class="headerlink" href="#remarks-on-bisection" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>Specifying an interval is often inconvenient</p></li>
-<li><p>An interval in which the function changes sign guarantees convergence (robustness)</p></li>
-<li><p>No derivative information is required</p></li>
-<li><p>Roots of even degree are problematic</p></li>
-<li><p>A bound on the solution error is directly available</p></li>
-<li><p>The convergence rate is modest – one iteration per bit of accuracy</p></li>
-<li><p><strong>No good generalization to higher dimensions</strong></p></li>
-</ul>
-<div class="section" id="newton-raphson-method">
-<h2>Newton-Raphson Method<a class="headerlink" href="#newton-raphson-method" title="Permalink to this headline">¶</a></h2>
-<p>Much of numerical analysis reduces to <a class="reference external" href="https://en.wikipedia.org/wiki/Taylor_series">Taylor series</a>, the approximation
-$<span class="math notranslate nohighlight">\( f(x) = f(x_0) + f'(x_0) (x-x_0) + f''(x_0) (x - x_0)^2 / 2 + \underbrace{\dotsb}_{O((x-x_0)^3)} \)</span><span class="math notranslate nohighlight">\(
-centered on some reference point \)</span>x_0$.</p>
-<p>In numerical computation, it is exceedingly rare to look beyond the first-order approximation
-$<span class="math notranslate nohighlight">\( \tilde f_{x_0}(x) = f(x_0) + f'(x_0)(x - x_0) . \)</span><span class="math notranslate nohighlight">\(
-Since \)</span>\tilde f_{x_0}(x)<span class="math notranslate nohighlight">\( is a linear function, we can explicitly compute the unique solution of \)</span>\tilde f_{x_0}(x) = 0<span class="math notranslate nohighlight">\( as
-\)</span><span class="math notranslate nohighlight">\( x = x_0 - f(x_0) / f'(x_0) . \)</span>$
-This is Newton’s Method (aka Newton-Raphson or Newton-Raphson-Simpson) for finding the roots of differentiable functions.</p>
-</div>
-</div>
-<div class="section" id="an-implementation">
-<h1>An implementation<a class="headerlink" href="#an-implementation" title="Permalink to this headline">¶</a></h1>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">x0</span><span class="p">;</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-8</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
-    <span class="n">x</span> <span class="o">=</span> <span class="n">x0</span>
-    <span class="k">for</span> <span class="n">k</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">100</span> <span class="c"># max number of iterations</span>
-        <span class="n">fx</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="n">fpx</span> <span class="o">=</span> <span class="n">fp</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
-        <span class="k">if</span> <span class="n">verbose</span>
-            <span class="n">println</span><span class="p">(</span><span class="s">&quot;[</span><span class="si">$k</span><span class="s">] x=</span><span class="si">$x</span><span class="s">  f(x)=</span><span class="si">$fx</span><span class="s">  f&#39;(x)=</span><span class="si">$fpx</span><span class="s">&quot;</span><span class="p">)</span>
-        <span class="k">end</span>
-        <span class="k">if</span> <span class="n">abs</span><span class="p">(</span><span class="n">fx</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span>
-            <span class="k">return</span> <span class="n">x</span><span class="p">,</span> <span class="n">fx</span><span class="p">,</span> <span class="n">k</span>
-        <span class="k">end</span>
-        <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">fx</span> <span class="o">/</span> <span class="n">fpx</span>
-    <span class="k">end</span>  
-<span class="k">end</span>
-<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-10</span>
-<span class="n">newton</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">),</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">;</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] x=1  f(x)=-4.596976941318603e-11  f&#39;(x)=-1.8414709848078966e-10
-[2] x=0.7503638678402439  f(x)=-1.8923073822117444e-12  f&#39;(x)=-1.6819049529414878e-10
-[3] x=0.7391128909113617  f(x)=-4.645589899077152e-15  f&#39;(x)=-1.6736325442243014e-10
-[4] x=0.739085133385284  f(x)=-2.847205804457076e-20  f&#39;(x)=-1.6736120293089506e-10
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.739085133385284, -2.847205804457076e-20, 4)
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="that-s-really-fast">
-<h1>That’s really fast!<a class="headerlink" href="#that-s-really-fast" title="Permalink to this headline">¶</a></h1>
-<ul class="simple">
-<li><p>10 digits of accuracy in 4 iterations.</p></li>
-<li><p>How is this convergence test different from the one we used for bisection?</p></li>
-<li><p>How can this break down?</p></li>
-</ul>
-<div class="math notranslate nohighlight">
-\[ x_{k+1} = x_k - f(x_k)/f'(x_k) \]</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">verbose</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] x=4.71238898038469  f(x)=-4.71238898038469  f&#39;(x)=0.0
-</pre></div>
-</div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">DomainError</span> <span class="k">with</span> <span class="n">Inf</span><span class="p">:</span>
-<span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="n">only</span> <span class="n">defined</span> <span class="k">for</span> <span class="n">finite</span> <span class="n">x</span><span class="o">.</span>
-
-<span class="ne">Stacktrace</span>:
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">cos_domain_error</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">Float64</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span><span class="o">.</span><span class="n">Math</span> <span class="o">./</span><span class="n">special</span><span class="o">/</span><span class="n">trig</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">97</span>
- <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">Float64</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span><span class="o">.</span><span class="n">Math</span> <span class="o">./</span><span class="n">special</span><span class="o">/</span><span class="n">trig</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">108</span>
- <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1">#26</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">]:</span><span class="mi">1</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">::</span><span class="n">var</span><span class="s2">&quot;#26#28&quot;</span><span class="p">,</span> <span class="n">fp</span><span class="p">::</span><span class="n">var</span><span class="s2">&quot;#27#29&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="p">::</span><span class="n">Float64</span><span class="p">;</span> <span class="n">tol</span><span class="p">::</span><span class="n">Float64</span><span class="p">,</span> <span class="n">verbose</span><span class="p">::</span><span class="n">Bool</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Main</span> <span class="o">./</span><span class="n">In</span><span class="p">[</span><span class="mi">25</span><span class="p">]:</span><span class="mi">4</span>
- <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
-   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">]:</span><span class="mi">1</span>
- <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="nb">eval</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">boot</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">360</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">include_string</span><span class="p">(</span><span class="n">mapexpr</span><span class="p">::</span><span class="n">typeof</span><span class="p">(</span><span class="n">REPL</span><span class="o">.</span><span class="n">softscope</span><span class="p">),</span> <span class="n">mod</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">code</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">filename</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1116</span>
-</pre></div>
-</div>
-</div>
-</div>
-</div>
-<div class="section" id="convergence-of-fixed-point-iteration">
-<h1>Convergence of fixed-point iteration<a class="headerlink" href="#convergence-of-fixed-point-iteration" title="Permalink to this headline">¶</a></h1>
-<p>Consider the iteration
-$<span class="math notranslate nohighlight">\(x_{k+1} = g(x_k)\)</span><span class="math notranslate nohighlight">\(
-where \)</span>g<span class="math notranslate nohighlight">\( is a continuously differentiable function.
-Suppose that there exists a fixed point \)</span>x_* = g(x_<em>)<span class="math notranslate nohighlight">\(.  By the [mean value theorem](https://en.wikipedia.org/wiki/Mean_value_theorem), we have that
-\)</span><span class="math notranslate nohighlight">\( x_{k+1} - x_* = g(x_k) - g(x_*) = g'(c_k) (x_k - x_*) \)</span><span class="math notranslate nohighlight">\(
-for some \)</span>c_i<span class="math notranslate nohighlight">\( between \)</span>x_k<span class="math notranslate nohighlight">\( and \)</span>x_</em>$.</p>
-<p>Taking absolute values, $<span class="math notranslate nohighlight">\(|e_{k+1}| = |g'(c_k)| |e_k|,\)</span><span class="math notranslate nohighlight">\( which converges to zero if \)</span>|g’(c_k)| &lt; 1$.</p>
-<div class="section" id="exercise">
-<h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li><p>Write Newton’s method for <span class="math notranslate nohighlight">\(f(x) = 0\)</span> from initial guess <span class="math notranslate nohighlight">\(x_0\)</span> as a fixed point method.</p></li>
-<li><p>Suppose the Newton iterates <span class="math notranslate nohighlight">\(x_k\)</span> converge to a simple root <span class="math notranslate nohighlight">\(x_*\)</span>, <span class="math notranslate nohighlight">\(x_k \to x_*\)</span>. What is <span class="math notranslate nohighlight">\(\lvert g'(x_*) \rvert\)</span> for Newton’s method?</p></li>
-</ul>
 </div>
 </div>
 
@@ -1188,6 +876,7 @@ for some \)</span>c_i<span class="math notranslate nohighlight">\( between \)</s
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="2021-09-15-advection.html" title="previous page">2021-09-15 Advection and stability</a>
+    <a class='right-next' id="next-link" href="2021-09-20-nonlinear.html" title="next page">2021-09-20 Nonlinear solvers</a>
 
         </div>
         
