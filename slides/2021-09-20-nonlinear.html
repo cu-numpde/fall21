@@ -54,6 +54,7 @@
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-09-22 Newton linearization" href="2021-09-22-nonlinear-ad.html" />
     <link rel="prev" title="2021-09-17 Sparsity, solvers, and nonlinear intro" href="2021-09-17-sparsity.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -160,6 +161,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
     </a>
    </li>
   </ul>
@@ -595,7 +601,7 @@ $<span class="math notranslate nohighlight">\( -(|u_x|^{p-2} u_x)_x + (u^2)_x = 
 <span class="n">hist</span> <span class="o">=</span> <span class="n">bisect_hist</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">1e-10</span><span class="p">)</span>
 <span class="n">scatter</span><span class="p">(</span> <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">hist</span> <span class="o">.-</span> <span class="n">r</span><span class="p">),</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
 <span class="n">ks</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">hist</span><span class="p">)</span>
-<span class="n">scatter!</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="mi">4</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">.^</span> <span class="n">ks</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">ks</span><span class="p">,</span> <span class="mi">10</span> <span class="o">*</span> <span class="mf">0.5</span> <span class="o">.^</span> <span class="n">ks</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -655,19 +661,20 @@ This is Newton’s Method (aka Newton-Raphson or Newton-Raphson-Simpson) for fin
         <span class="n">x</span> <span class="o">=</span> <span class="n">x</span> <span class="o">-</span> <span class="n">fx</span> <span class="o">/</span> <span class="n">fpx</span>
     <span class="k">end</span>  
 <span class="k">end</span>
-<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-10</span>
+<span class="n">eps</span> <span class="o">=</span> <span class="mf">1e-1</span>
 <span class="n">newton</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">),</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">eps</span><span class="o">*</span><span class="p">(</span><span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">),</span> <span class="mi">1</span><span class="p">;</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-15</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] x=1  f(x)=-4.596976941318603e-11  f&#39;(x)=-1.8414709848078966e-10
-[2] x=0.7503638678402439  f(x)=-1.8923073822117444e-12  f&#39;(x)=-1.6819049529414878e-10
-[3] x=0.7391128909113617  f(x)=-4.645589899077152e-15  f&#39;(x)=-1.6736325442243014e-10
-[4] x=0.739085133385284  f(x)=-2.847205804457076e-20  f&#39;(x)=-1.6736120293089506e-10
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] x=1  f(x)=-0.04596976941318603  f&#39;(x)=-0.18414709848078967
+[2] x=0.7503638678402439  f(x)=-0.0018923073822117442  f&#39;(x)=-0.16819049529414878
+[3] x=0.7391128909113617  f(x)=-4.645589899077152e-6  f&#39;(x)=-0.16736325442243014
+[4] x=0.739085133385284  f(x)=-2.8472058044570758e-11  f&#39;(x)=-0.16736120293089507
+[5] x=0.7390851332151607  f(x)=0.0  f&#39;(x)=-0.1673612029183215
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.739085133385284, -2.847205804457076e-20, 4)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.7390851332151607, 0.0, 5)
 </pre></div>
 </div>
 </div>
@@ -684,32 +691,19 @@ This is Newton’s Method (aka Newton-Raphson or Newton-Raphson-Simpson) for fin
 \[ x_{k+1} = x_k - f(x_k)/f'(x_k) \]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">verbose</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">newton</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">x</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="o">-</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">,</span> <span class="mf">.2</span><span class="o">*</span><span class="nb">pi</span><span class="o">/</span><span class="mi">2</span><span class="p">;</span> <span class="n">verbose</span><span class="o">=</span><span class="nb">true</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] x=4.71238898038469  f(x)=-4.71238898038469  f&#39;(x)=0.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1] x=0.3141592653589793  f(x)=0.6368972509361742  f&#39;(x)=-1.3090169943749475
+[2] x=0.8007054703914749  f(x)=-0.10450500785604744  f&#39;(x)=-1.7178474183038182
+[3] x=0.7398706100060081  f(x)=-0.0013148113494647617  f&#39;(x)=-1.6741923555416478
+[4] x=0.7390852693340639  f(x)=-2.2781024078266654e-7  f&#39;(x)=-1.6736121297866664
+[5] x=0.7390851332151648  f(x)=-6.8833827526759706e-15  f&#39;(x)=-1.673612029183218
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="n">DomainError</span> <span class="k">with</span> <span class="n">Inf</span><span class="p">:</span>
-<span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="ow">is</span> <span class="n">only</span> <span class="n">defined</span> <span class="k">for</span> <span class="n">finite</span> <span class="n">x</span><span class="o">.</span>
-
-<span class="ne">Stacktrace</span>:
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">cos_domain_error</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">Float64</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span><span class="o">.</span><span class="n">Math</span> <span class="o">./</span><span class="n">special</span><span class="o">/</span><span class="n">trig</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">97</span>
- <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">::</span><span class="n">Float64</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span><span class="o">.</span><span class="n">Math</span> <span class="o">./</span><span class="n">special</span><span class="o">/</span><span class="n">trig</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">108</span>
- <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="c1">#8</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span><span class="mi">1</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">4</span><span class="p">]</span> <span class="n">newton</span><span class="p">(</span><span class="n">f</span><span class="p">::</span><span class="n">var</span><span class="s2">&quot;#8#10&quot;</span><span class="p">,</span> <span class="n">fp</span><span class="p">::</span><span class="n">var</span><span class="s2">&quot;#9#11&quot;</span><span class="p">,</span> <span class="n">x0</span><span class="p">::</span><span class="n">Float64</span><span class="p">;</span> <span class="n">tol</span><span class="p">::</span><span class="n">Float64</span><span class="p">,</span> <span class="n">verbose</span><span class="p">::</span><span class="n">Bool</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Main</span> <span class="o">./</span><span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">]:</span><span class="mi">4</span>
- <span class="p">[</span><span class="mi">5</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
-   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">]:</span><span class="mi">1</span>
- <span class="p">[</span><span class="mi">6</span><span class="p">]</span> <span class="nb">eval</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">boot</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">360</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">7</span><span class="p">]</span> <span class="n">include_string</span><span class="p">(</span><span class="n">mapexpr</span><span class="p">::</span><span class="n">typeof</span><span class="p">(</span><span class="n">REPL</span><span class="o">.</span><span class="n">softscope</span><span class="p">),</span> <span class="n">mod</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">code</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">filename</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1116</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(0.7390851332151648, -6.8833827526759706e-15, 5)
 </pre></div>
 </div>
 </div>
@@ -739,8 +733,8 @@ $<span class="math notranslate nohighlight">\( \mathbf f(\mathbf u) = \mathbf f(
 <p>We drop all but the first two terms and name the Jacobian matrix <span class="math notranslate nohighlight">\(J(\mathbf u) = \mathbf f'(\mathbf u)\)</span>,
 $<span class="math notranslate nohighlight">\( \mathbf f(\mathbf u) \approx \mathbf f(\mathbf u_0) + J \delta \mathbf u .\)</span>$
 Solving the right hand side equal to zero yields</p>
-<div class="amsmath math notranslate nohighlight" id="equation-4794f5a4-e1bb-41c1-8d7d-d268eaa744ca">
-<span class="eqno">(11)<a class="headerlink" href="#equation-4794f5a4-e1bb-41c1-8d7d-d268eaa744ca" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-de0bfde7-c453-460b-9b12-4ddb54de9a16">
+<span class="eqno">(11)<a class="headerlink" href="#equation-de0bfde7-c453-460b-9b12-4ddb54de9a16" title="Permalink to this equation">¶</a></span>\[\begin{align}
 J \delta \mathbf u &amp;= -\mathbf f(\mathbf u_k) \\
 \mathbf u_{k+1} &amp;= \mathbf u_k + \delta \mathbf u
 \end{align}\]</div>
@@ -783,7 +777,7 @@ J \delta \mathbf u &amp;= -\mathbf f(\mathbf u_k) \\
     <span class="p">[</span><span class="mi">2</span><span class="n">x</span> <span class="mi">2</span><span class="n">y</span><span class="p">;</span> <span class="mi">2</span><span class="n">x</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="k">end</span>
 
-<span class="n">uhist</span><span class="p">,</span> <span class="n">normhist</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">residual</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="p">[</span><span class="mf">3.</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
+<span class="n">uhist</span><span class="p">,</span> <span class="n">normhist</span> <span class="o">=</span> <span class="n">newton</span><span class="p">(</span><span class="n">residual</span><span class="p">,</span> <span class="n">jacobian</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">normhist</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -800,7 +794,7 @@ J \delta \mathbf u &amp;= -\mathbf f(\mathbf u_k) \\
 <span class="n">plot</span><span class="p">(</span><span class="n">xy</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">],</span> <span class="n">xy</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span><span class="o">:</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">)</span>
 <span class="n">circle</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="p">(</span><span class="mi">1</span><span class="nb">im</span><span class="o">*</span><span class="kt">LinRange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="nb">pi</span><span class="p">,</span> <span class="mi">50</span><span class="p">))</span>
 <span class="n">plot!</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">circle</span><span class="p">),</span> <span class="n">imag</span><span class="p">(</span><span class="n">circle</span><span class="p">))</span>
-<span class="n">plot!</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">ylims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">axes</span><span class="o">=</span><span class="ss">:equal</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomright</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">ylims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">axes</span><span class="o">=</span><span class="ss">:equal</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomright</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -916,6 +910,7 @@ J \delta \mathbf u &amp;= -\mathbf f(\mathbf u_k) \\
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="2021-09-17-sparsity.html" title="previous page">2021-09-17 Sparsity, solvers, and nonlinear intro</a>
+    <a class='right-next' id="next-link" href="2021-09-22-nonlinear-ad.html" title="next page">2021-09-22 Newton linearization</a>
 
         </div>
         
