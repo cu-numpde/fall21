@@ -1,0 +1,339 @@
+<?xml version="1.0" encoding="utf-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="600" height="400" viewBox="0 0 2400 1600">
+<defs>
+  <clipPath id="clip280">
+    <rect x="0" y="0" width="2400" height="1600"/>
+  </clipPath>
+</defs>
+<path clip-path="url(#clip280)" d="
+M0 1600 L2400 1600 L2400 0 L0 0  Z
+  " fill="#ffffff" fill-rule="evenodd" fill-opacity="1"/>
+<defs>
+  <clipPath id="clip281">
+    <rect x="480" y="0" width="1681" height="1600"/>
+  </clipPath>
+</defs>
+<path clip-path="url(#clip280)" d="
+M193.936 1486.45 L2352.76 1486.45 L2352.76 47.2441 L193.936 47.2441  Z
+  " fill="#ffffff" fill-rule="evenodd" fill-opacity="1"/>
+<defs>
+  <clipPath id="clip282">
+    <rect x="193" y="47" width="2160" height="1440"/>
+  </clipPath>
+</defs>
+<polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  255.035,1486.45 255.035,47.2441 
+  "/>
+<polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  764.19,1486.45 764.19,47.2441 
+  "/>
+<polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  1273.35,1486.45 1273.35,47.2441 
+  "/>
+<polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  1782.5,1486.45 1782.5,47.2441 
+  "/>
+<polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  2291.66,1486.45 2291.66,47.2441 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  193.936,1486.45 2352.76,1486.45 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  255.035,1486.45 255.035,1467.55 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  764.19,1486.45 764.19,1467.55 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  1273.35,1486.45 1273.35,1467.55 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  1782.5,1486.45 1782.5,1467.55 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  2291.66,1486.45 2291.66,1467.55 
+  "/>
+<path clip-path="url(#clip280)" d="M255.035 1515.64 Q251.424 1515.64 249.595 1519.2 Q247.789 1522.75 247.789 1529.87 Q247.789 1536.98 249.595 1540.55 Q251.424 1544.09 255.035 1544.09 Q258.669 1544.09 260.474 1540.55 Q262.303 1536.98 262.303 1529.87 Q262.303 1522.75 260.474 1519.2 Q258.669 1515.64 255.035 1515.64 M255.035 1511.93 Q260.845 1511.93 263.9 1516.54 Q266.979 1521.12 266.979 1529.87 Q266.979 1538.6 263.9 1543.21 Q260.845 1547.79 255.035 1547.79 Q249.225 1547.79 246.146 1543.21 Q243.09 1538.6 243.09 1529.87 Q243.09 1521.12 246.146 1516.54 Q249.225 1511.93 255.035 1511.93 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M754.468 1512.56 L772.825 1512.56 L772.825 1516.5 L758.751 1516.5 L758.751 1524.97 Q759.769 1524.62 760.788 1524.46 Q761.806 1524.27 762.825 1524.27 Q768.612 1524.27 771.991 1527.44 Q775.371 1530.62 775.371 1536.03 Q775.371 1541.61 771.899 1544.71 Q768.426 1547.79 762.107 1547.79 Q759.931 1547.79 757.663 1547.42 Q755.417 1547.05 753.01 1546.31 L753.01 1541.61 Q755.093 1542.74 757.315 1543.3 Q759.538 1543.86 762.014 1543.86 Q766.019 1543.86 768.357 1541.75 Q770.695 1539.64 770.695 1536.03 Q770.695 1532.42 768.357 1530.31 Q766.019 1528.21 762.014 1528.21 Q760.139 1528.21 758.264 1528.62 Q756.413 1529.04 754.468 1529.92 L754.468 1512.56 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M1248.03 1543.18 L1255.67 1543.18 L1255.67 1516.82 L1247.36 1518.49 L1247.36 1514.23 L1255.63 1512.56 L1260.3 1512.56 L1260.3 1543.18 L1267.94 1543.18 L1267.94 1547.12 L1248.03 1547.12 L1248.03 1543.18 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M1287.39 1515.64 Q1283.77 1515.64 1281.95 1519.2 Q1280.14 1522.75 1280.14 1529.87 Q1280.14 1536.98 1281.95 1540.55 Q1283.77 1544.09 1287.39 1544.09 Q1291.02 1544.09 1292.83 1540.55 Q1294.65 1536.98 1294.65 1529.87 Q1294.65 1522.75 1292.83 1519.2 Q1291.02 1515.64 1287.39 1515.64 M1287.39 1511.93 Q1293.2 1511.93 1296.25 1516.54 Q1299.33 1521.12 1299.33 1529.87 Q1299.33 1538.6 1296.25 1543.21 Q1293.2 1547.79 1287.39 1547.79 Q1281.58 1547.79 1278.5 1543.21 Q1275.44 1538.6 1275.44 1529.87 Q1275.44 1521.12 1278.5 1516.54 Q1281.58 1511.93 1287.39 1511.93 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M1757.69 1543.18 L1765.33 1543.18 L1765.33 1516.82 L1757.02 1518.49 L1757.02 1514.23 L1765.28 1512.56 L1769.96 1512.56 L1769.96 1543.18 L1777.59 1543.18 L1777.59 1547.12 L1757.69 1547.12 L1757.69 1543.18 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M1787.08 1512.56 L1805.44 1512.56 L1805.44 1516.5 L1791.37 1516.5 L1791.37 1524.97 Q1792.39 1524.62 1793.4 1524.46 Q1794.42 1524.27 1795.44 1524.27 Q1801.23 1524.27 1804.61 1527.44 Q1807.99 1530.62 1807.99 1536.03 Q1807.99 1541.61 1804.52 1544.71 Q1801.04 1547.79 1794.72 1547.79 Q1792.55 1547.79 1790.28 1547.42 Q1788.03 1547.05 1785.63 1546.31 L1785.63 1541.61 Q1787.71 1542.74 1789.93 1543.3 Q1792.15 1543.86 1794.63 1543.86 Q1798.64 1543.86 1800.97 1541.75 Q1803.31 1539.64 1803.31 1536.03 Q1803.31 1532.42 1800.97 1530.31 Q1798.64 1528.21 1794.63 1528.21 Q1792.76 1528.21 1790.88 1528.62 Q1789.03 1529.04 1787.08 1529.92 L1787.08 1512.56 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M2270.43 1543.18 L2286.75 1543.18 L2286.75 1547.12 L2264.81 1547.12 L2264.81 1543.18 Q2267.47 1540.43 2272.05 1535.8 Q2276.66 1531.15 2277.84 1529.81 Q2280.08 1527.28 2280.96 1525.55 Q2281.87 1523.79 2281.87 1522.1 Q2281.87 1519.34 2279.92 1517.61 Q2278 1515.87 2274.9 1515.87 Q2272.7 1515.87 2270.25 1516.63 Q2267.81 1517.4 2265.04 1518.95 L2265.04 1514.23 Q2267.86 1513.09 2270.31 1512.51 Q2272.77 1511.93 2274.81 1511.93 Q2280.18 1511.93 2283.37 1514.62 Q2286.56 1517.31 2286.56 1521.8 Q2286.56 1523.93 2285.75 1525.85 Q2284.97 1527.74 2282.86 1530.34 Q2282.28 1531.01 2279.18 1534.23 Q2276.08 1537.42 2270.43 1543.18 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M2306.56 1515.64 Q2302.95 1515.64 2301.12 1519.2 Q2299.32 1522.75 2299.32 1529.87 Q2299.32 1536.98 2301.12 1540.55 Q2302.95 1544.09 2306.56 1544.09 Q2310.2 1544.09 2312 1540.55 Q2313.83 1536.98 2313.83 1529.87 Q2313.83 1522.75 2312 1519.2 Q2310.2 1515.64 2306.56 1515.64 M2306.56 1511.93 Q2312.37 1511.93 2315.43 1516.54 Q2318.51 1521.12 2318.51 1529.87 Q2318.51 1538.6 2315.43 1543.21 Q2312.37 1547.79 2306.56 1547.79 Q2300.75 1547.79 2297.68 1543.21 Q2294.62 1538.6 2294.62 1529.87 Q2294.62 1521.12 2297.68 1516.54 Q2300.75 1511.93 2306.56 1511.93 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  193.936,1379.37 2352.76,1379.37 
+  "/>
+<polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  193.936,1099.54 2352.76,1099.54 
+  "/>
+<polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  193.936,819.716 2352.76,819.716 
+  "/>
+<polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  193.936,539.889 2352.76,539.889 
+  "/>
+<polyline clip-path="url(#clip282)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:2; stroke-opacity:0.1; fill:none" points="
+  193.936,260.062 2352.76,260.062 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  193.936,1486.45 193.936,47.2441 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  193.936,1379.37 212.834,1379.37 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  193.936,1099.54 212.834,1099.54 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  193.936,819.716 212.834,819.716 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  193.936,539.889 212.834,539.889 
+  "/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  193.936,260.062 212.834,260.062 
+  "/>
+<path clip-path="url(#clip280)" d="M50.9921 1379.82 L80.6679 1379.82 L80.6679 1383.76 L50.9921 1383.76 L50.9921 1379.82 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M90.8067 1362.09 L109.163 1362.09 L109.163 1366.03 L95.0891 1366.03 L95.0891 1374.5 Q96.1076 1374.15 97.1261 1373.99 Q98.1447 1373.8 99.1632 1373.8 Q104.95 1373.8 108.33 1376.97 Q111.709 1380.15 111.709 1385.56 Q111.709 1391.14 108.237 1394.24 Q104.765 1397.32 98.4456 1397.32 Q96.2697 1397.32 94.0012 1396.95 Q91.7558 1396.58 89.3484 1395.84 L89.3484 1391.14 Q91.4317 1392.28 93.6539 1392.83 Q95.8761 1393.39 98.353 1393.39 Q102.358 1393.39 104.696 1391.28 Q107.033 1389.17 107.033 1385.56 Q107.033 1381.95 104.696 1379.84 Q102.358 1377.74 98.353 1377.74 Q96.478 1377.74 94.603 1378.15 Q92.7512 1378.57 90.8067 1379.45 L90.8067 1362.09 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M120.922 1390.77 L125.807 1390.77 L125.807 1396.65 L120.922 1396.65 L120.922 1390.77 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M145.992 1365.17 Q142.381 1365.17 140.552 1368.73 Q138.746 1372.28 138.746 1379.4 Q138.746 1386.51 140.552 1390.08 Q142.381 1393.62 145.992 1393.62 Q149.626 1393.62 151.431 1390.08 Q153.26 1386.51 153.26 1379.4 Q153.26 1372.28 151.431 1368.73 Q149.626 1365.17 145.992 1365.17 M145.992 1361.47 Q151.802 1361.47 154.857 1366.07 Q157.936 1370.65 157.936 1379.4 Q157.936 1388.13 154.857 1392.74 Q151.802 1397.32 145.992 1397.32 Q140.181 1397.32 137.103 1392.74 Q134.047 1388.13 134.047 1379.4 Q134.047 1370.65 137.103 1366.07 Q140.181 1361.47 145.992 1361.47 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M51.9875 1099.99 L81.6633 1099.99 L81.6633 1103.93 L51.9875 1103.93 L51.9875 1099.99 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M95.7836 1112.89 L112.103 1112.89 L112.103 1116.82 L90.1586 1116.82 L90.1586 1112.89 Q92.8206 1110.13 97.4039 1105.5 Q102.01 1100.85 103.191 1099.51 Q105.436 1096.99 106.316 1095.25 Q107.219 1093.49 107.219 1091.8 Q107.219 1089.05 105.274 1087.31 Q103.353 1085.57 100.251 1085.57 Q98.0521 1085.57 95.5984 1086.34 Q93.1678 1087.1 90.3901 1088.65 L90.3901 1083.93 Q93.2141 1082.8 95.6678 1082.22 Q98.1215 1081.64 100.159 1081.64 Q105.529 1081.64 108.723 1084.32 Q111.918 1087.01 111.918 1091.5 Q111.918 1093.63 111.108 1095.55 Q110.321 1097.45 108.214 1100.04 Q107.635 1100.71 104.534 1103.93 Q101.432 1107.12 95.7836 1112.89 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M121.918 1110.94 L126.802 1110.94 L126.802 1116.82 L121.918 1116.82 L121.918 1110.94 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M137.033 1082.26 L155.39 1082.26 L155.39 1086.2 L141.316 1086.2 L141.316 1094.67 Q142.334 1094.32 143.353 1094.16 Q144.371 1093.98 145.39 1093.98 Q151.177 1093.98 154.556 1097.15 Q157.936 1100.32 157.936 1105.74 Q157.936 1111.31 154.464 1114.42 Q150.992 1117.49 144.672 1117.49 Q142.496 1117.49 140.228 1117.12 Q137.982 1116.75 135.575 1116.01 L135.575 1111.31 Q137.658 1112.45 139.881 1113 Q142.103 1113.56 144.58 1113.56 Q148.584 1113.56 150.922 1111.45 Q153.26 1109.35 153.26 1105.74 Q153.26 1102.12 150.922 1100.02 Q148.584 1097.91 144.58 1097.91 Q142.705 1097.91 140.83 1098.33 Q138.978 1098.74 137.033 1099.62 L137.033 1082.26 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M100.76 805.515 Q97.1493 805.515 95.3206 809.08 Q93.515 812.621 93.515 819.751 Q93.515 826.857 95.3206 830.422 Q97.1493 833.964 100.76 833.964 Q104.395 833.964 106.2 830.422 Q108.029 826.857 108.029 819.751 Q108.029 812.621 106.2 809.08 Q104.395 805.515 100.76 805.515 M100.76 801.811 Q106.571 801.811 109.626 806.417 Q112.705 811.001 112.705 819.751 Q112.705 828.478 109.626 833.084 Q106.571 837.667 100.76 837.667 Q94.9502 837.667 91.8715 833.084 Q88.816 828.478 88.816 819.751 Q88.816 811.001 91.8715 806.417 Q94.9502 801.811 100.76 801.811 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M120.922 831.116 L125.807 831.116 L125.807 836.996 L120.922 836.996 L120.922 831.116 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M145.992 805.515 Q142.381 805.515 140.552 809.08 Q138.746 812.621 138.746 819.751 Q138.746 826.857 140.552 830.422 Q142.381 833.964 145.992 833.964 Q149.626 833.964 151.431 830.422 Q153.26 826.857 153.26 819.751 Q153.26 812.621 151.431 809.08 Q149.626 805.515 145.992 805.515 M145.992 801.811 Q151.802 801.811 154.857 806.417 Q157.936 811.001 157.936 819.751 Q157.936 828.478 154.857 833.084 Q151.802 837.667 145.992 837.667 Q140.181 837.667 137.103 833.084 Q134.047 828.478 134.047 819.751 Q134.047 811.001 137.103 806.417 Q140.181 801.811 145.992 801.811 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M95.7836 553.234 L112.103 553.234 L112.103 557.169 L90.1586 557.169 L90.1586 553.234 Q92.8206 550.479 97.4039 545.85 Q102.01 541.197 103.191 539.854 Q105.436 537.331 106.316 535.595 Q107.219 533.836 107.219 532.146 Q107.219 529.391 105.274 527.655 Q103.353 525.919 100.251 525.919 Q98.0521 525.919 95.5984 526.683 Q93.1678 527.447 90.3901 528.998 L90.3901 524.276 Q93.2141 523.141 95.6678 522.563 Q98.1215 521.984 100.159 521.984 Q105.529 521.984 108.723 524.669 Q111.918 527.354 111.918 531.845 Q111.918 533.975 111.108 535.896 Q110.321 537.794 108.214 540.387 Q107.635 541.058 104.534 544.276 Q101.432 547.47 95.7836 553.234 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M121.918 551.289 L126.802 551.289 L126.802 557.169 L121.918 557.169 L121.918 551.289 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M137.033 522.609 L155.39 522.609 L155.39 526.544 L141.316 526.544 L141.316 535.016 Q142.334 534.669 143.353 534.507 Q144.371 534.322 145.39 534.322 Q151.177 534.322 154.556 537.493 Q157.936 540.664 157.936 546.081 Q157.936 551.66 154.464 554.762 Q150.992 557.84 144.672 557.84 Q142.496 557.84 140.228 557.47 Q137.982 557.1 135.575 556.359 L135.575 551.66 Q137.658 552.794 139.881 553.35 Q142.103 553.905 144.58 553.905 Q148.584 553.905 150.922 551.799 Q153.26 549.692 153.26 546.081 Q153.26 542.47 150.922 540.363 Q148.584 538.257 144.58 538.257 Q142.705 538.257 140.83 538.674 Q138.978 539.09 137.033 539.97 L137.033 522.609 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M90.8067 242.782 L109.163 242.782 L109.163 246.717 L95.0891 246.717 L95.0891 255.189 Q96.1076 254.842 97.1261 254.68 Q98.1447 254.495 99.1632 254.495 Q104.95 254.495 108.33 257.666 Q111.709 260.837 111.709 266.254 Q111.709 271.833 108.237 274.935 Q104.765 278.013 98.4456 278.013 Q96.2697 278.013 94.0012 277.643 Q91.7558 277.272 89.3484 276.532 L89.3484 271.833 Q91.4317 272.967 93.6539 273.522 Q95.8761 274.078 98.353 274.078 Q102.358 274.078 104.696 271.972 Q107.033 269.865 107.033 266.254 Q107.033 262.643 104.696 260.536 Q102.358 258.43 98.353 258.43 Q96.478 258.43 94.603 258.847 Q92.7512 259.263 90.8067 260.143 L90.8067 242.782 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M120.922 271.462 L125.807 271.462 L125.807 277.342 L120.922 277.342 L120.922 271.462 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M145.992 245.861 Q142.381 245.861 140.552 249.425 Q138.746 252.967 138.746 260.097 Q138.746 267.203 140.552 270.768 Q142.381 274.31 145.992 274.31 Q149.626 274.31 151.431 270.768 Q153.26 267.203 153.26 260.097 Q153.26 252.967 151.431 249.425 Q149.626 245.861 145.992 245.861 M145.992 242.157 Q151.802 242.157 154.857 246.763 Q157.936 251.347 157.936 260.097 Q157.936 268.823 154.857 273.43 Q151.802 278.013 145.992 278.013 Q140.181 278.013 137.103 273.43 Q134.047 268.823 134.047 260.097 Q134.047 251.347 137.103 246.763 Q140.181 242.157 145.992 242.157 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><circle clip-path="url(#clip282)" cx="255.035" cy="819.716" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="275.401" cy="797.33" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="295.767" cy="774.944" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="316.133" cy="753.453" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="336.5" cy="733.753" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="356.866" cy="716.704" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="377.232" cy="703.093" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="397.598" cy="693.603" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="417.964" cy="688.777" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="438.331" cy="688.997" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="458.697" cy="694.453" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="479.063" cy="705.139" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="499.429" cy="720.835" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="519.796" cy="741.114" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="540.162" cy="765.348" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="560.528" cy="792.727" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="580.894" cy="822.28" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="601.261" cy="852.912" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="621.627" cy="883.443" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="641.993" cy="912.645" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="662.359" cy="939.298" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="682.725" cy="962.234" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="703.092" cy="980.387" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="723.458" cy="992.839" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="743.824" cy="998.864" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="764.19" cy="997.965" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="784.557" cy="989.899" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="804.923" cy="974.704" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="825.289" cy="952.701" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="845.655" cy="924.498" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="866.021" cy="890.977" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="886.388" cy="853.263" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="906.754" cy="812.7" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="927.12" cy="770.795" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="947.486" cy="729.17" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="967.853" cy="689.502" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="988.219" cy="653.456" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1008.59" cy="622.618" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1028.95" cy="598.431" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1049.32" cy="582.128" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1069.68" cy="574.676" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1090.05" cy="576.728" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1110.42" cy="588.581" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1130.78" cy="610.154" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1151.15" cy="640.973" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1171.51" cy="680.173" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1191.88" cy="726.524" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1212.25" cy="778.456" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1232.61" cy="834.116" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1252.98" cy="891.426" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1273.35" cy="948.16" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1293.71" cy="1002.03" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1314.08" cy="1050.75" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1334.44" cy="1092.19" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1354.81" cy="1124.38" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1375.18" cy="1145.68" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1395.54" cy="1154.79" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1415.91" cy="1150.86" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1436.28" cy="1133.52" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1456.64" cy="1102.95" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1477.01" cy="1059.82" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1497.37" cy="1005.36" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1517.74" cy="941.291" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1538.11" cy="869.802" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1558.47" cy="793.449" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1578.84" cy="715.093" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1599.21" cy="637.787" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1619.57" cy="564.667" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1639.94" cy="498.824" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1660.3" cy="443.182" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1680.67" cy="400.377" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1701.04" cy="372.632" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1721.4" cy="361.662" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1741.77" cy="368.574" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1762.14" cy="393.809" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1782.5" cy="437.089" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1802.87" cy="497.406" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1823.23" cy="573.028" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1843.6" cy="661.542" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1863.97" cy="759.924" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1884.33" cy="864.633" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1904.7" cy="971.733" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1925.07" cy="1077.04" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1945.43" cy="1176.26" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1965.8" cy="1265.19" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1986.16" cy="1339.86" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2006.53" cy="1396.71" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2026.9" cy="1432.75" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2047.26" cy="1445.72" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2067.63" cy="1434.16" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2087.99" cy="1397.56" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2108.36" cy="1336.39" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2128.73" cy="1252.1" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2149.09" cy="1147.14" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2169.46" cy="1024.89" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2189.83" cy="889.543" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2210.19" cy="745.988" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2230.56" cy="599.64" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2250.92" cy="456.242" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2271.29" cy="321.646" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2291.66" cy="201.589" r="14" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="255.035" cy="707.785" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="275.401" cy="707.785" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="295.767" cy="712.262" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="316.133" cy="721.217" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="336.5" cy="734.47" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="356.866" cy="751.662" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="377.232" cy="772.265" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="397.598" cy="795.589" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="417.964" cy="820.812" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="438.331" cy="846.999" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="458.697" cy="873.143" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="479.063" cy="898.196" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="499.429" cy="921.111" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="519.796" cy="940.888" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="540.162" cy="956.608" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="560.528" cy="967.482" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="580.894" cy="972.88" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="601.261" cy="972.367" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="621.627" cy="965.728" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="641.993" cy="952.982" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="662.359" cy="934.397" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="682.725" cy="910.48" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="703.092" cy="881.976" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="723.458" cy="849.842" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="743.824" cy="815.218" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="764.19" cy="779.388" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="784.557" cy="743.738" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="804.923" cy="709.702" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="825.289" cy="678.704" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="845.655" cy="652.107" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="866.021" cy="631.151" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="886.388" cy="616.899" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="906.754" cy="610.189" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="927.12" cy="611.592" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="947.486" cy="621.377" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="967.853" cy="639.486" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="988.219" cy="665.529" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1008.59" cy="698.781" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1028.95" cy="738.2" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1049.32" cy="782.457" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1069.68" cy="829.975" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1090.05" cy="878.983" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1110.42" cy="927.58" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1130.78" cy="973.807" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1151.15" cy="1015.72" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1171.51" cy="1051.47" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1191.88" cy="1079.38" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1212.25" cy="1098.02" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1232.61" cy="1106.27" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1252.98" cy="1103.39" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1273.35" cy="1089.05" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1293.71" cy="1063.36" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1314.08" cy="1026.89" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1334.44" cy="980.687" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1354.81" cy="926.192" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1375.18" cy="865.259" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1395.54" cy="800.066" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1415.91" cy="733.052" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1436.28" cy="666.823" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1456.64" cy="604.062" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1477.01" cy="547.416" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1497.37" cy="499.396" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1517.74" cy="462.268" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1538.11" cy="437.953" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1558.47" cy="427.936" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1578.84" cy="433.189" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1599.21" cy="454.114" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1619.57" cy="490.499" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1639.94" cy="541.509" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1660.3" cy="605.688" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1680.67" cy="680.994" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1701.04" cy="764.862" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1721.4" cy="854.279" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1741.77" cy="945.89" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1762.14" cy="1036.12" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1782.5" cy="1121.3" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1802.87" cy="1197.82" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1823.23" cy="1262.29" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1843.6" cy="1311.62" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1863.97" cy="1343.26" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1884.33" cy="1355.22" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1904.7" cy="1346.23" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1925.07" cy="1315.83" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1945.43" cy="1264.37" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1965.8" cy="1193.06" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="1986.16" cy="1103.96" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2006.53" cy="999.935" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2026.9" cy="884.537" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2047.26" cy="761.93" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2067.63" cy="636.73" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2087.99" cy="513.841" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2108.36" cy="398.272" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2128.73" cy="294.938" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2149.09" cy="208.462" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2169.46" cy="142.977" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2189.83" cy="101.942" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2210.19" cy="87.9763" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2230.56" cy="102.722" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2250.92" cy="146.737" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2271.29" cy="219.432" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<circle clip-path="url(#clip282)" cx="2291.66" cy="319.046" r="14" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="3.2"/>
+<polyline clip-path="url(#clip282)" style="stroke:#3da44d; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  255.035,707.785 260.007,707.919 264.979,708.319 269.952,708.984 274.924,709.913 286.418,713.059 297.912,717.562 309.406,723.365 320.9,730.394 332.394,738.56 
+  343.888,747.759 355.382,757.874 366.877,768.776 412.853,817.366 458.829,866.428 472.644,879.756 486.459,891.981 500.274,902.877 514.089,912.246 527.904,919.914 
+  541.719,925.741 555.534,929.619 569.348,931.478 581.029,931.447 592.709,929.948 604.39,927.001 616.07,922.643 627.75,916.933 639.431,909.945 651.111,901.771 
+  662.791,892.519 688.167,869.302 713.544,843.022 738.92,815.301 764.296,787.854 775.993,775.765 787.691,764.256 799.388,753.478 811.085,743.573 822.783,734.671 
+  834.48,726.891 846.177,720.334 857.875,715.087 870.416,710.994 882.956,708.549 895.497,707.787 908.038,708.721 920.579,711.337 933.119,715.593 945.66,721.427 
+  958.201,728.75 972.731,738.949 987.26,750.79 1001.79,764.031 1016.32,778.404 1045.38,809.36 1074.44,841.153 1087.35,854.874 1100.26,868.03 1113.18,880.411 
+  1126.09,891.817 1139,902.065 1151.91,910.991 1164.82,918.451 1177.74,924.326 1189.06,928.098 1200.38,930.531 1211.71,931.596 1223.03,931.279 1234.35,929.584 
+  1245.67,926.532 1257,922.16 1268.32,916.524 1280.67,909.018 1293.01,900.202 1305.36,890.205 1317.7,879.173 1342.39,854.665 1367.08,828.112 1391.92,800.91 
+  1416.75,774.82 1429.17,762.681 1441.59,751.389 1454.01,741.111 1466.43,732.001 1480.16,723.451 1493.89,716.648 1507.62,711.715 1521.35,708.743 1535.08,707.786 
+  1548.81,708.86 1562.54,711.947 1576.27,716.99 1589.33,723.521 1602.4,731.633 1615.46,741.193 1628.52,752.043 1654.65,776.884 1680.78,804.529 1707.95,834.302 
+  1735.11,863.043 1748.7,876.384 1762.28,888.718 1775.86,899.826 1789.45,909.511 1800.88,916.433 1812.31,922.137 1823.75,926.551 1835.18,929.62 1846.62,931.304 
+  1858.05,931.582 1869.49,930.452 1880.92,927.927 1894.88,923.001 1908.84,916.137 1922.8,907.464 1936.76,897.144 1950.72,885.371 1964.68,872.367 1978.64,858.374 
+  1992.6,843.656 2018.85,814.995 2045.09,786.646 2058.21,773.178 2071.34,760.482 2084.46,748.768 2097.58,738.23 2108.1,730.757 2118.61,724.23 2129.12,718.72 
+  2139.63,714.286 2150.14,710.974 2160.65,708.819 2171.17,707.845 2181.68,708.063 2192.19,709.469 2202.7,712.049 2213.21,715.775 2223.73,720.608 2234.24,726.495 
+  2244.75,733.376 2255.26,741.176 2265.77,749.811 2272.24,755.504 2278.72,761.455 2285.19,767.642 2291.66,774.039 
+  "/>
+<polyline clip-path="url(#clip282)" style="stroke:#c271d2; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  255.035,819.716 260.007,814.253 264.979,808.802 269.952,803.378 274.924,797.993 297.912,773.966 320.9,752.261 332.394,742.63 343.888,733.98 355.382,726.42 
+  366.877,720.049 378.371,714.945 389.865,711.175 401.359,708.787 412.853,707.81 424.347,708.257 435.841,710.123 447.335,713.384 458.829,717.998 472.644,725.251 
+  486.459,734.239 500.274,744.798 514.089,756.734 541.719,783.837 569.348,813.566 592.709,839.141 616.07,863.699 627.75,875.19 639.431,885.952 651.111,895.844 
+  662.791,904.735 675.479,913.124 688.167,920.064 700.856,925.449 713.544,929.194 726.232,931.241 738.92,931.56 751.608,930.144 764.296,927.016 775.993,922.657 
+  787.691,916.941 799.388,909.944 811.085,901.757 822.783,892.489 834.48,882.262 846.177,871.21 857.875,859.48 882.956,832.769 908.038,805.27 933.119,778.643 
+  958.201,754.495 972.731,742.223 987.26,731.525 1001.79,722.62 1016.32,715.688 1030.85,710.871 1045.38,708.265 1059.91,707.925 1074.44,709.857 1087.35,713.45 
+  1100.26,718.749 1113.18,725.67 1126.09,734.101 1139,743.906 1151.91,754.928 1164.82,766.991 1177.74,779.901 1200.38,803.954 1223.03,828.783 1245.67,853.166 
+  1268.32,875.901 1280.67,887.196 1293.01,897.501 1305.36,906.663 1317.7,914.55 1330.05,921.044 1342.39,926.051 1354.74,929.497 1367.08,931.331 1379.5,931.524 
+  1391.92,930.056 1404.34,926.948 1416.75,922.248 1429.17,916.025 1441.59,908.372 1454.01,899.402 1466.43,889.248 1493.89,863.367 1521.35,834.331 1548.81,804.239 
+  1576.27,775.265 1589.33,762.488 1602.4,750.651 1615.46,739.95 1628.52,730.559 1641.59,722.634 1654.65,716.304 1667.72,711.674 1680.78,708.82 1694.36,707.786 
+  1707.95,708.74 1721.53,711.665 1735.11,716.511 1748.7,723.19 1762.28,731.584 1775.86,741.544 1789.45,752.893 1812.31,774.567 1835.18,798.509 1858.05,823.516 
+  1880.92,848.332 1894.88,862.852 1908.84,876.562 1922.8,889.206 1936.76,900.546 1950.72,910.369 1964.68,918.491 1978.64,924.759 1992.6,929.057 2005.72,931.227 
+  2018.85,931.547 2031.97,930.013 2045.09,926.65 2058.21,921.513 2071.34,914.689 2084.46,906.289 2097.58,896.453 2118.61,878.12 2139.63,857.305 2160.65,834.894 
+  2181.68,811.839 2202.7,789.118 2223.73,767.697 2244.75,748.485 2265.77,732.298 2272.24,728.036 2278.72,724.143 2285.19,720.636 2291.66,717.529 
+  "/>
+<path clip-path="url(#clip280)" d="
+M1986.78 354.418 L2280.8 354.418 L2280.8 95.2176 L1986.78 95.2176  Z
+  " fill="#ffffff" fill-rule="evenodd" fill-opacity="1"/>
+<polyline clip-path="url(#clip280)" style="stroke:#000000; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  1986.78,354.418 2280.8,354.418 2280.8,95.2176 1986.78,95.2176 1986.78,354.418 
+  "/>
+<circle clip-path="url(#clip280)" cx="2082.73" cy="147.058" r="23" fill="#009af9" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5.12"/>
+<path clip-path="url(#clip280)" d="M2192.52 166.745 Q2190.72 171.375 2189 172.787 Q2187.29 174.199 2184.42 174.199 L2181.02 174.199 L2181.02 170.634 L2183.52 170.634 Q2185.28 170.634 2186.25 169.8 Q2187.22 168.967 2188.4 165.865 L2189.16 163.921 L2178.68 138.412 L2183.19 138.412 L2191.29 158.689 L2199.4 138.412 L2203.91 138.412 L2192.52 166.745 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M2211.2 160.402 L2218.84 160.402 L2218.84 134.037 L2210.53 135.703 L2210.53 131.444 L2218.79 129.778 L2223.47 129.778 L2223.47 160.402 L2231.11 160.402 L2231.11 164.338 L2211.2 164.338 L2211.2 160.402 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><circle clip-path="url(#clip280)" cx="2082.73" cy="198.898" r="23" fill="#e26f46" fill-rule="evenodd" fill-opacity="1" stroke="#000000" stroke-opacity="1" stroke-width="5.12"/>
+<path clip-path="url(#clip280)" d="M2192.52 218.585 Q2190.72 223.215 2189 224.627 Q2187.29 226.039 2184.42 226.039 L2181.02 226.039 L2181.02 222.474 L2183.52 222.474 Q2185.28 222.474 2186.25 221.64 Q2187.22 220.807 2188.4 217.705 L2189.16 215.761 L2178.68 190.252 L2183.19 190.252 L2191.29 210.529 L2199.4 190.252 L2203.91 190.252 L2192.52 218.585 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M2214.42 212.242 L2230.74 212.242 L2230.74 216.178 L2208.79 216.178 L2208.79 212.242 Q2211.46 209.488 2216.04 204.858 Q2220.65 200.205 2221.83 198.863 Q2224.07 196.34 2224.95 194.604 Q2225.85 192.844 2225.85 191.155 Q2225.85 188.4 2223.91 186.664 Q2221.99 184.928 2218.89 184.928 Q2216.69 184.928 2214.23 185.692 Q2211.8 186.455 2209.03 188.006 L2209.03 183.284 Q2211.85 182.15 2214.3 181.571 Q2216.76 180.993 2218.79 180.993 Q2224.16 180.993 2227.36 183.678 Q2230.55 186.363 2230.55 190.854 Q2230.55 192.983 2229.74 194.905 Q2228.96 196.803 2226.85 199.395 Q2226.27 200.067 2223.17 203.284 Q2220.07 206.479 2214.42 212.242 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><polyline clip-path="url(#clip280)" style="stroke:#3da44d; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  2010.77,250.738 2154.69,250.738 
+  "/>
+<path clip-path="url(#clip280)" d="M2192.52 270.425 Q2190.72 275.055 2189 276.467 Q2187.29 277.879 2184.42 277.879 L2181.02 277.879 L2181.02 274.314 L2183.52 274.314 Q2185.28 274.314 2186.25 273.48 Q2187.22 272.647 2188.4 269.545 L2189.16 267.601 L2178.68 242.092 L2183.19 242.092 L2191.29 262.369 L2199.4 242.092 L2203.91 242.092 L2192.52 270.425 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M2224.56 249.383 Q2227.91 250.101 2229.79 252.369 Q2231.69 254.638 2231.69 257.971 Q2231.69 263.087 2228.17 265.888 Q2224.65 268.689 2218.17 268.689 Q2215.99 268.689 2213.68 268.249 Q2211.39 267.832 2208.93 266.976 L2208.93 262.462 Q2210.88 263.596 2213.19 264.175 Q2215.51 264.754 2218.03 264.754 Q2222.43 264.754 2224.72 263.018 Q2227.03 261.281 2227.03 257.971 Q2227.03 254.916 2224.88 253.203 Q2222.75 251.467 2218.93 251.467 L2214.9 251.467 L2214.9 247.624 L2219.12 247.624 Q2222.57 247.624 2224.4 246.258 Q2226.22 244.87 2226.22 242.277 Q2226.22 239.615 2224.33 238.203 Q2222.45 236.768 2218.93 236.768 Q2217.01 236.768 2214.81 237.184 Q2212.61 237.601 2209.97 238.481 L2209.97 234.314 Q2212.64 233.573 2214.95 233.203 Q2217.29 232.833 2219.35 232.833 Q2224.67 232.833 2227.78 235.263 Q2230.88 237.67 2230.88 241.791 Q2230.88 244.661 2229.23 246.652 Q2227.59 248.62 2224.56 249.383 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><polyline clip-path="url(#clip280)" style="stroke:#c271d2; stroke-linecap:butt; stroke-linejoin:round; stroke-width:4; stroke-opacity:1; fill:none" points="
+  2010.77,302.578 2154.69,302.578 
+  "/>
+<path clip-path="url(#clip280)" d="M2192.52 322.265 Q2190.72 326.895 2189 328.307 Q2187.29 329.719 2184.42 329.719 L2181.02 329.719 L2181.02 326.154 L2183.52 326.154 Q2185.28 326.154 2186.25 325.32 Q2187.22 324.487 2188.4 321.385 L2189.16 319.441 L2178.68 293.932 L2183.19 293.932 L2191.29 314.209 L2199.4 293.932 L2203.91 293.932 L2192.52 322.265 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /><path clip-path="url(#clip280)" d="M2223.24 289.372 L2211.43 307.821 L2223.24 307.821 L2223.24 289.372 M2222.01 285.298 L2227.89 285.298 L2227.89 307.821 L2232.82 307.821 L2232.82 311.709 L2227.89 311.709 L2227.89 319.858 L2223.24 319.858 L2223.24 311.709 L2207.64 311.709 L2207.64 307.196 L2222.01 285.298 Z" fill="#000000" fill-rule="evenodd" fill-opacity="1" /></svg>
