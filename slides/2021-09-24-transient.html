@@ -54,6 +54,7 @@
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-09-27 Transient problems" href="2021-09-27-transient.html" />
     <link rel="prev" title="2021-09-22 Newton linearization" href="2021-09-22-nonlinear-ad.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -170,6 +171,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
     </a>
    </li>
   </ul>
@@ -572,7 +578,7 @@
 <h1>Test it out<a class="headerlink" href="#test-it-out" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plaplace_p</span> <span class="o">=</span> <span class="mf">1.8</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plaplace_p</span> <span class="o">=</span> <span class="mf">1.3</span>
 <span class="n">plaplace_forcing</span> <span class="o">=</span> <span class="mf">.1</span>
 <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
 <span class="n">u0</span> <span class="o">=</span> <span class="n">collect</span><span class="p">(</span><span class="mi">1</span> <span class="o">.+</span> <span class="n">x</span><span class="p">)</span>
@@ -729,8 +735,8 @@
 <div class="section" id="we-can-go-the-other-way">
 <h1>We can go the other way<a class="headerlink" href="#we-can-go-the-other-way" title="Permalink to this headline">¶</a></h1>
 <p>We can differentiate a composition <span class="math notranslate nohighlight">\(h(g(f(x)))\)</span> as</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d977746d-7584-4833-99ec-601be8043c17">
-<span class="eqno">(14)<a class="headerlink" href="#equation-d977746d-7584-4833-99ec-601be8043c17" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-bc86d7bd-0732-46c6-bfef-16b75fe69fa0">
+<span class="eqno">(14)<a class="headerlink" href="#equation-bc86d7bd-0732-46c6-bfef-16b75fe69fa0" title="Permalink to this equation">¶</a></span>\[\begin{align}
   \operatorname{d} h &amp;= h' \operatorname{d} g \\
   \operatorname{d} g &amp;= g' \operatorname{d} f \\
   \operatorname{d} f &amp;= f' \operatorname{d} x.
@@ -823,26 +829,24 @@
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">h1</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span> <span class="o">+</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span>
 <span class="n">h2</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="p">((</span><span class="n">x</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>  <span class="o">+</span> <span class="mi">3</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span>
-<span class="nd">@code_llvm</span> <span class="n">h1</span><span class="p">(</span><span class="mf">4.</span><span class="p">)</span>
+<span class="nd">@code_llvm</span> <span class="n">h2</span><span class="p">(</span><span class="mf">4.</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>;  @ In[25]:1 within `h1&#39;
-define <span class=" -Color -Color-Cyan">double</span> @julia_h1_13525<span class=" -Color -Color-Yellow">(</span><span class=" -Color -Color-Cyan">double</span> %0<span class=" -Color -Color-Yellow">)</span> <span class=" -Color -Color-Yellow">{</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>;  @ In[92]:2 within `h2&#39;
+define <span class=" -Color -Color-Cyan">double</span> @julia_h2_16295<span class=" -Color -Color-Yellow">(</span><span class=" -Color -Color-Cyan">double</span> %0<span class=" -Color -Color-Yellow">)</span> <span class=" -Color -Color-Yellow">{</span>
 top:
-; ┌ @ intfuncs.jl:314 within `literal_pow&#39;
-; │┌ @ operators.jl:560 within `*&#39; @ float.jl:332
-    %1 = <span class=" -Color -Color-Bold">fmul</span> <span class=" -Color -Color-Cyan">double</span> %0, %0
-    %2 = <span class=" -Color -Color-Bold">fmul</span> <span class=" -Color -Color-Cyan">double</span> %1, %0
-; └└
-; ┌ @ promotion.jl:322 within `*&#39; @ float.jl:332
-   %3 = <span class=" -Color -Color-Bold">fmul</span> <span class=" -Color -Color-Cyan">double</span> %0, <span class=" -Color -Color-Yellow">3.000000e+00</span>
+; ┌ @ float.jl:332 within `*&#39;
+   %1 = <span class=" -Color -Color-Bold">fmul</span> <span class=" -Color -Color-Cyan">double</span> %0, %0
 ; └
-; ┌ @ float.jl:326 within `+&#39;
-   %4 = <span class=" -Color -Color-Bold">fadd</span> <span class=" -Color -Color-Cyan">double</span> %3, %2
+; ┌ @ promotion.jl:321 within `+&#39; @ float.jl:326
+   %2 = <span class=" -Color -Color-Bold">fadd</span> <span class=" -Color -Color-Cyan">double</span> %1, <span class=" -Color -Color-Yellow">3.000000e+00</span>
 ; └
-  <span class=" -Color -Color-Bold">ret</span> <span class=" -Color -Color-Cyan">double</span> %4
+; ┌ @ float.jl:332 within `*&#39;
+   %3 = <span class=" -Color -Color-Bold">fmul</span> <span class=" -Color -Color-Cyan">double</span> %2, %0
+; └
+  <span class=" -Color -Color-Bold">ret</span> <span class=" -Color -Color-Cyan">double</span> %3
 <span class=" -Color -Color-Yellow">}</span>
 </pre></div>
 </div>
@@ -850,31 +854,36 @@ top:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@code_llvm</span> <span class="n">gradient</span><span class="p">(</span><span class="n">h1</span><span class="p">,</span> <span class="mf">4.</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@code_llvm</span> <span class="n">gradient</span><span class="p">(</span><span class="n">h2</span><span class="p">,</span> <span class="mf">4.</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>;  @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface.jl:74 within `gradient&#39;
-define <span class=" -Color -Color-Yellow">[1</span> x <span class=" -Color -Color-Cyan">double</span><span class=" -Color -Color-Yellow">]</span> @julia_gradient_13561<span class=" -Color -Color-Yellow">(</span><span class=" -Color -Color-Cyan">double</span> %0<span class=" -Color -Color-Yellow">)</span> <span class=" -Color -Color-Yellow">{</span>
+define <span class=" -Color -Color-Yellow">[1</span> x <span class=" -Color -Color-Cyan">double</span><span class=" -Color -Color-Yellow">]</span> @julia_gradient_16320<span class=" -Color -Color-Yellow">(</span><span class=" -Color -Color-Cyan">double</span> %0<span class=" -Color -Color-Yellow">)</span> <span class=" -Color -Color-Yellow">{</span>
 top:
-;  @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface.jl:76 within `gradient&#39;
-; ┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface.jl:41 within `#50&#39;
-; │┌ @ In[25]:1 within `Pullback&#39;
-; ││┌ @ /home/jed/.julia/packages/ZygoteRules/OjfTt/src/adjoint.jl:59 within `#1849#back&#39;
-; │││┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/lib/number.jl:6 within `#249&#39;
-; ││││┌ @ intfuncs.jl:313 within `literal_pow&#39;
+;  @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface.jl:75 within `gradient&#39;
+; ┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface.jl:40 within `pullback&#39;
+; │┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface.jl:34 within `_pullback&#39; @ In[92]:2 @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface2.jl:9
+; ││┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface2.jl within `macro expansion&#39;
+; │││┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/chainrules.jl:152 within `chain_rrule&#39;
+; ││││┌ @ /home/jed/.julia/packages/ChainRulesCore/Voykb/src/rules.jl:134 within `rrule&#39; @ /home/jed/.julia/packages/ChainRules/3Qznz/src/rulesets/Base/fastmath_able.jl:222
 ; │││││┌ @ float.jl:332 within `*&#39;
         %1 = <span class=" -Color -Color-Bold">fmul</span> <span class=" -Color -Color-Cyan">double</span> %0, %0
-; ││││└└
-; ││││┌ @ promotion.jl:322 within `*&#39; @ float.jl:332
-       %2 = <span class=" -Color -Color-Bold">fmul</span> <span class=" -Color -Color-Cyan">double</span> %1, <span class=" -Color -Color-Yellow">3.000000e+00</span>
-; │└└└└
-; │┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/lib/lib.jl:17 within `accum&#39;
+; ││└└└└
+; ││ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface.jl:34 within `_pullback&#39; @ In[92]:2 @ /home/jed/.julia/packages/ZygoteRules/OjfTt/src/adjoint.jl:57
+; ││┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/lib/number.jl:15 within `adjoint&#39;
+; │││┌ @ promotion.jl:321 within `+&#39; @ float.jl:326
+      %2 = <span class=" -Color -Color-Bold">fadd</span> <span class=" -Color -Color-Cyan">double</span> %1, <span class=" -Color -Color-Yellow">3.000000e+00</span>
+; └└└└
+;  @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface.jl:76 within `gradient&#39;
+; ┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/compiler/interface.jl:41 within `#50&#39;
+; │┌ @ /home/jed/.julia/packages/Zygote/nsu1Y/src/lib/lib.jl:22 within `accum&#39; @ /home/jed/.julia/packages/Zygote/nsu1Y/src/lib/lib.jl:17
 ; ││┌ @ float.jl:326 within `+&#39;
-     %3 = <span class=" -Color -Color-Bold">fadd</span> <span class=" -Color -Color-Cyan">double</span> %2, <span class=" -Color -Color-Yellow">3.000000e+00</span>
+     %3 = <span class=" -Color -Color-Bold">fadd</span> <span class=" -Color -Color-Cyan">double</span> %1, %2
+     %4 = <span class=" -Color -Color-Bold">fadd</span> <span class=" -Color -Color-Cyan">double</span> %1, %3
 ; └└└
-  %.fca.0.insert = <span class=" -Color -Color-Bold">insertvalue</span> <span class=" -Color -Color-Yellow">[1</span> x <span class=" -Color -Color-Cyan">double</span><span class=" -Color -Color-Yellow">]</span> undef, <span class=" -Color -Color-Cyan">double</span> %3, <span class=" -Color -Color-Yellow">0</span>
+  %.fca.0.insert = <span class=" -Color -Color-Bold">insertvalue</span> <span class=" -Color -Color-Yellow">[1</span> x <span class=" -Color -Color-Cyan">double</span><span class=" -Color -Color-Yellow">]</span> undef, <span class=" -Color -Color-Cyan">double</span> %4, <span class=" -Color -Color-Yellow">0</span>
   <span class=" -Color -Color-Bold">ret</span> <span class=" -Color -Color-Yellow">[1</span> x <span class=" -Color -Color-Cyan">double</span><span class=" -Color -Color-Yellow">]</span> %.fca.0.insert
 <span class=" -Color -Color-Yellow">}</span>
 </pre></div>
@@ -998,9 +1007,9 @@ top:
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">;</span> <span class="n">k</span><span class="o">=</span><span class="mi">40</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">u</span> <span class="o">.-</span> <span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f1</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">;</span> <span class="n">k</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">u</span> <span class="o">.-</span> <span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">))</span>
 
-<span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_euler</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.</span><span class="p">],</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">.05</span><span class="p">)</span>
+<span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_euler</span><span class="p">(</span><span class="n">f1</span><span class="p">,</span> <span class="p">[</span><span class="mf">.5</span><span class="p">],</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">.4</span><span class="p">)</span>
 <span class="n">scatter</span><span class="p">(</span><span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">])</span>
 <span class="n">plot!</span><span class="p">(</span><span class="n">cos</span><span class="p">)</span>
 </pre></div>
@@ -1016,7 +1025,7 @@ top:
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f2</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span>
 
-<span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_euler</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">h</span><span class="o">=</span><span class="mf">.2</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_euler</span><span class="p">(</span><span class="n">f2</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">h</span><span class="o">=</span><span class="mf">.03</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">scatter</span><span class="p">(</span><span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span><span class="o">&#39;</span><span class="p">)</span>
 <span class="n">plot!</span><span class="p">([</span><span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">])</span>
 </pre></div>
@@ -1153,7 +1162,7 @@ or
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.058453 seconds (119.24 k allocations: 7.137 MiB, 96.42% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.073689 seconds (119.23 k allocations: 7.136 MiB, 96.56% compilation time)
 </pre></div>
 </div>
 </div>
@@ -1196,6 +1205,7 @@ or
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="2021-09-22-nonlinear-ad.html" title="previous page">2021-09-22 Newton linearization</a>
+    <a class='right-next' id="next-link" href="2021-09-27-transient.html" title="next page">2021-09-27 Transient problems</a>
 
         </div>
         
