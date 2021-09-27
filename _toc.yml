@@ -18,3 +18,6 @@ chapters:
   - file: slides/2021-09-15-advection.ipynb
   - file: slides/2021-09-17-sparsity.ipynb
   - file: slides/2021-09-20-nonlinear.ipynb
+  - file: slides/2021-09-22-nonlinear-ad.ipynb
+  - file: slides/2021-09-24-transient.ipynb
+  - file: slides/2021-09-27-transient.ipynb

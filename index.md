@@ -23,6 +23,8 @@ Welcome to **CSCI-5636: Numerical Solution of Partial Differential Equations**
   - Use GitHub classroom and observe two kinds of numerical error: rounding error and discretization (aka. truncation) error.
 * - [2021-09-03-boundaries](https://classroom.github.com/a/P7lUsxs_)
   - Implement symmetric Dirichlet and Neumann boundary conditions with at least second order. Show results to demonstrate order of accuracy, constants on coarse grids, and impact of unevenly spaced grids. Discuss the code complexity for handling boundary conditions compared to the complexity interior to the domain.
+* - [2021-09-22-multiscale](https://classroom.github.com/a/ofGhdd06)
+  - Investigate diffusion problems in which the coefficient structure varies rapidly, typically on a scale finer than the forcing or observation scales.
 :::
 ::::
 
