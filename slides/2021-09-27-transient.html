@@ -54,6 +54,7 @@
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-09-29 Handling stiffness" href="2021-09-29-stiffness.html" />
     <link rel="prev" title="2021-09-24 Transient problems" href="2021-09-24-transient.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -175,6 +176,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
     </a>
    </li>
   </ul>
@@ -328,12 +334,12 @@
        What does it mean to exponentiate a matrix?
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#question">
-       Question
-      </a>
-     </li>
     </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question">
+     Question
+    </a>
    </li>
   </ul>
  </li>
@@ -346,25 +352,21 @@
   <a class="reference internal nav-link" href="#forward-euler-on-a-linear-system">
    Forward Euler on a linear system
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#linear-stability-analysis">
-     Linear Stability Analysis
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#linear-stability-analysis">
+   Linear Stability Analysis
+  </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#stability-diagrams-a-property-of-methods">
    Stability diagrams (a property of methods)
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#implicit-methods">
-     Implicit methods
-    </a>
-   </li>
-  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#implicit-methods">
+   Implicit methods
+  </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#advection-with-centered-stencil">
@@ -586,10 +588,10 @@
 \[ e^A = 1 + A + \frac{A^2}{2} + \frac{A^3}{3!} + \dotsb \]</div>
 <p>and there are many <a class="reference external" href="http://www.cs.cornell.edu/cv/ResearchPDF/19ways+.pdf">practical ways to compute it</a>.</p>
 </div>
-<div class="section" id="question">
-<h3>Question<a class="headerlink" href="#question" title="Permalink to this headline">¶</a></h3>
-<p>Suppose that the diagonalization <span class="math notranslate nohighlight">\(A = X \Lambda X^{-1}\)</span> exists and derive a finite expression for the matrix exponential using the scalar <code class="docutils literal notranslate"><span class="pre">exp</span></code> function.</p>
 </div>
+<div class="section" id="question">
+<h2>Question<a class="headerlink" href="#question" title="Permalink to this headline">¶</a></h2>
+<p>Suppose that the diagonalization <span class="math notranslate nohighlight">\(A = X \Lambda X^{-1}\)</span> exists and derive a finite expression for the matrix exponential using the scalar <code class="docutils literal notranslate"><span class="pre">exp</span></code> function.</p>
 </div>
 </div>
 <div class="section" id="forward-euler-method">
@@ -669,8 +671,9 @@ vectors:
 </div>
 </div>
 </div>
+</div>
 <div class="section" id="linear-stability-analysis">
-<h2>Linear Stability Analysis<a class="headerlink" href="#linear-stability-analysis" title="Permalink to this headline">¶</a></h2>
+<h1>Linear Stability Analysis<a class="headerlink" href="#linear-stability-analysis" title="Permalink to this headline">¶</a></h1>
 <p>Why did Euler converge on the first problem (with sufficiently small steps) while always diverging on the second problem?</p>
 <p>We can understand the convergence of methods by analyzing the test problem
 $<span class="math notranslate nohighlight">\( \dot u = \lambda u \)</span><span class="math notranslate nohighlight">\(
@@ -681,7 +684,6 @@ where we have introduced the complex-valued function \)</span>R(z)$.</p>
 <ul class="simple">
 <li><p>When does this map cause solutions to “blow up” and when is it stable?</p></li>
 </ul>
-</div>
 </div>
 <div class="section" id="stability-diagrams-a-property-of-methods">
 <h1>Stability diagrams (a property of methods)<a class="headerlink" href="#stability-diagrams-a-property-of-methods" title="Permalink to this headline">¶</a></h1>
@@ -699,8 +701,9 @@ where we have introduced the complex-valued function \)</span>R(z)$.</p>
 <div class="cell_output docutils container">
 <img alt="../_images/2021-09-27-transient_16_0.svg" src="../_images/2021-09-27-transient_16_0.svg" /></div>
 </div>
+</div>
 <div class="section" id="implicit-methods">
-<h2>Implicit methods<a class="headerlink" href="#implicit-methods" title="Permalink to this headline">¶</a></h2>
+<h1>Implicit methods<a class="headerlink" href="#implicit-methods" title="Permalink to this headline">¶</a></h1>
 <p>Recall that forward Euler is the step
 $<span class="math notranslate nohighlight">\( \tilde u(h) = u(0) + h f(0, u(0)) . \)</span><span class="math notranslate nohighlight">\(
 This can be evaluated **explicitly**; all the terms on the right hand side are known so the approximation \)</span>\tilde u(h)<span class="math notranslate nohighlight">\( is computed merely by evaluating the right hand side.
@@ -719,7 +722,6 @@ or
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/2021-09-27-transient_19_0.svg" src="../_images/2021-09-27-transient_19_0.svg" /></div>
-</div>
 </div>
 </div>
 <div class="section" id="advection-with-centered-stencil">
@@ -781,7 +783,7 @@ or
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1.900846 seconds (206.39 k allocations: 11.905 MiB, 99.86% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.946248 seconds (206.39 k allocations: 11.905 MiB, 99.76% compilation time)
 </pre></div>
 </div>
 </div>
@@ -840,7 +842,7 @@ or
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.292863 seconds (626.87 k allocations: 34.986 MiB, 12.67% gc time, 99.73% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.137917 seconds (626.87 k allocations: 34.986 MiB, 99.58% compilation time)
 </pre></div>
 </div>
 <img alt="../_images/2021-09-27-transient_28_1.svg" src="../_images/2021-09-27-transient_28_1.svg" /></div>
@@ -902,7 +904,7 @@ $<span class="math notranslate nohighlight">\( R(z) = \frac{1 + (1-\theta)z}{1 -
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c"># Test on oscillator</span>
 <span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="mi">1</span><span class="p">;</span> <span class="o">-</span><span class="mi">1</span> <span class="mi">0</span><span class="p">]</span>
-<span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_theta_linear</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">h</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_theta_linear</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="p">[</span><span class="mf">0.</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">h</span><span class="o">=</span><span class="mf">.1</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
 <span class="n">scatter</span><span class="p">(</span><span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span><span class="o">&#39;</span><span class="p">)</span>
 <span class="n">plot!</span><span class="p">([</span><span class="n">cos</span><span class="p">,</span> <span class="n">sin</span><span class="p">])</span>
 </pre></div>
@@ -972,14 +974,14 @@ $<span class="math notranslate nohighlight">\( R(z) = \frac{1 + (1-\theta)z}{1 -
 <span class="n">A</span> <span class="o">=</span> <span class="n">advect_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">upwind</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
 <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">)[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">u0</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="p">(</span><span class="o">-</span><span class="mi">9</span> <span class="o">*</span> <span class="n">x</span> <span class="o">.^</span> <span class="mi">2</span><span class="p">)</span>
-<span class="nd">@time</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_theta_linear</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">.04</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mf">.5</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mf">1.</span><span class="p">);</span>
+<span class="nd">@time</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_theta_linear</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">.04</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mf">1.</span><span class="p">);</span>
 <span class="n">nsteps</span> <span class="o">=</span> <span class="n">size</span><span class="p">(</span><span class="n">uhist</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">uhist</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="p">(</span><span class="n">nsteps÷8</span><span class="p">)</span><span class="o">:</span><span class="k">end</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  2.911809 seconds (4.13 M allocations: 235.724 MiB, 3.71% gc time, 99.90% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1.584732 seconds (4.13 M allocations: 235.707 MiB, 3.74% gc time, 99.90% compilation time)
 </pre></div>
 </div>
 <img alt="../_images/2021-09-27-transient_39_1.svg" src="../_images/2021-09-27-transient_39_1.svg" /></div>
@@ -1034,7 +1036,7 @@ $<span class="math notranslate nohighlight">\( R(z) = \frac{1 + (1-\theta)z}{1 -
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.084924 seconds (97.32 k allocations: 7.185 MiB, 98.80% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.075416 seconds (102.45 k allocations: 7.431 MiB, 35.46% gc time, 98.87% compilation time)
 </pre></div>
 </div>
 <img alt="../_images/2021-09-27-transient_42_1.svg" src="../_images/2021-09-27-transient_42_1.svg" /></div>
@@ -1062,10 +1064,10 @@ Evidently only \)</span>\theta=1<span class="math notranslate nohighlight">\( is
 <h1>Spectrum of operators<a class="headerlink" href="#spectrum-of-operators" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span><span class="o">=</span><span class="mf">.8</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span><span class="o">=</span><span class="mf">.5</span>
 <span class="n">h</span> <span class="o">=</span> <span class="mf">.1</span>
 <span class="n">plot_stability</span><span class="p">(</span><span class="n">z</span> <span class="o">-&gt;</span> <span class="n">Rz_theta</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">),</span> <span class="s">&quot;</span><span class="se">\$\\</span><span class="s">theta=</span><span class="si">$theta</span><span class="s">, h=</span><span class="si">$h</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">advect_matrix</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">upwind</span><span class="o">=</span><span class="nb">false</span><span class="p">)))</span>
+<span class="n">ev</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">advect_matrix</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">upwind</span><span class="o">=</span><span class="nb">true</span><span class="p">)))</span>
 <span class="n">scatter!</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">ev</span><span class="p">),</span> <span class="n">imag</span><span class="p">(</span><span class="n">ev</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1114,6 +1116,7 @@ Evidently only \)</span>\theta=1<span class="math notranslate nohighlight">\( is
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="2021-09-24-transient.html" title="previous page">2021-09-24 Transient problems</a>
+    <a class='right-next' id="next-link" href="2021-09-29-stiffness.html" title="next page">2021-09-29 Handling stiffness</a>
 
         </div>
         
