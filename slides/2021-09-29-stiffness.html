@@ -549,8 +549,8 @@
 </div>
 <div class="section" id="advection-diffusion-as-linear-ode">
 <h1>Advection-diffusion as linear ODE<a class="headerlink" href="#advection-diffusion-as-linear-ode" title="Permalink to this headline">¶</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-9445def1-3ebb-4081-b985-cb85b7c134f5">
-<span class="eqno">(15)<a class="headerlink" href="#equation-9445def1-3ebb-4081-b985-cb85b7c134f5" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-5b749a08-e110-4b82-8e2a-886aa86613fe">
+<span class="eqno">(15)<a class="headerlink" href="#equation-5b749a08-e110-4b82-8e2a-886aa86613fe" title="Permalink to this equation">¶</a></span>\[\begin{align}
 (-\kappa u_x + w u)_x &amp;= 0 &amp; Pe_L &amp;= \frac{L \lvert w \rvert}{\kappa}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -572,22 +572,17 @@
     <span class="k">end</span>
     <span class="n">sparse</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
 <span class="k">end</span>
-<span class="n">advdiff_matrix</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="n">advdiff_matrix</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">MethodError</span>: no method matching advdiff_matrix(::Int64, ::Int64)
-<span class="n">Closest</span> <span class="n">candidates</span> <span class="n">are</span><span class="p">:</span>
-  <span class="n">advdiff_matrix</span><span class="p">(::</span><span class="n">Any</span><span class="p">;</span> <span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="p">,</span> <span class="n">upwind</span><span class="p">)</span> <span class="n">at</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span><span class="mi">1</span>
-
-<span class="ne">Stacktrace</span>:
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
-   <span class="o">@</span> <span class="n">In</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span><span class="mi">18</span>
- <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="nb">eval</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">boot</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">360</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">include_string</span><span class="p">(</span><span class="n">mapexpr</span><span class="p">::</span><span class="n">typeof</span><span class="p">(</span><span class="n">REPL</span><span class="o">.</span><span class="n">softscope</span><span class="p">),</span> <span class="n">mod</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">code</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">filename</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1116</span>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>5×5 SparseMatrixCSC{Float64, Int64} with 15 stored entries:
+ -1.25   -0.625    ⋅       ⋅      1.875
+  1.875  -1.25   -0.625    ⋅       ⋅ 
+   ⋅      1.875  -1.25   -0.625    ⋅ 
+   ⋅       ⋅      1.875  -1.25   -0.625
+ -0.625    ⋅       ⋅      1.875  -1.25
 </pre></div>
 </div>
 </div>
@@ -770,8 +765,8 @@ $<span class="math notranslate nohighlight">\( \textrm{CFL} = \frac{\Delta t |w|
 $<span class="math notranslate nohighlight">\( \frac{\kappa}{(\Delta x)^2} \begin{bmatrix} 1 &amp; -2 &amp; 1 \end{bmatrix} \)</span>$</p></li>
 <li><p>Apply this to test function <span class="math notranslate nohighlight">\(e^{i\theta x}\)</span> to get the symbol</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-eaf010f7-280d-45d5-a1da-a93f998ec122">
-<span class="eqno">(16)<a class="headerlink" href="#equation-eaf010f7-280d-45d5-a1da-a93f998ec122" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-f12fac48-e30f-4b62-9c61-4cf3abd3a6af">
+<span class="eqno">(16)<a class="headerlink" href="#equation-f12fac48-e30f-4b62-9c61-4cf3abd3a6af" title="Permalink to this equation">¶</a></span>\[\begin{align}
 L_{\Delta x} e^{i\theta x}
 &amp;=
 \frac{\kappa}{(\Delta x)^2} \Big[ e^{-i\theta\Delta x} - 2 + e^{i\theta\Delta x} \Big] e^{i\theta x} \\
@@ -787,7 +782,7 @@ L_{\Delta x} e^{i\theta x}
 <span class="n">dx</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">n</span>
 <span class="n">kappa</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">lambda_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span> <span class="o">*</span> <span class="n">kappa</span> <span class="o">/</span> <span class="n">dx</span><span class="o">^</span><span class="mi">2</span>
-<span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">/</span> <span class="n">lambda_min</span><span class="p">]</span>
+<span class="n">h</span> <span class="o">=</span> <span class="o">-</span><span class="mi">2</span> <span class="o">/</span> <span class="n">lambda_min</span>
 
 <span class="n">plot_stability</span><span class="p">(</span><span class="n">z</span> <span class="o">-&gt;</span> <span class="n">Rz_theta</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">),</span> <span class="s">&quot;</span><span class="se">\$\\</span><span class="s">theta=</span><span class="si">$theta</span><span class="s">, h=</span><span class="si">$h</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
 <span class="n">ev</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">advdiff_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
@@ -828,6 +823,11 @@ L_{\Delta x} e^{i\theta x}
     <span class="n">u_exact</span> <span class="o">=</span> <span class="p">(</span><span class="n">u0</span> <span class="o">.-</span> <span class="n">k</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">T</span><span class="p">)</span> <span class="o">.+</span> <span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">T</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
     <span class="n">uhist</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">.-</span> <span class="n">u_exact</span>
 <span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mms_error (generic function with 1 method)
 </pre></div>
 </div>
 </div>

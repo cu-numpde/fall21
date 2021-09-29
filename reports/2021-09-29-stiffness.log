@@ -17,38 +17,26 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-function advdiff_matrix(n; kappa=1, wind=1, upwind=0.)
-    dx = 2 / n
-    rows = [1]
-    cols = [1]
-    vals = [0.]
-    wrap(j) = (j + n - 1) % n + 1
-    for i in 1:n
-        append!(rows, [i, i, i])
-        append!(cols, wrap.(i-1:i+1))
-        diffuse = [-1, 2, -1] * kappa / dx^2
-        advect_upwind = [-1, 1, 0] * wind / dx
-        advect_center = [-1, 0, 1] * wind / 2dx
-        stencil = -diffuse - upwind * advect_upwind - (1 - upwind) * advect_center
-        append!(vals, stencil)
-    end
-    sparse(rows, cols, vals)
-end
-advdiff_matrix(5, 1000)
+theta=0
+n = 20
+dx = 2 / n
+kappa = 1
+lambda_min = -4 * kappa / dx^2
+h = -2 / lambda_min]
+
+plot_stability(z -> Rz_theta(z, theta), "\$\\theta=$theta, h=$h\$")
+ev = eigvals(Matrix(h*advdiff_matrix(n, kappa=kappa, wind=0)))
+scatter!(real(ev), imag(ev))
 ------------------
 
-MethodError: no method matching advdiff_matrix(::Int64, ::Int64)
-[0mClosest candidates are:
-[0m  advdiff_matrix(::Any; kappa, wind, upwind) at In[5]:1
+syntax: extra token "]" after end of expression
 
 Stacktrace:
  [1] top-level scope
-   @ In[5]:18
+   @ In[15]:6
  [2] eval
    @ ./boot.jl:360 [inlined]
  [3] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
    @ Base ./loading.jl:1116
-LoadError: MethodError: no method matching advdiff_matrix(::Int64, ::Int64)
-[0mClosest candidates are:
-[0m  advdiff_matrix(::Any; kappa, wind, upwind) at In[5]:1
+LoadError: syntax: extra token "]" after end of expression
 
