@@ -1,0 +1,54 @@
+Traceback (most recent call last):
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/client.py", line 558, in async_execute
+    await self.async_execute_cell(
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+function advdiff_matrix(n; kappa=1, wind=1, upwind=0.)
+    dx = 2 / n
+    rows = [1]
+    cols = [1]
+    vals = [0.]
+    wrap(j) = (j + n - 1) % n + 1
+    for i in 1:n
+        append!(rows, [i, i, i])
+        append!(cols, wrap.(i-1:i+1))
+        diffuse = [-1, 2, -1] * kappa / dx^2
+        advect_upwind = [-1, 1, 0] * wind / dx
+        advect_center = [-1, 0, 1] * wind / 2dx
+        stencil = -diffuse - upwind * advect_upwind - (1 - upwind) * advect_center
+        append!(vals, stencil)
+    end
+    sparse(rows, cols, vals)
+end
+advdiff_matrix(5, 1000)
+------------------
+
+MethodError: no method matching advdiff_matrix(::Int64, ::Int64)
+[0mClosest candidates are:
+[0m  advdiff_matrix(::Any; kappa, wind, upwind) at In[5]:1
+
+Stacktrace:
+ [1] top-level scope
+   @ In[5]:18
+ [2] eval
+   @ ./boot.jl:360 [inlined]
+ [3] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
+   @ Base ./loading.jl:1116
+LoadError: MethodError: no method matching advdiff_matrix(::Int64, ::Int64)
+[0mClosest candidates are:
+[0m  advdiff_matrix(::Any; kappa, wind, upwind) at In[5]:1
+
