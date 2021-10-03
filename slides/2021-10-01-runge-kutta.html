@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>2021-09-29 Handling stiffness &#8212; Numerical Solution of Partial Differential Equations</title>
+    <title>2021-10-01 Runge-Kutta methods &#8212; Numerical Solution of Partial Differential Equations</title>
     
   <link href="../_static/css/theme.css" rel="stylesheet" />
   <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -54,6 +54,7 @@
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2021-09-29 Handling stiffness" href="2021-09-29-stiffness.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
     
@@ -90,22 +91,22 @@
   </a>
  </li>
 </ul>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="../syllabus.html">
    Syllabus
   </a>
  </li>
- <li class="toctree-l1 has-children">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="../slides.html">
    Slides
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
   <label for="toctree-checkbox-1">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="2021-08-23-first-day.html">
      2021-08-23 First Day
@@ -179,6 +180,11 @@
    <li class="toctree-l2">
     <a class="reference internal" href="2021-09-29-stiffness.html">
      2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-10-01 Runge-Kutta methods
     </a>
    </li>
   </ul>
@@ -292,7 +298,7 @@
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   2021-09-29 Handling stiffness
+   2021-10-01 Runge-Kutta methods
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
@@ -325,7 +331,7 @@
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#runge-kutta-methods">
+  <a class="reference internal nav-link" href="#id1">
    Runge-Kutta methods
   </a>
  </li>
@@ -359,6 +365,36 @@
    Measuring convergence and accuracy
   </a>
  </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#work-precision-or-accuracy-vs-cost">
+   Work-precision (or accuracy vs cost)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#effective-rk-stability-diagrams">
+   Effective RK stability diagrams
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#runge-kutta-order-conditions">
+   Runge-Kutta order conditions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#order-conditions-are-nonlinear-algebraic-equations">
+   Order conditions are nonlinear algebraic equations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#observations">
+   Observations
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#theorem-from-hairer-norsett-and-wanner">
+   Theorem (from Hairer, Nørsett, and Wanner)
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -370,8 +406,8 @@
         
               <div>
                 
-  <div class="section" id="handling-stiffness">
-<h1>2021-09-29 Handling stiffness<a class="headerlink" href="#handling-stiffness" title="Permalink to this headline">¶</a></h1>
+  <div class="section" id="runge-kutta-methods">
+<h1>2021-10-01 Runge-Kutta methods<a class="headerlink" href="#runge-kutta-methods" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -513,7 +549,7 @@
     <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_theta_linear</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="p">,</span> <span class="n">u0</span><span class="p">,</span> <span class="n">forcing</span><span class="o">=</span><span class="n">t</span> <span class="o">-&gt;</span> <span class="n">k</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">theta</span><span class="o">=</span><span class="n">theta</span><span class="p">)</span>
     <span class="n">T</span> <span class="o">=</span> <span class="n">thist</span><span class="p">[</span><span class="k">end</span><span class="p">]</span>
     <span class="n">u_exact</span> <span class="o">=</span> <span class="p">(</span><span class="n">u0</span> <span class="o">.-</span> <span class="n">k</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">^</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span> <span class="o">*</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">k</span><span class="o">*</span><span class="n">T</span><span class="p">)</span> <span class="o">.+</span> <span class="n">k</span><span class="o">*</span><span class="p">(</span><span class="n">sin</span><span class="p">(</span><span class="n">T</span><span class="p">)</span> <span class="o">+</span> <span class="n">k</span><span class="o">*</span><span class="n">cos</span><span class="p">(</span><span class="n">T</span><span class="p">))</span><span class="o">/</span><span class="p">(</span><span class="n">k</span><span class="o">^</span><span class="mi">2</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
-    <span class="n">uhist</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">.-</span> <span class="n">u_exact</span>
+    <span class="n">uhist</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">.-</span> <span class="n">u_exact</span><span class="p">]</span>
 <span class="k">end</span>
 </pre></div>
 </div>
@@ -544,14 +580,14 @@
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">theta</span><span class="o">=</span><span class="mi">0</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">20</span>
 <span class="n">dx</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">n</span>
-<span class="n">kappa</span> <span class="o">=</span> <span class="mf">.05</span>
+<span class="n">kappa</span> <span class="o">=</span> <span class="mf">.01</span>
 <span class="n">lambda_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">4</span> <span class="o">*</span> <span class="n">kappa</span> <span class="o">/</span> <span class="n">dx</span><span class="o">^</span><span class="mi">2</span>
 <span class="n">cfl</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">h</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span> <span class="o">/</span> <span class="n">lambda_min</span><span class="p">,</span> <span class="n">cfl</span> <span class="o">*</span> <span class="n">dx</span><span class="p">)</span>
 
 <span class="n">plot_stability</span><span class="p">(</span><span class="n">z</span> <span class="o">-&gt;</span> <span class="n">Rz_theta</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">),</span>
-    <span class="s">&quot;</span><span class="se">\$\\</span><span class="s">theta=</span><span class="si">$theta</span><span class="s">, h=</span><span class="si">$h</span><span class="s">, Pe_h = </span><span class="si">$</span><span class="p">(</span><span class="n">h</span><span class="o">/</span><span class="n">kappa</span><span class="p">)</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">)</span>
-<span class="n">ev</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">advdiff_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="o">=</span><span class="mi">1</span><span class="p">)))</span>
+    <span class="s">&quot;</span><span class="se">\$\\</span><span class="s">theta=</span><span class="si">$theta</span><span class="s">, h=</span><span class="si">$h</span><span class="s">, Pe_{</span><span class="se">\\</span><span class="s">Delta x} = </span><span class="si">$</span><span class="p">(</span><span class="n">dx</span><span class="o">/</span><span class="n">kappa</span><span class="p">)</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">),</span> <span class="n">ylims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+<span class="n">ev</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">h</span><span class="o">*</span><span class="n">advdiff_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="n">kappa</span><span class="p">,</span> <span class="n">wind</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">upwind</span><span class="o">=</span><span class="mi">0</span><span class="p">)))</span>
 <span class="n">scatter!</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">ev</span><span class="p">),</span> <span class="n">imag</span><span class="p">(</span><span class="n">ev</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -568,8 +604,8 @@
 <li><p>Time discretization with error <span class="math notranslate nohighlight">\(O((\Delta t)^q)\)</span></p></li>
 </ul>
 </div>
-<div class="section" id="runge-kutta-methods">
-<h1>Runge-Kutta methods<a class="headerlink" href="#runge-kutta-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h1>Runge-Kutta methods<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p>The methods we have considered thus far can all be expressed as Runge-Kutta methods, which are expressed in terms of <span class="math notranslate nohighlight">\(s\)</span> “stage” equations (possibly coupled) and a completion formula.  For the ODE</p>
 <div class="math notranslate nohighlight">
 \[ \dot u = f(t, u) \]</div>
@@ -714,8 +750,8 @@ $<span class="math notranslate nohighlight">\( u(h) = \underbrace{\Big( 1 + h\la
 </div>
 <div class="section" id="an-explicit-rk-solver">
 <h1>An explicit RK solver<a class="headerlink" href="#an-explicit-rk-solver" title="Permalink to this headline">¶</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-106caf6d-8ab5-495a-9d5c-b5d6b604c71e">
-<span class="eqno">()<a class="headerlink" href="#equation-106caf6d-8ab5-495a-9d5c-b5d6b604c71e" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-86b9723a-e57e-44da-93ec-6609e28ca9fa">
+<span class="eqno">(17)<a class="headerlink" href="#equation-86b9723a-e57e-44da-93ec-6609e28ca9fa" title="Permalink to this equation">¶</a></span>\[\begin{align}
 Y_i &amp;= u(t) + h \sum_j a_{ij} f(t+c_j h, Y_j) &amp;
 u(t+h) &amp;= u(t) + h \sum_j b_j f(t+c_j h, Y_j)
 \end{align}\]</div>
@@ -755,7 +791,7 @@ u(t+h) &amp;= u(t) + h \sum_j b_j f(t+c_j h, Y_j)
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">linear_oscillator</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="o">-</span><span class="mi">1</span><span class="p">;</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">*</span> <span class="n">u</span>
-<span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_rk_explicit</span><span class="p">(</span><span class="n">linear_oscillator</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">.5</span><span class="p">)</span>
+<span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_rk_explicit</span><span class="p">(</span><span class="n">linear_oscillator</span><span class="p">,</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
 <span class="n">plot</span><span class="p">(</span><span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">)</span>
 <span class="n">plot!</span><span class="p">([</span><span class="n">sin</span><span class="p">,</span> <span class="n">cos</span><span class="p">])</span>
 </pre></div>
@@ -776,7 +812,7 @@ u(t+h) &amp;= u(t) + h \sum_j b_j f(t+c_j h, Y_j)
     <span class="n">uhist</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="k">end</span><span class="p">]</span> <span class="o">-</span> <span class="n">u_exact</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
 <span class="k">end</span>
 
-<span class="n">hs</span> <span class="o">=</span> <span class="mf">.5</span> <span class="o">.^</span> <span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">hs</span> <span class="o">=</span> <span class="mf">.5</span> <span class="o">.^</span> <span class="p">(</span><span class="o">-</span><span class="mi">3</span><span class="o">:</span><span class="mi">8</span><span class="p">)</span>
 <span class="n">linear_oscillator_exact</span><span class="p">(</span><span class="n">t</span><span class="p">)</span> <span class="o">=</span> <span class="p">[</span><span class="n">cos</span><span class="p">(</span><span class="n">t</span><span class="p">),</span> <span class="n">sin</span><span class="p">(</span><span class="n">t</span><span class="p">)]</span>
 </pre></div>
 </div>
@@ -799,6 +835,164 @@ u(t+h) &amp;= u(t) + h \sum_j b_j f(t+c_j h, Y_j)
 <div class="cell_output docutils container">
 <img alt="../_images/2021-10-01-runge-kutta_30_0.svg" src="../_images/2021-10-01-runge-kutta_30_0.svg" /></div>
 </div>
+</div>
+<div class="section" id="work-precision-or-accuracy-vs-cost">
+<h1>Work-precision (or accuracy vs cost)<a class="headerlink" href="#work-precision-or-accuracy-vs-cost" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">heun_nfeval</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">heun</span><span class="o">.</span><span class="n">c</span><span class="p">)</span> <span class="o">./</span> <span class="n">hs</span>
+<span class="n">rk4_nfeval</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">rk4</span><span class="o">.</span><span class="n">c</span><span class="p">)</span> <span class="o">./</span> <span class="n">hs</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">heun_nfeval</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="p">(</span><span class="n">heun_errors</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;heun&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">rk4_nfeval</span><span class="p">,</span> <span class="n">norm</span><span class="o">.</span><span class="p">(</span><span class="n">rk4_errors</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;rk4&quot;</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">xscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-01-runge-kutta_32_0.svg" src="../_images/2021-10-01-runge-kutta_32_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="effective-rk-stability-diagrams">
+<h1>Effective RK stability diagrams<a class="headerlink" href="#effective-rk-stability-diagrams" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">rk_eff_stability</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">rk</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">rk</span><span class="o">.</span><span class="n">b</span><span class="p">)</span>
+    <span class="n">z</span> <span class="o">=</span> <span class="p">]</span>
+    <span class="mi">1</span> <span class="o">+</span> <span class="n">z</span> <span class="o">*</span> <span class="n">rk</span><span class="o">.</span><span class="n">b</span><span class="o">&#39;</span> <span class="o">*</span> <span class="p">((</span><span class="n">I</span> <span class="o">-</span> <span class="n">z</span><span class="o">*</span><span class="n">rk</span><span class="o">.</span><span class="n">A</span><span class="p">)</span> <span class="o">\</span> <span class="n">ones</span><span class="p">(</span><span class="n">s</span><span class="p">))</span>
+<span class="k">end</span>
+<span class="n">plot_stability</span><span class="p">(</span><span class="n">z</span> <span class="o">-&gt;</span> <span class="n">rk_eff_stability</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">heun</span><span class="p">),</span> <span class="s">&quot;Heun&#39;s method&quot;</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ylims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-01-runge-kutta_34_0.svg" src="../_images/2021-10-01-runge-kutta_34_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stability</span><span class="p">(</span><span class="n">z</span> <span class="o">-&gt;</span> <span class="n">rk_eff_stability</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">rk4</span><span class="p">),</span> <span class="s">&quot;RK4&quot;</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">ylims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-01-runge-kutta_35_0.svg" src="../_images/2021-10-01-runge-kutta_35_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="runge-kutta-order-conditions">
+<h1>Runge-Kutta order conditions<a class="headerlink" href="#runge-kutta-order-conditions" title="Permalink to this headline">¶</a></h1>
+<p>We consider the autonomous differential equation</p>
+<div class="math notranslate nohighlight">
+\[ \dot u = f(u) . \]</div>
+<p>Higher derivatives of the exact soultion can be computed using the chain rule, e.g.,</p>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\ddot u(t) &amp;= f'(u) \dot u = f'(u) f(u) \\
+\dddot u(t) &amp;= f''(u) f(u) f(u) + f'(u) f'(u) f(u) . \\
+\end{align*}\]</div>
+<p>Note that if <span class="math notranslate nohighlight">\(f(u)\)</span> is linear, <span class="math notranslate nohighlight">\(f''(u) = 0\)</span>.
+Meanwhile, the numerical solution is a function of the time step <span class="math notranslate nohighlight">\(h\)</span>,</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
+Y_i(h) &amp;= u(0) + h \sum_j a_{ij} f(Y_j) \\
+U(h) &amp;= u(0) + h \sum_j b_j f(Y_j).
+\end{split}\end{split}\]</div>
+<p>We will take the limit <span class="math notranslate nohighlight">\(h\to 0\)</span> and equate derivatives of the numerical solution.  First we differentiate the stage equations,</p>
+<p>\begin{split}
+Y_i(0) &amp;= u(0) \
+\dot Y_i(0) &amp;= \sum_j a_{ij} f(Y_j) \
+\ddot Y_i(0) &amp;= 2 \sum_j a_{ij} \dot f(Y_j) \
+&amp;= 2 \sum_j a_{ij} f’(Y_j) \dot Y_j \
+&amp;= 2\sum_{j,k} a_{ij} a_{jk} f’(Y_j) f(Y_k) \
+\dddot Y_i(0) &amp;= 3 \sum_j a_{ij} \ddot f (Y_j) \
+&amp;= 3 \sum_j a_{ij} \Big( \sum_k f’’(Y_j) \dot Y_j \dot Y_k + f’(Y_j) \ddot Y_j \Big) \
+&amp;= 3 \sum_{j,k,\ell} a_{ij} a_{jk} \Big( a_{j\ell} f’’(Y_j) f(Y_k) f(Y_\ell) + 2 a_{k\ell} f’(Y_j) f’(Y_k) f(Y_\ell)  \Big)
+\end{split}</p>
+<p>where we have used Liebnitz’s formula for the <span class="math notranslate nohighlight">\(m\)</span>th derivative,
+$<span class="math notranslate nohighlight">\( (h \phi(h))^{(m)}|_{h=0} = m \phi^{(m-1)}(0) .\)</span><span class="math notranslate nohighlight">\(
+Similar formulas apply for \)</span>\dot U(0)<span class="math notranslate nohighlight">\(, \)</span>\ddot U(0)<span class="math notranslate nohighlight">\(, and \)</span>\dddot U(0)<span class="math notranslate nohighlight">\(, with \)</span>b_j<span class="math notranslate nohighlight">\( in place of \)</span>a_{ij}$.</p>
+</div>
+<div class="section" id="order-conditions-are-nonlinear-algebraic-equations">
+<h1>Order conditions are nonlinear algebraic equations<a class="headerlink" href="#order-conditions-are-nonlinear-algebraic-equations" title="Permalink to this headline">¶</a></h1>
+<p>Equating terms <span class="math notranslate nohighlight">\(\dot u(0) = \dot U(0)\)</span> yields
+$<span class="math notranslate nohighlight">\( \sum_j b_j = 1, \)</span><span class="math notranslate nohighlight">\(
+equating \)</span>\ddot u(0) = \ddot U(0)<span class="math notranslate nohighlight">\( yields
+\)</span><span class="math notranslate nohighlight">\( 2 \sum_{j,k} b_j a_{jk} = 1 , \)</span><span class="math notranslate nohighlight">\(
+and equating \)</span>\dddot u(0) = \dddot U(0)$ yields the two equations
+\begin{split}
+3\sum_{j,k,\ell} b_j a_{jk} a_{j\ell} &amp;= 1 \
+6 \sum_{j,k,\ell} b_j a_{jk} a_{k\ell} &amp;= 1 .
+\end{split}</p>
+</div>
+<div class="section" id="observations">
+<h1>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>These are systems of nonlinear equations for the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b_j\)</span>.  There is no guarantee that they have solutions.</p></li>
+<li><p>The number of equations grows rapidly as the order increases.</p></li>
+</ul>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(1)}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(2)}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(3)}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(4)}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(5)}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(6)}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(7)}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(8)}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(9)}\)</span></p></th>
+<th class="head"><p><span class="math notranslate nohighlight">\(u^{(10)}\)</span></p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p># terms</p></td>
+<td><p>1</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>4</p></td>
+<td><p>9</p></td>
+<td><p>20</p></td>
+<td><p>48</p></td>
+<td><p>115</p></td>
+<td><p>286</p></td>
+<td><p>719</p></td>
+</tr>
+<tr class="row-odd"><td><p>cumulative</p></td>
+<td><p>1</p></td>
+<td><p>2</p></td>
+<td><p>4</p></td>
+<td><p>8</p></td>
+<td><p>17</p></td>
+<td><p>37</p></td>
+<td><p>85</p></td>
+<td><p>200</p></td>
+<td><p>486</p></td>
+<td><p>1205</p></td>
+</tr>
+</tbody>
+</table>
+<ul class="simple">
+<li><p>Usually the number of order conditions does not exactly match the number of free parameters, meaning that the remaining parameters can be optimized (usually numerically) for different purposes, such as to minimize the leading error terms or to maximize stability in certain regions of the complex plane.  Finding globally optimal solutions can be extremely demanding.</p></li>
+</ul>
+<ul class="simple">
+<li><p>Rooted trees provide a convenient notation</p></li>
+</ul>
+<p><img alt="Trees and elementary differentials up to order 5. From Hairer, Nørsett, and Wanner." src="../_images/rktrees.png" /></p>
+</div>
+<div class="section" id="theorem-from-hairer-norsett-and-wanner">
+<h1>Theorem (from Hairer, Nørsett, and Wanner)<a class="headerlink" href="#theorem-from-hairer-norsett-and-wanner" title="Permalink to this headline">¶</a></h1>
+<p>A Runge-Kutta method is of order <span class="math notranslate nohighlight">\(p\)</span> if and only if
+$<span class="math notranslate nohighlight">\( \gamma(\mathcal t) \sum_{j} b_j \Phi_j(t) = 1 \)</span><span class="math notranslate nohighlight">\(
+for all trees \)</span>t<span class="math notranslate nohighlight">\( of order \)</span>\le p$.</p>
+<p>For a linear autonomous equation
+$<span class="math notranslate nohighlight">\( \dot u = A u \)</span><span class="math notranslate nohighlight">\(
+we only need one additional order condition per order of accuracy because \)</span>f’’ = 0<span class="math notranslate nohighlight">\(.
+These conditions can also be derived by equating derivatives of the stability function \)</span>R(z)<span class="math notranslate nohighlight">\( with the exponential \)</span>e^z<span class="math notranslate nohighlight">\(.
+For a linear non-autonomous equation
+\)</span><span class="math notranslate nohighlight">\( \dot u = A(t) u + g(t) \)</span><span class="math notranslate nohighlight">\(
+or more generally, an autonomous system with quadratic right hand side,
+\)</span><span class="math notranslate nohighlight">\( \dot u = B (u \otimes u) + A u + C \)</span><span class="math notranslate nohighlight">\(
+where \)</span>B<span class="math notranslate nohighlight">\( is a rank 3 tensor, we have \)</span>f’’’ = 0$, thus limiting the number of order conditions.</p>
 </div>
 
     <script type="text/x-thebe-config">
@@ -826,6 +1020,7 @@ u(t+h) &amp;= u(t) + h \sum_j b_j f(t+c_j h, Y_j)
         
         <div class='prev-next-bottom'>
             
+    <a class='left-prev' id="prev-link" href="2021-09-29-stiffness.html" title="previous page">2021-09-29 Handling stiffness</a>
 
         </div>
         
