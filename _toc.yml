@@ -24,3 +24,4 @@ chapters:
   - file: slides/2021-09-29-stiffness.ipynb
   - file: slides/2021-10-01-runge-kutta.ipynb
   - file: slides/2021-10-04-stiff-rk.ipynb
+  - file: slides/2021-10-08-fd-2d.ipynb
