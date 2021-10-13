@@ -54,6 +54,7 @@
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-10-13 Wave equations" href="2021-10-13-wave-equation.html" />
     <link rel="prev" title="2021-10-04 RK methods for stiff problems" href="2021-10-04-stiff-rk.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -195,6 +196,11 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
     </a>
    </li>
   </ul>
@@ -458,8 +464,8 @@
 <h1>Extending advection-diffusion to 2D<a class="headerlink" href="#extending-advection-diffusion-to-2d" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="dimension">
 <h2>1 dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-a4b2c905-e23b-4715-87f1-ed20a7095ac2">
-<span class="eqno">(18)<a class="headerlink" href="#equation-a4b2c905-e23b-4715-87f1-ed20a7095ac2" title="Permalink to this equation">¶</a></span>\[\begin{align} u_t + (- \kappa u_x + w u)_x &amp;= f(x) &amp; \text{ on } \Omega &amp;= (a,b) \\
+<div class="amsmath math notranslate nohighlight" id="equation-d8383a2c-ea44-4989-ada5-bec53e5630ec">
+<span class="eqno">(18)<a class="headerlink" href="#equation-d8383a2c-ea44-4989-ada5-bec53e5630ec" title="Permalink to this equation">¶</a></span>\[\begin{align} u_t + (- \kappa u_x + w u)_x &amp;= f(x) &amp; \text{ on } \Omega &amp;= (a,b) \\
 u(a) &amp;= g_D(a) &amp; u'(b) &amp;= g_N(b) \end{align}\]</div>
 <ul class="simple">
 <li><p>Cell Peclet number <span class="math notranslate nohighlight">\(\mathrm{Pe}_h = \frac{\lvert w \rvert h}{\kappa}\)</span></p>
@@ -479,8 +485,8 @@ u(a) &amp;= g_D(a) &amp; u'(b) &amp;= g_N(b) \end{align}\]</div>
 </div>
 <div class="section" id="dimensions">
 <h2>2 dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-8215ac03-2906-44c4-8604-2cea642c6036">
-<span class="eqno">(19)<a class="headerlink" href="#equation-8215ac03-2906-44c4-8604-2cea642c6036" title="Permalink to this equation">¶</a></span>\[\begin{align} u_t + \nabla\cdot\big(- \kappa \nabla u + \mathbf{w} u \big) &amp;= f(x,y) &amp; \text{ on } \Omega &amp; \subset \mathbb R^2 \\
+<div class="amsmath math notranslate nohighlight" id="equation-1d799208-9519-4f90-b949-cc113c63820f">
+<span class="eqno">(19)<a class="headerlink" href="#equation-1d799208-9519-4f90-b949-cc113c63820f" title="Permalink to this equation">¶</a></span>\[\begin{align} u_t + \nabla\cdot\big(- \kappa \nabla u + \mathbf{w} u \big) &amp;= f(x,y) &amp; \text{ on } \Omega &amp; \subset \mathbb R^2 \\
 u|_{\Gamma_D} &amp;= g_D(x,y) \\
 (-\kappa \nabla u + \mathbf w u) \cdot \hat n|_{\Gamma_N} &amp;= g_N(x,y)
 \end{align}\]</div>
@@ -556,6 +562,8 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
     <span class="n">cols</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Int64</span><span class="p">}()</span>
     <span class="n">vals</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}()</span>
     <span class="n">idx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="n">j</span>
+    <span class="n">stencil_advect</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">wind</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">wind</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wind</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">wind</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="n">stencil_diffuse</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">kappa</span> <span class="o">/</span> <span class="n">h</span><span class="o">^</span><span class="mi">2</span>
     <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span>
         <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span>
             <span class="k">if</span> <span class="n">i</span> <span class="k">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span> <span class="o">||</span> <span class="n">j</span> <span class="k">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">]</span>
@@ -563,8 +571,6 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
                 <span class="n">push!</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">idx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">))</span>
                 <span class="n">push!</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="mf">1.</span><span class="p">)</span>
             <span class="k">else</span>
-                <span class="n">stencil_advect</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">wind</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">wind</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wind</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">wind</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">h</span>
-                <span class="n">stencil_diffuse</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">kappa</span> <span class="o">/</span> <span class="n">h</span><span class="o">^</span><span class="mi">2</span>
                 <span class="n">append!</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">repeat</span><span class="p">([</span><span class="n">idx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)],</span> <span class="mi">5</span><span class="p">))</span>
                 <span class="n">append!</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="p">[</span><span class="n">idx</span><span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">idx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="n">idx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">idx</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span><span class="n">j</span><span class="p">),</span> <span class="n">idx</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)])</span>
                 <span class="n">append!</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">stencil_advect</span> <span class="o">+</span> <span class="n">stencil_diffuse</span><span class="p">)</span>
@@ -587,21 +593,32 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
 <h1>Spy the matrix<a class="headerlink" href="#spy-the-matrix" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">advdiff_matrix</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">advdiff_matrix</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">wind</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span>
 <span class="n">clim</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">Inf</span><span class="p">)</span>
-<span class="n">spy</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="p">(</span><span class="ss">:square</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="ss">:bwr</span><span class="p">,</span> <span class="n">clims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">clim</span><span class="p">,</span> <span class="n">clim</span><span class="p">))</span>
+<span class="n">spy</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="p">(</span><span class="ss">:square</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="ss">:bwr</span><span class="p">,</span> <span class="n">clims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">clim</span><span class="p">,</span> <span class="n">clim</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/2021-10-08-fd-2d_14_0.svg" src="../_images/2021-10-08-fd-2d_14_0.svg" /></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">advdiff_matrix</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="n">wind</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">.1</span><span class="p">)</span>
+<span class="n">ev</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">real</span><span class="p">(</span><span class="n">ev</span><span class="p">),</span> <span class="n">imag</span><span class="p">(</span><span class="n">ev</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-08-fd-2d_15_0.svg" src="../_images/2021-10-08-fd-2d_15_0.svg" /></div>
+</div>
 </div>
 <div class="section" id="plot-a-solution">
 <h1>Plot a solution<a class="headerlink" href="#plot-a-solution" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">100</span>
 <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">x</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="n">y</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">&#39;</span>
@@ -610,18 +627,18 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2021-10-08-fd-2d_16_0.svg" src="../_images/2021-10-08-fd-2d_16_0.svg" /></div>
+<img alt="../_images/2021-10-08-fd-2d_17_0.svg" src="../_images/2021-10-08-fd-2d_17_0.svg" /></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">advdiff_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wind</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">],</span> <span class="n">kappa</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">advdiff_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">wind</span><span class="o">=</span><span class="p">[</span><span class="mi">3</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="n">kappa</span><span class="o">=</span><span class="mf">.01</span><span class="p">)</span>
 <span class="n">u</span> <span class="o">=</span> <span class="n">A</span> <span class="o">\</span> <span class="n">vec</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="n">heatmap</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">reshape</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">),</span> <span class="n">aspect_ratio</span><span class="o">=</span><span class="ss">:equal</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2021-10-08-fd-2d_17_0.svg" src="../_images/2021-10-08-fd-2d_17_0.svg" /></div>
+<img alt="../_images/2021-10-08-fd-2d_18_0.svg" src="../_images/2021-10-08-fd-2d_18_0.svg" /></div>
 </div>
 <ul class="simple">
 <li><p>What happens when advection dominates?</p></li>
@@ -638,9 +655,9 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
     <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
     <span class="n">f</span> <span class="o">=</span> <span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span> <span class="o">*</span> <span class="n">cos</span><span class="o">.</span><span class="p">(</span><span class="nb">pi</span><span class="o">*</span><span class="n">x</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">&#39;</span>
     <span class="n">u</span> <span class="o">=</span> <span class="n">A</span> <span class="o">\</span> <span class="n">vec</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
-<span class="k">end</span> 
+<span class="k">end</span>
 
-<span class="nd">@profview</span> <span class="n">assemble_and_solve</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="nd">@profview</span> <span class="n">assemble_and_solve</span><span class="p">(</span><span class="mi">600</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -648,240 +665,392 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
 <div class="output text_html"><!DOCTYPE html>
 <html>
 <body>
-<svg version="1.1" width="960" height="421" viewBox="0 0 960 421"
-     xmlns="http://www.w3.org/2000/svg" id="fig-c6c7829341754177a8fc93771f3e1b44">
+<svg version="1.1" width="960" height="436" viewBox="0 0 960 436"
+     xmlns="http://www.w3.org/2000/svg" id="fig-6326d75e0427416a8c634688d8688ffe">
 <defs>
-    <clipPath id="fig-c6c7829341754177a8fc93771f3e1b44-clip">
-        <rect x="0" y="0" width="960" height="421"/>
+    <clipPath id="fig-6326d75e0427416a8c634688d8688ffe-clip">
+        <rect x="0" y="0" width="960" height="436"/>
     </clipPath>
 </defs>
 <style type="text/css">
-    #fig-c6c7829341754177a8fc93771f3e1b44 text {
+    #fig-6326d75e0427416a8c634688d8688ffe text {
         pointer-events: none;
         font-family: inherit;
         font-size: 12px;
         fill: #000000;
     }
-    text#fig-c6c7829341754177a8fc93771f3e1b44-caption {
+    text#fig-6326d75e0427416a8c634688d8688ffe-caption {
         font-size: 16.8px;
         fill: #000000;
         text-anchor: middle;
     }
-    #fig-c6c7829341754177a8fc93771f3e1b44-bg {
+    #fig-6326d75e0427416a8c634688d8688ffe-bg {
         fill: #FFFFFF;
     }
-    #fig-c6c7829341754177a8fc93771f3e1b44-viewport rect, #fig-c6c7829341754177a8fc93771f3e1b44-viewport path {
+    #fig-6326d75e0427416a8c634688d8688ffe-viewport rect, #fig-6326d75e0427416a8c634688d8688ffe-viewport path {
         vector-effect: non-scaling-stroke;
         fill-opacity: 1;
     }
-    #fig-c6c7829341754177a8fc93771f3e1b44-viewport text {
+    #fig-6326d75e0427416a8c634688d8688ffe-viewport text {
         stroke: #000000;
         stroke-width: 0;
         stroke-opacity: 0.35;
     }
-    #fig-c6c7829341754177a8fc93771f3e1b44-viewport rect:hover, #fig-c6c7829341754177a8fc93771f3e1b44-viewport path:hover {
+    #fig-6326d75e0427416a8c634688d8688ffe-viewport rect:hover, #fig-6326d75e0427416a8c634688d8688ffe-viewport path:hover {
         fill-opacity: 0.75;
         stroke: #000000;
         stroke-width: 0.5;
     }
-    #fig-c6c7829341754177a8fc93771f3e1b44-viewport + rect {
+    #fig-6326d75e0427416a8c634688d8688ffe-viewport + rect {
         fill: #FFFFFF;
         opacity: 0.8;
     }
-    text#fig-c6c7829341754177a8fc93771f3e1b44-details{
+    text#fig-6326d75e0427416a8c634688d8688ffe-details{
         fill: #000000;
     }
 </style>
-<g id="fig-c6c7829341754177a8fc93771f3e1b44-frame" clip-path="url(#fig-c6c7829341754177a8fc93771f3e1b44-clip)">
-<rect id="fig-c6c7829341754177a8fc93771f3e1b44-bg" x="0" y="0" width="960" height="421"/>
-<text id="fig-c6c7829341754177a8fc93771f3e1b44-caption" x="480" y="24">Profile results</text>
-<g id="fig-c6c7829341754177a8fc93771f3e1b44-viewport" transform="scale(1)">
-<rect x="10" y="368" width="939.43" height="15" rx="2" fill="#E1B2FF" data-dinfo=""/>
-<text x="10" dx="4" y="379.25"> in :-1</text>
-<rect x="23.71" y="353" width="898.29" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="23.71" dx="4" y="364.25">#15 in task.jl:411</text>
-<rect x="23.71" y="338" width="898.29" height="15" rx="2" fill="#E1B2FF" data-dinfo="/home/jed/.julia/packages/IJulia/e8kqU/src/"/>
-<text x="23.71" dx="4" y="349.25">eventloop in eventloop.jl:8</text>
-<rect x="23.71" y="323" width="898.29" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="23.71" dx="4" y="334.25">invokelatest in essentials.jl:706</text>
-<rect x="23.71" y="308" width="898.29" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="23.71" dx="4" y="319.25">#invokelatest#2 in essentials.jl:708</text>
-<rect x="23.71" y="293" width="898.29" height="15" rx="2" fill="#00B58B" data-dinfo="/home/jed/.julia/packages/IJulia/e8kqU/src/"/>
-<text x="23.71" dx="4" y="304.25">execute_request in execute_request.jl:67</text>
-<rect x="23.71" y="278" width="898.29" height="15" rx="2" fill="#E1B2FF" data-dinfo="/home/jed/.julia/packages/SoftGlobalScope/u4UzH/src/"/>
-<text x="23.71" dx="4" y="289.25">softscope_include_string in SoftGlobalScope.jl:65</text>
-<rect x="23.71" y="263" width="898.29" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="23.71" dx="4" y="274.25">include_string in loading.jl:1116</text>
-<rect x="23.71" y="248" width="898.29" height="15" rx="2" fill="#F3004D" data-dinfo="./"/>
-<text x="23.71" dx="4" y="259.25">eval in boot.jl:360</text>
-<rect x="647.71" y="233" width="96" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="647.71" dx="4" y="244.25">assemble_and_solve in In[75]:3</text>
-<rect x="647.71" y="218" width="96" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="647.71" dx="4" y="229.25">advdiff_matrix in In[70]:2</text>
-<rect x="647.71" y="203" width="20.58" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="647.71" dx="4" y="214.25">#advdiff_matrix#17 in In[70]:14</text>
-<rect x="647.71" y="188" width="13.72" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="647.71" dx="4" y="199.25">vect in array.jl:129</text>
-<rect x="647.71" y="173" width="13.72" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="647.71" dx="4" y="184.25">copyto! in abstractarray.jl:847</text>
-<rect x="647.71" y="158" width="13.72" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="647.71" dx="4" y="169.25">iterate in tuple.jl:66</text>
-<rect x="647.71" y="143" width="13.72" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="647.71" dx="4" y="154.25">getindex in tuple.jl:29</text>
-<rect x="661.43" y="188" width="6.86" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="661.43" dx="4" y="199.25">/ in arraymath.jl:55</text>
-<rect x="661.43" y="173" width="6.86" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="661.43" dx="4" y="184.25">broadcast_preserving_zero_d in broadcast.jl:872</text>
-<rect x="661.43" y="158" width="6.86" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="661.43" dx="4" y="169.25">materialize in broadcast.jl:883</text>
-<rect x="661.43" y="143" width="6.86" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="661.43" dx="4" y="154.25">copy in broadcast.jl:908</text>
-<rect x="661.43" y="128" width="6.86" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="661.43" dx="4" y="139.25">similar in broadcast.jl:196</text>
-<rect x="661.43" y="113" width="6.86" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="661.43" dx="4" y="124.25">similar in broadcast.jl:197</text>
-<rect x="661.43" y="98" width="6.86" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="661.43" dx="4" y="109.25">similar in abstractarray.jl:784</text>
-<rect x="661.43" y="83" width="6.86" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="661.43" dx="4" y="94.25">similar in abstractarray.jl:785</text>
-<rect x="661.43" y="68" width="6.86" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="661.43" dx="4" y="79.25">Array in boot.jl:465</text>
-<rect x="661.43" y="53" width="6.86" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="661.43" dx="4" y="64.25">Array in boot.jl:457</text>
-<rect x="661.43" y="38" width="6.86" height="15" rx="2" fill="#FFA000" data-dinfo="./"/>
-<text x="661.43" dx="4" y="49.25">Array in boot.jl:448</text>
-<rect x="668.29" y="203" width="27.42" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="668.29" dx="4" y="214.25">#advdiff_matrix#17 in In[70]:15</text>
-<rect x="668.29" y="188" width="13.71" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="668.29" dx="4" y="199.25">vect in array.jl:108</text>
-<rect x="668.29" y="173" width="13.71" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="668.29" dx="4" y="184.25">_array_for in array.jl:670</text>
-<rect x="668.29" y="158" width="13.71" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="668.29" dx="4" y="169.25">_array_for in array.jl:672</text>
-<rect x="668.29" y="143" width="13.71" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="668.29" dx="4" y="154.25">similar in abstractarray.jl:784</text>
-<rect x="668.29" y="128" width="13.71" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="668.29" dx="4" y="139.25">similar in abstractarray.jl:785</text>
-<rect x="668.29" y="113" width="13.71" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="668.29" dx="4" y="124.25">Array in boot.jl:457</text>
-<rect x="668.29" y="98" width="13.71" height="15" rx="2" fill="#FFA400" data-dinfo="./"/>
-<text x="668.29" dx="4" y="109.25">Array in boot.jl:448</text>
-<rect x="682" y="188" width="6.86" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="682" dx="4" y="199.25">* in arraymath.jl:55</text>
-<rect x="682" y="173" width="6.86" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="682" dx="4" y="184.25">broadcast_preserving_zero_d in broadcast.jl:872</text>
-<rect x="682" y="158" width="6.86" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="682" dx="4" y="169.25">materialize in broadcast.jl:883</text>
-<rect x="682" y="143" width="6.86" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="682" dx="4" y="154.25">copy in broadcast.jl:908</text>
-<rect x="682" y="128" width="6.86" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="682" dx="4" y="139.25">similar in broadcast.jl:196</text>
-<rect x="682" y="113" width="6.86" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="682" dx="4" y="124.25">similar in broadcast.jl:197</text>
-<rect x="682" y="98" width="6.86" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="682" dx="4" y="109.25">similar in abstractarray.jl:784</text>
-<rect x="682" y="83" width="6.86" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="682" dx="4" y="94.25">similar in abstractarray.jl:785</text>
-<rect x="682" y="68" width="6.86" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="682" dx="4" y="79.25">Array in boot.jl:465</text>
-<rect x="682" y="53" width="6.86" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="682" dx="4" y="64.25">Array in boot.jl:457</text>
-<rect x="682" y="38" width="6.86" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="682" dx="4" y="49.25">Array in boot.jl:448</text>
-<rect x="688.86" y="188" width="6.85" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="688.86" dx="4" y="199.25">/ in arraymath.jl:55</text>
-<rect x="695.71" y="203" width="20.58" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="695.71" dx="4" y="214.25">#advdiff_matrix#17 in In[70]:16</text>
-<rect x="695.71" y="188" width="20.58" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="695.71" dx="4" y="199.25">repeat in abstractarraymath.jl:224</text>
-<rect x="695.71" y="173" width="20.58" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="695.71" dx="4" y="184.25">repeat##kw in abstractarraymath.jl:267</text>
-<rect x="695.71" y="158" width="20.58" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="695.71" dx="4" y="169.25">#repeat#1 in abstractarraymath.jl:269</text>
-<rect x="695.71" y="143" width="20.58" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="695.71" dx="4" y="154.25">repeat_inner_outer in abstractarraymath.jl:327</text>
-<rect x="695.71" y="128" width="13.72" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="695.71" dx="4" y="139.25">repeat_outer in abstractarraymath.jl:347</text>
-<rect x="695.71" y="113" width="13.72" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="695.71" dx="4" y="124.25">similar in array.jl:357</text>
-<rect x="695.71" y="98" width="13.72" height="15" rx="2" fill="#FFA400" data-dinfo="./"/>
-<text x="695.71" dx="4" y="109.25">Array in boot.jl:448</text>
-<rect x="709.43" y="128" width="6.86" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="709.43" dx="4" y="139.25">repeat_outer in abstractarraymath.jl:348</text>
-<rect x="716.29" y="203" width="6.85" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="716.29" dx="4" y="214.25">#advdiff_matrix#17 in In[70]:17</text>
-<rect x="716.29" y="188" width="6.85" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="716.29" dx="4" y="199.25">vect in array.jl:108</text>
-<rect x="716.29" y="173" width="6.85" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="716.29" dx="4" y="184.25">_array_for in array.jl:670</text>
-<rect x="716.29" y="158" width="6.85" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="716.29" dx="4" y="169.25">_array_for in array.jl:672</text>
-<rect x="716.29" y="143" width="6.85" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="716.29" dx="4" y="154.25">similar in abstractarray.jl:784</text>
-<rect x="716.29" y="128" width="6.85" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="716.29" dx="4" y="139.25">similar in abstractarray.jl:785</text>
-<rect x="716.29" y="113" width="6.85" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="716.29" dx="4" y="124.25">Array in boot.jl:457</text>
-<rect x="716.29" y="98" width="6.85" height="15" rx="2" fill="#FFA000" data-dinfo="./"/>
-<text x="716.29" dx="4" y="109.25">Array in boot.jl:448</text>
-<rect x="723.14" y="203" width="13.72" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="723.14" dx="4" y="214.25">#advdiff_matrix#17 in In[70]:18</text>
-<rect x="723.14" y="188" width="13.72" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="723.14" dx="4" y="199.25">+ in arraymath.jl:47</text>
-<rect x="723.14" y="173" width="13.72" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="723.14" dx="4" y="184.25">broadcast_preserving_zero_d in broadcast.jl:872</text>
-<rect x="723.14" y="158" width="13.72" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="723.14" dx="4" y="169.25">materialize in broadcast.jl:883</text>
-<rect x="723.14" y="143" width="13.72" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="723.14" dx="4" y="154.25">copy in broadcast.jl:908</text>
-<rect x="723.14" y="128" width="13.72" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="723.14" dx="4" y="139.25">similar in broadcast.jl:196</text>
-<rect x="723.14" y="113" width="13.72" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="723.14" dx="4" y="124.25">similar in broadcast.jl:197</text>
-<rect x="723.14" y="98" width="13.72" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="723.14" dx="4" y="109.25">similar in abstractarray.jl:784</text>
-<rect x="723.14" y="83" width="13.72" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="723.14" dx="4" y="94.25">similar in abstractarray.jl:785</text>
-<rect x="723.14" y="68" width="13.72" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="723.14" dx="4" y="79.25">Array in boot.jl:465</text>
-<rect x="723.14" y="53" width="13.72" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
-<text x="723.14" dx="4" y="64.25">Array in boot.jl:457</text>
-<rect x="723.14" y="38" width="13.72" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="723.14" dx="4" y="49.25">Array in boot.jl:448</text>
-<rect x="736.86" y="203" width="6.85" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="736.86" dx="4" y="214.25">#advdiff_matrix#17 in In[70]:22</text>
-<rect x="736.86" y="188" width="6.85" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
-<text x="736.86" dx="4" y="199.25">sparse in sparsematrix.jl:952</text>
-<rect x="736.86" y="173" width="6.85" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
-<text x="736.86" dx="4" y="184.25">sparse in sparsematrix.jl:956</text>
-<rect x="736.86" y="158" width="6.85" height="15" rx="2" fill="#6FDC91" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
-<text x="736.86" dx="4" y="169.25">sparse in sparsematrix.jl:767</text>
-<rect x="736.86" y="143" width="6.85" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
-<text x="736.86" dx="4" y="154.25">sparse! in sparsematrix.jl:862</text>
-<rect x="736.86" y="128" width="6.85" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
-<text x="736.86" dx="4" y="139.25">setindex! in array.jl:843</text>
-<rect x="743.71" y="233" width="178.29" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
-<text x="743.71" dx="4" y="244.25">assemble_and_solve in In[75]:6</text>
-<rect x="743.71" y="218" width="178.29" height="15" rx="2" fill="#6FDC91" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
-<text x="743.71" dx="4" y="229.25">\ in linalg.jl:1567</text>
-<rect x="743.71" y="203" width="178.29" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
-<text x="743.71" dx="4" y="214.25">lu in umfpack.jl:155</text>
-<rect x="743.71" y="188" width="6.86" height="15" rx="2" fill="#6FDC91" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
-<text x="743.71" dx="4" y="199.25">#lu#1 in umfpack.jl:156</text>
-<rect x="743.71" y="173" width="6.86" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
-<text x="743.71" dx="4" y="184.25">decrement in SuiteSparse.jl:15</text>
-<rect x="743.71" y="158" width="6.86" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
-<text x="743.71" dx="4" y="169.25">copy in array.jl:349</text>
-<rect x="750.57" y="188" width="171.43" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
-<text x="750.57" dx="4" y="199.25">#lu#1 in umfpack.jl:161</text>
-<rect x="750.57" y="173" width="171.43" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
-<text x="750.57" dx="4" y="184.25">umfpack_numeric! in umfpack.jl:324</text>
-<rect x="750.57" y="158" width="96" height="15" rx="2" fill="#6FDC91" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
-<text x="750.57" dx="4" y="169.25">#umfpack_numeric!#13 in umfpack.jl:325</text>
-<rect x="750.57" y="143" width="96" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
-<text x="750.57" dx="4" y="154.25">umfpack_symbolic! in umfpack.jl:304</text>
-<rect x="846.57" y="158" width="75.43" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
-<text x="846.57" dx="4" y="169.25">#umfpack_numeric!#13 in umfpack.jl:327</text>
+<g id="fig-6326d75e0427416a8c634688d8688ffe-frame" clip-path="url(#fig-6326d75e0427416a8c634688d8688ffe-clip)">
+<rect id="fig-6326d75e0427416a8c634688d8688ffe-bg" x="0" y="0" width="960" height="436"/>
+<text id="fig-6326d75e0427416a8c634688d8688ffe-caption" x="480" y="24">Profile results</text>
+<g id="fig-6326d75e0427416a8c634688d8688ffe-viewport" transform="scale(1)">
+<rect x="10" y="383" width="940.57" height="15" rx="2" fill="#FFA000" data-dinfo=""/>
+<text x="10" dx="4" y="394.25"> in :-1</text>
+<rect x="31.7" y="368" width="908.02" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="31.7" dx="4" y="379.25">#15 in task.jl:411</text>
+<rect x="31.7" y="353" width="908.02" height="15" rx="2" fill="#E1B2FF" data-dinfo="/home/jed/.julia/packages/IJulia/e8kqU/src/"/>
+<text x="31.7" dx="4" y="364.25">eventloop in eventloop.jl:8</text>
+<rect x="31.7" y="338" width="908.02" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="31.7" dx="4" y="349.25">invokelatest in essentials.jl:706</text>
+<rect x="31.7" y="323" width="908.02" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="31.7" dx="4" y="334.25">#invokelatest#2 in essentials.jl:708</text>
+<rect x="31.7" y="308" width="908.02" height="15" rx="2" fill="#00B58B" data-dinfo="/home/jed/.julia/packages/IJulia/e8kqU/src/"/>
+<text x="31.7" dx="4" y="319.25">execute_request in execute_request.jl:67</text>
+<rect x="31.7" y="293" width="908.02" height="15" rx="2" fill="#E1B2FF" data-dinfo="/home/jed/.julia/packages/SoftGlobalScope/u4UzH/src/"/>
+<text x="31.7" dx="4" y="304.25">softscope_include_string in SoftGlobalScope.jl:65</text>
+<rect x="31.7" y="278" width="908.02" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="31.7" dx="4" y="289.25">include_string in loading.jl:1116</text>
+<rect x="31.7" y="263" width="908.02" height="15" rx="2" fill="#F3004D" data-dinfo="./"/>
+<text x="31.7" dx="4" y="274.25">eval in boot.jl:360</text>
+<rect x="66.6" y="248" width="98.59" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="66.6" dx="4" y="259.25">assemble_and_solve in In[133]:3</text>
+<rect x="66.6" y="233" width="98.12" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="66.6" dx="4" y="244.25">advdiff_matrix in In[131]:2</text>
+<rect x="66.6" y="218" width="21.7" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="66.6" dx="4" y="229.25">#advdiff_matrix#21 in In[131]:11</text>
+<rect x="66.6" y="203" width="21.23" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="66.6" dx="4" y="214.25">vect in array.jl:108</text>
+<rect x="66.6" y="188" width="19.34" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="66.6" dx="4" y="199.25">_array_for in array.jl:670</text>
+<rect x="66.6" y="173" width="19.34" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="66.6" dx="4" y="184.25">_array_for in array.jl:672</text>
+<rect x="66.6" y="158" width="19.34" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="66.6" dx="4" y="169.25">similar in abstractarray.jl:784</text>
+<rect x="66.6" y="143" width="19.34" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="66.6" dx="4" y="154.25">similar in abstractarray.jl:785</text>
+<rect x="66.6" y="128" width="19.34" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="66.6" dx="4" y="139.25">Array in boot.jl:457</text>
+<rect x="66.6" y="113" width="19.34" height="15" rx="2" fill="#FFA000" data-dinfo="./"/>
+<text x="66.6" dx="4" y="124.25">Array in boot.jl:448</text>
+<rect x="67.08" y="98" width="0.47" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="67.08" dx="4" y="109.25">umfpack_free_symbolic in umfpack.jl:591</text>
+<rect x="67.08" y="83" width="0.47" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="67.08" dx="4" y="94.25">umfpack_free_numeric in umfpack.jl:606</text>
+<rect x="67.08" y="68" width="0.47" height="15" rx="2" fill="#F6A60A" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="67.08" dx="4" y="79.25">umfpack_dl_free_numeric in umfpack.jl:602</text>
+<rect x="85.94" y="188" width="1.89" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="85.94" dx="4" y="199.25">setindex! in array.jl:843</text>
+<rect x="87.83" y="203" width="0.47" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="87.83" dx="4" y="214.25">in in operators.jl:1136</text>
+<rect x="87.83" y="188" width="0.47" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="87.83" dx="4" y="199.25">iterate in array.jl:781</text>
+<rect x="87.83" y="173" width="0.47" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="87.83" dx="4" y="184.25">&amp;lt; in int.jl:448</text>
+<rect x="87.83" y="158" width="0.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="87.83" dx="4" y="169.25">&amp;lt; in int.jl:441</text>
+<rect x="88.3" y="218" width="18.87" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="88.3" dx="4" y="229.25">#advdiff_matrix#21 in In[131]:16</text>
+<rect x="88.3" y="203" width="6.61" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="88.3" dx="4" y="214.25">repeat in abstractarraymath.jl:224</text>
+<rect x="88.3" y="188" width="6.61" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="88.3" dx="4" y="199.25">repeat##kw in abstractarraymath.jl:267</text>
+<rect x="88.3" y="173" width="6.61" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="88.3" dx="4" y="184.25">#repeat#1 in abstractarraymath.jl:269</text>
+<rect x="88.3" y="158" width="6.61" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="88.3" dx="4" y="169.25">repeat_inner_outer in abstractarraymath.jl:327</text>
+<rect x="88.3" y="143" width="4.25" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="88.3" dx="4" y="154.25">repeat_outer in abstractarraymath.jl:347</text>
+<rect x="88.3" y="128" width="4.25" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="88.3" dx="4" y="139.25">similar in array.jl:357</text>
+<rect x="88.3" y="113" width="4.25" height="15" rx="2" fill="#FFA400" data-dinfo="./"/>
+<text x="88.3" dx="4" y="124.25">Array in boot.jl:448</text>
+<rect x="92.55" y="143" width="0.47" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="92.55" dx="4" y="154.25">repeat_outer in abstractarraymath.jl:348</text>
+<rect x="93.02" y="143" width="1.41" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="93.02" dx="4" y="154.25">repeat_outer in abstractarraymath.jl:350</text>
+<rect x="93.02" y="128" width="1.41" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="93.02" dx="4" y="139.25">setindex! in array.jl:870</text>
+<rect x="93.02" y="113" width="0.47" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="93.02" dx="4" y="124.25">unsafe_copyto! in array.jl:266</text>
+<rect x="93.02" y="98" width="0.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="93.02" dx="4" y="109.25">pointer in abstractarray.jl:1119</text>
+<rect x="93.02" y="83" width="0.47" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="93.02" dx="4" y="94.25">unsafe_convert in pointer.jl:65</text>
+<rect x="93.49" y="113" width="0.94" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="93.49" dx="4" y="124.25">unsafe_copyto! in array.jl:271</text>
+<rect x="94.43" y="143" width="0.48" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="94.43" dx="4" y="154.25">repeat_outer in abstractarraymath.jl:352</text>
+<rect x="94.91" y="203" width="3.77" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="94.91" dx="4" y="214.25">append! in array.jl:980</text>
+<rect x="94.91" y="188" width="3.77" height="15" rx="2" fill="#F6A60A" data-dinfo="./"/>
+<text x="94.91" dx="4" y="199.25">_growend! in array.jl:888</text>
+<rect x="98.68" y="203" width="1.89" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="98.68" dx="4" y="214.25">append! in array.jl:981</text>
+<rect x="98.68" y="188" width="1.89" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="98.68" dx="4" y="199.25">copyto! in array.jl:304</text>
+<rect x="100.57" y="203" width="6.6" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="100.57" dx="4" y="214.25">vect in array.jl:108</text>
+<rect x="100.57" y="188" width="6.6" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="100.57" dx="4" y="199.25">_array_for in array.jl:670</text>
+<rect x="100.57" y="173" width="6.6" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="100.57" dx="4" y="184.25">_array_for in array.jl:672</text>
+<rect x="100.57" y="158" width="6.6" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="100.57" dx="4" y="169.25">similar in abstractarray.jl:784</text>
+<rect x="100.57" y="143" width="6.6" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="100.57" dx="4" y="154.25">similar in abstractarray.jl:785</text>
+<rect x="100.57" y="128" width="6.6" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="100.57" dx="4" y="139.25">Array in boot.jl:457</text>
+<rect x="100.57" y="113" width="6.6" height="15" rx="2" fill="#FFA000" data-dinfo="./"/>
+<text x="100.57" dx="4" y="124.25">Array in boot.jl:448</text>
+<rect x="107.17" y="218" width="13.21" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="107.17" dx="4" y="229.25">#advdiff_matrix#21 in In[131]:17</text>
+<rect x="107.17" y="203" width="1.41" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="107.17" dx="4" y="214.25">append! in array.jl:980</text>
+<rect x="107.17" y="188" width="1.41" height="15" rx="2" fill="#E4A71C" data-dinfo="./"/>
+<text x="107.17" dx="4" y="199.25">_growend! in array.jl:888</text>
+<rect x="108.58" y="203" width="0.95" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="108.58" dx="4" y="214.25">append! in array.jl:981</text>
+<rect x="108.58" y="188" width="0.48" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="108.58" dx="4" y="199.25">copyto! in array.jl:304</text>
+<rect x="109.06" y="188" width="0.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="109.06" dx="4" y="199.25">+ in int.jl:87</text>
+<rect x="109.53" y="203" width="10.85" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="109.53" dx="4" y="214.25">vect in array.jl:108</text>
+<rect x="109.53" y="188" width="10.38" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="109.53" dx="4" y="199.25">_array_for in array.jl:670</text>
+<rect x="109.53" y="173" width="10.38" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="109.53" dx="4" y="184.25">_array_for in array.jl:672</text>
+<rect x="109.53" y="158" width="10.38" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="109.53" dx="4" y="169.25">similar in abstractarray.jl:784</text>
+<rect x="109.53" y="143" width="10.38" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="109.53" dx="4" y="154.25">similar in abstractarray.jl:785</text>
+<rect x="109.53" y="128" width="10.38" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="109.53" dx="4" y="139.25">Array in boot.jl:457</text>
+<rect x="109.53" y="113" width="10.38" height="15" rx="2" fill="#FFA400" data-dinfo="./"/>
+<text x="109.53" dx="4" y="124.25">Array in boot.jl:448</text>
+<rect x="119.91" y="188" width="0.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="119.91" dx="4" y="199.25">setindex! in array.jl:843</text>
+<rect x="120.38" y="218" width="18.87" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="120.38" dx="4" y="229.25">#advdiff_matrix#21 in In[131]:18</text>
+<rect x="120.38" y="203" width="4.24" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="120.38" dx="4" y="214.25">append! in array.jl:980</text>
+<rect x="120.38" y="188" width="4.24" height="15" rx="2" fill="#F6A60A" data-dinfo="./"/>
+<text x="120.38" dx="4" y="199.25">_growend! in array.jl:888</text>
+<rect x="124.62" y="203" width="0.95" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="124.62" dx="4" y="214.25">append! in array.jl:981</text>
+<rect x="124.62" y="188" width="0.95" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="124.62" dx="4" y="199.25">copyto! in array.jl:304</text>
+<rect x="124.62" y="173" width="0.95" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="124.62" dx="4" y="184.25">_copyto_impl! in array.jl:313</text>
+<rect x="124.62" y="158" width="0.95" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="124.62" dx="4" y="169.25">unsafe_copyto! in array.jl:271</text>
+<rect x="125.57" y="203" width="13.68" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="125.57" dx="4" y="214.25">+ in arraymath.jl:47</text>
+<rect x="125.57" y="188" width="13.68" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="125.57" dx="4" y="199.25">broadcast_preserving_zero_d in broadcast.jl:872</text>
+<rect x="125.57" y="173" width="13.68" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="125.57" dx="4" y="184.25">materialize in broadcast.jl:883</text>
+<rect x="125.57" y="158" width="13.68" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="125.57" dx="4" y="169.25">copy in broadcast.jl:908</text>
+<rect x="125.57" y="143" width="0.47" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="125.57" dx="4" y="154.25">copyto! in broadcast.jl:936</text>
+<rect x="125.57" y="128" width="0.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="125.57" dx="4" y="139.25">copyto! in broadcast.jl:983</text>
+<rect x="125.57" y="113" width="0.47" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="125.57" dx="4" y="124.25">macro expansion in simdloop.jl:77</text>
+<rect x="125.57" y="98" width="0.47" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="125.57" dx="4" y="109.25">macro expansion in broadcast.jl:984</text>
+<rect x="125.57" y="83" width="0.47" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="125.57" dx="4" y="94.25">setindex! in array.jl:843</text>
+<rect x="126.04" y="143" width="13.21" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="126.04" dx="4" y="154.25">similar in broadcast.jl:196</text>
+<rect x="126.04" y="128" width="13.21" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="126.04" dx="4" y="139.25">similar in broadcast.jl:197</text>
+<rect x="126.04" y="113" width="13.21" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="126.04" dx="4" y="124.25">similar in abstractarray.jl:784</text>
+<rect x="126.04" y="98" width="13.21" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="126.04" dx="4" y="109.25">similar in abstractarray.jl:785</text>
+<rect x="126.04" y="83" width="13.21" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="126.04" dx="4" y="94.25">Array in boot.jl:465</text>
+<rect x="126.04" y="68" width="13.21" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="126.04" dx="4" y="79.25">Array in boot.jl:457</text>
+<rect x="126.04" y="53" width="13.21" height="15" rx="2" fill="#FFA000" data-dinfo="./"/>
+<text x="126.04" dx="4" y="64.25">Array in boot.jl:448</text>
+<rect x="139.25" y="218" width="24.52" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="139.25" dx="4" y="229.25">#advdiff_matrix#21 in In[131]:22</text>
+<rect x="139.25" y="203" width="24.52" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="139.25" dx="4" y="214.25">sparse in sparsematrix.jl:952</text>
+<rect x="139.25" y="188" width="1.88" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="139.25" dx="4" y="199.25">dimlub in sparsematrix.jl:948</text>
+<rect x="139.25" y="173" width="1.88" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="139.25" dx="4" y="184.25">maximum in reducedim.jl:873</text>
+<rect x="139.25" y="158" width="1.88" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="139.25" dx="4" y="169.25">#maximum#687 in reducedim.jl:873</text>
+<rect x="139.25" y="143" width="1.88" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="139.25" dx="4" y="154.25">_maximum in reducedim.jl:877</text>
+<rect x="139.25" y="128" width="1.88" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="139.25" dx="4" y="139.25">#_maximum#689 in reducedim.jl:877</text>
+<rect x="139.25" y="113" width="1.88" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="139.25" dx="4" y="124.25">_maximum in reducedim.jl:878</text>
+<rect x="139.25" y="98" width="1.88" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="139.25" dx="4" y="109.25">#_maximum#690 in reducedim.jl:878</text>
+<rect x="139.25" y="83" width="1.88" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="139.25" dx="4" y="94.25">mapreduce in reducedim.jl:310</text>
+<rect x="139.25" y="68" width="1.88" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="139.25" dx="4" y="79.25">#mapreduce#672 in reducedim.jl:310</text>
+<rect x="139.25" y="53" width="1.88" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="139.25" dx="4" y="64.25">_mapreduce_dim in reducedim.jl:318</text>
+<rect x="139.25" y="38" width="1.88" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="139.25" dx="4" y="49.25">_mapreduce in reduce.jl:415</text>
+<rect x="141.13" y="188" width="22.64" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="141.13" dx="4" y="199.25">sparse in sparsematrix.jl:956</text>
+<rect x="141.13" y="173" width="8.02" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="141.13" dx="4" y="184.25">sparse in sparsematrix.jl:756</text>
+<rect x="141.13" y="158" width="8.02" height="15" rx="2" fill="#F6A60A" data-dinfo="./"/>
+<text x="141.13" dx="4" y="169.25">Array in boot.jl:448</text>
+<rect x="149.15" y="173" width="14.62" height="15" rx="2" fill="#6FDC91" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="149.15" dx="4" y="184.25">sparse in sparsematrix.jl:767</text>
+<rect x="149.15" y="158" width="1.89" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="149.15" dx="4" y="169.25">sparse! in sparsematrix.jl:841</text>
+<rect x="149.15" y="143" width="1.89" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="149.15" dx="4" y="154.25">iterate in range.jl:674</text>
+<rect x="149.15" y="128" width="1.89" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="149.15" dx="4" y="139.25">== in promotion.jl:410</text>
+<rect x="151.04" y="158" width="0.47" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="151.04" dx="4" y="169.25">sparse! in sparsematrix.jl:849</text>
+<rect x="151.04" y="143" width="0.47" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="151.04" dx="4" y="154.25">setindex! in array.jl:843</text>
+<rect x="151.51" y="158" width="0.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="151.51" dx="4" y="169.25">sparse! in sparsematrix.jl:857</text>
+<rect x="151.51" y="143" width="0.47" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="151.51" dx="4" y="154.25">&amp;gt; in operators.jl:305</text>
+<rect x="151.51" y="128" width="0.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="151.51" dx="4" y="139.25">&amp;lt; in int.jl:83</text>
+<rect x="151.98" y="158" width="1.42" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="151.98" dx="4" y="169.25">sparse! in sparsematrix.jl:861</text>
+<rect x="151.98" y="143" width="0.94" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="151.98" dx="4" y="154.25">&amp;gt;= in operators.jl:352</text>
+<rect x="151.98" y="128" width="0.94" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="151.98" dx="4" y="139.25">&amp;lt;= in int.jl:442</text>
+<rect x="153.4" y="158" width="0.94" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="153.4" dx="4" y="169.25">sparse! in sparsematrix.jl:862</text>
+<rect x="153.4" y="143" width="0.94" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="153.4" dx="4" y="154.25">setindex! in array.jl:843</text>
+<rect x="154.34" y="158" width="2.83" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="154.34" dx="4" y="169.25">sparse! in sparsematrix.jl:864</text>
+<rect x="154.34" y="143" width="1.89" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="154.34" dx="4" y="154.25">getindex in array.jl:805</text>
+<rect x="156.23" y="143" width="0.94" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="156.23" dx="4" y="154.25">iterate in range.jl:674</text>
+<rect x="156.23" y="128" width="0.94" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="156.23" dx="4" y="139.25">== in promotion.jl:410</text>
+<rect x="157.17" y="158" width="0.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="157.17" dx="4" y="169.25">sparse! in sparsematrix.jl:875</text>
+<rect x="157.17" y="143" width="0.47" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="157.17" dx="4" y="154.25">fill! in array.jl:335</text>
+<rect x="157.17" y="128" width="0.47" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="157.17" dx="4" y="139.25">setindex! in array.jl:843</text>
+<rect x="157.64" y="158" width="0.94" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="157.64" dx="4" y="169.25">sparse! in sparsematrix.jl:885</text>
+<rect x="157.64" y="143" width="0.94" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="157.64" dx="4" y="154.25">!= in operators.jl:204</text>
+<rect x="157.64" y="128" width="0.94" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="157.64" dx="4" y="139.25">== in promotion.jl:410</text>
+<rect x="158.58" y="158" width="1.89" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="158.58" dx="4" y="169.25">sparse! in sparsematrix.jl:889</text>
+<rect x="158.58" y="143" width="1.89" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="158.58" dx="4" y="154.25">+ in int.jl:87</text>
+<rect x="160.47" y="158" width="0.47" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="160.47" dx="4" y="169.25">sparse! in sparsematrix.jl:920</text>
+<rect x="160.47" y="143" width="0.47" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="160.47" dx="4" y="154.25">- in int.jl:86</text>
+<rect x="160.94" y="158" width="0.48" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="160.94" dx="4" y="169.25">sparse! in sparsematrix.jl:922</text>
+<rect x="160.94" y="143" width="0.48" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="160.94" dx="4" y="154.25">getindex in array.jl:805</text>
+<rect x="161.42" y="158" width="2.35" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="161.42" dx="4" y="169.25">sparse! in sparsematrix.jl:926</text>
+<rect x="161.42" y="143" width="0.94" height="15" rx="2" fill="#E1B2FF" data-dinfo="./"/>
+<text x="161.42" dx="4" y="154.25">setindex! in array.jl:843</text>
+<rect x="162.36" y="143" width="1.41" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="162.36" dx="4" y="154.25">iterate in range.jl:674</text>
+<rect x="162.36" y="128" width="1.41" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="162.36" dx="4" y="139.25">== in promotion.jl:410</text>
+<rect x="163.77" y="218" width="0.48" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="163.77" dx="4" y="229.25">repeat_outer in abstractarraymath.jl:345</text>
+<rect x="164.72" y="233" width="0.47" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="164.72" dx="4" y="244.25">repeat##kw in abstractarraymath.jl:266</text>
+<rect x="165.19" y="248" width="774.53" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="165.19" dx="4" y="259.25">assemble_and_solve in In[133]:6</text>
+<rect x="165.19" y="233" width="0.47" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="165.19" dx="4" y="244.25">\ in linalg.jl:1564</text>
+<rect x="165.19" y="218" width="0.47" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="165.19" dx="4" y="229.25">ishermitian in sparsematrix.jl:3428</text>
+<rect x="165.19" y="203" width="0.47" height="15" rx="2" fill="#6FDC91" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="165.19" dx="4" y="214.25">is_hermsym in sparsematrix.jl:3437</text>
+<rect x="165.19" y="188" width="0.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="165.19" dx="4" y="199.25">copy in array.jl:349</text>
+<rect x="165.66" y="233" width="774.06" height="15" rx="2" fill="#6FDC91" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SparseArrays/src/"/>
+<text x="165.66" dx="4" y="244.25">\ in linalg.jl:1567</text>
+<rect x="165.66" y="218" width="70.28" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/LinearAlgebra/src/"/>
+<text x="165.66" dx="4" y="229.25">\ in factorization.jl:104</text>
+<rect x="165.66" y="203" width="70.28" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="165.66" dx="4" y="214.25">ldiv! in umfpack.jl:497</text>
+<rect x="165.66" y="188" width="70.28" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="165.66" dx="4" y="199.25">ldiv! in umfpack.jl:510</text>
+<rect x="165.66" y="173" width="70.28" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="165.66" dx="4" y="184.25">_Aq_ldiv_B! in umfpack.jl:527</text>
+<rect x="165.66" y="158" width="70.28" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="165.66" dx="4" y="169.25">_AqldivB_kernel! in umfpack.jl:532</text>
+<rect x="165.66" y="143" width="70.28" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="165.66" dx="4" y="154.25">solve! in umfpack.jl:366</text>
+<rect x="235.94" y="218" width="703.78" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="235.94" dx="4" y="229.25">lu in umfpack.jl:155</text>
+<rect x="235.94" y="203" width="3.31" height="15" rx="2" fill="#6FDC91" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="235.94" dx="4" y="214.25">#lu#1 in umfpack.jl:156</text>
+<rect x="235.94" y="188" width="0.95" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="235.94" dx="4" y="199.25">copy in array.jl:349</text>
+<rect x="236.89" y="188" width="2.36" height="15" rx="2" fill="#00B58B" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="236.89" dx="4" y="199.25">decrement in SuiteSparse.jl:15</text>
+<rect x="236.89" y="173" width="1.41" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="236.89" dx="4" y="184.25">copy in array.jl:349</text>
+<rect x="238.3" y="173" width="0.95" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="238.3" dx="4" y="184.25">decrement! in SuiteSparse.jl:12</text>
+<rect x="238.3" y="158" width="0.47" height="15" rx="2" fill="#00B58B" data-dinfo="./"/>
+<text x="238.3" dx="4" y="169.25">setindex! in array.jl:843</text>
+<rect x="238.77" y="158" width="0.48" height="15" rx="2" fill="#2CA3FF" data-dinfo="./"/>
+<text x="238.77" dx="4" y="169.25">iterate in range.jl:674</text>
+<rect x="238.77" y="143" width="0.48" height="15" rx="2" fill="#6FDC91" data-dinfo="./"/>
+<text x="238.77" dx="4" y="154.25">== in promotion.jl:410</text>
+<rect x="239.25" y="203" width="700.47" height="15" rx="2" fill="#E1B2FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="239.25" dx="4" y="214.25">#lu#1 in umfpack.jl:161</text>
+<rect x="239.25" y="188" width="700.47" height="15" rx="2" fill="#2CA3FF" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="239.25" dx="4" y="199.25">umfpack_numeric! in umfpack.jl:324</text>
+<rect x="239.25" y="173" width="293.39" height="15" rx="2" fill="#6FDC91" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="239.25" dx="4" y="184.25">#umfpack_numeric!#13 in umfpack.jl:325</text>
+<rect x="239.25" y="158" width="293.39" height="15" rx="2" fill="#F6A60A" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="239.25" dx="4" y="169.25">umfpack_symbolic! in umfpack.jl:304</text>
+<rect x="532.64" y="173" width="407.08" height="15" rx="2" fill="#FFA000" data-dinfo="/build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/"/>
+<text x="532.64" dx="4" y="184.25">#umfpack_numeric!#13 in umfpack.jl:327</text>
 </g></g>
 <script><![CDATA[
 // Snap.svg 0.3.0
@@ -1276,10 +1445,10 @@ f+=g+"]",i[b]=f}return Function("val","return Snap.path.toString.call(["+i+"])")
 <script><![CDATA[
 if (typeof require === 'function' && define.amd) {
     require(['ProfileSVG'], function (ProfileSVG) {
-        ProfileSVG.initialize("fig-c6c7829341754177a8fc93771f3e1b44");
+        ProfileSVG.initialize("fig-6326d75e0427416a8c634688d8688ffe");
     });
 } else {
-    ProfileSVG.initialize("fig-c6c7829341754177a8fc93771f3e1b44");
+    ProfileSVG.initialize("fig-6326d75e0427416a8c634688d8688ffe");
 }
 ]]></script>
 </svg>
@@ -1328,6 +1497,7 @@ if (typeof require === 'function' && define.amd) {
         <div class='prev-next-bottom'>
             
     <a class='left-prev' id="prev-link" href="2021-10-04-stiff-rk.html" title="previous page">2021-10-04 RK methods for stiff problems</a>
+    <a class='right-next' id="next-link" href="2021-10-13-wave-equation.html" title="next page">2021-10-13 Wave equations</a>
 
         </div>
         
