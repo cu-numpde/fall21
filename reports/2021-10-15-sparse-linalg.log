@@ -1,0 +1,42 @@
+Traceback (most recent call last):
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
+    executenb(
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/client.py", line 1117, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/util.py", line 78, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/util.py", line 57, in just_run
+    return loop.run_until_complete(coro)
+  File "/usr/lib/python3.9/asyncio/base_events.py", line 642, in run_until_complete
+    return future.result()
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/client.py", line 558, in async_execute
+    await self.async_execute_cell(
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/client.py", line 862, in async_execute_cell
+    self._check_raise_for_error(cell, exec_reply)
+  File "/home/jed/cu/numpde/VENV/lib/python3.9/site-packages/nbclient/client.py", line 765, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+A_periodic = laplacian_matrix(n)
+perm, iperm = Metis.permutation(A_periodic)
+cholesky(A_periodic, perm=Vector{Int64}(perm))
+#cholesky(A_periodic)
+------------------
+
+PosDefException: matrix is not positive definite; Cholesky factorization failed.
+
+Stacktrace:
+ [1] cholesky!(F::SuiteSparse.CHOLMOD.Factor{Float64}, A::SuiteSparse.CHOLMOD.Sparse{Float64}; shift::Float64, check::Bool)
+   @ SuiteSparse.CHOLMOD /build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/cholmod.jl:1308
+ [2] cholesky(A::SuiteSparse.CHOLMOD.Sparse{Float64}; shift::Float64, check::Bool, perm::Vector{Int64})
+   @ SuiteSparse.CHOLMOD /build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/cholmod.jl:1346
+ [3] #cholesky#9
+   @ /build/julia/src/julia-1.6.3/usr/share/julia/stdlib/v1.6/SuiteSparse/src/cholmod.jl:1458 [inlined]
+ [4] top-level scope
+   @ In[24]:3
+ [5] eval
+   @ ./boot.jl:360 [inlined]
+ [6] include_string(mapexpr::typeof(REPL.softscope), mod::Module, code::String, filename::String)
+   @ Base ./loading.jl:1116
+LoadError: PosDefException: matrix is not positive definite; Cholesky factorization failed.
+
