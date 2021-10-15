@@ -33,6 +33,7 @@ Welcome to **CSCI-5636: Numerical Solution of Partial Differential Equations**
 * [SIAM Membership](http://www.siam.org/students/memberships.php) is free for CU students (30% discount on SIAM books)
 * Books
   * [Driscoll and Braun, *Fundamentals of Numerical Computation*](https://fncbook.github.io/fnc/frontmatter.html) (free, in Julia with demo notebooks)
+  * [Myers, Van de Geijn, Van de Geijn], *Linear Algebra: Foundations to Frontiers*](http://www.ulaff.net/downloads.html) (free PDF and videos)
   * [LeVeque, *Finite Difference Methods for Ordinary and Partial Differential Equations*](https://faculty.washington.edu/rjl/fdmbook/) (CU students can [download free from SIAM](http://epubs.siam.org/doi/book/10.1137/1.9780898717839))
   * [LeVeque, *Finite Volume Methods for Hyperbolic Problems*](https://depts.washington.edu/clawpack/book.html) and the [Clawpack software](http://www.clawpack.org/).
   * [Toro, *Riemann Solvers and Numerical Methods for Fluid Dynamics*](https://link.springer.com/book/10.1007%2Fb79761#toc). (CU students can download free)
