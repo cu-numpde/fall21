@@ -1,0 +1,799 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-10-18 Iterative methods &#8212; Numerical Solution of Partial Differential Equations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-10-20 Krylov methods" href="2021-10-20-krylev.html" />
+    <link rel="prev" title="2021-10-15 Sparse Linear Algebra" href="2021-10-15-sparse-linalg.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Solution of Partial Differential Equations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../slides.html">
+   Slides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-23-first-day.html">
+     2021-08-23 First Day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-25-finite-difference.html">
+     2021-08-25 Finite Difference Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-27-finite-difference-2.html">
+     2021-08-27 Finite Difference 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-30-high-order.html">
+     2021-08-30 High order and boundaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-01-convergence-and-boundaries.html">
+     2021-09-01 Boundaries and Fourier methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-03-fourier.html">
+     2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/slides/2021-10-18-iterative.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cu-numpde/fall21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cu-numpde/fall21/issues/new?title=Issue%20on%20page%20%2Fslides/2021-10-18-iterative.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cu-numpde/fall21/main?urlpath=tree/slides/2021-10-18-iterative.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2021-10-18 Iterative methods
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#last-time">
+     Last time
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#today">
+     Today
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#why-iterative-solvers-over-direct-solvers">
+   Why iterative solvers over direct solvers?
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#o-n-solvers-available-for-many-important-problems">
+     <span class="math notranslate nohighlight">
+      \(O(N)\)
+     </span>
+     solvers available for many important problems
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gradient-descent">
+   Gradient descent
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aside-derivative-of-a-dot-product">
+   Aside: Derivative of a dot product
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aside-variational-notation">
+   Aside: Variational notation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#try-gradient-descent">
+   Try gradient descent
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#visualize-gradient-descent">
+   Visualize gradient descent
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#richardson-iteration">
+   Richardson iteration
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#richardson-convergence">
+   Richardson convergence
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aside-schur-decomposition">
+   Aside: Schur decomposition
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ill-conditioning">
+   Ill-conditioning
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question-what-is-the-condition-number-of-the-laplacian-on-100-evenly-spaced-points">
+     Question: What is the condition number of the Laplacian on 100 evenly spaced points?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#monic-polynomials-small-on-the-spectrum">
+   Monic polynomials small on the spectrum
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preconditioning">
+   Preconditioning
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="iterative-methods">
+<h1>2021-10-18 Iterative methods<a class="headerlink" href="#iterative-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="last-time">
+<h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Sparse direct solvers</p>
+<ul>
+<li><p>matrix orderings</p></li>
+<li><p>impact on formulation</p></li>
+<li><p>cost scaling</p></li>
+</ul>
+</li>
+<li><p>Discussion with Ioana Fleming</p></li>
+</ul>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Why iterative solvers</p></li>
+<li><p>Stationary iterative methods</p></li>
+<li><p>Preconditioning</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Plots</span>
+<span class="k">using</span> <span class="n">LinearAlgebra</span>
+<span class="k">using</span> <span class="n">SparseArrays</span>
+
+<span class="n">default</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">function</span> <span class="n">advdiff_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">;</span> <span class="n">kappa</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">wind</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="s">&quot;Advection-diffusion with Dirichlet boundary conditions eliminated&quot;</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Int64</span><span class="p">}()</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Int64</span><span class="p">}()</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}()</span>
+    <span class="n">idx</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),)</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="n">j</span>
+    <span class="n">in_domain</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span>
+    <span class="n">stencil_advect</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">wind</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">wind</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wind</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">wind</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="n">stencil_diffuse</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">kappa</span> <span class="o">/</span> <span class="n">h</span><span class="o">^</span><span class="mi">2</span>
+    <span class="n">stencil</span> <span class="o">=</span> <span class="n">stencil_advect</span> <span class="o">+</span> <span class="n">stencil_diffuse</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span>
+            <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">in_domain</span><span class="o">.</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
+            <span class="n">append!</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="p">(</span><span class="n">repeat</span><span class="p">([(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)],</span> <span class="mi">5</span><span class="p">))[</span><span class="n">mask</span><span class="p">])</span>
+            <span class="n">append!</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)[</span><span class="n">mask</span><span class="p">])</span>
+            <span class="n">append!</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">stencil</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">sparse</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">my_spy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">cmax</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">Inf</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ceil</span><span class="p">(</span><span class="mi">120</span> <span class="o">/</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="n">spy</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="p">(</span><span class="ss">:square</span><span class="p">,</span> <span class="n">s</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="ss">:diverging_rainbow_bgymr_45_85_c67_n256</span><span class="p">,</span> <span class="n">clims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">cmax</span><span class="p">,</span> <span class="n">cmax</span><span class="p">))</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>my_spy (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="why-iterative-solvers-over-direct-solvers">
+<h1>Why iterative solvers over direct solvers?<a class="headerlink" href="#why-iterative-solvers-over-direct-solvers" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Less reliable, more leaky abstraction</p></li>
+<li><p>More sensitive to problem formulation</p></li>
+<li><p>Slower for small problems</p></li>
+<li><p>Several different strategies, each with tuning knobs</p></li>
+<li><p>Accuracy tolerances needed</p></li>
+</ul>
+<div class="section" id="o-n-solvers-available-for-many-important-problems">
+<h2><span class="math notranslate nohighlight">\(O(N)\)</span> solvers available for many important problems<a class="headerlink" href="#o-n-solvers-available-for-many-important-problems" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>High-order discretization <em>can</em> be okay</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="gradient-descent">
+<h1>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h1>
+<p>Suppose <span class="math notranslate nohighlight">\(A\)</span> is a symmetric positive definite matrix and consider the scalar functional</p>
+<div class="math notranslate nohighlight">
+\[f(u) = \frac 1 2 u^T A u - b^T u . \]</div>
+<p>Then the gradient is</p>
+<div class="math notranslate nohighlight">
+\[\nabla_u f = A u - b .\]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">b</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> 
+<span class="n">f</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="mf">.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">u</span> <span class="o">-</span> <span class="n">b</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">u</span>
+<span class="n">contour</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">f</span><span class="p">([</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">]),</span> <span class="n">aspect_ratio</span><span class="o">=</span><span class="ss">:equal</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-18-iterative_6_0.svg" src="../_images/2021-10-18-iterative_6_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="aside-derivative-of-a-dot-product">
+<h1>Aside: Derivative of a dot product<a class="headerlink" href="#aside-derivative-of-a-dot-product" title="Permalink to this headline">¶</a></h1>
+<p>Let <span class="math notranslate nohighlight">\(f(\boldsymbol x) = \boldsymbol y^T \boldsymbol x = \sum_i y_i x_i\)</span> and compute the derivative</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial f}{\partial \boldsymbol x} = \begin{bmatrix} y_0 &amp; y_1 &amp; \dotsb \end{bmatrix} = \boldsymbol y^T . \]</div>
+<p>Note that <span class="math notranslate nohighlight">\(\boldsymbol y^T \boldsymbol x = \boldsymbol x^T \boldsymbol y\)</span> and we have the product rule,</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial \lVert \boldsymbol x \rVert^2}{\partial \boldsymbol x} = \frac{\partial \boldsymbol x^T \boldsymbol x}{\partial \boldsymbol x} = 2 \boldsymbol x^T . \]</div>
+<p>Also,
+$<span class="math notranslate nohighlight">\( \frac{\partial \lVert \boldsymbol x - \boldsymbol y \rVert^2}{\partial \boldsymbol x} = \frac{\partial (\boldsymbol x - \boldsymbol y)^T (\boldsymbol x - \boldsymbol y)}{\partial \boldsymbol x} = 2 (\boldsymbol x - \boldsymbol y)^T .\)</span>$</p>
+</div>
+<div class="section" id="aside-variational-notation">
+<h1>Aside: Variational notation<a class="headerlink" href="#aside-variational-notation" title="Permalink to this headline">¶</a></h1>
+<p>It’s convenient to express derivatives in terms of how they act on an infinitessimal perturbation. So we might write</p>
+<div class="math notranslate nohighlight">
+\[ \delta f = \frac{\partial f}{\partial x} \delta x .\]</div>
+<p>(It’s common to use <span class="math notranslate nohighlight">\(\delta x\)</span> or <span class="math notranslate nohighlight">\(dx\)</span> for these infinitesimals.) This makes inner products look like a normal product rule</p>
+<div class="math notranslate nohighlight">
+\[ \delta(\mathbf x^T \mathbf y) = (\delta \mathbf x)^T \mathbf y + \mathbf x^T (\delta \mathbf y). \]</div>
+<p>A powerful example of variational notation is differentiating a matrix inverse</p>
+<div class="math notranslate nohighlight">
+\[ 0 = \delta I = \delta(A^{-1} A) = (\delta A^{-1}) A + A^{-1} (\delta A) \]</div>
+<p>and thus
+$<span class="math notranslate nohighlight">\( \delta A^{-1} = - A^{-1} (\delta A) A^{-1} \)</span>$</p>
+</div>
+<div class="section" id="try-gradient-descent">
+<h1>Try gradient descent<a class="headerlink" href="#try-gradient-descent" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ u_{k+1} = u_k - \omega \nabla_u f \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">grad_descent</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">grad</span><span class="p">,</span> <span class="n">u0</span><span class="p">;</span> <span class="n">omega</span><span class="o">=</span><span class="mf">1e-3</span><span class="p">,</span> <span class="n">tol</span><span class="o">=</span><span class="mf">1e-5</span><span class="p">)</span>
+    <span class="s">&quot;&quot;&quot;Minimize loss(c) via gradient descent with initial guess u0</span>
+<span class="s">    using learning rate gamma.  Declares convergence when gradient</span>
+<span class="s">    is less than tol or after 500 steps.</span>
+<span class="s">    &quot;&quot;&quot;</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">u0</span><span class="p">)</span>
+    <span class="n">uhist</span> <span class="o">=</span> <span class="p">[</span><span class="n">copy</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span>
+    <span class="n">lhist</span> <span class="o">=</span> <span class="p">[</span><span class="n">loss</span><span class="p">(</span><span class="n">u</span><span class="p">)]</span>
+    <span class="k">for</span> <span class="n">it</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="mi">500</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span>
+        <span class="n">u</span> <span class="o">-=</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">g</span>
+        <span class="n">push!</span><span class="p">(</span><span class="n">uhist</span><span class="p">,</span> <span class="n">copy</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+        <span class="n">push!</span><span class="p">(</span><span class="n">lhist</span><span class="p">,</span> <span class="n">loss</span><span class="p">(</span><span class="n">u</span><span class="p">))</span>
+        <span class="k">if</span> <span class="n">norm</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="o">&lt;</span> <span class="n">tol</span>
+            <span class="k">break</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">hcat</span><span class="p">(</span><span class="n">uhist</span><span class="o">...</span><span class="p">),</span> <span class="n">lhist</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>grad_descent (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="visualize-gradient-descent">
+<h1>Visualize gradient descent<a class="headerlink" href="#visualize-gradient-descent" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span> <span class="mi">1</span><span class="p">;</span> <span class="mi">1</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">loss</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="mf">.5</span> <span class="o">*</span> <span class="n">u</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">u</span>
+<span class="n">grad</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="n">A</span> <span class="o">*</span> <span class="n">u</span>
+<span class="n">u</span><span class="p">,</span> <span class="n">uhist</span><span class="p">,</span> <span class="n">lhist</span> <span class="o">=</span> <span class="n">grad_descent</span><span class="p">(</span><span class="n">loss</span><span class="p">,</span> <span class="n">grad</span><span class="p">,</span> <span class="p">[</span><span class="mf">.9</span><span class="p">,</span> <span class="mf">.9</span><span class="p">],</span>
+    <span class="n">omega</span><span class="o">=</span><span class="mf">.48</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">lhist</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-18-iterative_12_0.svg" src="../_images/2021-10-18-iterative_12_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">uhist</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="o">:</span><span class="p">],</span> <span class="n">uhist</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="o">:</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:circle</span><span class="p">)</span>
+<span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">30</span><span class="p">)</span>
+<span class="n">contour!</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">x</span><span class="p">,</span> <span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">loss</span><span class="p">([</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-18-iterative_13_0.svg" src="../_images/2021-10-18-iterative_13_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="richardson-iteration">
+<h1>Richardson iteration<a class="headerlink" href="#richardson-iteration" title="Permalink to this headline">¶</a></h1>
+<p>The simplest iterative method is <a class="reference external" href="https://en.wikipedia.org/wiki/Modified_Richardson_iteration">Richardson’s method</a>, which solves <span class="math notranslate nohighlight">\(A u = b\)</span> by the iteration
+$<span class="math notranslate nohighlight">\( u_{k+1} = u_k + \omega (b - A u_k) \)</span><span class="math notranslate nohighlight">\(
+where \)</span>\omega &gt; 0<span class="math notranslate nohighlight">\( is a damping parameter and \)</span>u_0$ is an initial guess (possibly the zero vector).</p>
+<ul class="simple">
+<li><p>Algebraically equivalent to gradient descent when <span class="math notranslate nohighlight">\(A\)</span> is SPD</p></li>
+<li><p>Non-symmetric matrices are harder to visualize</p></li>
+</ul>
+</div>
+<div class="section" id="richardson-convergence">
+<h1>Richardson convergence<a class="headerlink" href="#richardson-convergence" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ u_{k+1} = u_k + \omega (b - A u_k) \]</div>
+<p>If <span class="math notranslate nohighlight">\(b = A u_*\)</span>, this iteration is equivalent to</p>
+<div class="amsmath math notranslate nohighlight" id="equation-bbce87da-38b7-490a-8043-ee5546cf9cf8">
+<span class="eqno">(31)<a class="headerlink" href="#equation-bbce87da-38b7-490a-8043-ee5546cf9cf8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+u_{k+1} - u_* &amp;= (u_k - u_*) - \omega A (u_k - u_*) \\
+&amp;= (I - \omega A) (u_k - u_*) .
+\end{align}\]</div>
+<p>It is convenient for convergence analysis to identify the “error” <span class="math notranslate nohighlight">\(e_k = u_k - u_*\)</span>, in which this becomes
+$<span class="math notranslate nohighlight">\( e_{k+1} = (I - \omega A) e_k \)</span><span class="math notranslate nohighlight">\(
+or
+\)</span><span class="math notranslate nohighlight">\( e_k = (I - \omega A)^k e_0 \)</span><span class="math notranslate nohighlight">\(
+in terms of the initial error.  Evidently powers of the *iteration matrix* \)</span>I - \omega A$ tell the whole story.</p>
+<p>Suppose that the eigendecomposition
+$<span class="math notranslate nohighlight">\( X \Lambda X^{-1} = I - \omega A \)</span><span class="math notranslate nohighlight">\(
+exists.  Then
+\)</span><span class="math notranslate nohighlight">\( (I - \omega A)^k = (X \Lambda X^{-1})^k = X \Lambda^k X^{-1} \)</span>$
+and the convergence (or divergence) rate depends only on the largest magnitude eigenvalue.
+This analysis isn’t great for two reasons:</p>
+<ol class="simple">
+<li><p>Not all matrices are diagonalizable.</p></li>
+<li><p>The matrix <span class="math notranslate nohighlight">\(X\)</span> may be very ill-conditioned.</p></li>
+</ol>
+</div>
+<div class="section" id="aside-schur-decomposition">
+<h1>Aside: Schur decomposition<a class="headerlink" href="#aside-schur-decomposition" title="Permalink to this headline">¶</a></h1>
+<p>We can repair these weaknesses by using the <a class="reference external" href="https://en.wikipedia.org/wiki/Schur_decomposition">Schur decomposition</a>
+$<span class="math notranslate nohighlight">\( Q R Q^h = I - \omega A \)</span><span class="math notranslate nohighlight">\(
+where \)</span>R<span class="math notranslate nohighlight">\( is right-triangular and \)</span>Q<span class="math notranslate nohighlight">\( is unitary (i.e., orthogonal if real-valued; \)</span>Q^h<span class="math notranslate nohighlight">\( is the Hermitian conjugate of \)</span>Q<span class="math notranslate nohighlight">\().
+The Schur decomposition always exists and \)</span>Q$ has a condition number of 1.</p>
+<ul class="simple">
+<li><p>Where are the eigenvalues in <span class="math notranslate nohighlight">\(R\)</span>?</p></li>
+</ul>
+<p>Evidently we must find <span class="math notranslate nohighlight">\(\omega\)</span> to minimize the maximum eigenvalue of <span class="math notranslate nohighlight">\(I - \omega A\)</span>.  We can do this if <span class="math notranslate nohighlight">\(A\)</span> is well conditioned, but not in general.</p>
+</div>
+<div class="section" id="ill-conditioning">
+<h1>Ill-conditioning<a class="headerlink" href="#ill-conditioning" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="question-what-is-the-condition-number-of-the-laplacian-on-100-evenly-spaced-points">
+<h2>Question: What is the condition number of the Laplacian on 100 evenly spaced points?<a class="headerlink" href="#question-what-is-the-condition-number-of-the-laplacian-on-100-evenly-spaced-points" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>How does it scale under grid refinement?</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">advdiff_matrix</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">cond</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>48.37415007870825
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">omega</span> <span class="o">=</span> <span class="mf">.01</span>
+<span class="n">ev</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">A</span><span class="p">))</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">real</span><span class="o">.</span><span class="p">(</span><span class="n">ev</span><span class="p">),</span> <span class="n">imag</span><span class="o">.</span><span class="p">(</span><span class="n">ev</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-18-iterative_21_0.svg" src="../_images/2021-10-18-iterative_21_0.svg" /></div>
+</div>
+</div>
+</div>
+<div class="section" id="monic-polynomials-small-on-the-spectrum">
+<h1>Monic polynomials small on the spectrum<a class="headerlink" href="#monic-polynomials-small-on-the-spectrum" title="Permalink to this headline">¶</a></h1>
+<p>Equivalently to finding <span class="math notranslate nohighlight">\(\omega\)</span> such that <span class="math notranslate nohighlight">\(\lVert I - \omega A \rVert\)</span> is minimized, we may seek a monic polynomial <span class="math notranslate nohighlight">\(p(z) = 1 - \omega z\)</span> that minimizes</p>
+<div class="math notranslate nohighlight">
+\[ \max_{\lambda \in \sigma(A)} \lvert p(\lambda) \rvert . \]</div>
+<p>This concept can be extended to higher degree polynomials, which is essentially what Krylov methods do (discovering the polynomial adaptively, weighted by the right hand side).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ev</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">A</span><span class="p">))</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">real</span><span class="o">.</span><span class="p">(</span><span class="n">ev</span><span class="p">),</span> <span class="n">zero</span><span class="o">.</span><span class="p">(</span><span class="n">ev</span><span class="p">))</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">-</span> <span class="n">omega</span> <span class="o">*</span> <span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-18-iterative_24_0.svg" src="../_images/2021-10-18-iterative_24_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="preconditioning">
+<h1>Preconditioning<a class="headerlink" href="#preconditioning" title="Permalink to this headline">¶</a></h1>
+<p>Preconditioning is the act of creating an “affordable” operation “<span class="math notranslate nohighlight">\(P^{-1}\)</span>” such that <span class="math notranslate nohighlight">\(P^{-1} A\)</span> (or <span class="math notranslate nohighlight">\(A P^{-1}\)</span>) is is well-conditoned or otherwise has a “nice” spectrum.  We then solve the system</p>
+<div class="math notranslate nohighlight">
+\[ P^{-1} A x = P^{-1} b \quad \text{or}\quad A P^{-1} \underbrace{(P x)}_y = b \]</div>
+<p>in which case the convergence rate depends on the spectrum of the iteration matrix
+$<span class="math notranslate nohighlight">\( I - \omega P^{-1} A . \)</span>$</p>
+<ul class="simple">
+<li><p>The preconditioner must be applied on each iteration.</p></li>
+<li><p>It is <em>not</em> merely about finding a good initial guess.</p></li>
+</ul>
+<p>There are two complementary techniques necessary for efficient iterative methods:</p>
+<ul class="simple">
+<li><p>“accelerators” or Krylov methods, which use orthogonality to adaptively converge faster than Richardson</p></li>
+<li><p>preconditioners that improve the spectrum of the preconditioned operator</p></li>
+</ul>
+<p>Although there is ongoing research in Krylov methods and they are immensely useful, I would say preconditioning is 90% of the game for practical applications, particularly as a research area.</p>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cu-numpde/fall21",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./slides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="2021-10-15-sparse-linalg.html" title="previous page">2021-10-15 Sparse Linear Algebra</a>
+    <a class='right-next' id="next-link" href="2021-10-20-krylev.html" title="next page">2021-10-20 Krylov methods</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jed Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
