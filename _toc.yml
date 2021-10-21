@@ -27,3 +27,5 @@ chapters:
   - file: slides/2021-10-08-fd-2d.ipynb
   - file: slides/2021-10-13-wave-equation.ipynb
   - file: slides/2021-10-15-sparse-linalg.ipynb
+  - file: slides/2021-10-18-iterative.ipynb
+  - file: slides/2021-10-20-krylev.ipynb
