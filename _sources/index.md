@@ -25,6 +25,10 @@ Welcome to **CSCI-5636: Numerical Solution of Partial Differential Equations**
   - Implement symmetric Dirichlet and Neumann boundary conditions with at least second order. Show results to demonstrate order of accuracy, constants on coarse grids, and impact of unevenly spaced grids. Discuss the code complexity for handling boundary conditions compared to the complexity interior to the domain.
 * - [2021-09-22-multiscale](https://classroom.github.com/a/ofGhdd06)
   - Investigate diffusion problems in which the coefficient structure varies rapidly, typically on a scale finer than the forcing or observation scales.
+* - [2021-10-08-plaplace2d](https://classroom.github.com/a/V8nbGCnh)
+  - Make discretization choices for staggered grids, Newton methods, and boundary conditions in 2D. Explain methods and verification with words and figures.
+* - [2021-community](https://classroom.github.com/a/viyRxqtk)
+  - This has three parts: community presentation, contribution, and retrospective presentation about the contribution experience. The goal is to build a deeper understanding of how open source communities function, what metrics and implicit criteria are valued, and the design decisions and norms that went into making libraries and applications successful. In the first stage, you'll survey the community, and in the second, you'll gain experience making a specific contribution of your choosing.
 :::
 ::::
 

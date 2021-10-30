@@ -1,0 +1,1029 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-10-27 Multigrid &#8212; Numerical Solution of Partial Differential Equations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2021-10-25 Domain Decomposition" href="2021-10-25-domain-decomposition.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Solution of Partial Differential Equations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../slides.html">
+   Slides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-23-first-day.html">
+     2021-08-23 First Day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-25-finite-difference.html">
+     2021-08-25 Finite Difference Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-27-finite-difference-2.html">
+     2021-08-27 Finite Difference 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-30-high-order.html">
+     2021-08-30 High order and boundaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-01-convergence-and-boundaries.html">
+     2021-09-01 Boundaries and Fourier methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-03-fourier.html">
+     2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/slides/2021-10-27-multigrid.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cu-numpde/fall21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cu-numpde/fall21/issues/new?title=Issue%20on%20page%20%2Fslides/2021-10-27-multigrid.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cu-numpde/fall21/main?urlpath=tree/slides/2021-10-27-multigrid.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2021-10-27 Multigrid
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#last-time">
+     Last time
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#today">
+     Today
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#geometric-multigrid-and-the-spectrum">
+   Geometric multigrid and the spectrum
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#what-do-the-eigenvectors-look-like">
+   What do the eigenvectors look like?
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#condition-number-grows-with-grid-refinement">
+   Condition number grows with grid refinement
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#fourier-analysis-perspective">
+   Fourier analysis perspective
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#analytically-computing-smallest-eigenvalue">
+   Analytically computing smallest eigenvalue
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#damping-properties-of-richardson-jacobi-relaxation">
+   Damping properties of Richardson/Jacobi relaxation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#symbol-of-damping">
+   Symbol of damping
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coarse-grids-make-low-frequencies-high-again">
+   Coarse grids: Make low frequencies high (again)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#galerkin-approximation-of-a-in-coarse-space">
+   Galerkin approximation of
+   <span class="math notranslate nohighlight">
+    \(A\)
+   </span>
+   in coarse space
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coarse-grid-correction">
+   Coarse grid correction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-two-grid-method">
+   A two-grid method
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#multigrid-as-factorization">
+   Multigrid as factorization
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#permute-into-c-f-split">
+   Permute into C-F split
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#coarse-basis-functions">
+   Coarse basis functions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#from-factorization-to-algebraic-multigrid">
+   From factorization to algebraic multigrid
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#aggregation">
+   Aggregation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#smoothed-aggregation">
+   Smoothed aggregation
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="multigrid">
+<h1>2021-10-27 Multigrid<a class="headerlink" href="#multigrid" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="last-time">
+<h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Domain decomposition as a framework</p></li>
+<li><p>Asymptotics for one-level methods</p>
+<ul>
+<li><p>constants, exact and inexact subdomain solves</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Multigrid as a domain decomposition method</p></li>
+<li><p>Smoothers and coarse correction as complementary</p></li>
+<li><p>Local Fourier Analysis</p></li>
+<li><p>Principles of smoothed aggregation</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Plots</span>
+<span class="k">using</span> <span class="n">LinearAlgebra</span>
+<span class="k">using</span> <span class="n">SparseArrays</span>
+
+<span class="n">default</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">function</span> <span class="n">advdiff_matrix</span><span class="p">(</span><span class="n">n</span><span class="p">;</span> <span class="n">kappa</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">wind</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">])</span>
+    <span class="s">&quot;Advection-diffusion with Dirichlet boundary conditions eliminated&quot;</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">rows</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Int64</span><span class="p">}()</span>
+    <span class="n">cols</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Int64</span><span class="p">}()</span>
+    <span class="n">vals</span> <span class="o">=</span> <span class="kt">Vector</span><span class="p">{</span><span class="kt">Float64</span><span class="p">}()</span>
+    <span class="n">idx</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),)</span> <span class="o">=</span> <span class="p">(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="n">j</span>
+    <span class="n">in_domain</span><span class="p">((</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),)</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">i</span> <span class="o">&lt;=</span> <span class="n">n</span> <span class="o">&amp;&amp;</span> <span class="mi">1</span> <span class="o">&lt;=</span> <span class="n">j</span> <span class="o">&lt;=</span> <span class="n">n</span>
+    <span class="n">stencil_advect</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">wind</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="o">-</span><span class="n">wind</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="mi">0</span><span class="p">,</span> <span class="n">wind</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">wind</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="n">stencil_diffuse</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">kappa</span> <span class="o">/</span> <span class="n">h</span><span class="o">^</span><span class="mi">2</span>
+    <span class="n">stencil</span> <span class="o">=</span> <span class="n">stencil_advect</span> <span class="o">+</span> <span class="n">stencil_diffuse</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span>
+        <span class="k">for</span> <span class="n">j</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">n</span>
+            <span class="n">neighbors</span> <span class="o">=</span> <span class="p">[(</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">j</span><span class="p">),</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="o">+</span><span class="mi">1</span><span class="p">)]</span>
+            <span class="n">mask</span> <span class="o">=</span> <span class="n">in_domain</span><span class="o">.</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)</span>
+            <span class="n">append!</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="p">(</span><span class="n">repeat</span><span class="p">([(</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">)],</span> <span class="mi">5</span><span class="p">))[</span><span class="n">mask</span><span class="p">])</span>
+            <span class="n">append!</span><span class="p">(</span><span class="n">cols</span><span class="p">,</span> <span class="n">idx</span><span class="o">.</span><span class="p">(</span><span class="n">neighbors</span><span class="p">)[</span><span class="n">mask</span><span class="p">])</span>
+            <span class="n">append!</span><span class="p">(</span><span class="n">vals</span><span class="p">,</span> <span class="n">stencil</span><span class="p">[</span><span class="n">mask</span><span class="p">])</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">sparse</span><span class="p">(</span><span class="n">rows</span><span class="p">,</span> <span class="n">cols</span><span class="p">,</span> <span class="n">vals</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">my_spy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+    <span class="n">cmax</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">vec</span><span class="p">(</span><span class="n">A</span><span class="p">),</span> <span class="nb">Inf</span><span class="p">)</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">ceil</span><span class="p">(</span><span class="mi">120</span> <span class="o">/</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="mi">1</span><span class="p">)))</span>
+    <span class="n">spy</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="p">(</span><span class="ss">:square</span><span class="p">,</span> <span class="n">s</span><span class="p">),</span> <span class="n">c</span><span class="o">=</span><span class="ss">:diverging_rainbow_bgymr_45_85_c67_n256</span><span class="p">,</span> <span class="n">clims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="n">cmax</span><span class="p">,</span> <span class="n">cmax</span><span class="p">))</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>my_spy (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="geometric-multigrid-and-the-spectrum">
+<h1>Geometric multigrid and the spectrum<a class="headerlink" href="#geometric-multigrid-and-the-spectrum" title="Permalink to this headline">¶</a></h1>
+<p>Multigrid uses a hierarchy of scales to produce an operation “<span class="math notranslate nohighlight">\(M^{-1}\)</span>” that can be applied in <span class="math notranslate nohighlight">\(O(n)\)</span> (“linear”) time and such that <span class="math notranslate nohighlight">\(\lVert I - M^{-1} A \rVert \le \rho &lt; 1\)</span> independent of the problem size.
+We’ll consider the one dimensional Laplacian using the stencil
+$<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{h^2} \begin{bmatrix} -1 &amp; 2 &amp; -1 \end{bmatrix} \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">laplace1d</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="s">&quot;1D Laplacion with Dirichlet boundary conditions eliminated&quot;</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">)[</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">diagm</span><span class="p">(</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">),</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">.5</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="o">+</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="mf">.5</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">Hermitian</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>laplace1d (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="n">laplace1d</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">eigen</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="c">#@show L[1:2]</span>
+<span class="c">#@show L[end-2:end]</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">L</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;cond = </span><span class="si">$</span><span class="p">(</span><span class="n">L</span><span class="p">[</span><span class="k">end</span><span class="p">]</span><span class="o">/</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_4_0.svg" src="../_images/2021-10-27-multigrid_4_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="what-do-the-eigenvectors-look-like">
+<h1>What do the eigenvectors look like?<a class="headerlink" href="#what-do-the-eigenvectors-look-like" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="n">laplace1d</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">L</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">eigen</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="mi">3</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="mi">3</span><span class="p">]</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomleft</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_6_0.svg" src="../_images/2021-10-27-multigrid_6_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">X</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="k">end</span><span class="o">-</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">],</span> <span class="n">label</span><span class="o">=</span><span class="n">L</span><span class="p">[</span><span class="k">end</span><span class="o">-</span><span class="mi">2</span><span class="o">:</span><span class="k">end</span><span class="p">]</span><span class="o">&#39;</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomleft</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_7_0.svg" src="../_images/2021-10-27-multigrid_7_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="condition-number-grows-with-grid-refinement">
+<h1>Condition number grows with grid refinement<a class="headerlink" href="#condition-number-grows-with-grid-refinement" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ns</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">.^</span> <span class="p">(</span><span class="mi">2</span><span class="o">:</span><span class="mi">8</span><span class="p">)</span>
+<span class="n">eigs</span> <span class="o">=</span> <span class="n">vcat</span><span class="p">([</span><span class="n">eigvals</span><span class="p">(</span><span class="n">laplace1d</span><span class="p">(</span><span class="n">n</span><span class="p">)[</span><span class="mi">2</span><span class="p">])[[</span><span class="mi">1</span><span class="p">,</span> <span class="k">end</span><span class="p">]]</span> <span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="n">ns</span><span class="p">]</span><span class="o">&#39;...</span><span class="p">)</span>
+
+<span class="n">scatter</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">eigs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;min eig(A)&quot;</span> <span class="s">&quot;max eig(A)&quot;</span><span class="p">])</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">1/n^2</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_9_0.svg" src="../_images/2021-10-27-multigrid_9_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="fourier-analysis-perspective">
+<h1>Fourier analysis perspective<a class="headerlink" href="#fourier-analysis-perspective" title="Permalink to this headline">¶</a></h1>
+<p>Consider the basis <span class="math notranslate nohighlight">\(\phi(x, \theta) = e^{i \theta x}\)</span>.  If we choose the grid <span class="math notranslate nohighlight">\(x \in h \mathbb Z\)</span> with grid size <span class="math notranslate nohighlight">\(h\)</span> then we can resolve frequencies <span class="math notranslate nohighlight">\(\lvert \theta \rvert \le \pi/h\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">symbol</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">length</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">!=</span> <span class="mi">1</span>
+        <span class="n">error</span><span class="p">(</span><span class="s">&quot;Length of stencil must be odd&quot;</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">S</span><span class="p">)</span> <span class="o">÷</span> <span class="mi">2</span>
+    <span class="n">phi</span> <span class="o">=</span> <span class="n">exp</span><span class="o">.</span><span class="p">(</span><span class="mi">1</span><span class="nb">im</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="n">w</span><span class="o">:</span><span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="n">theta</span><span class="o">&#39;</span><span class="p">)</span>
+    <span class="n">vec</span><span class="p">(</span><span class="n">S</span> <span class="o">*</span> <span class="n">phi</span><span class="p">)</span> <span class="c"># not! (S * phi)&#39;</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">plot_symbol</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">deriv</span><span class="o">=</span><span class="mi">2</span><span class="p">;</span> <span class="n">plot_ref</span><span class="o">=</span><span class="nb">true</span><span class="p">,</span> <span class="n">n_theta</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">theta</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="nb">pi</span><span class="p">,</span> <span class="nb">pi</span><span class="p">,</span> <span class="n">n_theta</span><span class="p">)</span>
+    <span class="n">sym</span> <span class="o">=</span> <span class="n">symbol</span><span class="p">(</span><span class="n">S</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span>
+    <span class="n">rsym</span> <span class="o">=</span> <span class="n">real</span><span class="o">.</span><span class="p">((</span><span class="o">-</span><span class="mi">1</span><span class="nb">im</span><span class="p">)</span><span class="o">^</span><span class="n">deriv</span> <span class="o">*</span> <span class="n">sym</span><span class="p">)</span>
+    <span class="n">fig</span> <span class="o">=</span> <span class="n">plot</span><span class="p">(</span><span class="n">theta</span><span class="p">,</span> <span class="n">rsym</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:circle</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;stencil&quot;</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">plot_ref</span>
+        <span class="n">plot!</span><span class="p">(</span><span class="n">fig</span><span class="p">,</span> <span class="n">th</span> <span class="o">-&gt;</span> <span class="n">th</span><span class="o">^</span><span class="n">deriv</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;exact&quot;</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">fig</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_symbol (generic function with 4 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_symbol</span><span class="p">([</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">1</span><span class="p">])</span>
+<span class="c">#plot!(xlims=(-1, 1))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_12_0.svg" src="../_images/2021-10-27-multigrid_12_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="analytically-computing-smallest-eigenvalue">
+<h1>Analytically computing smallest eigenvalue<a class="headerlink" href="#analytically-computing-smallest-eigenvalue" title="Permalink to this headline">¶</a></h1>
+<p>The longest wavelength for a domain size of 2 with Dirichlet boundary conditions is 4. The frequency is <span class="math notranslate nohighlight">\(\theta = 2\pi/\lambda = \pi/2\)</span>. The <code class="docutils literal notranslate"><span class="pre">symbol</span></code> function works on an integer grid. We can transform via <span class="math notranslate nohighlight">\(\theta \mapsto \theta h\)</span>.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">scatter</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">eigs</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="p">[</span><span class="s">&quot;min eig(A)&quot;</span> <span class="s">&quot;max eig(A)&quot;</span><span class="p">])</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">n</span> <span class="o">-&gt;</span> <span class="mi">1</span><span class="o">/</span><span class="n">n</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s">&quot;</span><span class="se">\$</span><span class="s">1/n^2</span><span class="se">\$</span><span class="s">&quot;</span><span class="p">,</span> <span class="n">xscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
+<span class="n">theta_min</span> <span class="o">=</span> <span class="nb">pi</span> <span class="o">./</span> <span class="p">(</span><span class="n">ns</span> <span class="o">.+</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">symbol_min</span> <span class="o">=</span> <span class="o">-</span><span class="n">real</span><span class="p">(</span><span class="n">symbol</span><span class="p">([</span><span class="mi">1</span> <span class="o">-</span><span class="mi">2</span> <span class="mi">1</span><span class="p">],</span> <span class="n">theta_min</span><span class="p">))</span>
+<span class="n">scatter!</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">symbol_min</span> <span class="o">/</span> <span class="mi">2</span><span class="p">,</span> <span class="n">shape</span><span class="o">=</span><span class="ss">:utriangle</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_14_0.svg" src="../_images/2021-10-27-multigrid_14_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="damping-properties-of-richardson-jacobi-relaxation">
+<h1>Damping properties of Richardson/Jacobi relaxation<a class="headerlink" href="#damping-properties-of-richardson-jacobi-relaxation" title="Permalink to this headline">¶</a></h1>
+<p>Recall that we would like for <span class="math notranslate nohighlight">\(I - w A\)</span> to have a small norm, such that powers (repeat iterations) will cause the error to decay rapidly.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="n">laplace1d</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+<span class="n">ws</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="mf">.3</span><span class="p">,</span> <span class="mf">1.001</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">radius</span> <span class="o">=</span> <span class="p">[</span><span class="n">opnorm</span><span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">A</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="k">in</span> <span class="n">ws</span><span class="p">]</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ws</span><span class="p">,</span> <span class="n">radius</span><span class="p">,</span> <span class="n">xlabel</span><span class="o">=</span><span class="s">&quot;w&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_16_0.svg" src="../_images/2021-10-27-multigrid_16_0.svg" /></div>
+</div>
+<ul class="simple">
+<li><p>The spectrum of <span class="math notranslate nohighlight">\(A\)</span> runs from <span class="math notranslate nohighlight">\(\theta_{\min}^2\)</span> up to 2.  If <span class="math notranslate nohighlight">\(w &gt; 1\)</span>, then <span class="math notranslate nohighlight">\(\lVert I - w A \rVert &gt; 1\)</span> because the operation amplifies the high frequencies (associated with the eigenvalue of 2).</p></li>
+<li><p>The value of <span class="math notranslate nohighlight">\(w\)</span> that minimizes the norm is slightly less than 1, but the convergence rate is very slow (only barely less than 1).</p></li>
+</ul>
+</div>
+<div class="section" id="symbol-of-damping">
+<h1>Symbol of damping<a class="headerlink" href="#symbol-of-damping" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="mf">.7</span>
+<span class="n">plot_symbol</span><span class="p">([</span><span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">]</span> <span class="o">-</span> <span class="n">w</span> <span class="o">*</span> <span class="p">[</span><span class="o">-</span><span class="mf">.5</span> <span class="mi">1</span> <span class="o">-</span><span class="mf">.5</span><span class="p">],</span> <span class="mi">0</span><span class="p">;</span> <span class="n">plot_ref</span><span class="o">=</span><span class="nb">false</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_19_0.svg" src="../_images/2021-10-27-multigrid_19_0.svg" /></div>
+</div>
+<ul class="simple">
+<li><p>Evidently it is very difficult to damp low frequencies.</p></li>
+<li><p>This makes sense because <span class="math notranslate nohighlight">\(A\)</span> and <span class="math notranslate nohighlight">\(I - wA\)</span> move information only one grid point per iteration.</p></li>
+<li><p>It also makes sense because the polynomial needs to be 1 at the origin, and the low frequencies have eigenvalues very close to zero.</p></li>
+</ul>
+</div>
+<div class="section" id="coarse-grids-make-low-frequencies-high-again">
+<h1>Coarse grids: Make low frequencies high (again)<a class="headerlink" href="#coarse-grids-make-low-frequencies-high-again" title="Permalink to this headline">¶</a></h1>
+<p>As in domain decomposition, we will express our “coarse” subspace, consisting of a grid <span class="math notranslate nohighlight">\(x \in 2h\mathbb Z\)</span>, in terms of its interpolation to the fine space.  Here, we’ll use linear interpolation.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">stride</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+    <span class="n">s1</span> <span class="o">=</span> <span class="p">(</span><span class="n">stride</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span> <span class="o">/</span> <span class="n">stride</span>
+    <span class="n">s2</span> <span class="o">=</span> <span class="p">(</span><span class="n">stride</span> <span class="o">-</span> <span class="mi">2</span><span class="p">)</span> <span class="o">/</span> <span class="n">stride</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">diagm</span><span class="p">(</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">),</span>
+        <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="n">s1</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="o">+</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="n">s1</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span>
+        <span class="o">-</span><span class="mi">2</span> <span class="o">=&gt;</span> <span class="n">s2</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="o">+</span><span class="mi">2</span> <span class="o">=&gt;</span> <span class="n">s2</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">P</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="n">stride</span><span class="o">:</span><span class="n">end</span><span class="p">]</span>
+<span class="k">end</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">50</span><span class="p">;</span> <span class="n">x</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="n">laplace1d</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="mi">2</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">4</span><span class="o">:</span><span class="mi">6</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_22_0.svg" src="../_images/2021-10-27-multigrid_22_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">L</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">eigen</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">u_h</span> <span class="o">=</span> <span class="n">X</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">48</span><span class="p">]</span>
+<span class="n">u_2h</span> <span class="o">=</span> <span class="mf">.5</span> <span class="o">*</span> <span class="n">P</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">u_h</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="p">[</span><span class="n">u_h</span><span class="p">,</span> <span class="n">P</span> <span class="o">*</span> <span class="n">u_2h</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_23_0.svg" src="../_images/2021-10-27-multigrid_23_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="galerkin-approximation-of-a-in-coarse-space">
+<h1>Galerkin approximation of <span class="math notranslate nohighlight">\(A\)</span> in coarse space<a class="headerlink" href="#galerkin-approximation-of-a-in-coarse-space" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ A_{2h} u_{2h} = P^T A_h P u_{2h} \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="n">laplace1d</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">interpolate</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+<span class="nd">@show</span> <span class="n">size</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+<span class="n">A_2h</span> <span class="o">=</span> <span class="n">P</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">P</span>
+<span class="nd">@show</span> <span class="n">size</span><span class="p">(</span><span class="n">A_2h</span><span class="p">)</span>
+<span class="n">L_2h</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">A_2h</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">L_2h</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;cond </span><span class="si">$</span><span class="p">(</span><span class="n">L_2h</span><span class="p">[</span><span class="k">end</span><span class="p">]</span><span class="o">/</span><span class="n">L_2h</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>size(A) = (50, 50)
+size(A_2h) = (25, 25)
+</pre></div>
+</div>
+<img alt="../_images/2021-10-27-multigrid_25_1.svg" src="../_images/2021-10-27-multigrid_25_1.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">my_spy</span><span class="p">(</span><span class="n">A_2h</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_26_0.svg" src="../_images/2021-10-27-multigrid_26_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="coarse-grid-correction">
+<h1>Coarse grid correction<a class="headerlink" href="#coarse-grid-correction" title="Permalink to this headline">¶</a></h1>
+<p>Consider the <span class="math notranslate nohighlight">\(A\)</span>-orthogonal projection onto the range of <span class="math notranslate nohighlight">\(P\)</span>,
+$<span class="math notranslate nohighlight">\( S_c = P A_{2h}^{-1} P^T A \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Sc</span> <span class="o">=</span> <span class="n">P</span> <span class="o">*</span> <span class="p">(</span><span class="n">A_2h</span> <span class="o">\</span> <span class="n">P</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span>
+<span class="n">Ls</span><span class="p">,</span> <span class="n">Xs</span> <span class="o">=</span> <span class="n">eigen</span><span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">Sc</span><span class="p">)</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">real</span><span class="o">.</span><span class="p">(</span><span class="n">Ls</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_28_0.svg" src="../_images/2021-10-27-multigrid_28_0.svg" /></div>
+</div>
+<ul class="simple">
+<li><p>This spectrum is typical for a projector. If <span class="math notranslate nohighlight">\(u\)</span> is in the range of <span class="math notranslate nohighlight">\(P\)</span>, then <span class="math notranslate nohighlight">\(S_c u = u\)</span>. Why?</p></li>
+<li><p>For all vectors <span class="math notranslate nohighlight">\(v\)</span> that are <span class="math notranslate nohighlight">\(A\)</span>-orthogonal to the range of <span class="math notranslate nohighlight">\(P\)</span>, we know that <span class="math notranslate nohighlight">\(S_c v = 0\)</span>. Why?</p></li>
+</ul>
+</div>
+<div class="section" id="a-two-grid-method">
+<h1>A two-grid method<a class="headerlink" href="#a-two-grid-method" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">w</span> <span class="o">=</span> <span class="mf">.67</span>
+<span class="n">T</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">A</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">Sc</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">A</span><span class="p">)</span>
+<span class="n">Lt</span> <span class="o">=</span> <span class="n">eigvals</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">Lt</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_31_0.svg" src="../_images/2021-10-27-multigrid_31_0.svg" /><div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>┌ Warning: No strict ticks found
+└ @ PlotUtils /home/jed/.julia/packages/PlotUtils/VgXdq/src/ticks.jl:294
+┌ Warning: No strict ticks found
+└ @ PlotUtils /home/jed/.julia/packages/PlotUtils/VgXdq/src/ticks.jl:294
+</pre></div>
+</div>
+</div>
+</div>
+<ul class="simple">
+<li><p>Can analyze these methods in terms of frequency.</p></li>
+<li><p><a class="reference external" href="https://jeremylt.github.io/LFAToolkit.jl/stable/examples/diffusion/#Diffusion-operator">LFAToolkit</a></p></li>
+</ul>
+</div>
+<div class="section" id="multigrid-as-factorization">
+<h1>Multigrid as factorization<a class="headerlink" href="#multigrid-as-factorization" title="Permalink to this headline">¶</a></h1>
+<p>We can interpret factorization as a particular multigrid or domain decomposition method.</p>
+<p>We can partition an SPD matrix as
+$<span class="math notranslate nohighlight">\(A = \begin{bmatrix} F &amp; B^T \\ B &amp; D \end{bmatrix}\)</span><span class="math notranslate nohighlight">\(
+and define the preconditioner by the factorization
+\)</span><span class="math notranslate nohighlight">\(      M = \begin{bmatrix} I &amp; \\ B F^{-1} &amp; I \end{bmatrix}
+      \begin{bmatrix} F &amp;  \\ &amp; S \end{bmatrix}
+      \begin{bmatrix} I &amp; F^{-1}B^T \\  &amp; I \end{bmatrix}
+\)</span><span class="math notranslate nohighlight">\(
+where \)</span>S = D - B F^{-1} B^T<span class="math notranslate nohighlight">\(.  \)</span>M<span class="math notranslate nohighlight">\( has an inverse
+\)</span><span class="math notranslate nohighlight">\(
+      \begin{bmatrix} I &amp; -F^{-1}B^T \\  &amp; I \end{bmatrix}
+      \begin{bmatrix} F^{-1} &amp;  \\ &amp; S^{-1} \end{bmatrix}
+      \begin{bmatrix} I &amp; \\ -B F^{-1} &amp; I \end{bmatrix} .
+\)</span>$</p>
+<p>Define the interpolation
+$<span class="math notranslate nohighlight">\( P_f = \begin{bmatrix} I \\ 0 \end{bmatrix}, \quad P_c = \begin{bmatrix} -F^{-1} B^T \\ I \end{bmatrix} \)</span><span class="math notranslate nohighlight">\( and rewrite as
+\)</span><span class="math notranslate nohighlight">\( M^{-1} = [P_f\  P_c] \begin{bmatrix} F^{-1} P_f^T \\ S^{-1} P_c^T \end{bmatrix} = P_f F^{-1} P_f^T + P_c S^{-1} P_c^T.\)</span><span class="math notranslate nohighlight">\(
+The iteration matrix is thus
+\)</span><span class="math notranslate nohighlight">\( I - M^{-1} A = I - P_f F^{-1} P_f^T J - P_c S^{-1} P_c^T A .\)</span>$</p>
+</div>
+<div class="section" id="permute-into-c-f-split">
+<h1>Permute into C-F split<a class="headerlink" href="#permute-into-c-f-split" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">m</span> <span class="o">=</span> <span class="mi">100</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">A</span> <span class="o">=</span> <span class="n">laplace1d</span><span class="p">(</span><span class="n">m</span><span class="p">)</span>
+<span class="n">my_spy</span><span class="p">(</span><span class="n">A</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_37_0.svg" src="../_images/2021-10-27-multigrid_37_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">idx</span> <span class="o">=</span> <span class="n">vcat</span><span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="n">m</span><span class="p">,</span> <span class="mi">2</span><span class="o">:</span><span class="mi">2</span><span class="o">:</span><span class="n">m</span><span class="p">)</span>
+<span class="n">J</span> <span class="o">=</span> <span class="n">A</span><span class="p">[</span><span class="n">idx</span><span class="p">,</span> <span class="n">idx</span><span class="p">]</span>
+<span class="n">my_spy</span><span class="p">(</span><span class="n">J</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_38_0.svg" src="../_images/2021-10-27-multigrid_38_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="coarse-basis-functions">
+<h1>Coarse basis functions<a class="headerlink" href="#coarse-basis-functions" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">F</span> <span class="o">=</span> <span class="n">J</span><span class="p">[</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">÷</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">÷</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">B</span> <span class="o">=</span> <span class="n">J</span><span class="p">[</span><span class="k">end</span><span class="o">÷</span><span class="mi">2</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="k">end</span><span class="o">÷</span><span class="mi">2</span><span class="p">]</span>
+<span class="n">P</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="n">F</span><span class="o">\</span><span class="n">B</span><span class="o">&#39;</span><span class="p">;</span> <span class="n">I</span><span class="p">]</span>
+<span class="n">my_spy</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_40_0.svg" src="../_images/2021-10-27-multigrid_40_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">idxinv</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="kt">Int64</span><span class="p">,</span> <span class="n">m</span><span class="p">)</span>
+<span class="n">idxinv</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span><span class="o">:</span><span class="n">m</span>
+<span class="n">Pp</span> <span class="o">=</span> <span class="n">P</span><span class="p">[</span><span class="n">idxinv</span><span class="p">,</span> <span class="o">:</span><span class="p">]</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">Pp</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">5</span><span class="o">:</span><span class="mi">7</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_41_0.svg" src="../_images/2021-10-27-multigrid_41_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="from-factorization-to-algebraic-multigrid">
+<h1>From factorization to algebraic multigrid<a class="headerlink" href="#from-factorization-to-algebraic-multigrid" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Factorization as a multigrid (or domain decomposition) method incurs significant cost in multiple dimensions due to lack of sparsity.</p>
+<ul>
+<li><p>We can’t choose enough coarse basis functions so that <span class="math notranslate nohighlight">\(F\)</span> is diagonal, thereby making the minimal energy extension <span class="math notranslate nohighlight">\(-F^{-1} B^T\)</span> sparse.</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Algebraic multigrid</p>
+<ul>
+<li><p>Use matrix structure to aggregate or define C-points</p></li>
+<li><p>Create an interpolation rule that balances sparsity with minimal energy</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="aggregation">
+<h1>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this headline">¶</a></h1>
+<p>Form aggregates from “strongly connected” dofs.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">agg</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="p">(</span><span class="mi">0</span><span class="o">:</span><span class="n">m</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span> <span class="o">.÷</span> <span class="mi">3</span>
+<span class="n">mc</span> <span class="o">=</span> <span class="n">maximum</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+<span class="n">T</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">mc</span><span class="p">)</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">)</span> <span class="k">in</span> <span class="n">enumerate</span><span class="p">(</span><span class="n">agg</span><span class="p">)</span>
+    <span class="n">T</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">end</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">T</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">3</span><span class="o">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mf">.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_46_0.svg" src="../_images/2021-10-27-multigrid_46_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Sc</span> <span class="o">=</span> <span class="n">T</span> <span class="o">*</span> <span class="p">((</span><span class="n">T</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">T</span><span class="p">)</span> <span class="o">\</span> <span class="n">T</span><span class="o">&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mf">.67</span><span class="p">;</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">E</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">A</span><span class="p">)</span><span class="o">^</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">Sc</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">A</span><span class="p">)</span><span class="o">^</span><span class="n">k</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">eigvals</span><span class="p">(</span><span class="n">E</span><span class="p">),</span> <span class="n">ylims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_47_0.svg" src="../_images/2021-10-27-multigrid_47_0.svg" /></div>
+</div>
+<ul class="simple">
+<li><p>simple and cheap method</p></li>
+<li><p>stronger smoothing (bigger <code class="docutils literal notranslate"><span class="pre">k</span></code>) doesn’t help much; need more accurate coarse grid</p></li>
+</ul>
+</div>
+<div class="section" id="smoothed-aggregation">
+<h1>Smoothed aggregation<a class="headerlink" href="#smoothed-aggregation" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ P = (I - w A) T \]</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">P</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">w</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span> <span class="o">*</span> <span class="n">T</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">P</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">3</span><span class="o">:</span><span class="mi">5</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="o">-</span><span class="mf">.5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_50_0.svg" src="../_images/2021-10-27-multigrid_50_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Sc</span> <span class="o">=</span> <span class="n">P</span> <span class="o">*</span> <span class="p">((</span><span class="n">P</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">A</span> <span class="o">*</span> <span class="n">P</span><span class="p">)</span> <span class="o">\</span> <span class="n">P</span><span class="o">&#39;</span><span class="p">)</span> <span class="o">*</span> <span class="n">A</span>
+<span class="n">w</span> <span class="o">=</span> <span class="mf">.67</span><span class="p">;</span> <span class="n">k</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">E</span> <span class="o">=</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">A</span><span class="p">)</span><span class="o">^</span><span class="n">k</span> <span class="o">*</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">Sc</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">I</span> <span class="o">-</span> <span class="n">w</span><span class="o">*</span><span class="n">A</span><span class="p">)</span><span class="o">^</span><span class="n">k</span>
+<span class="n">scatter</span><span class="p">(</span><span class="n">eigvals</span><span class="p">(</span><span class="n">E</span><span class="p">),</span> <span class="n">ylims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-10-27-multigrid_51_0.svg" src="../_images/2021-10-27-multigrid_51_0.svg" /></div>
+</div>
+<ul class="simple">
+<li><p>Eigenvalues are closer to zero; stronger smoothing (larger <code class="docutils literal notranslate"><span class="pre">k</span></code>) helps.</p></li>
+<li><p>Smoother can be made stronger using Chebyshev (like varying the damping between iterations in Jacobi)</p></li>
+</ul>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cu-numpde/fall21",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./slides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="2021-10-25-domain-decomposition.html" title="previous page">2021-10-25 Domain Decomposition</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jed Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
