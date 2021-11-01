@@ -32,3 +32,4 @@ chapters:
   - file: slides/2021-10-22-preconditioners.ipynb
   - file: slides/2021-10-25-domain-decomposition.ipynb
   - file: slides/2021-10-27-multigrid.ipynb
+  - file: slides/2021-11-01-projects.ipynb
