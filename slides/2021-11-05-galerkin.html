@@ -1,0 +1,1081 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-11-05 Galerkin methods &#8212; Numerical Solution of Partial Differential Equations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
+    <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2021-11-03 Software discussion" href="2021-11-03-discussion.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+      <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Solution of Partial Differential Equations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../slides.html">
+   Slides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-23-first-day.html">
+     2021-08-23 First Day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-25-finite-difference.html">
+     2021-08-25 Finite Difference Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-27-finite-difference-2.html">
+     2021-08-27 Finite Difference 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-30-high-order.html">
+     2021-08-30 High order and boundaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-01-convergence-and-boundaries.html">
+     2021-09-01 Boundaries and Fourier methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-03-fourier.html">
+     2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/slides/2021-11-05-galerkin.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cu-numpde/fall21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cu-numpde/fall21/issues/new?title=Issue%20on%20page%20%2Fslides/2021-11-05-galerkin.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cu-numpde/fall21/main?urlpath=tree/slides/2021-11-05-galerkin.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2021-11-05 Galerkin methods
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#last-time">
+     Last time
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#today">
+     Today
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration-by-parts">
+   Integration by parts
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#one-dimension">
+     One dimension
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#multiple-dimensions">
+     Multiple dimensions
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#strong-form">
+     Strong form
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#weak-form">
+     Weak form
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#variational-from-minimization-to-weak-forms">
+   Variational: from minimization to weak forms
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#minimization">
+     Minimization
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#variations">
+     Variations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-elements">
+   Finite elements
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problem-statement">
+     Problem statement
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#what-do-we-need">
+       What do we need?
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ciarlet-1978-definition">
+     Ciarlet (1978) definition
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#first-choose-a-single-element-k-omega">
+       First: choose a single element
+       <span class="math notranslate nohighlight">
+        \(K = \Omega\)
+       </span>
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#quadrature">
+   Quadrature
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#integration-via-polynomial-interpolation">
+   Integration via polynomial interpolation
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#what-order-of-accuracy-can-we-expect">
+     What order of accuracy can we expect?
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#doing-better-gauss-quadrature">
+   Doing better: Gauss quadrature
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#gauss-legendre-in-code">
+   Gauss-Legendre in code
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#legendre-polynomials">
+   Legendre polynomials
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prime-to-nodal-basis">
+   Prime to nodal basis
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#galerkin-method-l-2-projection">
+   Galerkin method:
+   <span class="math notranslate nohighlight">
+    \(L^2\)
+   </span>
+   projection
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convergence-of-the-galerkin-method">
+   Convergence of the Galerkin method
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#galerkin-error-estimates">
+   Galerkin error estimates
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#galerkin-optimality-via-energy-norms">
+   Galerkin optimality via energy norms
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#observations">
+     Observations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#general-form">
+   General form
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#isoparametric-mapping">
+     Isoparametric mapping
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="section" id="galerkin-methods">
+<h1>2021-11-05 Galerkin methods<a class="headerlink" href="#galerkin-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="last-time">
+<h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Project discussion</p></li>
+<li><p>Weak forms</p></li>
+</ul>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Variational forms</p></li>
+<li><p>Finite element definition</p></li>
+<li><p>From prime to nodal bases</p></li>
+<li><p>Galerkin method</p></li>
+<li><p>Finite element assembly</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">Plots</span>
+<span class="k">using</span> <span class="n">LinearAlgebra</span>
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="section" id="integration-by-parts">
+<h1>Integration by parts<a class="headerlink" href="#integration-by-parts" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="one-dimension">
+<h2>One dimension<a class="headerlink" href="#one-dimension" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>it’s the product rule backwards</p>
+</div></blockquote>
+<div class="amsmath math notranslate nohighlight" id="equation-9d072c87-d764-496b-9655-f0a9ed9ce22d">
+<span class="eqno">(36)<a class="headerlink" href="#equation-9d072c87-d764-496b-9655-f0a9ed9ce22d" title="Permalink to this equation">¶</a></span>\[\begin{align} \int_a^b d(uv) &amp;= \int_a^b u dv + \int_a^b v du \\
+(uv)_a^b &amp;= \int_a^b u dv + \int_a^b v du \\
+\int_a^b u dv &amp;= (uv)_a^b - \int_a^b v du
+\end{align}\]</div>
+<blockquote>
+<div><p>you can move the derivative to the other term; it’ll cost you a minus sign and a boundary term</p>
+</div></blockquote>
+</div>
+<div class="section" id="multiple-dimensions">
+<h2>Multiple dimensions<a class="headerlink" href="#multiple-dimensions" title="Permalink to this headline">¶</a></h2>
+<div class="amsmath math notranslate nohighlight" id="equation-c10bc9be-e75f-4f2f-a711-385cb8461ae6">
+<span class="eqno">(37)<a class="headerlink" href="#equation-c10bc9be-e75f-4f2f-a711-385cb8461ae6" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\int_\Omega v \nabla\cdot \mathbf f = -\int_\Omega \nabla v \cdot \mathbf f + \int_{\partial \Omega} v \mathbf f \cdot \mathbf n
+\end{align}\]</div>
+</div>
+<div class="section" id="strong-form">
+<h2>Strong form<a class="headerlink" href="#strong-form" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[ -\nabla\cdot(\kappa \nabla u) = 0 \]</div>
+</div>
+<div class="section" id="weak-form">
+<h2>Weak form<a class="headerlink" href="#weak-form" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>multiply by a test function and integrate by parts</p></li>
+</ul>
+<div class="amsmath math notranslate nohighlight" id="equation-bba11e65-20c6-42f9-9d5b-f697bbcbf52c">
+<span class="eqno">(38)<a class="headerlink" href="#equation-bba11e65-20c6-42f9-9d5b-f697bbcbf52c" title="Permalink to this equation">¶</a></span>\[\begin{align} -\int_\Omega v \nabla\cdot(\kappa \nabla u) = 0, \forall v \\
+\int_\Omega \nabla v \cdot \kappa \nabla u - \int_{\partial\Omega} v \underbrace{\kappa \nabla u \cdot \mathbf n}_{\text{boundary condition}} = 0
+\end{align}\]</div>
+</div>
+</div>
+<div class="section" id="variational-from-minimization-to-weak-forms">
+<h1>Variational: from minimization to weak forms<a class="headerlink" href="#variational-from-minimization-to-weak-forms" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="minimization">
+<h2>Minimization<a class="headerlink" href="#minimization" title="Permalink to this headline">¶</a></h2>
+<p>Find <span class="math notranslate nohighlight">\(u\in \mathcal V\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-01c6eec9-bc84-4396-92de-2603a39f2965">
+<span class="eqno">(39)<a class="headerlink" href="#equation-01c6eec9-bc84-4396-92de-2603a39f2965" title="Permalink to this equation">¶</a></span>\[\begin{align}
+u &amp;= \arg\min \int_\Omega \frac 1 p \lVert \nabla u \rVert^p \\
+&amp;= \arg\min \int_\Omega \frac 1 p (\nabla u \cdot \nabla u)^{p/2}
+\end{align}\]</div>
+</div>
+<div class="section" id="variations">
+<h2>Variations<a class="headerlink" href="#variations" title="Permalink to this headline">¶</a></h2>
+<blockquote>
+<div><p>If <span class="math notranslate nohighlight">\(f(x)\)</span> is a minimum, then <span class="math notranslate nohighlight">\(df = f'(x) dx = 0\)</span> for all <span class="math notranslate nohighlight">\(dx\)</span>.</p>
+</div></blockquote>
+<p>So if <span class="math notranslate nohighlight">\(u \in \mathcal V\)</span> is a minimizer, then</p>
+<div class="amsmath math notranslate nohighlight" id="equation-112a7605-3227-451a-b76b-2f9a2a65d230">
+<span class="eqno">(40)<a class="headerlink" href="#equation-112a7605-3227-451a-b76b-2f9a2a65d230" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\int_\Omega \underbrace{\lVert \nabla u \rVert^{p-2}}_{\kappa(u)} \nabla u \cdot \nabla du = 0
+\end{align}\]</div>
+<p>for all <span class="math notranslate nohighlight">\(du \in \mathcal V\)</span>.</p>
+<ul class="simple">
+<li><p>It’s common to use <span class="math notranslate nohighlight">\(v\)</span> in place of <span class="math notranslate nohighlight">\(du\)</span>.</p></li>
+<li><p>Our discretization will reflect this structure</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[ v_h^T F(u_h) \sim \int_\Omega \nabla v \cdot \kappa(u) \cdot \nabla u \]</div>
+</div>
+</div>
+<div class="section" id="finite-elements">
+<h1>Finite elements<a class="headerlink" href="#finite-elements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="problem-statement">
+<h2>Problem statement<a class="headerlink" href="#problem-statement" title="Permalink to this headline">¶</a></h2>
+<p>Find <span class="math notranslate nohighlight">\(u \in \mathcal V\)</span> such that</p>
+<div class="amsmath math notranslate nohighlight" id="equation-03a348d8-e9fe-4a91-ac1d-d57950ca8d69">
+<span class="eqno">(41)<a class="headerlink" href="#equation-03a348d8-e9fe-4a91-ac1d-d57950ca8d69" title="Permalink to this equation">¶</a></span>\[\begin{align} \int_\Omega \nabla v \cdot \kappa \nabla u - \int_{\partial\Omega} v \underbrace{\kappa \nabla u \cdot \mathbf n}_{\text{boundary condition}} = 0, \forall v \in \mathcal V
+\end{align}\]</div>
+<div class="section" id="what-do-we-need">
+<h3>What do we need?<a class="headerlink" href="#what-do-we-need" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>A way to integrate</p></li>
+<li><p>A space <span class="math notranslate nohighlight">\(\mathcal V\)</span></p></li>
+<li><p>Boundary conditions</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="ciarlet-1978-definition">
+<h2>Ciarlet (1978) definition<a class="headerlink" href="#ciarlet-1978-definition" title="Permalink to this headline">¶</a></h2>
+<p>A <strong>finite element</strong> is a triple <span class="math notranslate nohighlight">\((K, P, N)\)</span> where</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(K\)</span> is a bounded domain with piecewise smooth boundary</p></li>
+<li><p><span class="math notranslate nohighlight">\(P = \{p_j\}_1^k\)</span> is a finite-dimensional function space over <span class="math notranslate nohighlight">\(K\)</span> (“prime basis”)</p></li>
+<li><p><span class="math notranslate nohighlight">\(N = \{n_i\}_1^k\)</span> is a basis for the dual space (“nodes”)</p></li>
+</ul>
+<p>It is common for nodes to be pointwise evaluation
+$<span class="math notranslate nohighlight">\( \langle n_i, p_j \rangle = p_j(x_i) \)</span>$</p>
+<div class="section" id="first-choose-a-single-element-k-omega">
+<h3>First: choose a single element <span class="math notranslate nohighlight">\(K = \Omega\)</span><a class="headerlink" href="#first-choose-a-single-element-k-omega" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+</div>
+<div class="section" id="quadrature">
+<h1>Quadrature<a class="headerlink" href="#quadrature" title="Permalink to this headline">¶</a></h1>
+<p>Our elements will be a line segment and we’ll define quadrature on the standard line segment, <span class="math notranslate nohighlight">\(\hat K = (-1, 1)\)</span>. A quadrature is a set of points <span class="math notranslate nohighlight">\(q_i\)</span> and weights <span class="math notranslate nohighlight">\(w_i\)</span> such that
+$<span class="math notranslate nohighlight">\( \int_{-1}^1 f(x) \approx \sum_{i=1}^n w_i f(q_i) \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">default</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+<span class="k">function</span> <span class="n">quad_trapezoid</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">*</span> <span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">w</span><span class="p">[[</span><span class="mi">1</span><span class="p">,</span><span class="k">end</span><span class="p">]]</span> <span class="o">./=</span> <span class="mi">2</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">w</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">plot_quad_accuracy</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">F</span><span class="p">,</span> <span class="n">quad</span><span class="p">)</span>
+    <span class="n">ns</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">.^</span> <span class="p">(</span><span class="mi">2</span><span class="o">:</span><span class="mi">7</span><span class="p">)</span>
+    <span class="n">exact</span> <span class="o">=</span> <span class="n">F</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span> <span class="o">-</span> <span class="n">F</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+    <span class="k">function</span> <span class="n">err</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">q</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">quad</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+        <span class="n">w</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">q</span><span class="p">)</span> <span class="o">-</span> <span class="n">exact</span>
+    <span class="k">end</span>
+    <span class="n">errors</span> <span class="o">=</span> <span class="p">[</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">err</span><span class="p">(</span><span class="n">n</span><span class="p">))</span> <span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="n">ns</span><span class="p">]</span>
+    <span class="n">plot</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">errors</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">quad</span><span class="p">)</span>
+    <span class="n">plot!</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">ns</span><span class="o">.^</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">),</span> <span class="n">xscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>    
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>plot_quad_accuracy (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_quad_accuracy</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">quad_trapezoid</span><span class="p">)</span>
+<span class="n">plot_quad_accuracy</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">3</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">2</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">^</span><span class="mi">3</span><span class="p">,</span> <span class="n">quad_trapezoid</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-05-galerkin_14_0.svg" src="../_images/2021-11-05-galerkin_14_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="integration-via-polynomial-interpolation">
+<h1>Integration via polynomial interpolation<a class="headerlink" href="#integration-via-polynomial-interpolation" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>Pick some points <span class="math notranslate nohighlight">\(x_i\)</span></p></li>
+<li><p>Evaluate the function there <span class="math notranslate nohighlight">\(f_i = f(x_i)\)</span></p></li>
+<li><p>Find the polynomial that interpolates the data</p></li>
+<li><p>Integrate the polynomial</p></li>
+</ul>
+<div class="section" id="what-order-of-accuracy-can-we-expect">
+<h2>What order of accuracy can we expect?<a class="headerlink" href="#what-order-of-accuracy-can-we-expect" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>What degree polynomials can be integrate exactly?</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="doing-better-gauss-quadrature">
+<h1>Doing better: Gauss quadrature<a class="headerlink" href="#doing-better-gauss-quadrature" title="Permalink to this headline">¶</a></h1>
+<p>Suppose a polynomial on the interval <span class="math notranslate nohighlight">\([-1,1]\)</span> can be written as</p>
+<div class="math notranslate nohighlight">
+\[ P_n(x) q(x) + r(x) \]</div>
+<p>where <span class="math notranslate nohighlight">\(P_n(x)\)</span> is the <span class="math notranslate nohighlight">\(n\)</span>th Legendre polnomials and both <span class="math notranslate nohighlight">\(q(x)\)</span> and <span class="math notranslate nohighlight">\(r(x)\)</span> are polynomials of maximum degree <span class="math notranslate nohighlight">\(n-1\)</span>.</p>
+<ul class="simple">
+<li><p>Why is <span class="math notranslate nohighlight">\(\int_{-1}^1 P_n(x) q(x) = 0\)</span>?</p></li>
+<li><p>Can every polynomials of degree <span class="math notranslate nohighlight">\(2n-1\)</span> be written in the above form?</p></li>
+<li><p>How many roots does <span class="math notranslate nohighlight">\(P_n(x)\)</span> have on the interval?</p></li>
+<li><p>Can we choose points <span class="math notranslate nohighlight">\(\{x_i\}\)</span> such that the first term is 0?</p></li>
+</ul>
+<p>If <span class="math notranslate nohighlight">\(P_n(x_i) = 0\)</span> for each <span class="math notranslate nohighlight">\(x_i\)</span>, then we need only integrate <span class="math notranslate nohighlight">\(r(x)\)</span>, which is done exactly by integrating its interpolating polynomial.  How do we find these roots <span class="math notranslate nohighlight">\(x_i\)</span>?</p>
+</div>
+<div class="section" id="gauss-legendre-in-code">
+<h1>Gauss-Legendre in code<a class="headerlink" href="#gauss-legendre-in-code" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p>Solve for the points, compute the weights</p></li>
+</ol>
+<ul class="simple">
+<li><p>Use a Newton solver to find the roots. You can use the recurrence to write a recurrence for the derivatives.</p></li>
+<li><p>Create a Vandermonde matrix and extract the first row of the inverse or (using more structure) the derivatives at the quadrature points.</p></li>
+</ul>
+<ol class="simple">
+<li><p>Use duality of polynomial roots and matrix eigenvalues.</p></li>
+</ol>
+<ul class="simple">
+<li><p>A fascinating mathematical voyage (topic of graduate linear algebra class).</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">gauss_legendre</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="s">&quot;&quot;&quot;Gauss-Legendre integration using Golub-Welsch algorithm&quot;&quot;&quot;</span>
+    <span class="n">beta</span> <span class="o">=</span> <span class="nd">@.</span> <span class="mf">.5</span> <span class="o">/</span> <span class="n">sqrt</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="p">(</span><span class="mi">2</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span><span class="o">:</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span><span class="o">^</span><span class="p">(</span><span class="o">-</span><span class="mi">2</span><span class="p">))</span>
+    <span class="n">T</span> <span class="o">=</span> <span class="n">diagm</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="n">beta</span><span class="p">,</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="n">beta</span><span class="p">)</span>
+    <span class="n">D</span><span class="p">,</span> <span class="n">V</span> <span class="o">=</span> <span class="n">eigen</span><span class="p">(</span><span class="n">T</span><span class="p">)</span>
+    <span class="n">w</span> <span class="o">=</span> <span class="n">V</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="o">:</span><span class="p">]</span><span class="o">.^</span><span class="mi">2</span> <span class="o">*</span> <span class="mi">2</span>
+    <span class="n">q</span> <span class="o">=</span> <span class="n">D</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">w</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>gauss_legendre (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_quad_accuracy</span><span class="p">(</span><span class="n">exp</span><span class="p">,</span> <span class="n">exp</span><span class="p">,</span> <span class="n">gauss_legendre</span><span class="p">)</span>
+<span class="n">plot_quad_accuracy</span><span class="p">(</span><span class="n">x</span> <span class="o">-&gt;</span> <span class="mi">11</span><span class="o">*</span><span class="n">x</span><span class="o">^</span><span class="mi">10</span><span class="p">,</span> <span class="n">x</span> <span class="o">-&gt;</span> <span class="n">x</span><span class="o">^</span><span class="mi">11</span><span class="p">,</span> <span class="n">gauss_legendre</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-05-galerkin_19_0.svg" src="../_images/2021-11-05-galerkin_19_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="legendre-polynomials">
+<h1>Legendre polynomials<a class="headerlink" href="#legendre-polynomials" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">vander_legendre</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="nb">nothing</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">isnothing</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+        <span class="n">k</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="c"># Square by default</span>
+    <span class="k">end</span>
+    <span class="n">m</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">Q</span> <span class="o">=</span> <span class="n">ones</span><span class="p">(</span><span class="n">m</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+    <span class="n">Q</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="n">x</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">k</span><span class="o">-</span><span class="mi">2</span>
+        <span class="n">Q</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="p">((</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">x</span> <span class="o">.*</span> <span class="n">Q</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="p">]</span> <span class="o">-</span> <span class="n">n</span> <span class="o">*</span> <span class="n">Q</span><span class="p">[</span><span class="o">:</span><span class="p">,</span> <span class="n">n</span><span class="p">])</span> <span class="o">/</span> <span class="p">(</span><span class="n">n</span> <span class="o">+</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">Q</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>vander_legendre (generic function with 2 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">P</span> <span class="o">=</span> <span class="n">vander_legendre</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-05-galerkin_22_0.svg" src="../_images/2021-11-05-galerkin_22_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="prime-to-nodal-basis">
+<h1>Prime to nodal basis<a class="headerlink" href="#prime-to-nodal-basis" title="Permalink to this headline">¶</a></h1>
+<p>A <strong>nodal basis</strong> <span class="math notranslate nohighlight">\(\{ \phi_j(x) \}\)</span> is one that satisfies
+<span class="math notranslate nohighlight">\( n_i(\phi_j) = \delta_{ij} . \)</span></p>
+<p>We write <span class="math notranslate nohighlight">\(\phi_j\)</span> in the prime basis by solving with the generalized Vandermonde matrix <span class="math notranslate nohighlight">\(V_{ij} = \langle n_i, p_j \rangle\)</span>,
+$<span class="math notranslate nohighlight">\( \phi_j(x) = \sum_k p_k(x) (V^{-1})_{k,j} . \)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">k</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">xn</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">vander_legendre</span><span class="p">(</span><span class="n">xn</span><span class="p">)</span>
+<span class="n">xx</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">)</span>
+<span class="n">Pxx</span> <span class="o">=</span> <span class="n">vander_legendre</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<span class="n">Pn</span> <span class="o">=</span> <span class="n">Pxx</span> <span class="o">/</span> <span class="n">V</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">Pn</span><span class="p">)</span>
+<span class="n">scatter!</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">one</span><span class="o">.</span><span class="p">(</span><span class="n">xn</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-05-galerkin_24_0.svg" src="../_images/2021-11-05-galerkin_24_0.svg" /></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">FastGaussQuadrature</span>
+<span class="n">xn</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gausslobatto</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="n">V</span> <span class="o">=</span> <span class="n">vander_legendre</span><span class="p">(</span><span class="n">xn</span><span class="p">)</span>
+<span class="n">Pn</span> <span class="o">=</span> <span class="n">Pxx</span> <span class="o">/</span> <span class="n">V</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">Pn</span><span class="p">)</span>
+<span class="n">scatter!</span><span class="p">(</span><span class="n">xn</span><span class="p">,</span> <span class="n">one</span><span class="o">.</span><span class="p">(</span><span class="n">xn</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-05-galerkin_25_0.svg" src="../_images/2021-11-05-galerkin_25_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="galerkin-method-l-2-projection">
+<h1>Galerkin method: <span class="math notranslate nohighlight">\(L^2\)</span> projection<a class="headerlink" href="#galerkin-method-l-2-projection" title="Permalink to this headline">¶</a></h1>
+<p>A nice test problem that doesn’t require derivatives or boundary conditions:
+Find <span class="math notranslate nohighlight">\(u \in \mathcal V_h\)</span> such that
+$<span class="math notranslate nohighlight">\( \int_{-1}^1 v(x) \big[ u(x) - f(x) \big] = 0, \quad \forall v \in \mathcal V_h\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">febasis</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">_</span> <span class="o">=</span> <span class="n">gausslobatto</span><span class="p">(</span><span class="n">P</span><span class="p">)</span>
+    <span class="n">q</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="n">gausslegendre</span><span class="p">(</span><span class="n">Q</span><span class="p">)</span>
+    <span class="n">Pk</span> <span class="o">=</span> <span class="n">vander_legendre</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">Pq</span> <span class="o">=</span> <span class="n">vander_legendre</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">P</span><span class="p">)</span>
+    <span class="n">B</span> <span class="o">=</span> <span class="n">Pq</span> <span class="o">/</span> <span class="n">Pk</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">B</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">L2_galerkin</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">q</span><span class="p">,</span> <span class="n">w</span><span class="p">,</span> <span class="n">B</span> <span class="o">=</span> <span class="n">febasis</span><span class="p">(</span><span class="n">P</span><span class="p">,</span> <span class="n">Q</span><span class="p">)</span>
+    <span class="n">A</span> <span class="o">=</span> <span class="n">B</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">diagm</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="n">B</span>
+    <span class="n">rhs</span> <span class="o">=</span> <span class="n">B</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">diagm</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">*</span> <span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">q</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">A</span> <span class="o">\</span> <span class="n">rhs</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">u</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>L2_galerkin (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">f</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">=</span> <span class="n">tanh</span><span class="p">(</span><span class="mi">5</span><span class="o">*</span><span class="n">x</span><span class="p">)</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">L2_galerkin</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<span class="n">error</span> <span class="o">=</span> <span class="n">u</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:bottomright</span><span class="p">)</span>
+<span class="n">plot!</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">title</span><span class="o">=</span><span class="s">&quot;Galerkin error: </span><span class="si">$</span><span class="p">(</span><span class="n">norm</span><span class="p">(</span><span class="n">error</span><span class="p">))</span><span class="s">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-05-galerkin_28_0.svg" src="../_images/2021-11-05-galerkin_28_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="convergence-of-the-galerkin-method">
+<h1>Convergence of the Galerkin method<a class="headerlink" href="#convergence-of-the-galerkin-method" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">ns</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">.^</span> <span class="p">(</span><span class="mi">2</span><span class="o">:</span><span class="mi">8</span><span class="p">)</span>
+<span class="k">function</span> <span class="n">L2_error</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">u</span> <span class="o">=</span> <span class="n">L2_galerkin</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+    <span class="n">norm</span><span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="n">f</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<span class="k">end</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">ns</span><span class="p">,</span> <span class="n">L2_error</span><span class="o">.</span><span class="p">(</span><span class="n">ns</span><span class="p">),</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">,</span> <span class="n">yscale</span><span class="o">=</span><span class="ss">:log10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-05-galerkin_30_0.svg" src="../_images/2021-11-05-galerkin_30_0.svg" /></div>
+</div>
+</div>
+<div class="section" id="galerkin-error-estimates">
+<h1>Galerkin error estimates<a class="headerlink" href="#galerkin-error-estimates" title="Permalink to this headline">¶</a></h1>
+<p>We introduce the notation
+$<span class="math notranslate nohighlight">\( a(v, u) = \int_\Omega \nabla v(x) \cdot \nabla u(x) \)</span><span class="math notranslate nohighlight">\(
+and note that \)</span>a$ is</p>
+<ul class="simple">
+<li><p>bilinear (linear in each of its arguments)</p></li>
+<li><p>symmetric: <span class="math notranslate nohighlight">\(a(u, v) = a(v,u)\)</span></p></li>
+<li><p>positive definite: <span class="math notranslate nohighlight">\(a(u, u) &gt; 0\)</span> when <span class="math notranslate nohighlight">\(u \ne 0\)</span>
+thus defines an inner product on the function space <span class="math notranslate nohighlight">\(V\)</span>.</p></li>
+</ul>
+<p>We also introduce the <span class="math notranslate nohighlight">\(L^2\)</span> inner product
+$<span class="math notranslate nohighlight">\( \langle u, v \rangle = \int_\Omega u(x) v(x) \)</span><span class="math notranslate nohighlight">\(
+so that our continuous weak form is to find \)</span>u \in V<span class="math notranslate nohighlight">\( such that
+\)</span><span class="math notranslate nohighlight">\( a(v, u) = \langle v, f \rangle, \quad \forall v\in V. \)</span><span class="math notranslate nohighlight">\(
+Our Galerkin discretization is to find \)</span>u_h \in V_h \subset V<span class="math notranslate nohighlight">\( such that
+\)</span><span class="math notranslate nohighlight">\( a(v_h, u_h) = \langle v_h, f \rangle, \quad \forall v_h \in V_h . \)</span><span class="math notranslate nohighlight">\(
+Since \)</span>V_h \subset V<span class="math notranslate nohighlight">\(, we can subtract these two, yielding
+\)</span><span class="math notranslate nohighlight">\( a(v_h, u_h - u) = 0, \quad \forall v_h \in V_h .\)</span><span class="math notranslate nohighlight">\(
+This says that the error in the discrete solution \)</span>u_h - u<span class="math notranslate nohighlight">\( is \)</span>a<span class="math notranslate nohighlight">\(-orthogonal to all test functions \)</span>v_h$.</p>
+</div>
+<div class="section" id="galerkin-optimality-via-energy-norms">
+<h1>Galerkin optimality via energy norms<a class="headerlink" href="#galerkin-optimality-via-energy-norms" title="Permalink to this headline">¶</a></h1>
+<p>We can also define the “energy norm” or <span class="math notranslate nohighlight">\(a\)</span>-norm,
+$<span class="math notranslate nohighlight">\( \lVert u \rVert_a = \sqrt{a(u,u)} . \)</span><span class="math notranslate nohighlight">\(
+This norm satisfies the Cauchy-Schwarz inequality,
+\)</span><span class="math notranslate nohighlight">\( \lvert a(u,v) \rvert \le \lVert u \rVert_a \lVert v \rVert_a . \)</span>$
+Now,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-3bfeee9c-3375-4736-9033-819eab661750">
+<span class="eqno">(42)<a class="headerlink" href="#equation-3bfeee9c-3375-4736-9033-819eab661750" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\lVert u_h - u \rVert_a^2 &amp;= a(u_h - u, u_h - u) \\
+&amp;= a(u_h - v_h, u_h - u) + a(v_h - u, u_h - u) \\
+&amp;= a(v_h - u, u_h - u) \\
+&amp;\le \lVert v_h - u \rVert_a \lVert u_h - u \rVert_a .
+\end{align}\]</div>
+<p>In other words,
+$<span class="math notranslate nohighlight">\(\lVert u_h - u \rVert_a \le \lVert v_h - u \rVert_a, \quad \forall v_h \in V_h .\)</span><span class="math notranslate nohighlight">\(
+So the solution \)</span>u_h<span class="math notranslate nohighlight">\( computed by the Galerkin discretization is optimal over the subspace \)</span>V_h<span class="math notranslate nohighlight">\( as measured in the \)</span>a$-norm.</p>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>The Galerkin method computes the exact solution any time it resides in the subspace <span class="math notranslate nohighlight">\(V_h\)</span>.</p></li>
+<li><p>The Galerkin method is automatically symmetric any time the weak form is symmetric.</p></li>
+<li><p>The Galerkin method can be spectrally accurate, similar to the Chebyshev finite difference methods.</p></li>
+<li><p>For a nonlinear problem, discretization and differentiation will commute.</p></li>
+</ul>
+<p><img alt="" src="../_images/libCEED-2-trim.svg" /></p>
+</div>
+</div>
+<div class="section" id="general-form">
+<h1>General form<a class="headerlink" href="#general-form" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ \int_\Omega v\cdot f_0(u, \nabla u) + \nabla v\cdot f_1(u, \nabla u) = 0, \quad \forall v\]</div>
+<p>we discretize as
+$<span class="math notranslate nohighlight">\( \sum_e \mathcal E_e^T \Big( B^T W \left\lvert \frac{\partial x}{\partial X} \right\rvert f_0(\tilde u, \nabla \tilde u) + D^T \left(\frac{\partial X}{\partial x}\right)^{T} W \left\lvert \frac{\partial x}{\partial X} \right\rvert f_1(\tilde u, \nabla\tilde u) \Big) = 0 \)</span><span class="math notranslate nohighlight">\(
+where \)</span>\tilde u = B \mathcal E_e u<span class="math notranslate nohighlight">\( and \)</span>\nabla \tilde u = \frac{\partial X}{\partial x} D \mathcal E_e u$ are the values and gradients evaluated at quadrature points.</p>
+<div class="section" id="isoparametric-mapping">
+<h2>Isoparametric mapping<a class="headerlink" href="#isoparametric-mapping" title="Permalink to this headline">¶</a></h2>
+<p>Given the reference coordinates <span class="math notranslate nohighlight">\(X \in \hat K \subset R^n\)</span> and physical coordinates <span class="math notranslate nohighlight">\(x(X)\)</span>, an integral on the physical element can be written
+$<span class="math notranslate nohighlight">\( \int_{K = x(\hat K)} f(x) dx = \int_K \underbrace{\left\lvert \frac{\partial x}{\partial X} \right\rvert}_{\text{determinant}} f(x(X)) dX .\)</span>$</p>
+<table class="colwidths-auto table">
+<thead>
+<tr class="row-odd"><th class="head"><p>Notation</p></th>
+<th class="text-align:left head"><p>Meaning</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(x\)</span></p></td>
+<td class="text-align:left"><p>physical coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(X\)</span></p></td>
+<td class="text-align:left"><p>reference coordinates</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\mathcal E_e\)</span></p></td>
+<td class="text-align:left"><p>restriction from global vector to element <span class="math notranslate nohighlight">\(e\)</span></p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(B\)</span></p></td>
+<td class="text-align:left"><p>values of nodal basis functions at quadrature ponits on reference element</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(D\)</span></p></td>
+<td class="text-align:left"><p>gradients of nodal basis functions at quadrature points on reference element</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(W\)</span></p></td>
+<td class="text-align:left"><p>diagonal matrix of quadrature weights on reference element</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\frac{\partial x}{\partial X} = D \mathcal E_e x \)</span></p></td>
+<td class="text-align:left"><p>gradient of physical coordinates with respect to reference coordinates</p></td>
+</tr>
+<tr class="row-odd"><td><p><span class="math notranslate nohighlight">\(\left\lvert \frac{\partial x}{\partial X}\right\rvert\)</span></p></td>
+<td class="text-align:left"><p>determinant of coordinate transformation at each quadrature point</p></td>
+</tr>
+<tr class="row-even"><td><p><span class="math notranslate nohighlight">\(\frac{\partial X}{\partial x} = \left(\frac{\partial x}{\partial X}\right)^{-1}\)</span></p></td>
+<td class="text-align:left"><p>derivative of reference coordinates with respect to physical coordinates</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cu-numpde/fall21",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./slides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+        <div class='prev-next-bottom'>
+            
+    <a class='left-prev' id="prev-link" href="2021-11-03-discussion.html" title="previous page">2021-11-03 Software discussion</a>
+
+        </div>
+        
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+        
+          By Jed Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
