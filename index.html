@@ -42,8 +42,6 @@
     <script src="_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
     <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
@@ -403,7 +401,7 @@
 <li><p><a class="reference external" href="https://faculty.washington.edu/rjl/fdmbook/">LeVeque, <em>Finite Difference Methods for Ordinary and Partial Differential Equations</em></a> (CU students can <a class="reference external" href="http://epubs.siam.org/doi/book/10.1137/1.9780898717839">download free from SIAM</a>)</p></li>
 <li><p><a class="reference external" href="https://depts.washington.edu/clawpack/book.html">LeVeque, <em>Finite Volume Methods for Hyperbolic Problems</em></a> and the <a class="reference external" href="http://www.clawpack.org/">Clawpack software</a>.</p></li>
 <li><p><a class="reference external" href="https://link.springer.com/book/10.1007%2Fb79761#toc">Toro, <em>Riemann Solvers and Numerical Methods for Fluid Dynamics</em></a>. (CU students can download free)</p></li>
-<li><p><a class="reference external" href="https://link.springer.com/book/10.1007%2F978-3-642-23099-8">Logg, Mardal, Wells, <em>Automated Solution of Differential Equations by the Finite Element Method (The FEniCS Book)</em></a>. (free download)</p></li>
+<li><p><a class="reference external" href="https://link.springer.com/book/10.1007%2F978-3-642-23099-8">Logg, Mardal, Wells, <em>Automated Solution of Differential Equations by the Finite Element Method (The FEniCS Book)</em></a>. (<a class="reference external" href="https://fenicsproject.org/book/">free download</a>)</p></li>
 <li><p><a class="reference external" href="https://people.maths.ox.ac.uk/trefethen/spectral.html">Trefethen, <em>Spectral Methods in MATLAB</em></a>. (CU students can <a class="reference external" href="http://epubs.siam.org/doi/book/10.1137/1.9780898719598">download free from SIAM</a>)</p></li>
 <li><p><a class="reference external" href="https://doi.org/10.1093/acprof:oso/9780199678792.001.0001">Elman, Silvester, Wathen, <em>Finite Elements and Fast Iterative Solvers with Applications in Incompressible Fluid Dynamics</em></a> (CU students <a class="reference external" href="http://libraries.colorado.edu/record=b7826912~S3">click “Full Text” to read online</a>)</p></li>
 </ul>
@@ -415,15 +413,6 @@
 </li>
 </ul>
 </div>
-<p>We can rearrange as</p>
-<div class="amsmath math notranslate nohighlight">
-\[\begin{equation*}
-A_{11} u_1 = f_1 - A_{10} f_0,
-\end{equation*}\]</div>
-<p>which is symmetric if <span class="math notranslate nohighlight">\(A_{11}\)</span> is.</p>
-<ul class="simple">
-<li><p>This is called “lifting” and is often done implicitly in the mathematics literature.  It is convenient for linear solvers and eigenvalue solvers, but inconvenient for IO and postprocessing, as well as some nonlinear problems.</p></li>
-</ul>
 <div class="toctree-wrapper compound">
 </div>
 </div>
