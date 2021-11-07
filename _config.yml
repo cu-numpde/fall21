@@ -47,3 +47,4 @@ launch_buttons:
 sphinx:
   config:
     html_extra_path: ["assets"]
+    myst_dmath_double_inline: true
