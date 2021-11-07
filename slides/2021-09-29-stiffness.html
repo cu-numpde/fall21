@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,18 +42,19 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-10-01 Runge-Kutta methods" href="2021-10-01-runge-kutta.html" />
     <link rel="prev" title="2021-09-27 Transient problems" href="2021-09-27-transient.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -73,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -82,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -180,6 +185,71 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
     </a>
    </li>
   </ul>
@@ -289,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -414,7 +484,7 @@
         
               <div>
                 
-  <div class="section" id="handling-stiffness">
+  <div class="tex2jax_ignore mathjax_ignore section" id="handling-stiffness">
 <h1>2021-09-29 Handling stiffness<a class="headerlink" href="#handling-stiffness" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -487,7 +557,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="a-theta-solver">
+<div class="tex2jax_ignore mathjax_ignore section" id="a-theta-solver">
 <h1>A <span class="math notranslate nohighlight">\(\theta\)</span> solver<a class="headerlink" href="#a-theta-solver" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -530,7 +600,7 @@
 <img alt="../_images/2021-09-29-stiffness_4_0.svg" src="../_images/2021-09-29-stiffness_4_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="stiff-decay-to-cosine">
+<div class="tex2jax_ignore mathjax_ignore section" id="stiff-decay-to-cosine">
 <h1>Stiff decay to cosine<a class="headerlink" href="#stiff-decay-to-cosine" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[\dot u = -k(u - \cos t) = -k u + k \cos t\]</div>
@@ -547,10 +617,10 @@
 <img alt="../_images/2021-09-29-stiffness_6_0.svg" src="../_images/2021-09-29-stiffness_6_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="advection-diffusion-as-linear-ode">
+<div class="tex2jax_ignore mathjax_ignore section" id="advection-diffusion-as-linear-ode">
 <h1>Advection-diffusion as linear ODE<a class="headerlink" href="#advection-diffusion-as-linear-ode" title="Permalink to this headline">¶</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-cc31e573-c490-475b-9610-488e58057eb1">
-<span class="eqno">(15)<a class="headerlink" href="#equation-cc31e573-c490-475b-9610-488e58057eb1" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-0523fb31-6850-4ddd-9ccc-1cb8cd691b17">
+<span class="eqno">(16)<a class="headerlink" href="#equation-0523fb31-6850-4ddd-9ccc-1cb8cd691b17" title="Permalink to this equation">¶</a></span>\[\begin{align}
 (-\kappa u_x + w u)_x &amp;= 0 &amp; Pe_L &amp;= \frac{L \lvert w \rvert}{\kappa}
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -602,7 +672,7 @@
 <img alt="../_images/2021-09-29-stiffness_9_0.svg" src="../_images/2021-09-29-stiffness_9_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="explain-the-mechanism-and-obstacles-to-fixing">
+<div class="tex2jax_ignore mathjax_ignore section" id="explain-the-mechanism-and-obstacles-to-fixing">
 <h1>Explain the mechanism and obstacles to fixing<a class="headerlink" href="#explain-the-mechanism-and-obstacles-to-fixing" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -627,7 +697,7 @@
 <img alt="../_images/2021-09-29-stiffness_12_0.svg" src="../_images/2021-09-29-stiffness_12_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="explain-the-mechanism">
+<div class="tex2jax_ignore mathjax_ignore section" id="explain-the-mechanism">
 <h1>Explain the mechanism<a class="headerlink" href="#explain-the-mechanism" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -655,25 +725,33 @@
 <img alt="../_images/2021-09-29-stiffness_15_0.svg" src="../_images/2021-09-29-stiffness_15_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="stability-classes-and-the-theta-method">
+<div class="tex2jax_ignore mathjax_ignore section" id="stability-classes-and-the-theta-method">
 <h1>Stability classes and the <span class="math notranslate nohighlight">\(\theta\)</span> method<a class="headerlink" href="#stability-classes-and-the-theta-method" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="definition-a-stability">
 <h2>Definition: <span class="math notranslate nohighlight">\(A\)</span>-stability<a class="headerlink" href="#definition-a-stability" title="Permalink to this headline">¶</a></h2>
 <p>A method is <span class="math notranslate nohighlight">\(A\)</span>-stable if the stability region
-$<span class="math notranslate nohighlight">\( \{ z : |R(z)| \le 1 \} \)</span><span class="math notranslate nohighlight">\(
-contains the entire left half plane \)</span><span class="math notranslate nohighlight">\( \Re[z] \le 0 .\)</span>$
+<div class="math notranslate nohighlight">
+\[ \{ z : |R(z)| \le 1 \} \]</div>
+
+contains the entire left half plane <div class="math notranslate nohighlight">
+\[ \Re[z] \le 0 .\]</div>
+
 This means that the method can take arbitrarily large time steps without becoming unstable (diverging) for any problem that is indeed physically stable.</p>
 </div>
 <div class="section" id="definition-l-stability">
 <h2>Definition: <span class="math notranslate nohighlight">\(L\)</span>-stability<a class="headerlink" href="#definition-l-stability" title="Permalink to this headline">¶</a></h2>
 <p>A time integrator with stability function <span class="math notranslate nohighlight">\(R(z)\)</span> is <span class="math notranslate nohighlight">\(L\)</span>-stable if
-$<span class="math notranslate nohighlight">\( \lim_{z\to\infty} R(z) = 0 .\)</span><span class="math notranslate nohighlight">\(
-For the \)</span>\theta<span class="math notranslate nohighlight">\( method, we have
-\)</span><span class="math notranslate nohighlight">\( \lim_{z\to \infty} \frac{1 + (1-\theta)z}{1 - \theta z} = \frac{1-\theta}{\theta} . \)</span><span class="math notranslate nohighlight">\(
-Evidently only \)</span>\theta=1<span class="math notranslate nohighlight">\( is \)</span>L$-stable.</p>
+<div class="math notranslate nohighlight">
+\[ \lim_{z\to\infty} R(z) = 0 .\]</div>
+
+For the <span class="math notranslate nohighlight">\(\theta\)</span> method, we have
+<div class="math notranslate nohighlight">
+\[ \lim_{z\to \infty} \frac{1 + (1-\theta)z}{1 - \theta z} = \frac{1-\theta}{\theta} . \]</div>
+
+Evidently only <span class="math notranslate nohighlight">\(\theta=1\)</span> is <span class="math notranslate nohighlight">\(L\)</span>-stable.</p>
 </div>
 </div>
-<div class="section" id="a-test-problem">
+<div class="tex2jax_ignore mathjax_ignore section" id="a-test-problem">
 <h1>A test problem<a class="headerlink" href="#a-test-problem" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -708,7 +786,7 @@ Evidently only \)</span>\theta=1<span class="math notranslate nohighlight">\( is
 <li><p>Small and large <span class="math notranslate nohighlight">\(Pe_L\)</span>, Upwind vs centered, vary <span class="math notranslate nohighlight">\(\theta\)</span></p></li>
 </ul>
 </div>
-<div class="section" id="spectrum-of-operators">
+<div class="tex2jax_ignore mathjax_ignore section" id="spectrum-of-operators">
 <h1>Spectrum of operators<a class="headerlink" href="#spectrum-of-operators" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -727,7 +805,7 @@ Evidently only \)</span>\theta=1<span class="math notranslate nohighlight">\( is
 <img alt="../_images/2021-09-29-stiffness_24_0.svg" src="../_images/2021-09-29-stiffness_24_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="stability-limits-cfl-principle-for-advection">
+<div class="tex2jax_ignore mathjax_ignore section" id="stability-limits-cfl-principle-for-advection">
 <h1>Stability limits: CFL principle for advection<a class="headerlink" href="#stability-limits-cfl-principle-for-advection" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>A stable method must be capable of propagating information at least as fast as the continuous system it discretizes.</p>
@@ -737,7 +815,9 @@ Evidently only \)</span>\theta=1<span class="math notranslate nohighlight">\( is
 <li><p>Discrete information moves at most <span class="math notranslate nohighlight">\(\Delta x\)</span> in time <span class="math notranslate nohighlight">\(\Delta t\)</span> (with explicit integrator)</p></li>
 <li><p>Physical information moves distance <span class="math notranslate nohighlight">\(|w| \Delta t\)</span></p></li>
 <li><p>“CFL number” or “Courant number”
-$<span class="math notranslate nohighlight">\( \textrm{CFL} = \frac{\Delta t |w|}{\Delta x} \le 1 \)</span>$</p></li>
+<div class="math notranslate nohighlight">
+\[ \textrm{CFL} = \frac{\Delta t |w|}{\Delta x} \le 1 \]</div>
+</p></li>
 <li><p>What does this mean for implicit methods?</p></li>
 </ul>
 <div class="cell docutils container">
@@ -758,15 +838,17 @@ $<span class="math notranslate nohighlight">\( \textrm{CFL} = \frac{\Delta t |w|
 <img alt="../_images/2021-09-29-stiffness_27_0.svg" src="../_images/2021-09-29-stiffness_27_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="stability-limits-explicit-diffusion">
+<div class="tex2jax_ignore mathjax_ignore section" id="stability-limits-explicit-diffusion">
 <h1>Stability limits: explicit diffusion<a class="headerlink" href="#stability-limits-explicit-diffusion" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>The diffusion operator has stencil
-$<span class="math notranslate nohighlight">\( \frac{\kappa}{(\Delta x)^2} \begin{bmatrix} 1 &amp; -2 &amp; 1 \end{bmatrix} \)</span>$</p></li>
+<div class="math notranslate nohighlight">
+\[ \frac{\kappa}{(\Delta x)^2} \begin{bmatrix} 1 &amp; -2 &amp; 1 \end{bmatrix} \]</div>
+</p></li>
 <li><p>Apply this to test function <span class="math notranslate nohighlight">\(e^{i\theta x}\)</span> to get the symbol</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-372a5685-debf-4b34-9e28-c9e97d213ff3">
-<span class="eqno">(16)<a class="headerlink" href="#equation-372a5685-debf-4b34-9e28-c9e97d213ff3" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-45b5f1f0-7522-4459-876c-c67b5edc8e4f">
+<span class="eqno">(17)<a class="headerlink" href="#equation-45b5f1f0-7522-4459-876c-c67b5edc8e4f" title="Permalink to this equation">¶</a></span>\[\begin{align}
 L_{\Delta x} e^{i\theta x}
 &amp;=
 \frac{\kappa}{(\Delta x)^2} \Big[ e^{-i\theta\Delta x} - 2 + e^{i\theta\Delta x} \Big] e^{i\theta x} \\
@@ -794,7 +876,7 @@ L_{\Delta x} e^{i\theta x}
 <img alt="../_images/2021-09-29-stiffness_30_0.svg" src="../_images/2021-09-29-stiffness_30_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="stiffness">
+<div class="tex2jax_ignore mathjax_ignore section" id="stiffness">
 <h1>Stiffness<a class="headerlink" href="#stiffness" title="Permalink to this headline">¶</a></h1>
 <blockquote>
 <div><p>Stiff equations are problems for which explicit methods don’t work. (Hairer and Wanner, 2002)</p>
@@ -869,7 +951,7 @@ L_{\Delta x} e^{i\theta x}
 </div>
 </div>
 </div>
-<div class="section" id="cost-scaling">
+<div class="tex2jax_ignore mathjax_ignore section" id="cost-scaling">
 <h1>Cost scaling<a class="headerlink" href="#cost-scaling" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Spatial discretization with error <span class="math notranslate nohighlight">\(O((\Delta x)^p)\)</span></p></li>
@@ -900,15 +982,36 @@ L_{\Delta x} e^{i\theta x}
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-09-27-transient.html" title="previous page">2021-09-27 Transient problems</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-09-27-transient.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-09-27 Transient problems</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-10-01-runge-kutta.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-10-01 Runge-Kutta methods</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -203,6 +207,51 @@
      2021-10-13 Wave equations
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -310,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -404,7 +453,7 @@
         
               <div>
                 
-  <div class="section" id="finite-difference-in-2d">
+  <div class="tex2jax_ignore mathjax_ignore section" id="finite-difference-in-2d">
 <h1>2021-10-08 Finite Difference in 2D<a class="headerlink" href="#finite-difference-in-2d" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -460,12 +509,12 @@
 </div>
 </div>
 </div>
-<div class="section" id="extending-advection-diffusion-to-2d">
+<div class="tex2jax_ignore mathjax_ignore section" id="extending-advection-diffusion-to-2d">
 <h1>Extending advection-diffusion to 2D<a class="headerlink" href="#extending-advection-diffusion-to-2d" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="dimension">
 <h2>1 dimension<a class="headerlink" href="#dimension" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-d8383a2c-ea44-4989-ada5-bec53e5630ec">
-<span class="eqno">(18)<a class="headerlink" href="#equation-d8383a2c-ea44-4989-ada5-bec53e5630ec" title="Permalink to this equation">¶</a></span>\[\begin{align} u_t + (- \kappa u_x + w u)_x &amp;= f(x) &amp; \text{ on } \Omega &amp;= (a,b) \\
+<div class="amsmath math notranslate nohighlight" id="equation-103ad5ce-216f-46bb-a4f8-e009cc8a92f8">
+<span class="eqno">(19)<a class="headerlink" href="#equation-103ad5ce-216f-46bb-a4f8-e009cc8a92f8" title="Permalink to this equation">¶</a></span>\[\begin{align} u_t + (- \kappa u_x + w u)_x &amp;= f(x) &amp; \text{ on } \Omega &amp;= (a,b) \\
 u(a) &amp;= g_D(a) &amp; u'(b) &amp;= g_N(b) \end{align}\]</div>
 <ul class="simple">
 <li><p>Cell Peclet number <span class="math notranslate nohighlight">\(\mathrm{Pe}_h = \frac{\lvert w \rvert h}{\kappa}\)</span></p>
@@ -485,8 +534,8 @@ u(a) &amp;= g_D(a) &amp; u'(b) &amp;= g_N(b) \end{align}\]</div>
 </div>
 <div class="section" id="dimensions">
 <h2>2 dimensions<a class="headerlink" href="#dimensions" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-1d799208-9519-4f90-b949-cc113c63820f">
-<span class="eqno">(19)<a class="headerlink" href="#equation-1d799208-9519-4f90-b949-cc113c63820f" title="Permalink to this equation">¶</a></span>\[\begin{align} u_t + \nabla\cdot\big(- \kappa \nabla u + \mathbf{w} u \big) &amp;= f(x,y) &amp; \text{ on } \Omega &amp; \subset \mathbb R^2 \\
+<div class="amsmath math notranslate nohighlight" id="equation-9c6dd411-51d5-414d-9d46-5f991f53eaef">
+<span class="eqno">(20)<a class="headerlink" href="#equation-9c6dd411-51d5-414d-9d46-5f991f53eaef" title="Permalink to this equation">¶</a></span>\[\begin{align} u_t + \nabla\cdot\big(- \kappa \nabla u + \mathbf{w} u \big) &amp;= f(x,y) &amp; \text{ on } \Omega &amp; \subset \mathbb R^2 \\
 u|_{\Gamma_D} &amp;= g_D(x,y) \\
 (-\kappa \nabla u + \mathbf w u) \cdot \hat n|_{\Gamma_N} &amp;= g_N(x,y)
 \end{align}\]</div>
@@ -497,7 +546,7 @@ u|_{\Gamma_D} &amp;= g_D(x,y) \\
 </ul>
 </div>
 </div>
-<div class="section" id="on-finite-difference-grids">
+<div class="tex2jax_ignore mathjax_ignore section" id="on-finite-difference-grids">
 <h1>On finite difference grids<a class="headerlink" href="#on-finite-difference-grids" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Non-uniform grids can mesh “special” domains</p>
@@ -512,7 +561,7 @@ u|_{\Gamma_D} &amp;= g_D(x,y) \\
 <img src="../img/Beckers-C-Grid.png" class="floatright" />
 </div><p><img alt="Wesseling 11.4: A boundary-fitted grid around an airfoil." src="../_images/Wesseling-Fig11.4-boundary-fitted-grid.png" /></p>
 </div>
-<div class="section" id="time-independent-advection-diffusion">
+<div class="tex2jax_ignore mathjax_ignore section" id="time-independent-advection-diffusion">
 <h1>Time-independent advection-diffusion<a class="headerlink" href="#time-independent-advection-diffusion" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="advection">
 <h2>Advection<a class="headerlink" href="#advection" title="Permalink to this headline">¶</a></h2>
@@ -532,14 +581,15 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
 \end{split}\]</div>
 </div>
 </div>
-<div class="section" id="diffusion">
+<div class="tex2jax_ignore mathjax_ignore section" id="diffusion">
 <h1>Diffusion<a class="headerlink" href="#diffusion" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[ -\nabla\cdot(\kappa \nabla u) = -\kappa \nabla\cdot \nabla u - \nabla\kappa\cdot \nabla u\]</div>
 <ul class="simple">
 <li><p>When would you trust this decomposition?</p></li>
 <li><p>If we have constant <span class="math notranslate nohighlight">\(\kappa\)</span>, we can write
-$<span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[\begin{split}
 -\kappa \nabla\cdot \nabla u \approx \frac{\kappa}{h^2} \begin{bmatrix}
 &amp; -1 &amp; \\
 -1 &amp; 4 &amp; -1 \\
@@ -549,10 +599,11 @@ u_{i-1, j+1} &amp; u_{i, j+1} &amp; u_{i+1,j+1} \\
 u_{i-1, j} &amp; u_{i, j} &amp; u_{i+1,j} \\
 u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
 \end{bmatrix}
-\)</span>$</p></li>
+\end{split}\]</div>
+</p></li>
 </ul>
 </div>
-<div class="section" id="advection-diffusion-in-code">
+<div class="tex2jax_ignore mathjax_ignore section" id="advection-diffusion-in-code">
 <h1>Advection-diffusion in code<a class="headerlink" href="#advection-diffusion-in-code" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -589,7 +640,7 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
 </div>
 </div>
 </div>
-<div class="section" id="spy-the-matrix">
+<div class="tex2jax_ignore mathjax_ignore section" id="spy-the-matrix">
 <h1>Spy the matrix<a class="headerlink" href="#spy-the-matrix" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -614,7 +665,7 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
 <img alt="../_images/2021-10-08-fd-2d_15_0.svg" src="../_images/2021-10-08-fd-2d_15_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="plot-a-solution">
+<div class="tex2jax_ignore mathjax_ignore section" id="plot-a-solution">
 <h1>Plot a solution<a class="headerlink" href="#plot-a-solution" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -645,7 +696,7 @@ u_{i-1, j-1} &amp; u_{i, j-1} &amp; u_{i+1,j-1} \\
 <li><p>As you refine the grid?</p></li>
 </ul>
 </div>
-<div class="section" id="cost-breadown-and-optimization">
+<div class="tex2jax_ignore mathjax_ignore section" id="cost-breadown-and-optimization">
 <h1>Cost breadown and optimization<a class="headerlink" href="#cost-breadown-and-optimization" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1457,7 +1508,7 @@ if (typeof require === 'function' && define.amd) {
 </div></div>
 </div>
 </div>
-<div class="section" id="what-s-left">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-s-left">
 <h1>What’s left?<a class="headerlink" href="#what-s-left" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Symmetric Dirichlet boundary conditions</p></li>
@@ -1494,16 +1545,36 @@ if (typeof require === 'function' && define.amd) {
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-10-04-stiff-rk.html" title="previous page">2021-10-04 RK methods for stiff problems</a>
-    <a class='right-next' id="next-link" href="2021-10-13-wave-equation.html" title="next page">2021-10-13 Wave equations</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-10-04-stiff-rk.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-10-04 RK methods for stiff problems</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-10-13-wave-equation.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-10-13 Wave equations</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

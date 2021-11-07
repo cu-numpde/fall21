@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -355,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -412,7 +416,7 @@
         
               <div>
                 
-  <div class="section" id="software-discussion">
+  <div class="tex2jax_ignore mathjax_ignore section" id="software-discussion">
 <h1>2021-11-03 Software discussion<a class="headerlink" href="#software-discussion" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -431,15 +435,15 @@
 </ul>
 </div>
 </div>
-<div class="section" id="integration-by-parts">
+<div class="tex2jax_ignore mathjax_ignore section" id="integration-by-parts">
 <h1>Integration by parts<a class="headerlink" href="#integration-by-parts" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="one-dimension">
 <h2>One dimension<a class="headerlink" href="#one-dimension" title="Permalink to this headline">¶</a></h2>
 <blockquote>
 <div><p>it’s the product rule backwards</p>
 </div></blockquote>
-<div class="amsmath math notranslate nohighlight" id="equation-cfb144b6-5360-4558-b8de-0a660a36a883">
-<span class="eqno">(33)<a class="headerlink" href="#equation-cfb144b6-5360-4558-b8de-0a660a36a883" title="Permalink to this equation">¶</a></span>\[\begin{align} \int_a^b d(uv) &amp;= \int_a^b u dv + \int_a^b v du \\
+<div class="amsmath math notranslate nohighlight" id="equation-4d0015d9-6ce6-47ea-9ac8-44c7ef012063">
+<span class="eqno">(34)<a class="headerlink" href="#equation-4d0015d9-6ce6-47ea-9ac8-44c7ef012063" title="Permalink to this equation">¶</a></span>\[\begin{align} \int_a^b d(uv) &amp;= \int_a^b u dv + \int_a^b v du \\
 (uv)_a^b &amp;= \int_a^b u dv + \int_a^b v du \\
 \int_a^b u dv &amp;= (uv)_a^b - \int_a^b v du
 \end{align}\]</div>
@@ -449,8 +453,8 @@
 </div>
 <div class="section" id="multiple-dimensions">
 <h2>Multiple dimensions<a class="headerlink" href="#multiple-dimensions" title="Permalink to this headline">¶</a></h2>
-<div class="amsmath math notranslate nohighlight" id="equation-9617c649-b770-4cc5-a26d-f04b6bee25f7">
-<span class="eqno">(34)<a class="headerlink" href="#equation-9617c649-b770-4cc5-a26d-f04b6bee25f7" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-2960a419-61c8-4bfe-8d55-3a85dcf57555">
+<span class="eqno">(35)<a class="headerlink" href="#equation-2960a419-61c8-4bfe-8d55-3a85dcf57555" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \int_\Omega v \nabla\cdot \mathbf f = -\int_\Omega \nabla v \cdot \mathbf f + \int_{\partial \Omega} v \mathbf f \cdot \mathbf n
 \end{align}\]</div>
 </div>
@@ -464,8 +468,8 @@
 <ul class="simple">
 <li><p>multiply by a test function and integrate by parts</p></li>
 </ul>
-<div class="amsmath math notranslate nohighlight" id="equation-57c09d4e-ec21-49e1-aeab-6dc813566ac7">
-<span class="eqno">(35)<a class="headerlink" href="#equation-57c09d4e-ec21-49e1-aeab-6dc813566ac7" title="Permalink to this equation">¶</a></span>\[\begin{align} -\int_\Omega v \nabla\cdot(\kappa \nabla u) = 0, \forall v \\
+<div class="amsmath math notranslate nohighlight" id="equation-669c24ac-3ac4-4d75-8e0c-7ec252b8f925">
+<span class="eqno">(36)<a class="headerlink" href="#equation-669c24ac-3ac4-4d75-8e0c-7ec252b8f925" title="Permalink to this equation">¶</a></span>\[\begin{align} -\int_\Omega v \nabla\cdot(\kappa \nabla u) = 0, \forall v \\
 \int_\Omega \nabla v \cdot \kappa \nabla u - \int_{\partial\Omega} v \underbrace{\kappa \nabla u \cdot \mathbf n}_{\text{boundary condition}} = 0
 \end{align}\]</div>
 </div>
@@ -494,16 +498,36 @@
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-11-01-projects.html" title="previous page">2021-11-01 Projects</a>
-    <a class='right-next' id="next-link" href="2021-11-05-galerkin.html" title="next page">2021-11-05 Galerkin methods</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-11-01-projects.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-11-01 Projects</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-11-05-galerkin.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-11-05 Galerkin methods</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -355,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -438,7 +442,7 @@
         
               <div>
                 
-  <div class="section" id="boundaries-and-fourier-methods">
+  <div class="tex2jax_ignore mathjax_ignore section" id="boundaries-and-fourier-methods">
 <h1>2021-09-01 Boundaries and Fourier methods<a class="headerlink" href="#boundaries-and-fourier-methods" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -465,7 +469,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="interpolation-by-vandermonde-matrices">
+<div class="tex2jax_ignore mathjax_ignore section" id="interpolation-by-vandermonde-matrices">
 <h1>Interpolation by Vandermonde matrices<a class="headerlink" href="#interpolation-by-vandermonde-matrices" title="Permalink to this headline">¶</a></h1>
 <p>We can compute a polynomial</p>
 <div class="math notranslate nohighlight">
@@ -511,7 +515,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="arbitrary-order-derivatives">
+<div class="tex2jax_ignore mathjax_ignore section" id="arbitrary-order-derivatives">
 <h1>Arbitrary order derivatives<a class="headerlink" href="#arbitrary-order-derivatives" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -547,7 +551,7 @@
 <img alt="../_images/2021-09-01-convergence-and-boundaries_8_0.svg" src="../_images/2021-09-01-convergence-and-boundaries_8_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="high-order-discretization-of-the-laplacian">
+<div class="tex2jax_ignore mathjax_ignore section" id="high-order-discretization-of-the-laplacian">
 <h1>High order discretization of the Laplacian<a class="headerlink" href="#high-order-discretization-of-the-laplacian" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="the-poisson-problem-u-xx-f-with-boundary-conditions">
 <h2>The Poisson problem <span class="math notranslate nohighlight">\(-u_{xx} = f\)</span> with boundary conditions<a class="headerlink" href="#the-poisson-problem-u-xx-f-with-boundary-conditions" title="Permalink to this headline">¶</a></h2>
@@ -598,13 +602,19 @@
 </div>
 </div>
 </div>
-<div class="section" id="method-of-manufactured-solutions">
+<div class="tex2jax_ignore mathjax_ignore section" id="method-of-manufactured-solutions">
 <h1>Method of manufactured solutions<a class="headerlink" href="#method-of-manufactured-solutions" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="problem-analytic-solutions-to-pdes-are-hard-to-find">
 <h2>Problem: analytic solutions to PDEs are hard to find<a class="headerlink" href="#problem-analytic-solutions-to-pdes-are-hard-to-find" title="Permalink to this headline">¶</a></h2>
 <p>Let’s choose a smooth function with rich derivatives,
-$<span class="math notranslate nohighlight">\( u(x) = \tanh(x) . \)</span><span class="math notranslate nohighlight">\(
-Then \)</span><span class="math notranslate nohighlight">\( u'(x) = \cosh^{-2}(x) \)</span><span class="math notranslate nohighlight">\( and \)</span><span class="math notranslate nohighlight">\( u''(x) = -2 \tanh(x) \cosh^{-2}(x) . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ u(x) = \tanh(x) . \]</div>
+
+Then <div class="math notranslate nohighlight">
+\[ u'(x) = \cosh^{-2}(x) \]</div>
+ and <div class="math notranslate nohighlight">
+\[ u''(x) = -2 \tanh(x) \cosh^{-2}(x) . \]</div>
+</p>
 <ul class="simple">
 <li><p>This works for nonlinear too.</p></li>
 </ul>
@@ -626,7 +636,7 @@ Then \)</span><span class="math notranslate nohighlight">\( u'(x) = \cosh^{-2}(x
 </div>
 </div>
 </div>
-<div class="section" id="convergence-rate">
+<div class="tex2jax_ignore mathjax_ignore section" id="convergence-rate">
 <h1>Convergence rate<a class="headerlink" href="#convergence-rate" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -661,34 +671,50 @@ Then \)</span><span class="math notranslate nohighlight">\( u'(x) = \cosh^{-2}(x
 <img alt="../_images/2021-09-01-convergence-and-boundaries_17_0.svg" src="../_images/2021-09-01-convergence-and-boundaries_17_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="symmetry-in-boundary-conditions-dirichlet">
+<div class="tex2jax_ignore mathjax_ignore section" id="symmetry-in-boundary-conditions-dirichlet">
 <h1>Symmetry in boundary conditions: Dirichlet<a class="headerlink" href="#symmetry-in-boundary-conditions-dirichlet" title="Permalink to this headline">¶</a></h1>
-<p>We have implemented Dirichlet conditions by modifying the first row of the matrix,
-$<span class="math notranslate nohighlight">\( \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ \\ &amp; &amp; A_{1:,:} &amp; &amp; \\ \\ \end{bmatrix} \begin{bmatrix} u_0 \\ \\ u_{1:} \\ \\ \end{bmatrix} = \begin{bmatrix} a \\ \\ f_{1:} \\ \\ \end{bmatrix} . \)</span>$</p>
+<p>We have implemented Dirichlet conditions by modifying the first row of the matrix,</p>
+<div class="amsmath math notranslate nohighlight" id="equation-34132967-e29f-4c8f-a0bd-ac20e767f885">
+<span class="eqno">(7)<a class="headerlink" href="#equation-34132967-e29f-4c8f-a0bd-ac20e767f885" title="Permalink to this equation">¶</a></span>\[\begin{align}
+\begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ \\ &amp; &amp; A_{1:,:} &amp; &amp; \\ \\ \end{bmatrix} \begin{bmatrix} u_0 \\ \\ u_{1:} \\ \\ \end{bmatrix} = \begin{bmatrix} a \\ \\ f_{1:} \\ \\ \end{bmatrix} .
+\end{align}\]</div>
 <ul class="simple">
 <li><p>This matrix is not symmetric even if <span class="math notranslate nohighlight">\(A\)</span> is.</p></li>
 <li><p>We can eliminate <span class="math notranslate nohighlight">\(u_0\)</span> and create a reduced system for <span class="math notranslate nohighlight">\(u_{1:}\)</span>.</p></li>
-<li><p>Generalize: consider a <span class="math notranslate nohighlight">\(2\times 2\)</span> block system
-$<span class="math notranslate nohighlight">\( \begin{bmatrix} I &amp; 0 \\ A_{10} &amp; A_{11} \end{bmatrix} \begin{bmatrix} u_0 \\ u_1 \end{bmatrix} = \begin{bmatrix} f_0 \\ f_1 \end{bmatrix} .\)</span>$</p></li>
+<li><p>Generalize: consider a <span class="math notranslate nohighlight">\(2\times 2\)</span> block system</p></li>
 </ul>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{align*}
+\begin{bmatrix} I &amp; 0 \\ A_{10} &amp; A_{11} \end{bmatrix} \begin{bmatrix} u_0 \\ u_1 \end{bmatrix} = \begin{bmatrix} f_0 \\ f_1 \end{bmatrix}.
+\end{align*}\]</div>
 <p>We can rearrange as
-$<span class="math notranslate nohighlight">\( A_{11} u_1 = f_1 - A_{10} f_0, \)</span><span class="math notranslate nohighlight">\(
-which is symmetric if \)</span>A_{11}$ is.</p>
+<div class="math notranslate nohighlight">
+\[A_{11} u_1 = f_1 - A_{10} f_0,\]</div>
+
+which is symmetric if <span class="math notranslate nohighlight">\(A_{11}\)</span> is.</p>
 <ul class="simple">
 <li><p>This is called “lifting” and is often done implicitly in the mathematics literature.  It is convenient for linear solvers and eigenvalue solvers, but inconvenient for IO and postprocessing, as well as some nonlinear problems.</p></li>
 <li><p>Convenient alternative: write
-$<span class="math notranslate nohighlight">\( \begin{bmatrix} I &amp; 0 \\ 0 &amp; A_{11} \end{bmatrix} \begin{bmatrix} u_0 \\ u_1 \end{bmatrix} = \begin{bmatrix} f_0 \\ f_1 - A_{10} f_0 \end{bmatrix}, \)</span>$
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix} I &amp; 0 \\ 0 &amp; A_{11} \end{bmatrix} \begin{bmatrix} u_0 \\ u_1 \end{bmatrix} = \begin{bmatrix} f_0 \\ f_1 - A_{10} f_0 \end{bmatrix},\end{split}\]</div>
+
 which is symmetric and decouples the degrees of freedom associated with the boundary. This method applies cleanly to nonlinear problems.</p></li>
 <li><p>Optionally scale the identity by some scalar related to the norm of <span class="math notranslate nohighlight">\(A_{11}\)</span>.</p></li>
 </ul>
 </div>
-<div class="section" id="symmetry-in-boundary-conditions-neumann">
+<div class="tex2jax_ignore mathjax_ignore section" id="symmetry-in-boundary-conditions-neumann">
 <h1>Symmetry in boundary conditions: Neumann<a class="headerlink" href="#symmetry-in-boundary-conditions-neumann" title="Permalink to this headline">¶</a></h1>
 <p>Consider FD discretization of the Neumann boundary condition
-$<span class="math notranslate nohighlight">\( \frac{du}{dx}(1) = b . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[
+\frac{du}{dx}(1) = b .
+\]</div>
+</p>
 <ol class="simple">
 <li><p>Use a one-sided difference formula as in
-$<span class="math notranslate nohighlight">\( \frac{u_n - u_{n-1}}{h} = b . \)</span>$</p></li>
+<div class="math notranslate nohighlight">
+\[ \frac{u_n - u_{n-1}}{h} = b . \]</div>
+</p></li>
 </ol>
 <ul class="simple">
 <li><p>an extra discretization choice</p></li>
@@ -696,12 +722,16 @@ $<span class="math notranslate nohighlight">\( \frac{u_n - u_{n-1}}{h} = b . \)<
 </ul>
 <ol class="simple">
 <li><p>Temporarily introduce a ghost value <span class="math notranslate nohighlight">\(u_{n+1} = u(x_{n+1} = 1 + h)\)</span> (possibly more) and define it to be a reflection of the values from inside the domain.  In the case <span class="math notranslate nohighlight">\(b=0\)</span>, this reflection is <span class="math notranslate nohighlight">\(u_{n+i} = u_{n-i}\)</span>.  More generally,
-$<span class="math notranslate nohighlight">\( u_{n+i} = u_{n-i} + 2b(x_n - x_{n-i}) . \)</span>$</p></li>
+<div class="math notranslate nohighlight">
+\[ u_{n+i} = u_{n-i} + 2b(x_n - x_{n-i}) . \]</div>
+</p></li>
 </ol>
 <p>After this definition of ghost values, we apply the interior discretization at the boundary. For our reference equation, we would write</p>
 <div class="math notranslate nohighlight">
 \[ \frac{-u_{n-1} + 2 u_n - u_{n+1}}{h^2} = f(x_n) \]</div>
-<p>which simplifies to $<span class="math notranslate nohighlight">\( \frac{u_n - u_{n-1}}{h^2} = f(x_n)/2 + b/h \)</span>$
+<p>which simplifies to <div class="math notranslate nohighlight">
+\[ \frac{u_n - u_{n-1}}{h^2} = f(x_n)/2 + b/h \]</div>
+
 after dividing by 2 and moving the boundary term to the right hand side.</p>
 </div>
 
@@ -728,16 +758,36 @@ after dividing by 2 and moving the boundary term to the right hand side.</p>
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-08-30-high-order.html" title="previous page">2021-08-30 High order and boundaries</a>
-    <a class='right-next' id="next-link" href="2021-09-03-fourier.html" title="next page">2021-09-03 Convergence and Fourier analysis</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-08-30-high-order.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-08-30 High order and boundaries</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-09-03-fourier.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-09-03 Convergence and Fourier analysis</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

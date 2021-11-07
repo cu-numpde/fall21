@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -136,6 +140,116 @@
    <li class="toctree-l2">
     <a class="reference internal" href="2021-09-03-fourier.html">
      2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
     </a>
    </li>
   </ul>
@@ -245,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -345,7 +459,7 @@
         
               <div>
                 
-  <div class="section" id="finite-difference-2">
+  <div class="tex2jax_ignore mathjax_ignore section" id="finite-difference-2">
 <h1>2021-08-27 Finite Difference 2<a class="headerlink" href="#finite-difference-2" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -372,10 +486,10 @@
 </div>
 </div>
 </div>
-<div class="section" id="discuss-activity-on-stability-and-accuracy-computing-derivatives">
+<div class="tex2jax_ignore mathjax_ignore section" id="discuss-activity-on-stability-and-accuracy-computing-derivatives">
 <h1>Discuss activity on stability and accuracy computing derivatives<a class="headerlink" href="#discuss-activity-on-stability-and-accuracy-computing-derivatives" title="Permalink to this headline">¶</a></h1>
 </div>
-<div class="section" id="a-note-on-stable-computation">
+<div class="tex2jax_ignore mathjax_ignore section" id="a-note-on-stable-computation">
 <h1>A note on stable computation<a class="headerlink" href="#a-note-on-stable-computation" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -406,7 +520,7 @@ log(1 + x) = 1.110223024625156e-15
 <img alt="../_images/2021-08-27-finite-difference-2_5_0.svg" src="../_images/2021-08-27-finite-difference-2_5_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="a-few-methods-on-grids">
+<div class="tex2jax_ignore mathjax_ignore section" id="a-few-methods-on-grids">
 <h1>A few methods on grids<a class="headerlink" href="#a-few-methods-on-grids" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -438,7 +552,7 @@ log(1 + x) = 1.110223024625156e-15
 <img alt="../_images/2021-08-27-finite-difference-2_8_0.svg" src="../_images/2021-08-27-finite-difference-2_8_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="measuring-error-on-grids">
+<div class="tex2jax_ignore mathjax_ignore section" id="measuring-error-on-grids">
 <h1>Measuring error on grids<a class="headerlink" href="#measuring-error-on-grids" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -479,7 +593,7 @@ log(1 + x) = 1.110223024625156e-15
 <img alt="../_images/2021-08-27-finite-difference-2_11_0.svg" src="../_images/2021-08-27-finite-difference-2_11_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="stability">
+<div class="tex2jax_ignore mathjax_ignore section" id="stability">
 <h1>Stability<a class="headerlink" href="#stability" title="Permalink to this headline">¶</a></h1>
 <p>Are there “rough” functions for which these formulas estimate <span class="math notranslate nohighlight">\(u'(x_i) = 0\)</span>?</p>
 <div class="cell docutils container">
@@ -512,7 +626,7 @@ log(1 + x) = 1.110223024625156e-15
 </div>
 <p>If we have a solution <span class="math notranslate nohighlight">\(u(x)\)</span>, then <span class="math notranslate nohighlight">\(u(x) + f_{\text{rough}}(x)\)</span> is indistinguishable to our FD method.</p>
 </div>
-<div class="section" id="second-derivatives">
+<div class="tex2jax_ignore mathjax_ignore section" id="second-derivatives">
 <h1>Second derivatives<a class="headerlink" href="#second-derivatives" title="Permalink to this headline">¶</a></h1>
 <p>We can compute a second derivative by applying first derivatives twice.</p>
 <div class="cell docutils container">
@@ -550,7 +664,7 @@ log(1 + x) = 1.110223024625156e-15
 <img alt="../_images/2021-08-27-finite-difference-2_18_0.svg" src="../_images/2021-08-27-finite-difference-2_18_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="how-fast-do-these-approximations-converge">
+<div class="tex2jax_ignore mathjax_ignore section" id="how-fast-do-these-approximations-converge">
 <h1>How fast do these approximations converge?<a class="headerlink" href="#how-fast-do-these-approximations-converge" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -595,10 +709,12 @@ log(1 + x) = 1.110223024625156e-15
 <li><p>We don’t know yet whether either is stable</p></li>
 </ul>
 </div>
-<div class="section" id="differentiation-matrices">
+<div class="tex2jax_ignore mathjax_ignore section" id="differentiation-matrices">
 <h1>Differentiation matrices<a class="headerlink" href="#differentiation-matrices" title="Permalink to this headline">¶</a></h1>
 <p>All our <code class="docutils literal notranslate"><span class="pre">diff*</span></code> functions thus far have been linear in <code class="docutils literal notranslate"><span class="pre">u</span></code>, therefore they can be represented as matrices.
-$<span class="math notranslate nohighlight">\(\frac{u_{i+1} - u_i}{x_{i+1} - x_i} = \begin{bmatrix} -1/h &amp; 1/h \end{bmatrix} \begin{bmatrix} u_i \\ u_{i+1} \end{bmatrix}\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split}\frac{u_{i+1} - u_i}{x_{i+1} - x_i} = \begin{bmatrix} -1/h &amp; 1/h \end{bmatrix} \begin{bmatrix} u_i \\ u_{i+1} \end{bmatrix}\end{split}\]</div>
+</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">diff1_mat</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
@@ -633,7 +749,7 @@ $<span class="math notranslate nohighlight">\(\frac{u_{i+1} - u_i}{x_{i+1} - x_i
 <img alt="../_images/2021-08-27-finite-difference-2_25_0.svg" src="../_images/2021-08-27-finite-difference-2_25_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="how-accurate-is-this-derivative-matrix">
+<div class="tex2jax_ignore mathjax_ignore section" id="how-accurate-is-this-derivative-matrix">
 <h1>How accurate is this derivative matrix?<a class="headerlink" href="#how-accurate-is-this-derivative-matrix" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -649,7 +765,7 @@ $<span class="math notranslate nohighlight">\(\frac{u_{i+1} - u_i}{x_{i+1} - x_i
 <img alt="../_images/2021-08-27-finite-difference-2_27_0.svg" src="../_images/2021-08-27-finite-difference-2_27_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="can-we-study-it-as-a-matrix">
+<div class="tex2jax_ignore mathjax_ignore section" id="can-we-study-it-as-a-matrix">
 <h1>Can we study it as a matrix?<a class="headerlink" href="#can-we-study-it-as-a-matrix" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,25 +788,29 @@ $<span class="math notranslate nohighlight">\(\frac{u_{i+1} - u_i}{x_{i+1} - x_i
  2.268133218393964
  2.2674392839412794
  1.4265847744427302
- 1.3683737968309653
- 1.2135254915624207
- 1.0228485194005281
- 0.8816778784387094
+ 1.368373796830966
+ 1.2135254915624205
+ 1.0228485194005286
+ 0.8816778784387096
  0.5437139466339259
  0.46352549156242107
- 3.204643550177702e-17
+ 3.7873060138463766e-17
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="second-derivative-with-dirichlet-boundary-conditions">
+<div class="tex2jax_ignore mathjax_ignore section" id="second-derivative-with-dirichlet-boundary-conditions">
 <h1>Second derivative with Dirichlet boundary conditions<a class="headerlink" href="#second-derivative-with-dirichlet-boundary-conditions" title="Permalink to this headline">¶</a></h1>
 <p>The left endpoint in our example boundary value problem has a Dirichlet boundary condition,
-$<span class="math notranslate nohighlight">\(u(-1) = a . \)</span><span class="math notranslate nohighlight">\(
-With finite difference methods, we have an explicit degree of freedom \)</span>u_0 = u(x_0 = -1)<span class="math notranslate nohighlight">\( at that endpoint.
+<div class="math notranslate nohighlight">
+\[u(-1) = a . \]</div>
+
+With finite difference methods, we have an explicit degree of freedom <span class="math notranslate nohighlight">\(u_0 = u(x_0 = -1)\)</span> at that endpoint.
 When building a matrix system for the BVP, we can implement this boundary condition by modifying the first row of the matrix,
-\)</span><span class="math notranslate nohighlight">\( \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ \\ &amp; &amp; A_{2:,:} &amp; &amp; \\ \\ \end{bmatrix} \begin{bmatrix} u_0 \\ \\ u_{2:} \\ \\ \end{bmatrix} = \begin{bmatrix} a \\ \\ f_{2:} \\ \\ \end{bmatrix} . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{bmatrix} 1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \\ \\ &amp; &amp; A_{2:,:} &amp; &amp; \\ \\ \end{bmatrix} \begin{bmatrix} u_0 \\ \\ u_{2:} \\ \\ \end{bmatrix} = \begin{bmatrix} a \\ \\ f_{2:} \\ \\ \end{bmatrix} . \end{split}\]</div>
+</p>
 <ul class="simple">
 <li><p>This matrix is not symmetric even if <span class="math notranslate nohighlight">\(A\)</span> is.</p></li>
 </ul>
@@ -717,7 +837,7 @@ When building a matrix system for the BVP, we can implement this boundary condit
 </div>
 </div>
 </div>
-<div class="section" id="laplacian-as-a-matrix">
+<div class="tex2jax_ignore mathjax_ignore section" id="laplacian-as-a-matrix">
 <h1>Laplacian as a matrix<a class="headerlink" href="#laplacian-as-a-matrix" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -736,13 +856,13 @@ When building a matrix system for the BVP, we can implement this boundary condit
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36.554572047954174
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>36.5545720479542
 </pre></div>
 </div>
 </div>
 </div>
 </div>
-<div class="section" id="discrete-green-s-functions">
+<div class="tex2jax_ignore mathjax_ignore section" id="discrete-green-s-functions">
 <h1>Discrete “Green’s functions”<a class="headerlink" href="#discrete-green-s-functions" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -765,7 +885,7 @@ When building a matrix system for the BVP, we can implement this boundary condit
 <img alt="../_images/2021-08-27-finite-difference-2_39_0.svg" src="../_images/2021-08-27-finite-difference-2_39_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="discrete-eigenfunctions">
+<div class="tex2jax_ignore mathjax_ignore section" id="discrete-eigenfunctions">
 <h1>Discrete eigenfunctions<a class="headerlink" href="#discrete-eigenfunctions" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -811,16 +931,36 @@ When building a matrix system for the BVP, we can implement this boundary condit
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-08-25-finite-difference.html" title="previous page">2021-08-25 Finite Difference Intro</a>
-    <a class='right-next' id="next-link" href="2021-08-30-high-order.html" title="next page">2021-08-30 High order and boundaries</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-08-25-finite-difference.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-08-25 Finite Difference Intro</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-08-30-high-order.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-08-30 High order and boundaries</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

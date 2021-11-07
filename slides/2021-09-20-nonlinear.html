@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -166,6 +170,86 @@
    <li class="toctree-l2">
     <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
      2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
     </a>
    </li>
   </ul>
@@ -275,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -401,7 +485,7 @@
         
               <div>
                 
-  <div class="section" id="nonlinear-solvers">
+  <div class="tex2jax_ignore mathjax_ignore section" id="nonlinear-solvers">
 <h1>2021-09-20 Nonlinear solvers<a class="headerlink" href="#nonlinear-solvers" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -475,14 +559,16 @@
 </div>
 </div>
 </div>
-<div class="section" id="nonlinear-problems-and-rootfinding">
+<div class="tex2jax_ignore mathjax_ignore section" id="nonlinear-problems-and-rootfinding">
 <h1>Nonlinear problems and rootfinding<a class="headerlink" href="#nonlinear-problems-and-rootfinding" title="Permalink to this headline">¶</a></h1>
 <p>We want to solve problems like
-$<span class="math notranslate nohighlight">\( -(|u_x|^{p-2} u_x)_x + (u^2)_x = 0 \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ -(|u_x|^{p-2} u_x)_x + (u^2)_x = 0 \]</div>
+</p>
 <p>For linear problems, we found <span class="math notranslate nohighlight">\(u\)</span> such that <span class="math notranslate nohighlight">\(L u = b\)</span> using linear algebra.</p>
 <p>For nonlinear problems, we’ll need to find <span class="math notranslate nohighlight">\(u\)</span> such that <span class="math notranslate nohighlight">\(F(u) = 0\)</span>.</p>
 </div>
-<div class="section" id="an-algorithm-bisection">
+<div class="tex2jax_ignore mathjax_ignore section" id="an-algorithm-bisection">
 <h1>An algorithm: Bisection<a class="headerlink" href="#an-algorithm-bisection" title="Permalink to this headline">¶</a></h1>
 <p>Bisection is a rootfinding technique that starts with an interval <span class="math notranslate nohighlight">\([a,b]\)</span> containing a root and does not require derivatives. Suppose <span class="math notranslate nohighlight">\(f\)</span> is continuous. What is a <strong>sufficient</strong> condition for <span class="math notranslate nohighlight">\(f\)</span> to have a root on <span class="math notranslate nohighlight">\([a,b]\)</span>?</p>
 <div class="cell docutils container">
@@ -510,7 +596,7 @@ $<span class="math notranslate nohighlight">\( -(|u_x|^{p-2} u_x)_x + (u^2)_x = 
 </div>
 </div>
 </div>
-<div class="section" id="bisection">
+<div class="tex2jax_ignore mathjax_ignore section" id="bisection">
 <h1>Bisection<a class="headerlink" href="#bisection" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -537,7 +623,7 @@ $<span class="math notranslate nohighlight">\( -(|u_x|^{p-2} u_x)_x + (u^2)_x = 
 </div>
 </div>
 </div>
-<div class="section" id="how-fast-does-it-converge">
+<div class="tex2jax_ignore mathjax_ignore section" id="how-fast-does-it-converge">
 <h1>How fast does it converge?<a class="headerlink" href="#how-fast-does-it-converge" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -590,7 +676,7 @@ $<span class="math notranslate nohighlight">\( -(|u_x|^{p-2} u_x)_x + (u^2)_x = 
 </div>
 </div>
 </div>
-<div class="section" id="let-s-plot-the-error">
+<div class="tex2jax_ignore mathjax_ignore section" id="let-s-plot-the-error">
 <h1>Let’s plot the error<a class="headerlink" href="#let-s-plot-the-error" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[ \lvert \texttt{bisect}^k(f, a, b) - r \rvert, \quad k = 1, 2, \dotsc \]</div>
@@ -609,18 +695,26 @@ $<span class="math notranslate nohighlight">\( -(|u_x|^{p-2} u_x)_x + (u^2)_x = 
 <img alt="../_images/2021-09-20-nonlinear_12_0.svg" src="../_images/2021-09-20-nonlinear_12_0.svg" /></div>
 </div>
 <p>Evidently the error <span class="math notranslate nohighlight">\(e_k = x_k - x_*\)</span> after <span class="math notranslate nohighlight">\(k\)</span> bisections satisfies the bound
-$<span class="math notranslate nohighlight">\( |e^k| \le c 2^{-k} . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ |e^k| \le c 2^{-k} . \]</div>
+</p>
 </div>
-<div class="section" id="convergence-classes">
+<div class="tex2jax_ignore mathjax_ignore section" id="convergence-classes">
 <h1>Convergence classes<a class="headerlink" href="#convergence-classes" title="Permalink to this headline">¶</a></h1>
-<p>A convergent rootfinding algorithm produces a sequence of approximations <span class="math notranslate nohighlight">\(x_k\)</span> such that $<span class="math notranslate nohighlight">\(\lim_{k \to \infty} x_k \to x_*\)</span><span class="math notranslate nohighlight">\( where \)</span>f(x_<em>) = 0<span class="math notranslate nohighlight">\(.  For analysis, it is convenient to define the errors \)</span>e_k = x_k - x_</em><span class="math notranslate nohighlight">\(. We say that an iterative algorithm is **\)</span>q<span class="math notranslate nohighlight">\(-linearly convergent** if \)</span><span class="math notranslate nohighlight">\(\lim_{k \to \infty} |e_{k+1}| / |e_k| = \rho &lt; 1.\)</span><span class="math notranslate nohighlight">\(  (The \)</span>q<span class="math notranslate nohighlight">\( is for &quot;quotient&quot;.)  A smaller convergence factor \)</span>\rho<span class="math notranslate nohighlight">\( represents faster convergence.  A slightly weaker condition (\)</span>r<span class="math notranslate nohighlight">\(-linear convergence or just **linear convergence**) is that
-\)</span><span class="math notranslate nohighlight">\( |e_k| \le \epsilon_k \)</span><span class="math notranslate nohighlight">\(
-for all sufficiently large \)</span>k<span class="math notranslate nohighlight">\( when the sequence \)</span>{\epsilon_k}<span class="math notranslate nohighlight">\( converges \)</span>q$-linearly to 0.</p>
+<p>A convergent rootfinding algorithm produces a sequence of approximations <span class="math notranslate nohighlight">\(x_k\)</span> such that <div class="math notranslate nohighlight">
+\[\lim_{k \to \infty} x_k \to x_*\]</div>
+ where <span class="math notranslate nohighlight">\(f(x_*) = 0\)</span>.  For analysis, it is convenient to define the errors <span class="math notranslate nohighlight">\(e_k = x_k - x_*\)</span>. We say that an iterative algorithm is <strong><span class="math notranslate nohighlight">\(q\)</span>-linearly convergent</strong> if <div class="math notranslate nohighlight">
+\[\lim_{k \to \infty} |e_{k+1}| / |e_k| = \rho &lt; 1.\]</div>
+  (The <span class="math notranslate nohighlight">\(q\)</span> is for “quotient”.)  A smaller convergence factor <span class="math notranslate nohighlight">\(\rho\)</span> represents faster convergence.  A slightly weaker condition (<span class="math notranslate nohighlight">\(r\)</span>-linear convergence or just <strong>linear convergence</strong>) is that
+<div class="math notranslate nohighlight">
+\[ |e_k| \le \epsilon_k \]</div>
+
+for all sufficiently large <span class="math notranslate nohighlight">\(k\)</span> when the sequence <span class="math notranslate nohighlight">\(\{\epsilon_k\}\)</span> converges <span class="math notranslate nohighlight">\(q\)</span>-linearly to 0.</p>
 <div class="section" id="bisection-a-q-linearly-convergent-b-r-linearly-convergent-c-neither">
 <h2>Bisection: A = q-linearly convergent, B = r-linearly convergent, C = neither<a class="headerlink" href="#bisection-a-q-linearly-convergent-b-r-linearly-convergent-c-neither" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
-<div class="section" id="remarks-on-bisection">
+<div class="tex2jax_ignore mathjax_ignore section" id="remarks-on-bisection">
 <h1>Remarks on bisection<a class="headerlink" href="#remarks-on-bisection" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Specifying an interval is often inconvenient</p></li>
@@ -634,16 +728,22 @@ for all sufficiently large \)</span>k<span class="math notranslate nohighlight">
 <div class="section" id="newton-raphson-method">
 <h2>Newton-Raphson Method<a class="headerlink" href="#newton-raphson-method" title="Permalink to this headline">¶</a></h2>
 <p>Much of numerical analysis reduces to <a class="reference external" href="https://en.wikipedia.org/wiki/Taylor_series">Taylor series</a>, the approximation
-$<span class="math notranslate nohighlight">\( f(x) = f(x_0) + f'(x_0) (x-x_0) + f''(x_0) (x - x_0)^2 / 2 + \underbrace{\dotsb}_{O((x-x_0)^3)} \)</span><span class="math notranslate nohighlight">\(
-centered on some reference point \)</span>x_0$.</p>
+<div class="math notranslate nohighlight">
+\[ f(x) = f(x_0) + f'(x_0) (x-x_0) + f''(x_0) (x - x_0)^2 / 2 + \underbrace{\dotsb}_{O((x-x_0)^3)} \]</div>
+
+centered on some reference point <span class="math notranslate nohighlight">\(x_0\)</span>.</p>
 <p>In numerical computation, it is exceedingly rare to look beyond the first-order approximation
-$<span class="math notranslate nohighlight">\( \tilde f_{x_0}(x) = f(x_0) + f'(x_0)(x - x_0) . \)</span><span class="math notranslate nohighlight">\(
-Since \)</span>\tilde f_{x_0}(x)<span class="math notranslate nohighlight">\( is a linear function, we can explicitly compute the unique solution of \)</span>\tilde f_{x_0}(x) = 0<span class="math notranslate nohighlight">\( as
-\)</span><span class="math notranslate nohighlight">\( x = x_0 - f(x_0) / f'(x_0) . \)</span>$
+<div class="math notranslate nohighlight">
+\[ \tilde f_{x_0}(x) = f(x_0) + f'(x_0)(x - x_0) . \]</div>
+
+Since <span class="math notranslate nohighlight">\(\tilde f_{x_0}(x)\)</span> is a linear function, we can explicitly compute the unique solution of <span class="math notranslate nohighlight">\(\tilde f_{x_0}(x) = 0\)</span> as
+<div class="math notranslate nohighlight">
+\[ x = x_0 - f(x_0) / f'(x_0) . \]</div>
+
 This is Newton’s Method (aka Newton-Raphson or Newton-Raphson-Simpson) for finding the roots of differentiable functions.</p>
 </div>
 </div>
-<div class="section" id="an-implementation">
+<div class="tex2jax_ignore mathjax_ignore section" id="an-implementation">
 <h1>An implementation<a class="headerlink" href="#an-implementation" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,7 +780,7 @@ This is Newton’s Method (aka Newton-Raphson or Newton-Raphson-Simpson) for fin
 </div>
 </div>
 </div>
-<div class="section" id="that-s-really-fast">
+<div class="tex2jax_ignore mathjax_ignore section" id="that-s-really-fast">
 <h1>That’s really fast!<a class="headerlink" href="#that-s-really-fast" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>10 digits of accuracy in 4 iterations.</p></li>
@@ -709,15 +809,21 @@ This is Newton’s Method (aka Newton-Raphson or Newton-Raphson-Simpson) for fin
 </div>
 </div>
 </div>
-<div class="section" id="convergence-of-fixed-point-iteration">
+<div class="tex2jax_ignore mathjax_ignore section" id="convergence-of-fixed-point-iteration">
 <h1>Convergence of fixed-point iteration<a class="headerlink" href="#convergence-of-fixed-point-iteration" title="Permalink to this headline">¶</a></h1>
 <p>Consider the iteration
-$<span class="math notranslate nohighlight">\(x_{k+1} = g(x_k)\)</span><span class="math notranslate nohighlight">\(
-where \)</span>g<span class="math notranslate nohighlight">\( is a continuously differentiable function.
-Suppose that there exists a fixed point \)</span>x_* = g(x_<em>)<span class="math notranslate nohighlight">\(.  By the [mean value theorem](https://en.wikipedia.org/wiki/Mean_value_theorem), we have that
-\)</span><span class="math notranslate nohighlight">\( x_{k+1} - x_* = g(x_k) - g(x_*) = g'(c_k) (x_k - x_*) \)</span><span class="math notranslate nohighlight">\(
-for some \)</span>c_i<span class="math notranslate nohighlight">\( between \)</span>x_k<span class="math notranslate nohighlight">\( and \)</span>x_</em>$.</p>
-<p>Taking absolute values, $<span class="math notranslate nohighlight">\(|e_{k+1}| = |g'(c_k)| |e_k|,\)</span><span class="math notranslate nohighlight">\( which converges to zero if \)</span>|g’(c_k)| &lt; 1$.</p>
+<div class="math notranslate nohighlight">
+\[x_{k+1} = g(x_k)\]</div>
+
+where <span class="math notranslate nohighlight">\(g\)</span> is a continuously differentiable function.
+Suppose that there exists a fixed point <span class="math notranslate nohighlight">\(x_* = g(x_*)\)</span>.  By the <a class="reference external" href="https://en.wikipedia.org/wiki/Mean_value_theorem">mean value theorem</a>, we have that
+<div class="math notranslate nohighlight">
+\[ x_{k+1} - x_* = g(x_k) - g(x_*) = g'(c_k) (x_k - x_*) \]</div>
+
+for some <span class="math notranslate nohighlight">\(c_i\)</span> between <span class="math notranslate nohighlight">\(x_k\)</span> and <span class="math notranslate nohighlight">\(x_*\)</span>.</p>
+<p>Taking absolute values, <div class="math notranslate nohighlight">
+\[|e_{k+1}| = |g'(c_k)| |e_k|,\]</div>
+ which converges to zero if <span class="math notranslate nohighlight">\(|g'(c_k)| &lt; 1\)</span>.</p>
 <div class="section" id="exercise">
 <h2>Exercise<a class="headerlink" href="#exercise" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -726,20 +832,24 @@ for some \)</span>c_i<span class="math notranslate nohighlight">\( between \)</s
 </ul>
 </div>
 </div>
-<div class="section" id="newton-for-systems-of-equations">
+<div class="tex2jax_ignore mathjax_ignore section" id="newton-for-systems-of-equations">
 <h1>Newton for systems of equations<a class="headerlink" href="#newton-for-systems-of-equations" title="Permalink to this headline">¶</a></h1>
 <p>Let <span class="math notranslate nohighlight">\(\mathbf u \in \mathbb R^n\)</span> and consider the function <span class="math notranslate nohighlight">\(\mathbf f(\mathbf u) \in \mathbb R^n\)</span>. Then
-$<span class="math notranslate nohighlight">\( \mathbf f(\mathbf u) = \mathbf f(\mathbf u_0) + \underbrace{\mathbf f'(\mathbf u_0)}_{n\times n} \underbrace{\mathbf \delta u}_{n\times 1} + \frac 1 2 \underbrace{\mathbf f''(\mathbf u_0)}_{n\times n \times n} {(\delta \mathbf u)^2}_{n\times n} + O(|\delta\mathbf u|^3).\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ \mathbf f(\mathbf u) = \mathbf f(\mathbf u_0) + \underbrace{\mathbf f'(\mathbf u_0)}_{n\times n} \underbrace{\mathbf \delta u}_{n\times 1} + \frac 1 2 \underbrace{\mathbf f''(\mathbf u_0)}_{n\times n \times n} {(\delta \mathbf u)^2}_{n\times n} + O(|\delta\mathbf u|^3).\]</div>
+</p>
 <p>We drop all but the first two terms and name the Jacobian matrix <span class="math notranslate nohighlight">\(J(\mathbf u) = \mathbf f'(\mathbf u)\)</span>,
-$<span class="math notranslate nohighlight">\( \mathbf f(\mathbf u) \approx \mathbf f(\mathbf u_0) + J \delta \mathbf u .\)</span>$
+<div class="math notranslate nohighlight">
+\[ \mathbf f(\mathbf u) \approx \mathbf f(\mathbf u_0) + J \delta \mathbf u .\]</div>
+
 Solving the right hand side equal to zero yields</p>
-<div class="amsmath math notranslate nohighlight" id="equation-de0bfde7-c453-460b-9b12-4ddb54de9a16">
-<span class="eqno">(11)<a class="headerlink" href="#equation-de0bfde7-c453-460b-9b12-4ddb54de9a16" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7e1cb7e8-1a0d-4c6d-ac0b-cc2a02ebe243">
+<span class="eqno">(12)<a class="headerlink" href="#equation-7e1cb7e8-1a0d-4c6d-ac0b-cc2a02ebe243" title="Permalink to this equation">¶</a></span>\[\begin{align}
 J \delta \mathbf u &amp;= -\mathbf f(\mathbf u_k) \\
 \mathbf u_{k+1} &amp;= \mathbf u_k + \delta \mathbf u
 \end{align}\]</div>
 </div>
-<div class="section" id="newton-in-code">
+<div class="tex2jax_ignore mathjax_ignore section" id="newton-in-code">
 <h1>Newton in code<a class="headerlink" href="#newton-in-code" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -786,7 +896,7 @@ J \delta \mathbf u &amp;= -\mathbf f(\mathbf u_k) \\
 <img alt="../_images/2021-09-20-nonlinear_28_0.svg" src="../_images/2021-09-20-nonlinear_28_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="plotting-the-trajectory">
+<div class="tex2jax_ignore mathjax_ignore section" id="plotting-the-trajectory">
 <h1>Plotting the trajectory<a class="headerlink" href="#plotting-the-trajectory" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -802,7 +912,7 @@ J \delta \mathbf u &amp;= -\mathbf f(\mathbf u_k) \\
 <img alt="../_images/2021-09-20-nonlinear_30_0.svg" src="../_images/2021-09-20-nonlinear_30_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="bratu-problem">
+<div class="tex2jax_ignore mathjax_ignore section" id="bratu-problem">
 <h1>Bratu problem<a class="headerlink" href="#bratu-problem" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[-(u_x)_x - \lambda e^{u}= 0\]</div>
@@ -857,7 +967,7 @@ J \delta \mathbf u &amp;= -\mathbf f(\mathbf u_k) \\
 </div>
 </div>
 </div>
-<div class="section" id="solving-bratu">
+<div class="tex2jax_ignore mathjax_ignore section" id="solving-bratu">
 <h1>Solving Bratu<a class="headerlink" href="#solving-bratu" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -907,16 +1017,36 @@ J \delta \mathbf u &amp;= -\mathbf f(\mathbf u_k) \\
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-09-17-sparsity.html" title="previous page">2021-09-17 Sparsity, solvers, and nonlinear intro</a>
-    <a class='right-next' id="next-link" href="2021-09-22-nonlinear-ad.html" title="next page">2021-09-22 Newton linearization</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-09-17-sparsity.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-09-17 Sparsity, solvers, and nonlinear intro</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-09-22-nonlinear-ad.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-09-22 Newton linearization</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

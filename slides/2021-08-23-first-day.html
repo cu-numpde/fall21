@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -136,6 +140,116 @@
    <li class="toctree-l2">
     <a class="reference internal" href="2021-09-03-fourier.html">
      2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
     </a>
    </li>
   </ul>
@@ -245,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -467,7 +581,7 @@
         
               <div>
                 
-  <div class="section" id="first-day">
+  <div class="tex2jax_ignore mathjax_ignore section" id="first-day">
 <h1>2021-08-23 First Day<a class="headerlink" href="#first-day" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="csci-5636-numerical-solution-of-partial-differential-equations-pde">
 <h2>CSCI-5636: Numerical solution of partial differential equations (PDE)<a class="headerlink" href="#csci-5636-numerical-solution-of-partial-differential-equations-pde" title="Permalink to this headline">¶</a></h2>
@@ -479,7 +593,7 @@
 <h2>Meeting: Mon, Wed, Fri at 1:30-12:20 in ECEE 283 (and virtually)<a class="headerlink" href="#meeting-mon-wed-fri-at-1-30-12-20-in-ecee-283-and-virtually" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
-<div class="section" id="what-are-pde">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-are-pde">
 <h1>What are PDE?<a class="headerlink" href="#what-are-pde" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="partial-derivatives">
 <h2>partial derivatives<a class="headerlink" href="#partial-derivatives" title="Permalink to this headline">¶</a></h2>
@@ -510,19 +624,19 @@
 <li><p>population dynamics</p></li>
 </ul>
 <p>Find <span class="math notranslate nohighlight">\(u\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-0390d600-cae6-40a9-b792-1ada36eabf18">
-<span class="eqno">(1)<a class="headerlink" href="#equation-0390d600-cae6-40a9-b792-1ada36eabf18" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-9e8eed71-ebce-4f86-a561-f1e10216ef9d">
+<span class="eqno">(1)<a class="headerlink" href="#equation-9e8eed71-ebce-4f86-a561-f1e10216ef9d" title="Permalink to this equation">¶</a></span>\[\begin{align}
 -\nabla\cdot\big(\kappa(\mathbf x) \nabla u(\mathbf x)\big) &amp;= f(\mathbf x) &amp; \mathbf x &amp;\in \Omega \\
 u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \partial\Omega \\
 \kappa(\mathbf x) \nabla u(\mathbf x) \cdot \mathbf{\hat n}(\mathbf x) &amp;= h(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_N \subset\partial\Omega
 \end{align}\]</div>
 </div>
 </div>
-<div class="section" id="what-does-it-mean-to-discretize-a-pde">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-does-it-mean-to-discretize-a-pde">
 <h1>What does it mean to discretize a PDE?<a class="headerlink" href="#what-does-it-mean-to-discretize-a-pde" title="Permalink to this headline">¶</a></h1>
 <p>Find <span class="math notranslate nohighlight">\(u\)</span> such that</p>
-<div class="amsmath math notranslate nohighlight" id="equation-628c0553-1818-47fa-98f0-5f79b2d44866">
-<span class="eqno">(2)<a class="headerlink" href="#equation-628c0553-1818-47fa-98f0-5f79b2d44866" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-1224a132-2d2b-4c82-9939-75d5a8e918c3">
+<span class="eqno">(2)<a class="headerlink" href="#equation-1224a132-2d2b-4c82-9939-75d5a8e918c3" title="Permalink to this equation">¶</a></span>\[\begin{align}
 -\nabla\cdot\big(\kappa(\mathbf x) \nabla u(\mathbf x)\big) &amp;= f(\mathbf x) &amp; \mathbf x &amp;\in \Omega \\
 u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \partial\Omega \\
 \nabla u(\mathbf x) \cdot \mathbf{\hat n}(\mathbf x) &amp;= h(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_N \subset\partial\Omega
@@ -589,7 +703,7 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 </div>
 </div>
 </div>
-<div class="section" id="what-goes-in-what-comes-out">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-goes-in-what-comes-out">
 <h1>What goes in? What comes out?<a class="headerlink" href="#what-goes-in-what-comes-out" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Equations</p>
@@ -636,7 +750,7 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 </li>
 </ul>
 </div>
-<div class="section" id="who-works-with-pde-solvers">
+<div class="tex2jax_ignore mathjax_ignore section" id="who-works-with-pde-solvers">
 <h1>Who works with PDE solvers?<a class="headerlink" href="#who-works-with-pde-solvers" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Numerical analysts</p></li>
@@ -647,7 +761,7 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 <li><p>Statisticians</p></li>
 </ul>
 </div>
-<div class="section" id="what-skills-should-they-have">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-skills-should-they-have">
 <h1>What skills should they have?<a class="headerlink" href="#what-skills-should-they-have" title="Permalink to this headline">¶</a></h1>
 <p>Breakout groups: pick one role and make a list of essential and nice-to-have skills, plus at least one question. Pick one member to report out.</p>
 <ul class="simple">
@@ -657,7 +771,7 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 <li><p>…</p></li>
 </ul>
 </div>
-<div class="section" id="computer-science-runnable-abstraction-science">
+<div class="tex2jax_ignore mathjax_ignore section" id="computer-science-runnable-abstraction-science">
 <h1>Computer Science = Runnable Abstraction Science<a class="headerlink" href="#computer-science-runnable-abstraction-science" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="in-the-grinder">
 <h2>In the “grinder”<a class="headerlink" href="#in-the-grinder" title="Permalink to this headline">¶</a></h2>
@@ -696,7 +810,7 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 </ul>
 </div>
 </div>
-<div class="section" id="on-programming-languages">
+<div class="tex2jax_ignore mathjax_ignore section" id="on-programming-languages">
 <h1>On programming languages<a class="headerlink" href="#on-programming-languages" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="c">
 <h2>C<a class="headerlink" href="#c" title="Permalink to this headline">¶</a></h2>
@@ -724,7 +838,7 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 <p>You don’t need to know any of these well and you can choose the language for your project.</p>
 <img src="../img/Butler1988-Table1.png" width="80%" /></div>
 </div>
-<div class="section" id="i-won-t-grade-and-i-won-t-waste-your-time">
+<div class="tex2jax_ignore mathjax_ignore section" id="i-won-t-grade-and-i-won-t-waste-your-time">
 <h1>I won’t grade and I won’t waste your time<a class="headerlink" href="#i-won-t-grade-and-i-won-t-waste-your-time" title="Permalink to this headline">¶</a></h1>
 <div class="floatleft70"
 <ul class="simple">
@@ -742,7 +856,7 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 <div class="floatright30">
 <a href="https://www.wvupressonline.com/ungrading"><img src="../img/Ungrading.jpg" width="100%" /></a>
 </div></div>
-<div class="section" id="what-about-the-letter-grade">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-about-the-letter-grade">
 <h1>What about the letter grade?<a class="headerlink" href="#what-about-the-letter-grade" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Collect a portfolio of the work and insights you’re most proud of</p></li>
@@ -755,10 +869,10 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 </ul>
 <p><em>I can nudge upward when students are too modest – pretty common. In rare cases, I may adjust down.</em></p>
 </div>
-<div class="section" id="what-i-need-from-you-growth-mindset">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-i-need-from-you-growth-mindset">
 <h1>What I need from you: Growth Mindset<a class="headerlink" href="#what-i-need-from-you-growth-mindset" title="Permalink to this headline">¶</a></h1>
 <img src="../img/Henry2019-Table1.png" width="90%" /></div>
-<div class="section" id="how-will-the-semester-look">
+<div class="tex2jax_ignore mathjax_ignore section" id="how-will-the-semester-look">
 <h1>How will the semester look?<a class="headerlink" href="#how-will-the-semester-look" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="lecture-periods">
 <h2>Lecture periods<a class="headerlink" href="#lecture-periods" title="Permalink to this headline">¶</a></h2>
@@ -800,7 +914,7 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 </ul>
 </div>
 </div>
-<div class="section" id="tools">
+<div class="tex2jax_ignore mathjax_ignore section" id="tools">
 <h1>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="git-and-github">
 <h2>Git and GitHub<a class="headerlink" href="#git-and-github" title="Permalink to this headline">¶</a></h2>
@@ -835,7 +949,7 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
 </ul>
 </div>
 </div>
-<div class="section" id="a-note-about-covid">
+<div class="tex2jax_ignore mathjax_ignore section" id="a-note-about-covid">
 <h1>A note about COVID<a class="headerlink" href="#a-note-about-covid" title="Permalink to this headline">¶</a></h1>
 <p><img alt="" src="../_images/boulder-county-cases.png" /></p>
 <ul class="simple">
@@ -878,16 +992,36 @@ u(\mathbf x) &amp;= g(\mathbf x) &amp; \mathbf x &amp;\in \Gamma_D \subset \part
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="../slides.html" title="previous page">Slides</a>
-    <a class='right-next' id="next-link" href="2021-08-25-finite-difference.html" title="next page">2021-08-25 Finite Difference Intro</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="../slides.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">Slides</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-08-25-finite-difference.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-08-25 Finite Difference Intro</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

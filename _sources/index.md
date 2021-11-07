@@ -47,3 +47,10 @@ Welcome to **CSCI-5636: Numerical Solution of Partial Differential Equations**
 * Papers
   * [Roache, *Code Verification by the Method of Manufactured Solutions*](https://doi.org/10.1115/1.1436090)
 :::
+
+We can rearrange as
+\begin{equation*}
+A_{11} u_1 = f_1 - A_{10} f_0,
+\end{equation*}
+which is symmetric if $A_{11}$ is.
+* This is called "lifting" and is often done implicitly in the mathematics literature.  It is convenient for linear solvers and eigenvalue solvers, but inconvenient for IO and postprocessing, as well as some nonlinear problems.

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -218,6 +222,36 @@
      2021-10-20 Krylov methods
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -325,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -432,7 +466,7 @@
         
               <div>
                 
-  <div class="section" id="iterative-methods">
+  <div class="tex2jax_ignore mathjax_ignore section" id="iterative-methods">
 <h1>2021-10-18 Iterative methods<a class="headerlink" href="#iterative-methods" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -501,7 +535,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="why-iterative-solvers-over-direct-solvers">
+<div class="tex2jax_ignore mathjax_ignore section" id="why-iterative-solvers-over-direct-solvers">
 <h1>Why iterative solvers over direct solvers?<a class="headerlink" href="#why-iterative-solvers-over-direct-solvers" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Less reliable, more leaky abstraction</p></li>
@@ -517,7 +551,7 @@
 </ul>
 </div>
 </div>
-<div class="section" id="gradient-descent">
+<div class="tex2jax_ignore mathjax_ignore section" id="gradient-descent">
 <h1>Gradient descent<a class="headerlink" href="#gradient-descent" title="Permalink to this headline">¶</a></h1>
 <p>Suppose <span class="math notranslate nohighlight">\(A\)</span> is a symmetric positive definite matrix and consider the scalar functional</p>
 <div class="math notranslate nohighlight">
@@ -539,7 +573,7 @@
 <img alt="../_images/2021-10-18-iterative_6_0.svg" src="../_images/2021-10-18-iterative_6_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="aside-derivative-of-a-dot-product">
+<div class="tex2jax_ignore mathjax_ignore section" id="aside-derivative-of-a-dot-product">
 <h1>Aside: Derivative of a dot product<a class="headerlink" href="#aside-derivative-of-a-dot-product" title="Permalink to this headline">¶</a></h1>
 <p>Let <span class="math notranslate nohighlight">\(f(\boldsymbol x) = \boldsymbol y^T \boldsymbol x = \sum_i y_i x_i\)</span> and compute the derivative</p>
 <div class="math notranslate nohighlight">
@@ -548,9 +582,11 @@
 <div class="math notranslate nohighlight">
 \[ \frac{\partial \lVert \boldsymbol x \rVert^2}{\partial \boldsymbol x} = \frac{\partial \boldsymbol x^T \boldsymbol x}{\partial \boldsymbol x} = 2 \boldsymbol x^T . \]</div>
 <p>Also,
-$<span class="math notranslate nohighlight">\( \frac{\partial \lVert \boldsymbol x - \boldsymbol y \rVert^2}{\partial \boldsymbol x} = \frac{\partial (\boldsymbol x - \boldsymbol y)^T (\boldsymbol x - \boldsymbol y)}{\partial \boldsymbol x} = 2 (\boldsymbol x - \boldsymbol y)^T .\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial \lVert \boldsymbol x - \boldsymbol y \rVert^2}{\partial \boldsymbol x} = \frac{\partial (\boldsymbol x - \boldsymbol y)^T (\boldsymbol x - \boldsymbol y)}{\partial \boldsymbol x} = 2 (\boldsymbol x - \boldsymbol y)^T .\]</div>
+</p>
 </div>
-<div class="section" id="aside-variational-notation">
+<div class="tex2jax_ignore mathjax_ignore section" id="aside-variational-notation">
 <h1>Aside: Variational notation<a class="headerlink" href="#aside-variational-notation" title="Permalink to this headline">¶</a></h1>
 <p>It’s convenient to express derivatives in terms of how they act on an infinitessimal perturbation. So we might write</p>
 <div class="math notranslate nohighlight">
@@ -562,9 +598,11 @@ $<span class="math notranslate nohighlight">\( \frac{\partial \lVert \boldsymbol
 <div class="math notranslate nohighlight">
 \[ 0 = \delta I = \delta(A^{-1} A) = (\delta A^{-1}) A + A^{-1} (\delta A) \]</div>
 <p>and thus
-$<span class="math notranslate nohighlight">\( \delta A^{-1} = - A^{-1} (\delta A) A^{-1} \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ \delta A^{-1} = - A^{-1} (\delta A) A^{-1} \]</div>
+</p>
 </div>
-<div class="section" id="try-gradient-descent">
+<div class="tex2jax_ignore mathjax_ignore section" id="try-gradient-descent">
 <h1>Try gradient descent<a class="headerlink" href="#try-gradient-descent" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[ u_{k+1} = u_k - \omega \nabla_u f \]</div>
@@ -599,7 +637,7 @@ $<span class="math notranslate nohighlight">\( \delta A^{-1} = - A^{-1} (\delta 
 </div>
 </div>
 </div>
-<div class="section" id="visualize-gradient-descent">
+<div class="tex2jax_ignore mathjax_ignore section" id="visualize-gradient-descent">
 <h1>Visualize gradient descent<a class="headerlink" href="#visualize-gradient-descent" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -627,35 +665,45 @@ $<span class="math notranslate nohighlight">\( \delta A^{-1} = - A^{-1} (\delta 
 <img alt="../_images/2021-10-18-iterative_13_0.svg" src="../_images/2021-10-18-iterative_13_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="richardson-iteration">
+<div class="tex2jax_ignore mathjax_ignore section" id="richardson-iteration">
 <h1>Richardson iteration<a class="headerlink" href="#richardson-iteration" title="Permalink to this headline">¶</a></h1>
 <p>The simplest iterative method is <a class="reference external" href="https://en.wikipedia.org/wiki/Modified_Richardson_iteration">Richardson’s method</a>, which solves <span class="math notranslate nohighlight">\(A u = b\)</span> by the iteration
-$<span class="math notranslate nohighlight">\( u_{k+1} = u_k + \omega (b - A u_k) \)</span><span class="math notranslate nohighlight">\(
-where \)</span>\omega &gt; 0<span class="math notranslate nohighlight">\( is a damping parameter and \)</span>u_0$ is an initial guess (possibly the zero vector).</p>
+<div class="math notranslate nohighlight">
+\[ u_{k+1} = u_k + \omega (b - A u_k) \]</div>
+
+where <span class="math notranslate nohighlight">\(\omega &gt; 0\)</span> is a damping parameter and <span class="math notranslate nohighlight">\(u_0\)</span> is an initial guess (possibly the zero vector).</p>
 <ul class="simple">
 <li><p>Algebraically equivalent to gradient descent when <span class="math notranslate nohighlight">\(A\)</span> is SPD</p></li>
 <li><p>Non-symmetric matrices are harder to visualize</p></li>
 </ul>
 </div>
-<div class="section" id="richardson-convergence">
+<div class="tex2jax_ignore mathjax_ignore section" id="richardson-convergence">
 <h1>Richardson convergence<a class="headerlink" href="#richardson-convergence" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[ u_{k+1} = u_k + \omega (b - A u_k) \]</div>
 <p>If <span class="math notranslate nohighlight">\(b = A u_*\)</span>, this iteration is equivalent to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-bbce87da-38b7-490a-8043-ee5546cf9cf8">
-<span class="eqno">(31)<a class="headerlink" href="#equation-bbce87da-38b7-490a-8043-ee5546cf9cf8" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-63fd20cb-d015-44bb-9899-89467328d79b">
+<span class="eqno">(32)<a class="headerlink" href="#equation-63fd20cb-d015-44bb-9899-89467328d79b" title="Permalink to this equation">¶</a></span>\[\begin{align}
 u_{k+1} - u_* &amp;= (u_k - u_*) - \omega A (u_k - u_*) \\
 &amp;= (I - \omega A) (u_k - u_*) .
 \end{align}\]</div>
 <p>It is convenient for convergence analysis to identify the “error” <span class="math notranslate nohighlight">\(e_k = u_k - u_*\)</span>, in which this becomes
-$<span class="math notranslate nohighlight">\( e_{k+1} = (I - \omega A) e_k \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ e_{k+1} = (I - \omega A) e_k \]</div>
+
 or
-\)</span><span class="math notranslate nohighlight">\( e_k = (I - \omega A)^k e_0 \)</span><span class="math notranslate nohighlight">\(
-in terms of the initial error.  Evidently powers of the *iteration matrix* \)</span>I - \omega A$ tell the whole story.</p>
+<div class="math notranslate nohighlight">
+\[ e_k = (I - \omega A)^k e_0 \]</div>
+
+in terms of the initial error.  Evidently powers of the <em>iteration matrix</em> <span class="math notranslate nohighlight">\(I - \omega A\)</span> tell the whole story.</p>
 <p>Suppose that the eigendecomposition
-$<span class="math notranslate nohighlight">\( X \Lambda X^{-1} = I - \omega A \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ X \Lambda X^{-1} = I - \omega A \]</div>
+
 exists.  Then
-\)</span><span class="math notranslate nohighlight">\( (I - \omega A)^k = (X \Lambda X^{-1})^k = X \Lambda^k X^{-1} \)</span>$
+<div class="math notranslate nohighlight">
+\[ (I - \omega A)^k = (X \Lambda X^{-1})^k = X \Lambda^k X^{-1} \]</div>
+
 and the convergence (or divergence) rate depends only on the largest magnitude eigenvalue.
 This analysis isn’t great for two reasons:</p>
 <ol class="simple">
@@ -663,18 +711,20 @@ This analysis isn’t great for two reasons:</p>
 <li><p>The matrix <span class="math notranslate nohighlight">\(X\)</span> may be very ill-conditioned.</p></li>
 </ol>
 </div>
-<div class="section" id="aside-schur-decomposition">
+<div class="tex2jax_ignore mathjax_ignore section" id="aside-schur-decomposition">
 <h1>Aside: Schur decomposition<a class="headerlink" href="#aside-schur-decomposition" title="Permalink to this headline">¶</a></h1>
 <p>We can repair these weaknesses by using the <a class="reference external" href="https://en.wikipedia.org/wiki/Schur_decomposition">Schur decomposition</a>
-$<span class="math notranslate nohighlight">\( Q R Q^h = I - \omega A \)</span><span class="math notranslate nohighlight">\(
-where \)</span>R<span class="math notranslate nohighlight">\( is right-triangular and \)</span>Q<span class="math notranslate nohighlight">\( is unitary (i.e., orthogonal if real-valued; \)</span>Q^h<span class="math notranslate nohighlight">\( is the Hermitian conjugate of \)</span>Q<span class="math notranslate nohighlight">\().
-The Schur decomposition always exists and \)</span>Q$ has a condition number of 1.</p>
+<div class="math notranslate nohighlight">
+\[ Q R Q^h = I - \omega A \]</div>
+
+where <span class="math notranslate nohighlight">\(R\)</span> is right-triangular and <span class="math notranslate nohighlight">\(Q\)</span> is unitary (i.e., orthogonal if real-valued; <span class="math notranslate nohighlight">\(Q^h\)</span> is the Hermitian conjugate of <span class="math notranslate nohighlight">\(Q\)</span>).
+The Schur decomposition always exists and <span class="math notranslate nohighlight">\(Q\)</span> has a condition number of 1.</p>
 <ul class="simple">
 <li><p>Where are the eigenvalues in <span class="math notranslate nohighlight">\(R\)</span>?</p></li>
 </ul>
 <p>Evidently we must find <span class="math notranslate nohighlight">\(\omega\)</span> to minimize the maximum eigenvalue of <span class="math notranslate nohighlight">\(I - \omega A\)</span>.  We can do this if <span class="math notranslate nohighlight">\(A\)</span> is well conditioned, but not in general.</p>
 </div>
-<div class="section" id="ill-conditioning">
+<div class="tex2jax_ignore mathjax_ignore section" id="ill-conditioning">
 <h1>Ill-conditioning<a class="headerlink" href="#ill-conditioning" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="question-what-is-the-condition-number-of-the-laplacian-on-100-evenly-spaced-points">
 <h2>Question: What is the condition number of the Laplacian on 100 evenly spaced points?<a class="headerlink" href="#question-what-is-the-condition-number-of-the-laplacian-on-100-evenly-spaced-points" title="Permalink to this headline">¶</a></h2>
@@ -707,7 +757,7 @@ The Schur decomposition always exists and \)</span>Q$ has a condition number of 
 </div>
 </div>
 </div>
-<div class="section" id="monic-polynomials-small-on-the-spectrum">
+<div class="tex2jax_ignore mathjax_ignore section" id="monic-polynomials-small-on-the-spectrum">
 <h1>Monic polynomials small on the spectrum<a class="headerlink" href="#monic-polynomials-small-on-the-spectrum" title="Permalink to this headline">¶</a></h1>
 <p>Equivalently to finding <span class="math notranslate nohighlight">\(\omega\)</span> such that <span class="math notranslate nohighlight">\(\lVert I - \omega A \rVert\)</span> is minimized, we may seek a monic polynomial <span class="math notranslate nohighlight">\(p(z) = 1 - \omega z\)</span> that minimizes</p>
 <div class="math notranslate nohighlight">
@@ -725,13 +775,15 @@ The Schur decomposition always exists and \)</span>Q$ has a condition number of 
 <img alt="../_images/2021-10-18-iterative_24_0.svg" src="../_images/2021-10-18-iterative_24_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="preconditioning">
+<div class="tex2jax_ignore mathjax_ignore section" id="preconditioning">
 <h1>Preconditioning<a class="headerlink" href="#preconditioning" title="Permalink to this headline">¶</a></h1>
 <p>Preconditioning is the act of creating an “affordable” operation “<span class="math notranslate nohighlight">\(P^{-1}\)</span>” such that <span class="math notranslate nohighlight">\(P^{-1} A\)</span> (or <span class="math notranslate nohighlight">\(A P^{-1}\)</span>) is is well-conditoned or otherwise has a “nice” spectrum.  We then solve the system</p>
 <div class="math notranslate nohighlight">
 \[ P^{-1} A x = P^{-1} b \quad \text{or}\quad A P^{-1} \underbrace{(P x)}_y = b \]</div>
 <p>in which case the convergence rate depends on the spectrum of the iteration matrix
-$<span class="math notranslate nohighlight">\( I - \omega P^{-1} A . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ I - \omega P^{-1} A . \]</div>
+</p>
 <ul class="simple">
 <li><p>The preconditioner must be applied on each iteration.</p></li>
 <li><p>It is <em>not</em> merely about finding a good initial guess.</p></li>
@@ -767,16 +819,36 @@ $<span class="math notranslate nohighlight">\( I - \omega P^{-1} A . \)</span>$<
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-10-15-sparse-linalg.html" title="previous page">2021-10-15 Sparse Linear Algebra</a>
-    <a class='right-next' id="next-link" href="2021-10-20-krylev.html" title="next page">2021-10-20 Krylov methods</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-10-15-sparse-linalg.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-10-15 Sparse Linear Algebra</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-10-20-krylev.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-10-20 Krylov methods</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -181,6 +185,71 @@
    <li class="toctree-l2">
     <a class="reference internal" href="2021-09-29-stiffness.html">
      2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
     </a>
    </li>
   </ul>
@@ -290,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -461,7 +530,7 @@
         
               <div>
                 
-  <div class="section" id="transient-problems">
+  <div class="tex2jax_ignore mathjax_ignore section" id="transient-problems">
 <h1>2021-09-27 Transient problems<a class="headerlink" href="#transient-problems" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -530,7 +599,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="ordinary-differential-equations">
+<div class="tex2jax_ignore mathjax_ignore section" id="ordinary-differential-equations">
 <h1>Ordinary Differential Equations<a class="headerlink" href="#ordinary-differential-equations" title="Permalink to this headline">¶</a></h1>
 <p>Given initial condition <span class="math notranslate nohighlight">\(u_0 = u(t=0)\)</span>, find <span class="math notranslate nohighlight">\(u(t)\)</span> for <span class="math notranslate nohighlight">\(t &gt; 0\)</span> that satisfies</p>
 <div class="math notranslate nohighlight">
@@ -566,7 +635,7 @@
 </tbody>
 </table>
 </div>
-<div class="section" id="solving-differential-equations">
+<div class="tex2jax_ignore mathjax_ignore section" id="solving-differential-equations">
 <h1>Solving differential equations<a class="headerlink" href="#solving-differential-equations" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="linear-equations">
 <h2>Linear equations<a class="headerlink" href="#linear-equations" title="Permalink to this headline">¶</a></h2>
@@ -594,7 +663,7 @@
 <p>Suppose that the diagonalization <span class="math notranslate nohighlight">\(A = X \Lambda X^{-1}\)</span> exists and derive a finite expression for the matrix exponential using the scalar <code class="docutils literal notranslate"><span class="pre">exp</span></code> function.</p>
 </div>
 </div>
-<div class="section" id="forward-euler-method">
+<div class="tex2jax_ignore mathjax_ignore section" id="forward-euler-method">
 <h1>Forward Euler method<a class="headerlink" href="#forward-euler-method" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -636,7 +705,7 @@
 <img alt="../_images/2021-09-27-transient_10_0.svg" src="../_images/2021-09-27-transient_10_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="forward-euler-on-a-linear-system">
+<div class="tex2jax_ignore mathjax_ignore section" id="forward-euler-on-a-linear-system">
 <h1>Forward Euler on a linear system<a class="headerlink" href="#forward-euler-on-a-linear-system" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,20 +741,24 @@ vectors:
 </div>
 </div>
 </div>
-<div class="section" id="linear-stability-analysis">
+<div class="tex2jax_ignore mathjax_ignore section" id="linear-stability-analysis">
 <h1>Linear Stability Analysis<a class="headerlink" href="#linear-stability-analysis" title="Permalink to this headline">¶</a></h1>
 <p>Why did Euler converge on the first problem (with sufficiently small steps) while always diverging on the second problem?</p>
 <p>We can understand the convergence of methods by analyzing the test problem
-$<span class="math notranslate nohighlight">\( \dot u = \lambda u \)</span><span class="math notranslate nohighlight">\(
-for different values of \)</span>\lambda<span class="math notranslate nohighlight">\( in the complex plane.
-One step of the Euler method with step size \)</span>h<span class="math notranslate nohighlight">\( maps
-\)</span><span class="math notranslate nohighlight">\( u \to u + h \lambda u = \underbrace{(1 + h \lambda)}_{R(h \lambda)} u \)</span><span class="math notranslate nohighlight">\(
-where we have introduced the complex-valued function \)</span>R(z)$.</p>
+<div class="math notranslate nohighlight">
+\[ \dot u = \lambda u \]</div>
+
+for different values of <span class="math notranslate nohighlight">\(\lambda\)</span> in the complex plane.
+One step of the Euler method with step size <span class="math notranslate nohighlight">\(h\)</span> maps
+<div class="math notranslate nohighlight">
+\[ u \to u + h \lambda u = \underbrace{(1 + h \lambda)}_{R(h \lambda)} u \]</div>
+
+where we have introduced the complex-valued function <span class="math notranslate nohighlight">\(R(z)\)</span>.</p>
 <ul class="simple">
 <li><p>When does this map cause solutions to “blow up” and when is it stable?</p></li>
 </ul>
 </div>
-<div class="section" id="stability-diagrams-a-property-of-methods">
+<div class="tex2jax_ignore mathjax_ignore section" id="stability-diagrams-a-property-of-methods">
 <h1>Stability diagrams (a property of methods)<a class="headerlink" href="#stability-diagrams-a-property-of-methods" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -702,18 +775,26 @@ where we have introduced the complex-valued function \)</span>R(z)$.</p>
 <img alt="../_images/2021-09-27-transient_16_0.svg" src="../_images/2021-09-27-transient_16_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="implicit-methods">
+<div class="tex2jax_ignore mathjax_ignore section" id="implicit-methods">
 <h1>Implicit methods<a class="headerlink" href="#implicit-methods" title="Permalink to this headline">¶</a></h1>
 <p>Recall that forward Euler is the step
-$<span class="math notranslate nohighlight">\( \tilde u(h) = u(0) + h f(0, u(0)) . \)</span><span class="math notranslate nohighlight">\(
-This can be evaluated **explicitly**; all the terms on the right hand side are known so the approximation \)</span>\tilde u(h)<span class="math notranslate nohighlight">\( is computed merely by evaluating the right hand side.
-Let's consider an alternative, **backward Euler** (or &quot;implicit Euler&quot;),
-\)</span><span class="math notranslate nohighlight">\( \tilde u(h) = u(0) + h f(h, \tilde u(h)) . \)</span><span class="math notranslate nohighlight">\(
-This is a (generally) nonlinear equation for \)</span>\tilde u(h)<span class="math notranslate nohighlight">\(.
-For the test equation \)</span>\dot u = \lambda u<span class="math notranslate nohighlight">\(, the backward Euler method is
-\)</span><span class="math notranslate nohighlight">\( \tilde u(h) = u(0) + h \lambda \tilde u(h) \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ \tilde u(h) = u(0) + h f(0, u(0)) . \]</div>
+
+This can be evaluated <strong>explicitly</strong>; all the terms on the right hand side are known so the approximation <span class="math notranslate nohighlight">\(\tilde u(h)\)</span> is computed merely by evaluating the right hand side.
+Let’s consider an alternative, <strong>backward Euler</strong> (or “implicit Euler”),
+<div class="math notranslate nohighlight">
+\[ \tilde u(h) = u(0) + h f(h, \tilde u(h)) . \]</div>
+
+This is a (generally) nonlinear equation for <span class="math notranslate nohighlight">\(\tilde u(h)\)</span>.
+For the test equation <span class="math notranslate nohighlight">\(\dot u = \lambda u\)</span>, the backward Euler method is
+<div class="math notranslate nohighlight">
+\[ \tilde u(h) = u(0) + h \lambda \tilde u(h) \]</div>
+
 or
-\)</span><span class="math notranslate nohighlight">\( \tilde u(h) = \underbrace{\frac{1}{1 - h \lambda}}_{R(h\lambda)} u(0) . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ \tilde u(h) = \underbrace{\frac{1}{1 - h \lambda}}_{R(h\lambda)} u(0) . \]</div>
+</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot_stability</span><span class="p">(</span><span class="n">z</span> <span class="o">-&gt;</span> <span class="mi">1</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">z</span><span class="p">),</span> <span class="s">&quot;Backward Euler&quot;</span><span class="p">)</span>
@@ -724,7 +805,7 @@ or
 <img alt="../_images/2021-09-27-transient_19_0.svg" src="../_images/2021-09-27-transient_19_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="advection-with-centered-stencil">
+<div class="tex2jax_ignore mathjax_ignore section" id="advection-with-centered-stencil">
 <h1>Advection with centered stencil<a class="headerlink" href="#advection-with-centered-stencil" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -761,7 +842,7 @@ or
 <img alt="../_images/2021-09-27-transient_22_1.svg" src="../_images/2021-09-27-transient_22_1.svg" /></div>
 </div>
 </div>
-<div class="section" id="advection-with-upwind-stencil">
+<div class="tex2jax_ignore mathjax_ignore section" id="advection-with-upwind-stencil">
 <h1>Advection with upwind stencil<a class="headerlink" href="#advection-with-upwind-stencil" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -783,7 +864,7 @@ or
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.946248 seconds (206.39 k allocations: 11.905 MiB, 99.76% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.850757 seconds (206.39 k allocations: 11.905 MiB, 99.75% compilation time)
 </pre></div>
 </div>
 </div>
@@ -799,7 +880,7 @@ or
 <img alt="../_images/2021-09-27-transient_25_0.svg" src="../_images/2021-09-27-transient_25_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="centered-advection-with-runge-kutta">
+<div class="tex2jax_ignore mathjax_ignore section" id="centered-advection-with-runge-kutta">
 <h1>Centered advection with Runge-Kutta<a class="headerlink" href="#centered-advection-with-runge-kutta" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -842,13 +923,13 @@ or
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.137917 seconds (626.87 k allocations: 34.986 MiB, 99.58% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.168826 seconds (628.29 k allocations: 35.002 MiB, 12.00% gc time, 99.66% compilation time)
 </pre></div>
 </div>
 <img alt="../_images/2021-09-27-transient_28_1.svg" src="../_images/2021-09-27-transient_28_1.svg" /></div>
 </div>
 </div>
-<div class="section" id="midpoint-trapezoid-and-theta-methods">
+<div class="tex2jax_ignore mathjax_ignore section" id="midpoint-trapezoid-and-theta-methods">
 <h1>Midpoint/trapezoid and <span class="math notranslate nohighlight">\(\theta\)</span> methods<a class="headerlink" href="#midpoint-trapezoid-and-theta-methods" title="Permalink to this headline">¶</a></h1>
 <p>Forward and backward Euler are bookends of the family known as <span class="math notranslate nohighlight">\(\theta\)</span> methods.</p>
 <div class="math notranslate nohighlight">
@@ -858,7 +939,9 @@ or
 \[ (I - h \theta A) u(h) = \Big(I + h (1-\theta) A \Big) u(0) . \]</div>
 <p><span class="math notranslate nohighlight">\(\theta=0\)</span> is explicit Euler, <span class="math notranslate nohighlight">\(\theta=1\)</span> is implicit Euler, and <span class="math notranslate nohighlight">\(\theta=1/2\)</span> are the midpoint or trapezoid rules (equivalent for linear problems).
 The stability function is
-$<span class="math notranslate nohighlight">\( R(z) = \frac{1 + (1-\theta)z}{1 - \theta z}. \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ R(z) = \frac{1 + (1-\theta)z}{1 - \theta z}. \]</div>
+</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Rz_theta</span><span class="p">(</span><span class="n">z</span><span class="p">,</span> <span class="n">theta</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">theta</span><span class="p">)</span><span class="o">*</span><span class="n">z</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">theta</span><span class="o">*</span><span class="n">z</span><span class="p">)</span>
@@ -871,7 +954,7 @@ $<span class="math notranslate nohighlight">\( R(z) = \frac{1 + (1-\theta)z}{1 -
 <img alt="../_images/2021-09-27-transient_31_0.svg" src="../_images/2021-09-27-transient_31_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="a-theta-solver">
+<div class="tex2jax_ignore mathjax_ignore section" id="a-theta-solver">
 <h1>A <span class="math notranslate nohighlight">\(\theta\)</span> solver<a class="headerlink" href="#a-theta-solver" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -914,7 +997,7 @@ $<span class="math notranslate nohighlight">\( R(z) = \frac{1 + (1-\theta)z}{1 -
 <img alt="../_images/2021-09-27-transient_34_0.svg" src="../_images/2021-09-27-transient_34_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="stiff-decay-to-cosine">
+<div class="tex2jax_ignore mathjax_ignore section" id="stiff-decay-to-cosine">
 <h1>Stiff decay to cosine<a class="headerlink" href="#stiff-decay-to-cosine" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[\dot u = -k(u - \cos t) = -k u + k \cos t\]</div>
@@ -931,7 +1014,7 @@ $<span class="math notranslate nohighlight">\( R(z) = \frac{1 + (1-\theta)z}{1 -
 <img alt="../_images/2021-09-27-transient_36_0.svg" src="../_images/2021-09-27-transient_36_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="advection-as-linear-ode">
+<div class="tex2jax_ignore mathjax_ignore section" id="advection-as-linear-ode">
 <h1>Advection as linear ODE<a class="headerlink" href="#advection-as-linear-ode" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -981,13 +1064,13 @@ $<span class="math notranslate nohighlight">\( R(z) = \frac{1 + (1-\theta)z}{1 -
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1.584732 seconds (4.13 M allocations: 235.707 MiB, 3.74% gc time, 99.90% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  1.565558 seconds (4.13 M allocations: 235.608 MiB, 5.64% gc time, 99.91% compilation time)
 </pre></div>
 </div>
 <img alt="../_images/2021-09-27-transient_39_1.svg" src="../_images/2021-09-27-transient_39_1.svg" /></div>
 </div>
 </div>
-<div class="section" id="heat-equation-as-linear-ode">
+<div class="tex2jax_ignore mathjax_ignore section" id="heat-equation-as-linear-ode">
 <h1>Heat equation as linear ODE<a class="headerlink" href="#heat-equation-as-linear-ode" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>How do different <span class="math notranslate nohighlight">\(\theta \in [0, 1]\)</span> compare in terms of stability?</p></li>
@@ -1036,31 +1119,39 @@ $<span class="math notranslate nohighlight">\( R(z) = \frac{1 + (1-\theta)z}{1 -
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.075416 seconds (102.45 k allocations: 7.431 MiB, 35.46% gc time, 98.87% compilation time)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  0.046499 seconds (93.74 k allocations: 6.951 MiB, 98.56% compilation time)
 </pre></div>
 </div>
 <img alt="../_images/2021-09-27-transient_42_1.svg" src="../_images/2021-09-27-transient_42_1.svg" /></div>
 </div>
 </div>
-<div class="section" id="stability-classes-and-the-theta-method">
+<div class="tex2jax_ignore mathjax_ignore section" id="stability-classes-and-the-theta-method">
 <h1>Stability classes and the <span class="math notranslate nohighlight">\(\theta\)</span> method<a class="headerlink" href="#stability-classes-and-the-theta-method" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="definition-a-stability">
 <h2>Definition: <span class="math notranslate nohighlight">\(A\)</span>-stability<a class="headerlink" href="#definition-a-stability" title="Permalink to this headline">¶</a></h2>
 <p>A method is <span class="math notranslate nohighlight">\(A\)</span>-stable if the stability region
-$<span class="math notranslate nohighlight">\( \{ z : |R(z)| \le 1 \} \)</span><span class="math notranslate nohighlight">\(
-contains the entire left half plane \)</span><span class="math notranslate nohighlight">\( \Re[z] \le 0 .\)</span>$
+<div class="math notranslate nohighlight">
+\[ \{ z : |R(z)| \le 1 \} \]</div>
+
+contains the entire left half plane <div class="math notranslate nohighlight">
+\[ \Re[z] \le 0 .\]</div>
+
 This means that the method can take arbitrarily large time steps without becoming unstable (diverging) for any problem that is indeed physically stable.</p>
 </div>
 <div class="section" id="definition-l-stability">
 <h2>Definition: <span class="math notranslate nohighlight">\(L\)</span>-stability<a class="headerlink" href="#definition-l-stability" title="Permalink to this headline">¶</a></h2>
 <p>A time integrator with stability function <span class="math notranslate nohighlight">\(R(z)\)</span> is <span class="math notranslate nohighlight">\(L\)</span>-stable if
-$<span class="math notranslate nohighlight">\( \lim_{z\to\infty} R(z) = 0 .\)</span><span class="math notranslate nohighlight">\(
-For the \)</span>\theta<span class="math notranslate nohighlight">\( method, we have
-\)</span><span class="math notranslate nohighlight">\( \lim_{z\to \infty} \frac{1 + (1-\theta)z}{1 - \theta z} = \frac{1-\theta}{\theta} . \)</span><span class="math notranslate nohighlight">\(
-Evidently only \)</span>\theta=1<span class="math notranslate nohighlight">\( is \)</span>L$-stable.</p>
+<div class="math notranslate nohighlight">
+\[ \lim_{z\to\infty} R(z) = 0 .\]</div>
+
+For the <span class="math notranslate nohighlight">\(\theta\)</span> method, we have
+<div class="math notranslate nohighlight">
+\[ \lim_{z\to \infty} \frac{1 + (1-\theta)z}{1 - \theta z} = \frac{1-\theta}{\theta} . \]</div>
+
+Evidently only <span class="math notranslate nohighlight">\(\theta=1\)</span> is <span class="math notranslate nohighlight">\(L\)</span>-stable.</p>
 </div>
 </div>
-<div class="section" id="spectrum-of-operators">
+<div class="tex2jax_ignore mathjax_ignore section" id="spectrum-of-operators">
 <h1>Spectrum of operators<a class="headerlink" href="#spectrum-of-operators" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1113,16 +1204,36 @@ Evidently only \)</span>\theta=1<span class="math notranslate nohighlight">\( is
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-09-24-transient.html" title="previous page">2021-09-24 Transient problems</a>
-    <a class='right-next' id="next-link" href="2021-09-29-stiffness.html" title="next page">2021-09-29 Handling stiffness</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-09-24-transient.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-09-24 Transient problems</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-09-29-stiffness.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-09-29 Handling stiffness</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

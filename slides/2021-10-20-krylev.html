@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,18 +42,19 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-10-22 Preconditioners" href="2021-10-22-preconditioners.html" />
     <link rel="prev" title="2021-10-18 Iterative methods" href="2021-10-18-iterative.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -73,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -82,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -217,6 +222,36 @@
      2021-10-20 Krylov methods
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -324,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -500,7 +535,7 @@
         
               <div>
                 
-  <div class="section" id="krylov-methods">
+  <div class="tex2jax_ignore mathjax_ignore section" id="krylov-methods">
 <h1>2021-10-20 Krylov methods<a class="headerlink" href="#krylov-methods" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -584,7 +619,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="visualize-gradient-descent">
+<div class="tex2jax_ignore mathjax_ignore section" id="visualize-gradient-descent">
 <h1>Visualize gradient descent<a class="headerlink" href="#visualize-gradient-descent" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -612,35 +647,45 @@
 <img alt="../_images/2021-10-20-krylev_4_0.svg" src="../_images/2021-10-20-krylev_4_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="richardson-iteration">
+<div class="tex2jax_ignore mathjax_ignore section" id="richardson-iteration">
 <h1>Richardson iteration<a class="headerlink" href="#richardson-iteration" title="Permalink to this headline">¶</a></h1>
 <p>The simplest iterative method is <a class="reference external" href="https://en.wikipedia.org/wiki/Modified_Richardson_iteration">Richardson’s method</a>, which solves <span class="math notranslate nohighlight">\(A u = b\)</span> by the iteration
-$<span class="math notranslate nohighlight">\( u_{k+1} = u_k + \omega (b - A u_k) \)</span><span class="math notranslate nohighlight">\(
-where \)</span>\omega &gt; 0<span class="math notranslate nohighlight">\( is a damping parameter and \)</span>u_0$ is an initial guess (possibly the zero vector).</p>
+<div class="math notranslate nohighlight">
+\[ u_{k+1} = u_k + \omega (b - A u_k) \]</div>
+
+where <span class="math notranslate nohighlight">\(\omega &gt; 0\)</span> is a damping parameter and <span class="math notranslate nohighlight">\(u_0\)</span> is an initial guess (possibly the zero vector).</p>
 <ul class="simple">
 <li><p>Algebraically equivalent to gradient descent when <span class="math notranslate nohighlight">\(A\)</span> is SPD</p></li>
 <li><p>Non-symmetric matrices are harder to visualize</p></li>
 </ul>
 </div>
-<div class="section" id="richardson-convergence">
+<div class="tex2jax_ignore mathjax_ignore section" id="richardson-convergence">
 <h1>Richardson convergence<a class="headerlink" href="#richardson-convergence" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[ u_{k+1} = u_k + \omega (b - A u_k) \]</div>
 <p>If <span class="math notranslate nohighlight">\(b = A u_*\)</span>, this iteration is equivalent to</p>
-<div class="amsmath math notranslate nohighlight" id="equation-d83c8df2-42da-4e93-aa4a-b03e5e2cd722">
-<span class="eqno">(32)<a class="headerlink" href="#equation-d83c8df2-42da-4e93-aa4a-b03e5e2cd722" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-7f1c93a0-8844-476e-ab62-29bcd0ac7884">
+<span class="eqno">(33)<a class="headerlink" href="#equation-7f1c93a0-8844-476e-ab62-29bcd0ac7884" title="Permalink to this equation">¶</a></span>\[\begin{align}
 u_{k+1} - u_* &amp;= (u_k - u_*) - \omega A (u_k - u_*) \\
 &amp;= (I - \omega A) (u_k - u_*) .
 \end{align}\]</div>
 <p>It is convenient for convergence analysis to identify the “error” <span class="math notranslate nohighlight">\(e_k = u_k - u_*\)</span>, in which this becomes
-$<span class="math notranslate nohighlight">\( e_{k+1} = (I - \omega A) e_k \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ e_{k+1} = (I - \omega A) e_k \]</div>
+
 or
-\)</span><span class="math notranslate nohighlight">\( e_k = (I - \omega A)^k e_0 \)</span><span class="math notranslate nohighlight">\(
-in terms of the initial error.  Evidently powers of the *iteration matrix* \)</span>I - \omega A$ tell the whole story.</p>
+<div class="math notranslate nohighlight">
+\[ e_k = (I - \omega A)^k e_0 \]</div>
+
+in terms of the initial error.  Evidently powers of the <em>iteration matrix</em> <span class="math notranslate nohighlight">\(I - \omega A\)</span> tell the whole story.</p>
 <p>Suppose that the eigendecomposition
-$<span class="math notranslate nohighlight">\( X \Lambda X^{-1} = I - \omega A \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ X \Lambda X^{-1} = I - \omega A \]</div>
+
 exists.  Then
-\)</span><span class="math notranslate nohighlight">\( (I - \omega A)^k = (X \Lambda X^{-1})^k = X \Lambda^k X^{-1} \)</span>$
+<div class="math notranslate nohighlight">
+\[ (I - \omega A)^k = (X \Lambda X^{-1})^k = X \Lambda^k X^{-1} \]</div>
+
 and the convergence (or divergence) rate depends only on the largest magnitude eigenvalue.
 This analysis isn’t great for two reasons:</p>
 <ol class="simple">
@@ -670,18 +715,20 @@ vectors:
 </div>
 </div>
 </div>
-<div class="section" id="aside-schur-decomposition">
+<div class="tex2jax_ignore mathjax_ignore section" id="aside-schur-decomposition">
 <h1>Aside: Schur decomposition<a class="headerlink" href="#aside-schur-decomposition" title="Permalink to this headline">¶</a></h1>
 <p>We can repair these weaknesses by using the <a class="reference external" href="https://en.wikipedia.org/wiki/Schur_decomposition">Schur decomposition</a>
-$<span class="math notranslate nohighlight">\( Q R Q^* = I - \omega A \)</span><span class="math notranslate nohighlight">\(
-where \)</span>R<span class="math notranslate nohighlight">\( is right-triangular and \)</span>Q<span class="math notranslate nohighlight">\( is unitary (i.e., orthogonal if real-valued; \)</span>Q^*<span class="math notranslate nohighlight">\( is the Hermitian conjugate of \)</span>Q<span class="math notranslate nohighlight">\().
-The Schur decomposition always exists and \)</span>Q$ has a condition number of 1.</p>
+<div class="math notranslate nohighlight">
+\[ Q R Q^* = I - \omega A \]</div>
+
+where <span class="math notranslate nohighlight">\(R\)</span> is right-triangular and <span class="math notranslate nohighlight">\(Q\)</span> is unitary (i.e., orthogonal if real-valued; <span class="math notranslate nohighlight">\(Q^*\)</span> is the Hermitian conjugate of <span class="math notranslate nohighlight">\(Q\)</span>).
+The Schur decomposition always exists and <span class="math notranslate nohighlight">\(Q\)</span> has a condition number of 1.</p>
 <ul class="simple">
 <li><p>Where are the eigenvalues in <span class="math notranslate nohighlight">\(R\)</span>?</p></li>
 </ul>
 <p>Evidently we must find <span class="math notranslate nohighlight">\(\omega\)</span> to minimize the maximum eigenvalue of <span class="math notranslate nohighlight">\(I - \omega A\)</span>.  We can do this if <span class="math notranslate nohighlight">\(A\)</span> is well conditioned, but not in general.</p>
 </div>
-<div class="section" id="ill-conditioning">
+<div class="tex2jax_ignore mathjax_ignore section" id="ill-conditioning">
 <h1>Ill-conditioning<a class="headerlink" href="#ill-conditioning" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="question-what-is-the-condition-number-of-the-laplacian-on-100-evenly-spaced-points">
 <h2>Question: What is the condition number of the Laplacian on 100 evenly spaced points?<a class="headerlink" href="#question-what-is-the-condition-number-of-the-laplacian-on-100-evenly-spaced-points" title="Permalink to this headline">¶</a></h2>
@@ -714,7 +761,7 @@ The Schur decomposition always exists and \)</span>Q$ has a condition number of 
 </div>
 </div>
 </div>
-<div class="section" id="monic-polynomials-small-on-the-spectrum">
+<div class="tex2jax_ignore mathjax_ignore section" id="monic-polynomials-small-on-the-spectrum">
 <h1>Monic polynomials small on the spectrum<a class="headerlink" href="#monic-polynomials-small-on-the-spectrum" title="Permalink to this headline">¶</a></h1>
 <p>Equivalently to finding <span class="math notranslate nohighlight">\(\omega\)</span> such that <span class="math notranslate nohighlight">\(\lVert I - \omega A \rVert\)</span> is minimized, we may seek a monic polynomial <span class="math notranslate nohighlight">\(p(z) = 1 - \omega z\)</span> that minimizes</p>
 <div class="math notranslate nohighlight">
@@ -732,13 +779,15 @@ The Schur decomposition always exists and \)</span>Q$ has a condition number of 
 <img alt="../_images/2021-10-20-krylev_16_0.svg" src="../_images/2021-10-20-krylev_16_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="preconditioning">
+<div class="tex2jax_ignore mathjax_ignore section" id="preconditioning">
 <h1>Preconditioning<a class="headerlink" href="#preconditioning" title="Permalink to this headline">¶</a></h1>
 <p>Preconditioning is the act of creating an “affordable” operation “<span class="math notranslate nohighlight">\(P^{-1}\)</span>” such that <span class="math notranslate nohighlight">\(P^{-1} A\)</span> (or <span class="math notranslate nohighlight">\(A P^{-1}\)</span>) is is well-conditoned or otherwise has a “nice” spectrum.  We then solve the system</p>
 <div class="math notranslate nohighlight">
 \[ P^{-1} A x = P^{-1} b \quad \text{or}\quad A P^{-1} \underbrace{(P x)}_y = b \]</div>
 <p>in which case the convergence rate depends on the spectrum of the iteration matrix
-$<span class="math notranslate nohighlight">\( I - \omega P^{-1} A . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ I - \omega P^{-1} A . \]</div>
+</p>
 <ul class="simple">
 <li><p>The preconditioner must be applied on each iteration.</p></li>
 <li><p>It is <em>not</em> merely about finding a good initial guess.</p></li>
@@ -750,7 +799,7 @@ $<span class="math notranslate nohighlight">\( I - \omega P^{-1} A . \)</span>$<
 </ul>
 <p>Although there is ongoing research in Krylov methods and they are immensely useful, I would say preconditioning is 90% of the game for practical applications, particularly as a research area.</p>
 </div>
-<div class="section" id="krylov-subspaces">
+<div class="tex2jax_ignore mathjax_ignore section" id="krylov-subspaces">
 <h1>Krylov subspaces<a class="headerlink" href="#krylov-subspaces" title="Permalink to this headline">¶</a></h1>
 <p>All matrix iterations work with approximations in a <em>Krylov subspace</em>, which has the form</p>
 <div class="math notranslate nohighlight">
@@ -760,7 +809,7 @@ $<span class="math notranslate nohighlight">\( I - \omega P^{-1} A . \)</span>$<
 \[ K_n = Q_n R_n \]</div>
 <p>where the first column <span class="math notranslate nohighlight">\(q_0 = b / \lVert b \rVert\)</span>.  The <span class="math notranslate nohighlight">\(R_n\)</span> is unnecessary and hopelessly ill-conditioned, so a slightly different procedure is used.</p>
 </div>
-<div class="section" id="arnoldi-iteration">
+<div class="tex2jax_ignore mathjax_ignore section" id="arnoldi-iteration">
 <h1>Arnoldi iteration<a class="headerlink" href="#arnoldi-iteration" title="Permalink to this headline">¶</a></h1>
 <p>The Arnoldi iteration applies orthogonal similarity transformations to reduce <span class="math notranslate nohighlight">\(A\)</span> to <a class="reference external" href="https://en.wikipedia.org/wiki/Hessenberg_matrix">Hessenberg form</a>, starting from a vector <span class="math notranslate nohighlight">\(q_0 = b\)</span>,</p>
 <div class="math notranslate nohighlight">
@@ -770,7 +819,7 @@ $<span class="math notranslate nohighlight">\( I - \omega P^{-1} A . \)</span>$<
 \[ A Q_n = Q_{n+1} H_n \]</div>
 <p>where <span class="math notranslate nohighlight">\(H_n\)</span> is an <span class="math notranslate nohighlight">\((n+1) \times n\)</span> Hessenberg matrix.</p>
 </div>
-<div class="section" id="aside-conditioning-of-arnoldi-process">
+<div class="tex2jax_ignore mathjax_ignore section" id="aside-conditioning-of-arnoldi-process">
 <h1>Aside: Conditioning of Arnoldi process<a class="headerlink" href="#aside-conditioning-of-arnoldi-process" title="Permalink to this headline">¶</a></h1>
 <p>The Arnoldi process is well-conditioned because <span class="math notranslate nohighlight">\(Q\)</span> is orthogonal and</p>
 <div class="math notranslate nohighlight">
@@ -779,19 +828,27 @@ $<span class="math notranslate nohighlight">\( I - \omega P^{-1} A . \)</span>$<
 <div class="math notranslate nohighlight">
 \[ \sigma_{\min}(A)^2 \le y^* Q_n^* A^* A Q_n y = y^* H_n^* Q_{n+1}^* Q_{n+1} H_n y = y^* H_n^* H_n y . \]</div>
 </div>
-<div class="section" id="gmres">
+<div class="tex2jax_ignore mathjax_ignore section" id="gmres">
 <h1>GMRES<a class="headerlink" href="#gmres" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[ A Q_n = Q_{n+1} H_n \]</div>
 <p>GMRES (Generalized Minimum Residual) minimizes
-$<span class="math notranslate nohighlight">\( \lVert A x - b \rVert \)</span><span class="math notranslate nohighlight">\(
-over the subspace \)</span>Q_n<span class="math notranslate nohighlight">\(.  I.e., \)</span>x = Q_n y<span class="math notranslate nohighlight">\( for some \)</span>y<span class="math notranslate nohighlight">\(.  By the Arnoldi recurrence, this is equivalent to
-\)</span><span class="math notranslate nohighlight">\( \lVert Q_{n+1} H_n y - b \lVert \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ \lVert A x - b \rVert \]</div>
+
+over the subspace <span class="math notranslate nohighlight">\(Q_n\)</span>.  I.e., <span class="math notranslate nohighlight">\(x = Q_n y\)</span> for some <span class="math notranslate nohighlight">\(y\)</span>.  By the Arnoldi recurrence, this is equivalent to
+<div class="math notranslate nohighlight">
+\[ \lVert Q_{n+1} H_n y - b \lVert \]</div>
+
 which can be solved by minimizing
-\)</span><span class="math notranslate nohighlight">\( \lVert H_n y - Q_{n+1}^* b \rVert . \)</span><span class="math notranslate nohighlight">\(
-Since \)</span>q_0 = b/\lVert b \lVert<span class="math notranslate nohighlight">\(, the least squares problem is to minimize
-\)</span><span class="math notranslate nohighlight">\( \Big\lVert H_n y - \lVert b \rVert e_0 \Big\rVert . \)</span><span class="math notranslate nohighlight">\(
-The solution of this least squares problem is achieved by incrementally updating a \)</span>QR<span class="math notranslate nohighlight">\( factorization of \)</span>H_n$.</p>
+<div class="math notranslate nohighlight">
+\[ \lVert H_n y - Q_{n+1}^* b \rVert . \]</div>
+
+Since <span class="math notranslate nohighlight">\(q_0 = b/\lVert b \lVert\)</span>, the least squares problem is to minimize
+<div class="math notranslate nohighlight">
+\[ \Big\lVert H_n y - \lVert b \rVert e_0 \Big\rVert . \]</div>
+
+The solution of this least squares problem is achieved by incrementally updating a <span class="math notranslate nohighlight">\(QR\)</span> factorization of <span class="math notranslate nohighlight">\(H_n\)</span>.</p>
 <div class="section" id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -801,7 +858,7 @@ The solution of this least squares problem is achieved by incrementally updating
 </ul>
 </div>
 </div>
-<div class="section" id="more-notes-on-gmres">
+<div class="tex2jax_ignore mathjax_ignore section" id="more-notes-on-gmres">
 <h1>More notes on GMRES<a class="headerlink" href="#more-notes-on-gmres" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>GMRES needs to store the full <span class="math notranslate nohighlight">\(Q_n\)</span>, which is unaffordable for large <span class="math notranslate nohighlight">\(n\)</span> (many iterations).  The standard solution is to choose a “restart” <span class="math notranslate nohighlight">\(k\)</span> and to discard <span class="math notranslate nohighlight">\(Q_n\)</span> and start over with an initial guess <span class="math notranslate nohighlight">\(x_k\)</span> after each <span class="math notranslate nohighlight">\(k\)</span> iterations.  This algorithm is called GMRES(k).  PETSc’s default solver is GMRES(30) and the restart can be controlled using the run-time option <code class="docutils literal notranslate"><span class="pre">-ksp_gmres_restart</span></code>.</p></li>
@@ -809,7 +866,7 @@ The solution of this least squares problem is achieved by incrementally updating
 <li><p>There is a very similar (and older) algorithm called GCR that maintains <span class="math notranslate nohighlight">\(x_n\)</span> and <span class="math notranslate nohighlight">\(r_n\)</span>.  This is useful, for example, if a convergence tolerance needs to inspect individual entries.  GCR requires <span class="math notranslate nohighlight">\(2n\)</span> vectors instead of <span class="math notranslate nohighlight">\(n\)</span> vectors, and can tolerate a nonlinear preconditioner.  FGMRES is a newer algorithm with similar properties to GCR.</p></li>
 </ul>
 </div>
-<div class="section" id="experiments-in-petsc">
+<div class="tex2jax_ignore mathjax_ignore section" id="experiments-in-petsc">
 <h1>Experiments in <a class="reference external" href="https://petsc.org">PETSc</a><a class="headerlink" href="#experiments-in-petsc" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>PETSc = Portable Extensible Toolkit for Scientific computing</p></li>
@@ -833,13 +890,15 @@ The solution of this least squares problem is achieved by incrementally updating
 <li><p>We’ll use <code class="docutils literal notranslate"><span class="pre">src/snes/tutorials/ex15.c</span></code></p>
 <ul>
 <li><p>“p-Bratu”: combines p-Laplacian with Bratu nonlinearity
-$<span class="math notranslate nohighlight">\( -\nabla\cdot\big(\kappa(\nabla u) \nabla u\big) - \lambda e^u = f \)</span>$</p></li>
+<div class="math notranslate nohighlight">
+\[ -\nabla\cdot\big(\kappa(\nabla u) \nabla u\big) - \lambda e^u = f \]</div>
+</p></li>
 <li><p>Newton solver with Krylov on each iteration</p></li>
 </ul>
 </li>
 </ul>
 </div>
-<div class="section" id="simple-preconditioners">
+<div class="tex2jax_ignore mathjax_ignore section" id="simple-preconditioners">
 <h1>Simple preconditioners<a class="headerlink" href="#simple-preconditioners" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="jacobi-pc-type-jacobi">
 <h2>Jacobi <code class="docutils literal notranslate"><span class="pre">-pc_type</span> <span class="pre">jacobi</span></code><a class="headerlink" href="#jacobi-pc-type-jacobi" title="Permalink to this headline">¶</a></h2>
@@ -852,7 +911,9 @@ $<span class="math notranslate nohighlight">\( -\nabla\cdot\big(\kappa(\nabla u)
 <div class="math notranslate nohighlight">
 \[ P_{GS}^{-1} = (L+D)^{-1} \]</div>
 <p>where <span class="math notranslate nohighlight">\(L\)</span> is the (strictly) lower triangular part of <span class="math notranslate nohighlight">\(A\)</span>.  The upper triangular part may be used instead, or a symmetric form
-$<span class="math notranslate nohighlight">\( P_{SGS}^{-1} = (L+U)^{-1} A \Big( I - (L+D)^{-1} \Big) . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ P_{SGS}^{-1} = (L+U)^{-1} A \Big( I - (L+D)^{-1} \Big) . \]</div>
+</p>
 <div class="section" id="over-relaxation">
 <h3>Over-relaxation<a class="headerlink" href="#over-relaxation" title="Permalink to this headline">¶</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">-pc_sor_omega</span> <span class="pre">1.</span></code> is default (Gauss-Seidel)</p>
@@ -883,7 +944,7 @@ $<span class="math notranslate nohighlight">\( P_{SGS}^{-1} = (L+U)^{-1} A \Big(
 </ul>
 </div>
 </div>
-<div class="section" id="symmetric-problems">
+<div class="tex2jax_ignore mathjax_ignore section" id="symmetric-problems">
 <h1>Symmetric problems<a class="headerlink" href="#symmetric-problems" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="lanczos-iteration-like-gmres-for-symmetric-problems">
 <h2>Lanczos iteration: like GMRES for symmetric problems<a class="headerlink" href="#lanczos-iteration-like-gmres-for-symmetric-problems" title="Permalink to this headline">¶</a></h2>
@@ -918,15 +979,36 @@ $<span class="math notranslate nohighlight">\( P_{SGS}^{-1} = (L+U)^{-1} A \Big(
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-10-18-iterative.html" title="previous page">2021-10-18 Iterative methods</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-10-18-iterative.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-10-18 Iterative methods</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-10-22-preconditioners.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-10-22 Preconditioners</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

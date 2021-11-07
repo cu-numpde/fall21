@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -233,6 +237,21 @@
      2021-10-27 Multigrid
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -340,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -467,7 +486,7 @@
         
               <div>
                 
-  <div class="section" id="domain-decomposition">
+  <div class="tex2jax_ignore mathjax_ignore section" id="domain-decomposition">
 <h1>2021-10-25 Domain Decomposition<a class="headerlink" href="#domain-decomposition" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -534,13 +553,15 @@
 </div>
 </div>
 </div>
-<div class="section" id="experiments-in-petsc">
+<div class="tex2jax_ignore mathjax_ignore section" id="experiments-in-petsc">
 <h1>Experiments in <a class="reference external" href="https://petsc.org">PETSc</a><a class="headerlink" href="#experiments-in-petsc" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">src/snes/tutorials/ex15.c</span></code></p>
 <ul>
 <li><p>Newton-Krlov for “p-Bratu”: combines p-Laplacian with Bratu nonlinearity
-$<span class="math notranslate nohighlight">\( -\nabla\cdot\big(\kappa(\nabla u) \nabla u\big) - \lambda e^u = f \)</span>$</p></li>
+<div class="math notranslate nohighlight">
+\[ -\nabla\cdot\big(\kappa(\nabla u) \nabla u\big) - \lambda e^u = f \]</div>
+</p></li>
 </ul>
 </li>
 </ul>
@@ -557,7 +578,9 @@ $<span class="math notranslate nohighlight">\( -\nabla\cdot\big(\kappa(\nabla u)
 <div class="math notranslate nohighlight">
 \[ M_{GS}^{-1} = (L+D)^{-1} \]</div>
 <p>or the symmetric form
-$<span class="math notranslate nohighlight">\( M_{SGS}^{-1} = (L+U)^{-1} A \Big( I - (L+D)^{-1} \Big) . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ M_{SGS}^{-1} = (L+U)^{-1} A \Big( I - (L+D)^{-1} \Big) . \]</div>
+</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">-pc_sor_omega</span> <span class="pre">1.</span></code> is default (Gauss-Seidel)</p></li>
 </ul>
@@ -585,7 +608,7 @@ $<span class="math notranslate nohighlight">\( M_{SGS}^{-1} = (L+U)^{-1} A \Big(
 </ul>
 </div>
 </div>
-<div class="section" id="id1">
+<div class="tex2jax_ignore mathjax_ignore section" id="id1">
 <h1>Domain decomposition<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
 <p><img alt="" src="https://upload.wikimedia.org/wikipedia/commons/a/a9/Ddm_original_logo.png" /></p>
 <div class="section" id="alternating-schwarz-method">
@@ -601,7 +624,7 @@ $<span class="math notranslate nohighlight">\( M_{SGS}^{-1} = (L+U)^{-1} A \Big(
 <p>This method was proposed in 1870 by <a class="reference external" href="https://en.wikipedia.org/wiki/Hermann_Schwarz">Hermann Schwarz</a> as a theoretical tool, and is now called a <strong>multiplicative</strong> Schwarz method because the solves depend on each other.  We can see it as a generalization of Gauss-Seidel in which we solve on subdomains instead of at individual grid points.  As with Gauss-Seidel, it is difficult to expose parallelism.</p>
 </div>
 </div>
-<div class="section" id="additive-schwarz">
+<div class="tex2jax_ignore mathjax_ignore section" id="additive-schwarz">
 <h1>Additive Schwarz<a class="headerlink" href="#additive-schwarz" title="Permalink to this headline">¶</a></h1>
 <p>The additive Schwarz method is more comparable to Jacobi, with each domain solved in parallel.  Our fundamental operation will be an embedding of each subdomain <span class="math notranslate nohighlight">\(V_i\)</span> into the global domain <span class="math notranslate nohighlight">\(V\)</span>, which we call the <strong>prolongation</strong></p>
 <div class="math notranslate nohighlight">
@@ -637,13 +660,19 @@ Let’s work an example.</p>
 <img alt="../_images/2021-10-25-domain-decomposition_10_0.svg" src="../_images/2021-10-25-domain-decomposition_10_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="the-algorithm">
+<div class="tex2jax_ignore mathjax_ignore section" id="the-algorithm">
 <h1>The algorithm<a class="headerlink" href="#the-algorithm" title="Permalink to this headline">¶</a></h1>
-<p>Define the subdomain operator $<span class="math notranslate nohighlight">\(A_i = P_i^T A P_i\)</span><span class="math notranslate nohighlight">\(
+<p>Define the subdomain operator <div class="math notranslate nohighlight">
+\[A_i = P_i^T A P_i\]</div>
+
 The additive Schwarz preconditioner is
-\)</span><span class="math notranslate nohighlight">\( M^{-1} = \sum_i P_i A_i^{-1} P_i^T \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ M^{-1} = \sum_i P_i A_i^{-1} P_i^T \]</div>
+
 and it has error iteration matrix
-\)</span><span class="math notranslate nohighlight">\( I - \sum_i  P_i A_i^{-1} P_i^T A \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ I - \sum_i  P_i A_i^{-1} P_i^T A \]</div>
+</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">A</span> <span class="o">=</span> <span class="n">diagm</span><span class="p">(</span><span class="mi">0</span> <span class="o">=&gt;</span> <span class="mi">2</span><span class="o">*</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="p">),</span> <span class="o">-</span><span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">),</span> <span class="mi">1</span> <span class="o">=&gt;</span> <span class="o">-</span><span class="n">ones</span><span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="p">))</span>
@@ -668,7 +697,7 @@ and it has error iteration matrix
 <img alt="../_images/2021-10-25-domain-decomposition_13_0.svg" src="../_images/2021-10-25-domain-decomposition_13_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="theory">
+<div class="tex2jax_ignore mathjax_ignore section" id="theory">
 <h1>Theory<a class="headerlink" href="#theory" title="Permalink to this headline">¶</a></h1>
 <p>Given a linear operator <span class="math notranslate nohighlight">\(A : V \to V\)</span>, suppose we have a collection of prolongation operators <span class="math notranslate nohighlight">\(P_i : V_i \to V\)</span>.  The columns of <span class="math notranslate nohighlight">\(P_i\)</span> are “basis functions” for the subspace <span class="math notranslate nohighlight">\(V_i\)</span>.  The Galerkin operator <span class="math notranslate nohighlight">\(A_i = P_i^T A P_i\)</span> is the action of the original operator <span class="math notranslate nohighlight">\(A\)</span> in the subspace.</p>
 <p>Define the subspace projection</p>
@@ -708,7 +737,7 @@ and it has error iteration matrix
 <p><strong>Note:</strong> The concept of <span class="math notranslate nohighlight">\(A\)</span>-orthogonality is meaningful only when <span class="math notranslate nohighlight">\(A\)</span> is SPD.
 Does the mathematical expression <span class="math notranslate nohighlight">\( P_i^T A (I - S_i) = 0 \)</span> hold even when <span class="math notranslate nohighlight">\(A\)</span> is nonsymmetric?</p>
 </div>
-<div class="section" id="convergence-theory">
+<div class="tex2jax_ignore mathjax_ignore section" id="convergence-theory">
 <h1>Convergence theory<a class="headerlink" href="#convergence-theory" title="Permalink to this headline">¶</a></h1>
 <p>The formal convergence is beyond the scope of this course, but the following estimates are useful.  We let <span class="math notranslate nohighlight">\(h\)</span> be the element diameter, <span class="math notranslate nohighlight">\(H\)</span> be the subdomain diameter, and <span class="math notranslate nohighlight">\(\delta\)</span> be the overlap, each normalized such that the global domain diameter is 1.  We express the convergence in terms of the condition number <span class="math notranslate nohighlight">\(\kappa\)</span> for the preconditioned operator.</p>
 <ul class="simple">
@@ -723,7 +752,7 @@ Does the mathematical expression <span class="math notranslate nohighlight">\( P
 </ul>
 <p>In each case above, the action is expressed in terms of the error iteration operator.</p>
 </div>
-<div class="section" id="petsc-experiments">
+<div class="tex2jax_ignore mathjax_ignore section" id="petsc-experiments">
 <h1>PETSc experiments<a class="headerlink" href="#petsc-experiments" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Compare domain decomposition and multigrid preconditioning</p></li>
@@ -770,16 +799,36 @@ Does the mathematical expression <span class="math notranslate nohighlight">\( P
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-10-22-preconditioners.html" title="previous page">2021-10-22 Preconditioners</a>
-    <a class='right-next' id="next-link" href="2021-10-27-multigrid.html" title="next page">2021-10-27 Multigrid</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-10-22-preconditioners.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-10-22 Preconditioners</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-10-27-multigrid.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-10-27 Multigrid</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,18 +42,19 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-11-01 Projects" href="2021-11-01-projects.html" />
     <link rel="prev" title="2021-10-25 Domain Decomposition" href="2021-10-25-domain-decomposition.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -73,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -82,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -232,6 +237,21 @@
      2021-10-27 Multigrid
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -339,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -458,7 +478,7 @@
         
               <div>
                 
-  <div class="section" id="multigrid">
+  <div class="tex2jax_ignore mathjax_ignore section" id="multigrid">
 <h1>2021-10-27 Multigrid<a class="headerlink" href="#multigrid" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -526,11 +546,13 @@
 </div>
 </div>
 </div>
-<div class="section" id="geometric-multigrid-and-the-spectrum">
+<div class="tex2jax_ignore mathjax_ignore section" id="geometric-multigrid-and-the-spectrum">
 <h1>Geometric multigrid and the spectrum<a class="headerlink" href="#geometric-multigrid-and-the-spectrum" title="Permalink to this headline">¶</a></h1>
 <p>Multigrid uses a hierarchy of scales to produce an operation “<span class="math notranslate nohighlight">\(M^{-1}\)</span>” that can be applied in <span class="math notranslate nohighlight">\(O(n)\)</span> (“linear”) time and such that <span class="math notranslate nohighlight">\(\lVert I - M^{-1} A \rVert \le \rho &lt; 1\)</span> independent of the problem size.
 We’ll consider the one dimensional Laplacian using the stencil
-$<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{h^2} \begin{bmatrix} -1 &amp; 2 &amp; -1 \end{bmatrix} \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ \Big(\frac{h^2}{2}\Big) \frac{1}{h^2} \begin{bmatrix} -1 &amp; 2 &amp; -1 \end{bmatrix} \]</div>
+</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">laplace1d</span><span class="p">(</span><span class="n">n</span><span class="p">)</span>
@@ -565,7 +587,7 @@ $<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{
 <img alt="../_images/2021-10-27-multigrid_4_0.svg" src="../_images/2021-10-27-multigrid_4_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="what-do-the-eigenvectors-look-like">
+<div class="tex2jax_ignore mathjax_ignore section" id="what-do-the-eigenvectors-look-like">
 <h1>What do the eigenvectors look like?<a class="headerlink" href="#what-do-the-eigenvectors-look-like" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -588,7 +610,7 @@ $<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{
 <img alt="../_images/2021-10-27-multigrid_7_0.svg" src="../_images/2021-10-27-multigrid_7_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="condition-number-grows-with-grid-refinement">
+<div class="tex2jax_ignore mathjax_ignore section" id="condition-number-grows-with-grid-refinement">
 <h1>Condition number grows with grid refinement<a class="headerlink" href="#condition-number-grows-with-grid-refinement" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -604,7 +626,7 @@ $<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{
 <img alt="../_images/2021-10-27-multigrid_9_0.svg" src="../_images/2021-10-27-multigrid_9_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="fourier-analysis-perspective">
+<div class="tex2jax_ignore mathjax_ignore section" id="fourier-analysis-perspective">
 <h1>Fourier analysis perspective<a class="headerlink" href="#fourier-analysis-perspective" title="Permalink to this headline">¶</a></h1>
 <p>Consider the basis <span class="math notranslate nohighlight">\(\phi(x, \theta) = e^{i \theta x}\)</span>.  If we choose the grid <span class="math notranslate nohighlight">\(x \in h \mathbb Z\)</span> with grid size <span class="math notranslate nohighlight">\(h\)</span> then we can resolve frequencies <span class="math notranslate nohighlight">\(\lvert \theta \rvert \le \pi/h\)</span>.</p>
 <div class="cell docutils container">
@@ -648,7 +670,7 @@ $<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{
 <img alt="../_images/2021-10-27-multigrid_12_0.svg" src="../_images/2021-10-27-multigrid_12_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="analytically-computing-smallest-eigenvalue">
+<div class="tex2jax_ignore mathjax_ignore section" id="analytically-computing-smallest-eigenvalue">
 <h1>Analytically computing smallest eigenvalue<a class="headerlink" href="#analytically-computing-smallest-eigenvalue" title="Permalink to this headline">¶</a></h1>
 <p>The longest wavelength for a domain size of 2 with Dirichlet boundary conditions is 4. The frequency is <span class="math notranslate nohighlight">\(\theta = 2\pi/\lambda = \pi/2\)</span>. The <code class="docutils literal notranslate"><span class="pre">symbol</span></code> function works on an integer grid. We can transform via <span class="math notranslate nohighlight">\(\theta \mapsto \theta h\)</span>.</p>
 <div class="cell docutils container">
@@ -665,7 +687,7 @@ $<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{
 <img alt="../_images/2021-10-27-multigrid_14_0.svg" src="../_images/2021-10-27-multigrid_14_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="damping-properties-of-richardson-jacobi-relaxation">
+<div class="tex2jax_ignore mathjax_ignore section" id="damping-properties-of-richardson-jacobi-relaxation">
 <h1>Damping properties of Richardson/Jacobi relaxation<a class="headerlink" href="#damping-properties-of-richardson-jacobi-relaxation" title="Permalink to this headline">¶</a></h1>
 <p>Recall that we would like for <span class="math notranslate nohighlight">\(I - w A\)</span> to have a small norm, such that powers (repeat iterations) will cause the error to decay rapidly.</p>
 <div class="cell docutils container">
@@ -685,7 +707,7 @@ $<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{
 <li><p>The value of <span class="math notranslate nohighlight">\(w\)</span> that minimizes the norm is slightly less than 1, but the convergence rate is very slow (only barely less than 1).</p></li>
 </ul>
 </div>
-<div class="section" id="symbol-of-damping">
+<div class="tex2jax_ignore mathjax_ignore section" id="symbol-of-damping">
 <h1>Symbol of damping<a class="headerlink" href="#symbol-of-damping" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -703,7 +725,7 @@ $<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{
 <li><p>It also makes sense because the polynomial needs to be 1 at the origin, and the low frequencies have eigenvalues very close to zero.</p></li>
 </ul>
 </div>
-<div class="section" id="coarse-grids-make-low-frequencies-high-again">
+<div class="tex2jax_ignore mathjax_ignore section" id="coarse-grids-make-low-frequencies-high-again">
 <h1>Coarse grids: Make low frequencies high (again)<a class="headerlink" href="#coarse-grids-make-low-frequencies-high-again" title="Permalink to this headline">¶</a></h1>
 <p>As in domain decomposition, we will express our “coarse” subspace, consisting of a grid <span class="math notranslate nohighlight">\(x \in 2h\mathbb Z\)</span>, in terms of its interpolation to the fine space.  Here, we’ll use linear interpolation.</p>
 <div class="cell docutils container">
@@ -738,7 +760,7 @@ $<span class="math notranslate nohighlight">\( \Big(\frac{h^2}{2}\Big) \frac{1}{
 <img alt="../_images/2021-10-27-multigrid_23_0.svg" src="../_images/2021-10-27-multigrid_23_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="galerkin-approximation-of-a-in-coarse-space">
+<div class="tex2jax_ignore mathjax_ignore section" id="galerkin-approximation-of-a-in-coarse-space">
 <h1>Galerkin approximation of <span class="math notranslate nohighlight">\(A\)</span> in coarse space<a class="headerlink" href="#galerkin-approximation-of-a-in-coarse-space" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[ A_{2h} u_{2h} = P^T A_h P u_{2h} \]</div>
@@ -771,10 +793,12 @@ size(A_2h) = (25, 25)
 <img alt="../_images/2021-10-27-multigrid_26_0.svg" src="../_images/2021-10-27-multigrid_26_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="coarse-grid-correction">
+<div class="tex2jax_ignore mathjax_ignore section" id="coarse-grid-correction">
 <h1>Coarse grid correction<a class="headerlink" href="#coarse-grid-correction" title="Permalink to this headline">¶</a></h1>
 <p>Consider the <span class="math notranslate nohighlight">\(A\)</span>-orthogonal projection onto the range of <span class="math notranslate nohighlight">\(P\)</span>,
-$<span class="math notranslate nohighlight">\( S_c = P A_{2h}^{-1} P^T A \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ S_c = P A_{2h}^{-1} P^T A \]</div>
+</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">Sc</span> <span class="o">=</span> <span class="n">P</span> <span class="o">*</span> <span class="p">(</span><span class="n">A_2h</span> <span class="o">\</span> <span class="n">P</span><span class="o">&#39;</span> <span class="o">*</span> <span class="n">A</span><span class="p">)</span>
@@ -791,7 +815,7 @@ $<span class="math notranslate nohighlight">\( S_c = P A_{2h}^{-1} P^T A \)</spa
 <li><p>For all vectors <span class="math notranslate nohighlight">\(v\)</span> that are <span class="math notranslate nohighlight">\(A\)</span>-orthogonal to the range of <span class="math notranslate nohighlight">\(P\)</span>, we know that <span class="math notranslate nohighlight">\(S_c v = 0\)</span>. Why?</p></li>
 </ul>
 </div>
-<div class="section" id="a-two-grid-method">
+<div class="tex2jax_ignore mathjax_ignore section" id="a-two-grid-method">
 <h1>A two-grid method<a class="headerlink" href="#a-two-grid-method" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -816,29 +840,41 @@ $<span class="math notranslate nohighlight">\( S_c = P A_{2h}^{-1} P^T A \)</spa
 <li><p><a class="reference external" href="https://jeremylt.github.io/LFAToolkit.jl/stable/examples/diffusion/#Diffusion-operator">LFAToolkit</a></p></li>
 </ul>
 </div>
-<div class="section" id="multigrid-as-factorization">
+<div class="tex2jax_ignore mathjax_ignore section" id="multigrid-as-factorization">
 <h1>Multigrid as factorization<a class="headerlink" href="#multigrid-as-factorization" title="Permalink to this headline">¶</a></h1>
 <p>We can interpret factorization as a particular multigrid or domain decomposition method.</p>
 <p>We can partition an SPD matrix as
-$<span class="math notranslate nohighlight">\(A = \begin{bmatrix} F &amp; B^T \\ B &amp; D \end{bmatrix}\)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[\begin{split}A = \begin{bmatrix} F &amp; B^T \\ B &amp; D \end{bmatrix}\end{split}\]</div>
+
 and define the preconditioner by the factorization
-\)</span><span class="math notranslate nohighlight">\(      M = \begin{bmatrix} I &amp; \\ B F^{-1} &amp; I \end{bmatrix}
+<div class="math notranslate nohighlight">
+\[\begin{split}      M = \begin{bmatrix} I &amp; \\ B F^{-1} &amp; I \end{bmatrix}
       \begin{bmatrix} F &amp;  \\ &amp; S \end{bmatrix}
       \begin{bmatrix} I &amp; F^{-1}B^T \\  &amp; I \end{bmatrix}
-\)</span><span class="math notranslate nohighlight">\(
-where \)</span>S = D - B F^{-1} B^T<span class="math notranslate nohighlight">\(.  \)</span>M<span class="math notranslate nohighlight">\( has an inverse
-\)</span><span class="math notranslate nohighlight">\(
+\end{split}\]</div>
+
+where <span class="math notranslate nohighlight">\(S = D - B F^{-1} B^T\)</span>.  <span class="math notranslate nohighlight">\(M\)</span> has an inverse
+<div class="math notranslate nohighlight">
+\[\begin{split}
       \begin{bmatrix} I &amp; -F^{-1}B^T \\  &amp; I \end{bmatrix}
       \begin{bmatrix} F^{-1} &amp;  \\ &amp; S^{-1} \end{bmatrix}
       \begin{bmatrix} I &amp; \\ -B F^{-1} &amp; I \end{bmatrix} .
-\)</span>$</p>
+\end{split}\]</div>
+</p>
 <p>Define the interpolation
-$<span class="math notranslate nohighlight">\( P_f = \begin{bmatrix} I \\ 0 \end{bmatrix}, \quad P_c = \begin{bmatrix} -F^{-1} B^T \\ I \end{bmatrix} \)</span><span class="math notranslate nohighlight">\( and rewrite as
-\)</span><span class="math notranslate nohighlight">\( M^{-1} = [P_f\  P_c] \begin{bmatrix} F^{-1} P_f^T \\ S^{-1} P_c^T \end{bmatrix} = P_f F^{-1} P_f^T + P_c S^{-1} P_c^T.\)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[\begin{split} P_f = \begin{bmatrix} I \\ 0 \end{bmatrix}, \quad P_c = \begin{bmatrix} -F^{-1} B^T \\ I \end{bmatrix} \end{split}\]</div>
+ and rewrite as
+<div class="math notranslate nohighlight">
+\[\begin{split} M^{-1} = [P_f\  P_c] \begin{bmatrix} F^{-1} P_f^T \\ S^{-1} P_c^T \end{bmatrix} = P_f F^{-1} P_f^T + P_c S^{-1} P_c^T.\end{split}\]</div>
+
 The iteration matrix is thus
-\)</span><span class="math notranslate nohighlight">\( I - M^{-1} A = I - P_f F^{-1} P_f^T J - P_c S^{-1} P_c^T A .\)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ I - M^{-1} A = I - P_f F^{-1} P_f^T J - P_c S^{-1} P_c^T A .\]</div>
+</p>
 </div>
-<div class="section" id="permute-into-c-f-split">
+<div class="tex2jax_ignore mathjax_ignore section" id="permute-into-c-f-split">
 <h1>Permute into C-F split<a class="headerlink" href="#permute-into-c-f-split" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -863,7 +899,7 @@ The iteration matrix is thus
 <img alt="../_images/2021-10-27-multigrid_38_0.svg" src="../_images/2021-10-27-multigrid_38_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="coarse-basis-functions">
+<div class="tex2jax_ignore mathjax_ignore section" id="coarse-basis-functions">
 <h1>Coarse basis functions<a class="headerlink" href="#coarse-basis-functions" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -890,7 +926,7 @@ The iteration matrix is thus
 <img alt="../_images/2021-10-27-multigrid_41_0.svg" src="../_images/2021-10-27-multigrid_41_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="from-factorization-to-algebraic-multigrid">
+<div class="tex2jax_ignore mathjax_ignore section" id="from-factorization-to-algebraic-multigrid">
 <h1>From factorization to algebraic multigrid<a class="headerlink" href="#from-factorization-to-algebraic-multigrid" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>Factorization as a multigrid (or domain decomposition) method incurs significant cost in multiple dimensions due to lack of sparsity.</p>
@@ -908,7 +944,7 @@ The iteration matrix is thus
 </li>
 </ul>
 </div>
-<div class="section" id="aggregation">
+<div class="tex2jax_ignore mathjax_ignore section" id="aggregation">
 <h1>Aggregation<a class="headerlink" href="#aggregation" title="Permalink to this headline">¶</a></h1>
 <p>Form aggregates from “strongly connected” dofs.</p>
 <div class="cell docutils container">
@@ -943,7 +979,7 @@ The iteration matrix is thus
 <li><p>stronger smoothing (bigger <code class="docutils literal notranslate"><span class="pre">k</span></code>) doesn’t help much; need more accurate coarse grid</p></li>
 </ul>
 </div>
-<div class="section" id="smoothed-aggregation">
+<div class="tex2jax_ignore mathjax_ignore section" id="smoothed-aggregation">
 <h1>Smoothed aggregation<a class="headerlink" href="#smoothed-aggregation" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[ P = (I - w A) T \]</div>
@@ -998,15 +1034,36 @@ The iteration matrix is thus
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-10-25-domain-decomposition.html" title="previous page">2021-10-25 Domain Decomposition</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-10-25-domain-decomposition.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-10-25 Domain Decomposition</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-11-01-projects.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-11-01 Projects</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

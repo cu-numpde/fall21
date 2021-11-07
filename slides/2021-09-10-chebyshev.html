@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,18 +42,19 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-09-13 Variable coefficients" href="2021-09-13-coefficients.html" />
     <link rel="prev" title="2021-09-03 Convergence and Fourier analysis" href="2021-09-03-fourier.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -73,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -82,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -140,6 +145,111 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
     </a>
    </li>
   </ul>
@@ -249,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -350,7 +460,7 @@
         
               <div>
                 
-  <div class="section" id="chebyshev-collocation">
+  <div class="tex2jax_ignore mathjax_ignore section" id="chebyshev-collocation">
 <h1>2021-09-10 Chebyshev collocation<a class="headerlink" href="#chebyshev-collocation" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -418,7 +528,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="visualizing-matrix-transformations">
+<div class="tex2jax_ignore mathjax_ignore section" id="visualizing-matrix-transformations">
 <h1>Visualizing matrix transformations<a class="headerlink" href="#visualizing-matrix-transformations" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -454,7 +564,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="visualizing-the-singular-value-decomposition">
+<div class="tex2jax_ignore mathjax_ignore section" id="visualizing-the-singular-value-decomposition">
 <h1>Visualizing the Singular Value Decomposition<a class="headerlink" href="#visualizing-the-singular-value-decomposition" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -491,7 +601,7 @@
 <img alt="../_images/2021-09-10-chebyshev_8_0.svg" src="../_images/2021-09-10-chebyshev_8_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="condition-number-of-interpolation">
+<div class="tex2jax_ignore mathjax_ignore section" id="condition-number-of-interpolation">
 <h1>Condition number of interpolation<a class="headerlink" href="#condition-number-of-interpolation" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -545,7 +655,7 @@
 <img alt="../_images/2021-09-10-chebyshev_11_0.svg" src="../_images/2021-09-10-chebyshev_11_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="the-bad-singular-vectors">
+<div class="tex2jax_ignore mathjax_ignore section" id="the-bad-singular-vectors">
 <h1>The bad singular vectors<a class="headerlink" href="#the-bad-singular-vectors" title="Permalink to this headline">¶</a></h1>
 <div class="math notranslate nohighlight">
 \[ A = U \Sigma V^T \]</div>
@@ -589,7 +699,7 @@
 <img alt="../_images/2021-09-10-chebyshev_14_0.svg" src="../_images/2021-09-10-chebyshev_14_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="choosing-the-source-points">
+<div class="tex2jax_ignore mathjax_ignore section" id="choosing-the-source-points">
 <h1>Choosing the source points<a class="headerlink" href="#choosing-the-source-points" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -649,7 +759,7 @@
 <img alt="../_images/2021-09-10-chebyshev_18_0.svg" src="../_images/2021-09-10-chebyshev_18_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="condition-number-of-interpolation-on-cosrange-points">
+<div class="tex2jax_ignore mathjax_ignore section" id="condition-number-of-interpolation-on-cosrange-points">
 <h1>Condition number of interpolation on <code class="docutils literal notranslate"><span class="pre">CosRange</span></code> points<a class="headerlink" href="#condition-number-of-interpolation-on-cosrange-points" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -669,7 +779,7 @@
 <img alt="../_images/2021-09-10-chebyshev_20_0.svg" src="../_images/2021-09-10-chebyshev_20_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="vandermonde-conditioning-stable-algorithms">
+<div class="tex2jax_ignore mathjax_ignore section" id="vandermonde-conditioning-stable-algorithms">
 <h1>Vandermonde conditioning, stable algorithms<a class="headerlink" href="#vandermonde-conditioning-stable-algorithms" title="Permalink to this headline">¶</a></h1>
 <p>It is possible for interpolation to be well-conditioned, but construct it from ill-conditioned pieces.</p>
 <div class="cell docutils container">
@@ -684,7 +794,7 @@
 <img alt="../_images/2021-09-10-chebyshev_22_0.svg" src="../_images/2021-09-10-chebyshev_22_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="chebyshev-polynomials">
+<div class="tex2jax_ignore mathjax_ignore section" id="chebyshev-polynomials">
 <h1>Chebyshev polynomials<a class="headerlink" href="#chebyshev-polynomials" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -725,26 +835,36 @@
 <img alt="../_images/2021-09-10-chebyshev_25_0.svg" src="../_images/2021-09-10-chebyshev_25_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="derivation-of-chebyshev-polynomials-supplemental">
+<div class="tex2jax_ignore mathjax_ignore section" id="derivation-of-chebyshev-polynomials-supplemental">
 <h1>Derivation of Chebyshev polynomials (supplemental)<a class="headerlink" href="#derivation-of-chebyshev-polynomials-supplemental" title="Permalink to this headline">¶</a></h1>
-<p>Chebyshev polynomials are defined for non-negative integar <span class="math notranslate nohighlight">\(n\)</span> as $<span class="math notranslate nohighlight">\( T_n(x) = \cos (n \arccos(x)) .\)</span><span class="math notranslate nohighlight">\(
-This turns out to be a polynomial, but it's not obvious why.
-Recall \)</span><span class="math notranslate nohighlight">\( \cos(a + b) = \cos a \cos b - \sin a \sin b .\)</span><span class="math notranslate nohighlight">\(
-Let \)</span>y = \arccos x<span class="math notranslate nohighlight">\( and check
-\)</span><span class="math notranslate nohighlight">\( \begin{split}
+<p>Chebyshev polynomials are defined for non-negative integar <span class="math notranslate nohighlight">\(n\)</span> as <div class="math notranslate nohighlight">
+\[ T_n(x) = \cos (n \arccos(x)) .\]</div>
+
+This turns out to be a polynomial, but it’s not obvious why.
+Recall <div class="math notranslate nohighlight">
+\[ \cos(a + b) = \cos a \cos b - \sin a \sin b .\]</div>
+
+Let <span class="math notranslate nohighlight">\(y = \arccos x\)</span> and check
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{split}
     T_{n+1}(x) &amp;= \cos \big( (n+1) y \big) = \cos ny \cos y - \sin ny \sin y \\
     T_{n-1}(x) &amp;= \cos \big( (n-1) y \big) = \cos ny \cos y + \sin ny \sin y
-\end{split}\)</span><span class="math notranslate nohighlight">\(
+\end{split}\end{split}\]</div>
+
 Adding these together produces
-\)</span><span class="math notranslate nohighlight">\( T_{n+1}(x) + T_{n-1}(x) = 2\cos ny \cos y = 2 x \cos ny = 2 x T_n(x) \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ T_{n+1}(x) + T_{n-1}(x) = 2\cos ny \cos y = 2 x \cos ny = 2 x T_n(x) \]</div>
+
 which yields a convenient recurrence:
-\)</span><span class="math notranslate nohighlight">\(\begin{split}
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{split}
 T_0(x) &amp;= 1 \\
 T_1(x) &amp;= x \\
 T_{n+1}(x) &amp;= 2 x T_n(x) - T_{n-1}(x)
-\end{split}\)</span>$</p>
+\end{split}\end{split}\]</div>
+</p>
 </div>
-<div class="section" id="lagrange-interpolating-polynomials">
+<div class="tex2jax_ignore mathjax_ignore section" id="lagrange-interpolating-polynomials">
 <h1>Lagrange interpolating polynomials<a class="headerlink" href="#lagrange-interpolating-polynomials" title="Permalink to this headline">¶</a></h1>
 <p>Find the unique polynomial that is 0 at all but one <code class="docutils literal notranslate"><span class="pre">source</span></code> point.</p>
 <div class="cell docutils container">
@@ -772,7 +892,7 @@ T_{n+1}(x) &amp;= 2 x T_n(x) - T_{n-1}(x)
 <img alt="../_images/2021-09-10-chebyshev_29_0.svg" src="../_images/2021-09-10-chebyshev_29_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="differentiating-via-chebyshev">
+<div class="tex2jax_ignore mathjax_ignore section" id="differentiating-via-chebyshev">
 <h1>Differentiating via Chebyshev<a class="headerlink" href="#differentiating-via-chebyshev" title="Permalink to this headline">¶</a></h1>
 <p>We can differentiate Chebyshev polynomials using the recurrence</p>
 <div class="math notranslate nohighlight">
@@ -818,7 +938,7 @@ T_{n+1}(x) &amp;= 2 x T_n(x) - T_{n-1}(x)
 <img alt="../_images/2021-09-10-chebyshev_32_0.svg" src="../_images/2021-09-10-chebyshev_32_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="solving-a-bvp-on-chebyshev-nodes">
+<div class="tex2jax_ignore mathjax_ignore section" id="solving-a-bvp-on-chebyshev-nodes">
 <h1>Solving a BVP on Chebyshev nodes<a class="headerlink" href="#solving-a-bvp-on-chebyshev-nodes" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -859,7 +979,7 @@ T_{n+1}(x) &amp;= 2 x T_n(x) - T_{n-1}(x)
 <img alt="../_images/2021-09-10-chebyshev_35_0.svg" src="../_images/2021-09-10-chebyshev_35_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="spectral-exponential-convergence">
+<div class="tex2jax_ignore mathjax_ignore section" id="spectral-exponential-convergence">
 <h1>“spectral” (exponential) convergence<a class="headerlink" href="#spectral-exponential-convergence" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -904,15 +1024,36 @@ T_{n+1}(x) &amp;= 2 x T_n(x) - T_{n-1}(x)
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-09-03-fourier.html" title="previous page">2021-09-03 Convergence and Fourier analysis</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-09-03-fourier.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-09-03 Convergence and Fourier analysis</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-09-13-coefficients.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-09-13 Variable coefficients</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

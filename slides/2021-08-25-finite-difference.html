@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,15 +42,15 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
@@ -74,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -83,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -136,6 +140,116 @@
    <li class="toctree-l2">
     <a class="reference internal" href="2021-09-03-fourier.html">
      2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
     </a>
    </li>
   </ul>
@@ -245,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -308,7 +422,7 @@
         
               <div>
                 
-  <div class="section" id="finite-difference-intro">
+  <div class="tex2jax_ignore mathjax_ignore section" id="finite-difference-intro">
 <h1>2021-08-25 Finite Difference Intro<a class="headerlink" href="#finite-difference-intro" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -327,10 +441,10 @@
 </ul>
 </div>
 </div>
-<div class="section" id="consider-the-boundary-value-problem-find-u">
+<div class="tex2jax_ignore mathjax_ignore section" id="consider-the-boundary-value-problem-find-u">
 <h1>Consider the boundary value problem: find <span class="math notranslate nohighlight">\(u\)</span>:<a class="headerlink" href="#consider-the-boundary-value-problem-find-u" title="Permalink to this headline">¶</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-da1a78bf-e1e0-4e84-afda-8f633cdb49c4">
-<span class="eqno">(3)<a class="headerlink" href="#equation-da1a78bf-e1e0-4e84-afda-8f633cdb49c4" title="Permalink to this equation">¶</a></span>\[\begin{gather} -\frac{d^2 u}{dx^2} = f(x) \quad x \in \Omega = (-1,1) \\
+<div class="amsmath math notranslate nohighlight" id="equation-a9b6b648-8db3-4f25-8532-a0f30d0dd189">
+<span class="eqno">(3)<a class="headerlink" href="#equation-a9b6b648-8db3-4f25-8532-a0f30d0dd189" title="Permalink to this equation">¶</a></span>\[\begin{gather} -\frac{d^2 u}{dx^2} = f(x) \quad x \in \Omega = (-1,1) \\
 u(-1) = a \quad \frac{du}{dx}(1) = b .
 \end{gather}\]</div>
 <p>We say</p>
@@ -348,14 +462,16 @@ u(-1) = a \quad \frac{du}{dx}(1) = b .
 <li><p>how to enforce boundary conditions.</p></li>
 </ul>
 </div>
-<div class="section" id="finite-difference-collocation-approach-to-solve-u">
+<div class="tex2jax_ignore mathjax_ignore section" id="finite-difference-collocation-approach-to-solve-u">
 <h1>Finite Difference/collocation approach to solve <span class="math notranslate nohighlight">\(u\)</span>:<a class="headerlink" href="#finite-difference-collocation-approach-to-solve-u" title="Permalink to this headline">¶</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-3bb8a8c4-a9fc-4431-b56a-6681fc74b956">
-<span class="eqno">(4)<a class="headerlink" href="#equation-3bb8a8c4-a9fc-4431-b56a-6681fc74b956" title="Permalink to this equation">¶</a></span>\[\begin{gather} -\frac{d^2 u}{dx^2} = f(x) \quad x \in \Omega = (-1,1) \\
+<div class="amsmath math notranslate nohighlight" id="equation-23da48af-5b8d-4a54-a05b-0d8bcd760c1f">
+<span class="eqno">(4)<a class="headerlink" href="#equation-23da48af-5b8d-4a54-a05b-0d8bcd760c1f" title="Permalink to this equation">¶</a></span>\[\begin{gather} -\frac{d^2 u}{dx^2} = f(x) \quad x \in \Omega = (-1,1) \\
 u(-1) = a \quad \frac{du}{dx}(1) = b .
 \end{gather}\]</div>
 <ul class="simple">
-<li><p>Represent the function <span class="math notranslate nohighlight">\(u(x)\)</span> by its values <span class="math notranslate nohighlight">\(u_i = u(x_i)\)</span> at a discrete set of points $<span class="math notranslate nohighlight">\( -1 = x_1 &lt; x_2 &lt; \dotsb &lt; x_n = 1 . \)</span>$</p>
+<li><p>Represent the function <span class="math notranslate nohighlight">\(u(x)\)</span> by its values <span class="math notranslate nohighlight">\(u_i = u(x_i)\)</span> at a discrete set of points <div class="math notranslate nohighlight">
+\[ -1 = x_1 &lt; x_2 &lt; \dotsb &lt; x_n = 1 . \]</div>
+</p>
 <ul>
 <li><p>The FD framework does not uniquely specify the solution values at other points</p></li>
 </ul>
@@ -366,7 +482,7 @@ u(-1) = a \quad \frac{du}{dx}(1) = b .
 <li><p>Approximate derivatives at discrete boundary points (<span class="math notranslate nohighlight">\(x_n = 1\)</span> above), typically using one-sided differencing formulas.</p></li>
 </ul>
 </div>
-<div class="section" id="computing-a-derivative">
+<div class="tex2jax_ignore mathjax_ignore section" id="computing-a-derivative">
 <h1>Computing a derivative<a class="headerlink" href="#computing-a-derivative" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -398,17 +514,19 @@ u(-1) = a \quad \frac{du}{dx}(1) = b .
 <img alt="../_images/2021-08-25-finite-difference_8_0.svg" src="../_images/2021-08-25-finite-difference_8_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="how-accurate-is-it">
+<div class="tex2jax_ignore mathjax_ignore section" id="how-accurate-is-it">
 <h1>How accurate is it?<a class="headerlink" href="#how-accurate-is-it" title="Permalink to this headline">¶</a></h1>
 <p>Without loss of generality, we’ll approximate <span class="math notranslate nohighlight">\(u'(x_i = 0)\)</span>, taking <span class="math notranslate nohighlight">\(h = x_{i+1} - x_i\)</span>.</p>
 <div class="math notranslate nohighlight">
 \[ u(x) = u(0) + u'(0)x + u''(0)x^2/2! + O(x^3)\]</div>
 <p>and substitute into the differencing formula
-$<span class="math notranslate nohighlight">\( \begin{split} u'(0) \approx \frac{u(h) - u(0)}{h} = h^{-1} \Big( u(0) + u'(0) h + u''(0)h^2/2 + O(h^3) - u(0) \Big) \\
-= u'(0) + u''(0)h/2 + O(h^2) . \end{split}\)</span><span class="math notranslate nohighlight">\(
-Evidently the error in this approximation is \)</span>u’’(0)h/2 + O(h^2)$. We say this method is <em>first order accurate</em>.</p>
+<div class="math notranslate nohighlight">
+\[\begin{split} \begin{split} u'(0) \approx \frac{u(h) - u(0)}{h} = h^{-1} \Big( u(0) + u'(0) h + u''(0)h^2/2 + O(h^3) - u(0) \Big) \\
+= u'(0) + u''(0)h/2 + O(h^2) . \end{split}\end{split}\]</div>
+
+Evidently the error in this approximation is <span class="math notranslate nohighlight">\(u''(0)h/2 + O(h^2)\)</span>. We say this method is <em>first order accurate</em>.</p>
 </div>
-<div class="section" id="activity-on-stability-and-accuracy-computing-derivatives">
+<div class="tex2jax_ignore mathjax_ignore section" id="activity-on-stability-and-accuracy-computing-derivatives">
 <h1>Activity on stability and accuracy computing derivatives<a class="headerlink" href="#activity-on-stability-and-accuracy-computing-derivatives" title="Permalink to this headline">¶</a></h1>
 </div>
 
@@ -435,16 +553,36 @@ Evidently the error in this approximation is \)</span>u’’(0)h/2 + O(h^2)$. W
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-08-23-first-day.html" title="previous page">2021-08-23 First Day</a>
-    <a class='right-next' id="next-link" href="2021-08-27-finite-difference-2.html" title="next page">2021-08-27 Finite Difference 2</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-08-23-first-day.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-08-23 First Day</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-08-27-finite-difference-2.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-08-27 Finite Difference 2</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         

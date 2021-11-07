@@ -23,7 +23,7 @@
 
     
     <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="stylesheet" href="../_static/sphinx-book-theme.5f77b4aec8189eecf79907ce328c390d.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
     <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
     <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
@@ -42,18 +42,19 @@
     <script src="../_static/copybutton.js"></script>
     <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
     <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
-    <script async="async" src="https://unpkg.com/thebe@latest/lib/index.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
     <script >
         const thebe_selector = ".thebe,.cell"
         const thebe_selector_input = "pre,.cell_input div.highlight"
         const thebe_selector_output = ".output,.cell_output"
     </script>
     <script async="async" src="../_static/sphinx-thebe.js"></script>
-    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"inlineMath": [["\\(", "\\)"]], "displayMath": [["\\[", "\\]"]], "processRefs": false, "processEnvironments": false}})</script>
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-10-08 Finite Difference in 2D" href="2021-10-08-fd-2d.html" />
     <link rel="prev" title="2021-10-01 Runge-Kutta methods" href="2021-10-01-runge-kutta.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -73,6 +74,10 @@
         <div class="navbar-brand-box">
     <a class="navbar-brand text-wrap" href="../index.html">
       
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
       <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
       
       
@@ -82,7 +87,7 @@
 </div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
   <i class="icon fas fa-search"></i>
   <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
-</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item active">
         <ul class="nav bd-sidenav">
  <li class="toctree-l1">
@@ -192,6 +197,61 @@
      2021-10-04 RK methods for stiff problems
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -299,7 +359,7 @@
             <div class="tocsection onthispage pt-5 pb-3">
                 <i class="fas fa-list"></i> Contents
             </div>
-            <nav id="bd-toc-nav">
+            <nav id="bd-toc-nav" aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
@@ -430,7 +490,7 @@
         
               <div>
                 
-  <div class="section" id="rk-methods-for-stiff-problems">
+  <div class="tex2jax_ignore mathjax_ignore section" id="rk-methods-for-stiff-problems">
 <h1>2021-10-04 RK methods for stiff problems<a class="headerlink" href="#rk-methods-for-stiff-problems" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="last-time">
 <h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
@@ -578,7 +638,7 @@
 </div>
 </div>
 </div>
-<div class="section" id="runge-kutta-methods">
+<div class="tex2jax_ignore mathjax_ignore section" id="runge-kutta-methods">
 <h1>Runge-Kutta methods<a class="headerlink" href="#runge-kutta-methods" title="Permalink to this headline">¶</a></h1>
 <p>The methods we have considered thus far can all be expressed as Runge-Kutta methods, which are expressed in terms of <span class="math notranslate nohighlight">\(s\)</span> “stage” equations (possibly coupled) and a completion formula.  For the ODE</p>
 <div class="math notranslate nohighlight">
@@ -591,16 +651,18 @@ u(t+h) = u(t) + h \sum_j b_j f(t+c_j h, Y_j)
 \end{split}\end{split}\]</div>
 <p>where <span class="math notranslate nohighlight">\(c\)</span> is a vector of <em>abscissa</em>, <span class="math notranslate nohighlight">\(A\)</span> is a table of coefficients, and <span class="math notranslate nohighlight">\(b\)</span> is a vector of completion weights.</p>
 <p>These coefficients are typically expressed in a Butcher Table
-$<span class="math notranslate nohighlight">\( \left[ \begin{array}{c|c} c &amp; A \\ \hline &amp; b^T \end{array} \right] = \left[ \begin{array}{c|cc}
+<div class="math notranslate nohighlight">
+\[\begin{split} \left[ \begin{array}{c|c} c &amp; A \\ \hline &amp; b^T \end{array} \right] = \left[ \begin{array}{c|cc}
 c_0 &amp; a_{00} &amp; a_{01} \\
 c_1 &amp; a_{10} &amp; a_{11} \\
 \hline
 &amp; b_0 &amp; b_1
-\end{array} \right] . \)</span><span class="math notranslate nohighlight">\(
-We will see that, for consistency, the abscissa \)</span>c<span class="math notranslate nohighlight">\( are always the row sums of \)</span>A<span class="math notranslate nohighlight">\( and that \)</span>\sum_i b_i = 1$.</p>
+\end{array} \right] . \end{split}\]</div>
+
+We will see that, for consistency, the abscissa <span class="math notranslate nohighlight">\(c\)</span> are always the row sums of <span class="math notranslate nohighlight">\(A\)</span> and that <span class="math notranslate nohighlight">\(\sum_i b_i = 1\)</span>.</p>
 <p>If the matrix <span class="math notranslate nohighlight">\(A\)</span> is strictly lower triangular, then the method is <strong>explicit</strong> (does not require solving equations).</p>
 </div>
-<div class="section" id="measuring-convergence-and-accuracy">
+<div class="tex2jax_ignore mathjax_ignore section" id="measuring-convergence-and-accuracy">
 <h1>Measuring convergence and accuracy<a class="headerlink" href="#measuring-convergence-and-accuracy" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -637,7 +699,7 @@ We will see that, for consistency, the abscissa \)</span>c<span class="math notr
 <img alt="../_images/2021-10-04-stiff-rk_8_0.svg" src="../_images/2021-10-04-stiff-rk_8_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="work-precision-or-accuracy-vs-cost">
+<div class="tex2jax_ignore mathjax_ignore section" id="work-precision-or-accuracy-vs-cost">
 <h1>Work-precision (or accuracy vs cost)<a class="headerlink" href="#work-precision-or-accuracy-vs-cost" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -653,7 +715,7 @@ We will see that, for consistency, the abscissa \)</span>c<span class="math notr
 <img alt="../_images/2021-10-04-stiff-rk_10_0.svg" src="../_images/2021-10-04-stiff-rk_10_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="effective-rk-stability-diagrams">
+<div class="tex2jax_ignore mathjax_ignore section" id="effective-rk-stability-diagrams">
 <h1>Effective RK stability diagrams<a class="headerlink" href="#effective-rk-stability-diagrams" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -680,7 +742,7 @@ We will see that, for consistency, the abscissa \)</span>c<span class="math notr
 <img alt="../_images/2021-10-04-stiff-rk_13_0.svg" src="../_images/2021-10-04-stiff-rk_13_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="runge-kutta-order-conditions">
+<div class="tex2jax_ignore mathjax_ignore section" id="runge-kutta-order-conditions">
 <h1>Runge-Kutta order conditions<a class="headerlink" href="#runge-kutta-order-conditions" title="Permalink to this headline">¶</a></h1>
 <p>We consider the autonomous differential equation</p>
 <div class="math notranslate nohighlight">
@@ -710,22 +772,28 @@ Y_i(0) &amp;= u(0) \
 &amp;= 3 \sum_{j,k,\ell} a_{ij} a_{jk} \Big( a_{j\ell} f’’(Y_j) f(Y_k) f(Y_\ell) + 2 a_{k\ell} f’(Y_j) f’(Y_k) f(Y_\ell)  \Big)
 \end{split}</p>
 <p>where we have used Liebnitz’s formula for the <span class="math notranslate nohighlight">\(m\)</span>th derivative,
-$<span class="math notranslate nohighlight">\( (h \phi(h))^{(m)}|_{h=0} = m \phi^{(m-1)}(0) .\)</span><span class="math notranslate nohighlight">\(
-Similar formulas apply for \)</span>\dot U(0)<span class="math notranslate nohighlight">\(, \)</span>\ddot U(0)<span class="math notranslate nohighlight">\(, and \)</span>\dddot U(0)<span class="math notranslate nohighlight">\(, with \)</span>b_j<span class="math notranslate nohighlight">\( in place of \)</span>a_{ij}$.</p>
+<div class="math notranslate nohighlight">
+\[ (h \phi(h))^{(m)}|_{h=0} = m \phi^{(m-1)}(0) .\]</div>
+
+Similar formulas apply for <span class="math notranslate nohighlight">\(\dot U(0)\)</span>, <span class="math notranslate nohighlight">\(\ddot U(0)\)</span>, and <span class="math notranslate nohighlight">\(\dddot U(0)\)</span>, with <span class="math notranslate nohighlight">\(b_j\)</span> in place of <span class="math notranslate nohighlight">\(a_{ij}\)</span>.</p>
 </div>
-<div class="section" id="order-conditions-are-nonlinear-algebraic-equations">
+<div class="tex2jax_ignore mathjax_ignore section" id="order-conditions-are-nonlinear-algebraic-equations">
 <h1>Order conditions are nonlinear algebraic equations<a class="headerlink" href="#order-conditions-are-nonlinear-algebraic-equations" title="Permalink to this headline">¶</a></h1>
 <p>Equating terms <span class="math notranslate nohighlight">\(\dot u(0) = \dot U(0)\)</span> yields
-$<span class="math notranslate nohighlight">\( \sum_j b_j = 1, \)</span><span class="math notranslate nohighlight">\(
-equating \)</span>\ddot u(0) = \ddot U(0)<span class="math notranslate nohighlight">\( yields
-\)</span><span class="math notranslate nohighlight">\( 2 \sum_{j,k} b_j a_{jk} = 1 , \)</span><span class="math notranslate nohighlight">\(
-and equating \)</span>\dddot u(0) = \dddot U(0)$ yields the two equations
+<div class="math notranslate nohighlight">
+\[ \sum_j b_j = 1, \]</div>
+
+equating <span class="math notranslate nohighlight">\(\ddot u(0) = \ddot U(0)\)</span> yields
+<div class="math notranslate nohighlight">
+\[ 2 \sum_{j,k} b_j a_{jk} = 1 , \]</div>
+
+and equating <span class="math notranslate nohighlight">\(\dddot u(0) = \dddot U(0)\)</span> yields the two equations
 \begin{split}
 3\sum_{j,k,\ell} b_j a_{jk} a_{j\ell} &amp;= 1 \
 6 \sum_{j,k,\ell} b_j a_{jk} a_{k\ell} &amp;= 1 .
 \end{split}</p>
 </div>
-<div class="section" id="observations">
+<div class="tex2jax_ignore mathjax_ignore section" id="observations">
 <h1>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h1>
 <ul class="simple">
 <li><p>These are systems of nonlinear equations for the coefficients <span class="math notranslate nohighlight">\(a_{ij}\)</span> and <span class="math notranslate nohighlight">\(b_j\)</span>.  There is no guarantee that they have solutions.</p></li>
@@ -781,22 +849,30 @@ and equating \)</span>\dddot u(0) = \dddot U(0)$ yields the two equations
 </ul>
 <p><img alt="Trees and elementary differentials up to order 5. From Hairer, Nørsett, and Wanner." src="../_images/rktrees.png" /></p>
 </div>
-<div class="section" id="theorem-from-hairer-norsett-and-wanner">
+<div class="tex2jax_ignore mathjax_ignore section" id="theorem-from-hairer-norsett-and-wanner">
 <h1>Theorem (from Hairer, Nørsett, and Wanner)<a class="headerlink" href="#theorem-from-hairer-norsett-and-wanner" title="Permalink to this headline">¶</a></h1>
 <p>A Runge-Kutta method is of order <span class="math notranslate nohighlight">\(p\)</span> if and only if
-$<span class="math notranslate nohighlight">\( \gamma(\mathcal t) \sum_{j} b_j \Phi_j(t) = 1 \)</span><span class="math notranslate nohighlight">\(
-for all trees \)</span>t<span class="math notranslate nohighlight">\( of order \)</span>\le p$.</p>
+<div class="math notranslate nohighlight">
+\[ \gamma(\mathcal t) \sum_{j} b_j \Phi_j(t) = 1 \]</div>
+
+for all trees <span class="math notranslate nohighlight">\(t\)</span> of order <span class="math notranslate nohighlight">\(\le p\)</span>.</p>
 <p>For a linear autonomous equation
-$<span class="math notranslate nohighlight">\( \dot u = A u \)</span><span class="math notranslate nohighlight">\(
-we only need one additional order condition per order of accuracy because \)</span>f’’ = 0<span class="math notranslate nohighlight">\(.
-These conditions can also be derived by equating derivatives of the stability function \)</span>R(z)<span class="math notranslate nohighlight">\( with the exponential \)</span>e^z<span class="math notranslate nohighlight">\(.
+<div class="math notranslate nohighlight">
+\[ \dot u = A u \]</div>
+
+we only need one additional order condition per order of accuracy because <span class="math notranslate nohighlight">\(f'' = 0\)</span>.
+These conditions can also be derived by equating derivatives of the stability function <span class="math notranslate nohighlight">\(R(z)\)</span> with the exponential <span class="math notranslate nohighlight">\(e^z\)</span>.
 For a linear non-autonomous equation
-\)</span><span class="math notranslate nohighlight">\( \dot u = A(t) u + g(t) \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ \dot u = A(t) u + g(t) \]</div>
+
 or more generally, an autonomous system with quadratic right hand side,
-\)</span><span class="math notranslate nohighlight">\( \dot u = B (u \otimes u) + A u + C \)</span><span class="math notranslate nohighlight">\(
-where \)</span>B<span class="math notranslate nohighlight">\( is a rank 3 tensor, we have \)</span>f’’’ = 0$, thus limiting the number of order conditions.</p>
+<div class="math notranslate nohighlight">
+\[ \dot u = B (u \otimes u) + A u + C \]</div>
+
+where <span class="math notranslate nohighlight">\(B\)</span> is a rank 3 tensor, we have <span class="math notranslate nohighlight">\(f''' = 0\)</span>, thus limiting the number of order conditions.</p>
 </div>
-<div class="section" id="embedded-error-estimation">
+<div class="tex2jax_ignore mathjax_ignore section" id="embedded-error-estimation">
 <h1>Embedded error estimation<a class="headerlink" href="#embedded-error-estimation" title="Permalink to this headline">¶</a></h1>
 <p>It is often possible to design Runge-Kutta methods with multiple completion orders, say of order <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(p-1\)</span>.</p>
 <div class="math notranslate nohighlight">
@@ -823,7 +899,7 @@ where \)</span>B<span class="math notranslate nohighlight">\( is a rank 3 tensor
 <img alt="../_images/2021-10-04-stiff-rk_26_0.svg" src="../_images/2021-10-04-stiff-rk_26_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="properties">
+<div class="tex2jax_ignore mathjax_ignore section" id="properties">
 <h1>Properties<a class="headerlink" href="#properties" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -857,25 +933,39 @@ where \)</span>B<span class="math notranslate nohighlight">\( is a rank 3 tensor
 <li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Dormand%E2%80%93Prince_method">Dormand-Prince</a>, a 7-stage, 5th order method with the FSAL property, with the 5th order completion formula optimized for accuracy.</p></li>
 </ul>
 </div>
-<div class="section" id="stability-regions">
+<div class="tex2jax_ignore mathjax_ignore section" id="stability-regions">
 <h1>Stability regions<a class="headerlink" href="#stability-regions" title="Permalink to this headline">¶</a></h1>
 <p><img alt="" src="../_images/rkstability-fehlberg.png" /></p>
 <p><img alt="" src="../_images/rkstability-dp.png" /></p>
 </div>
-<div class="section" id="adaptive-step-size-control">
+<div class="tex2jax_ignore mathjax_ignore section" id="adaptive-step-size-control">
 <h1>Adaptive step size control<a class="headerlink" href="#adaptive-step-size-control" title="Permalink to this headline">¶</a></h1>
 <p>Given a completion formula <span class="math notranslate nohighlight">\(b^T\)</span> of order <span class="math notranslate nohighlight">\(p\)</span> and <span class="math notranslate nohighlight">\(\tilde b^T\)</span> of order <span class="math notranslate nohighlight">\(p-1\)</span>, an estimate of the local truncation error (on this step) is given by
-$<span class="math notranslate nohighlight">\( e_{\text{loc}}(h) = \lVert h (b - \tilde b)^T f(Y) \rVert \in O(h^p) . \)</span><span class="math notranslate nohighlight">\(
-Given a tolerance \)</span>\epsilon<span class="math notranslate nohighlight">\(, we would like to find \)</span>h_*<span class="math notranslate nohighlight">\( such that
-\)</span><span class="math notranslate nohighlight">\( e_{\text{loc}}(h_*) &lt; \epsilon . \)</span><span class="math notranslate nohighlight">\(
-If \)</span><span class="math notranslate nohighlight">\(e_{\text{loc}}(h) = c h^p\)</span><span class="math notranslate nohighlight">\( for some constant \)</span>c<span class="math notranslate nohighlight">\(, then
-\)</span><span class="math notranslate nohighlight">\( c h_*^p &lt; \epsilon \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ e_{\text{loc}}(h) = \lVert h (b - \tilde b)^T f(Y) \rVert \in O(h^p) . \]</div>
+
+Given a tolerance <span class="math notranslate nohighlight">\(\epsilon\)</span>, we would like to find <span class="math notranslate nohighlight">\(h_*\)</span> such that
+<div class="math notranslate nohighlight">
+\[ e_{\text{loc}}(h_*) &lt; \epsilon . \]</div>
+
+If <div class="math notranslate nohighlight">
+\[e_{\text{loc}}(h) = c h^p\]</div>
+ for some constant <span class="math notranslate nohighlight">\(c\)</span>, then
+<div class="math notranslate nohighlight">
+\[ c h_*^p &lt; \epsilon \]</div>
+
 implies
-\)</span><span class="math notranslate nohighlight">\( h_* &lt; \left( \frac{\epsilon}{c} \right)^{1/p} . \)</span><span class="math notranslate nohighlight">\(
-Given the estimate with the current \)</span>h<span class="math notranslate nohighlight">\(,
-\)</span><span class="math notranslate nohighlight">\( c = e_{\text{loc}}(h) / h^p \)</span><span class="math notranslate nohighlight">\(
+<div class="math notranslate nohighlight">
+\[ h_* &lt; \left( \frac{\epsilon}{c} \right)^{1/p} . \]</div>
+
+Given the estimate with the current <span class="math notranslate nohighlight">\(h\)</span>,
+<div class="math notranslate nohighlight">
+\[ c = e_{\text{loc}}(h) / h^p \]</div>
+
 we conclude
-\)</span><span class="math notranslate nohighlight">\( \frac{h_*}{h} &lt; \left( \frac{\epsilon}{e_{\text{loc}}(h)} \right)^{1/p} . \)</span>$</p>
+<div class="math notranslate nohighlight">
+\[ \frac{h_*}{h} &lt; \left( \frac{\epsilon}{e_{\text{loc}}(h)} \right)^{1/p} . \]</div>
+</p>
 <div class="section" id="notes">
 <h2>Notes<a class="headerlink" href="#notes" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
@@ -886,7 +976,7 @@ we conclude
 </ul>
 </div>
 </div>
-<div class="section" id="diagonally-implicit-runge-kutta-methods">
+<div class="tex2jax_ignore mathjax_ignore section" id="diagonally-implicit-runge-kutta-methods">
 <h1>Diagonally Implicit Runge-Kutta methods<a class="headerlink" href="#diagonally-implicit-runge-kutta-methods" title="Permalink to this headline">¶</a></h1>
 <div class="floatright">
 <div class="math notranslate nohighlight">
@@ -925,7 +1015,7 @@ c_1 &amp; a_{10} &amp; a_{11} \\
 <img alt="../_images/2021-10-04-stiff-rk_39_0.svg" src="../_images/2021-10-04-stiff-rk_39_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="fully-implicit-runge-kutta-methods">
+<div class="tex2jax_ignore mathjax_ignore section" id="fully-implicit-runge-kutta-methods">
 <h1>Fully implicit Runge-Kutta methods<a class="headerlink" href="#fully-implicit-runge-kutta-methods" title="Permalink to this headline">¶</a></h1>
 <div class="floatright">
 <div class="math notranslate nohighlight">
@@ -957,7 +1047,7 @@ c_1 &amp; a_{10} &amp; a_{11} \\
 <img alt="../_images/2021-10-04-stiff-rk_42_0.svg" src="../_images/2021-10-04-stiff-rk_42_0.svg" /></div>
 </div>
 </div>
-<div class="section" id="explore-benchmarks-https-benchmarks-sciml-ai">
+<div class="tex2jax_ignore mathjax_ignore section" id="explore-benchmarks-https-benchmarks-sciml-ai">
 <h1>Explore benchmarks: <a class="reference external" href="https://benchmarks.sciml.ai/">https://benchmarks.sciml.ai/</a><a class="headerlink" href="#explore-benchmarks-https-benchmarks-sciml-ai" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
 <h2>Today<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
@@ -1006,15 +1096,36 @@ c_1 &amp; a_{10} &amp; a_{11} \\
               </div>
               
         
-        <div class='prev-next-bottom'>
             
-    <a class='left-prev' id="prev-link" href="2021-10-01-runge-kutta.html" title="previous page">2021-10-01 Runge-Kutta methods</a>
 
-        </div>
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-10-01-runge-kutta.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-10-01 Runge-Kutta methods</p>
+            </div>
+        </a>
+    </div>
+     <div id="next">
+        <a class="right-next" href="2021-10-08-fd-2d.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-10-08 Finite Difference in 2D</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
+
+</div>
         
         </div>
     </div>
-    <footer class="footer mt-5 mt-md-0">
+    <footer class="footer">
     <div class="container">
       <p>
         
