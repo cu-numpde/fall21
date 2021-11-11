@@ -560,7 +560,7 @@ where <span class="math notranslate nohighlight">\(\tilde u = B \mathcal E_e u\)
 <h2>Isoparametric mapping<a class="headerlink" href="#isoparametric-mapping" title="Permalink to this headline">¶</a></h2>
 <p>Given the reference coordinates <span class="math notranslate nohighlight">\(X \in \hat K \subset R^n\)</span> and physical coordinates <span class="math notranslate nohighlight">\(x(X)\)</span>, an integral on the physical element can be written
 <div class="math notranslate nohighlight">
-\[ \int_{K = x(\hat K)} f(x) dx = \int_K \underbrace{\left\lvert \frac{\partial x}{\partial X} \right\rvert}_{\text{determinant}} f(x(X)) dX .\]</div>
+\[ \int_{K = x(\hat K)} f(x) dx = \int_{\hat K} \underbrace{\left\lvert \frac{\partial x}{\partial X} \right\rvert}_{\text{determinant}} f(x(X)) dX .\]</div>
 </p>
 <table class="colwidths-auto table">
 <thead>
@@ -750,25 +750,12 @@ where <span class="math notranslate nohighlight">\(\tilde u = B \mathcal E_e u\)
 <span class="n">fe</span> <span class="o">=</span> <span class="n">FESpace</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="n">u0</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">fe</span><span class="o">.</span><span class="n">xn</span><span class="p">)</span>
 <span class="n">sol</span> <span class="o">=</span> <span class="n">nlsolve</span><span class="p">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">fe_residual</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">fe</span><span class="p">,</span> <span class="n">fq</span><span class="p">),</span> <span class="n">u0</span><span class="p">;</span> <span class="n">method</span><span class="o">=</span><span class="ss">:newton</span><span class="p">)</span>
-<span class="c">#plot(fe.xn, sol.zero, marker=:auto)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">fe</span><span class="o">.</span><span class="n">xn</span><span class="p">,</span> <span class="n">sol</span><span class="o">.</span><span class="n">zero</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results of Nonlinear Solver Algorithm
- * Algorithm: Newton with line-search
- * Starting Point: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
- * Zero: [1.0000000000039475, 2.841018305024411, 4.238906485222131, 5.188016952771728, 5.816050622253204, 6.227791209380689, 6.501764010258901, 6.681877766277991, 6.795822293427263, 6.858907410246209, 6.879070690434546]
- * Inf-norm of residuals: 0.000000
- * Iterations: 1
- * Convergence: true
-   * |x - x&#39;| &lt; 0.0e+00: false
-   * |f(x)| &lt; 1.0e-08: true
- * Function Calls (f): 2
- * Jacobian Calls (df/dx): 2
-</pre></div>
-</div>
-</div>
+<img alt="../_images/2021-11-10-fem_14_0.svg" src="../_images/2021-11-10-fem_14_0.svg" /></div>
 </div>
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="finite-element-jacobian-assembly">
@@ -843,7 +830,7 @@ where <span class="math notranslate nohighlight">\(\tilde u = B \mathcal E_e u\)
 <h1>Spy on the Jacobian<a class="headerlink" href="#spy-on-the-jacobian" title="Permalink to this headline">¶</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="nd">@show</span> <span class="n">cond</span><span class="p">(</span><span class="kt">Matrix</span><span class="p">(</span><span class="n">J</span><span class="p">))</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="c">#@show cond(Matrix(J))</span>
 
 <span class="n">fe</span> <span class="o">=</span> <span class="n">FESpace</span><span class="p">(</span><span class="mi">6</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
 <span class="n">u0</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">fe</span><span class="o">.</span><span class="n">xn</span><span class="p">)</span>
@@ -853,18 +840,7 @@ where <span class="math notranslate nohighlight">\(\tilde u = B \mathcal E_e u\)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="ne">UndefVarError</span>: J not defined
-
-<span class="ne">Stacktrace</span>:
- <span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="n">top</span><span class="o">-</span><span class="n">level</span> <span class="n">scope</span>
-   <span class="o">@</span> <span class="n">show</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">955</span>
- <span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="nb">eval</span>
-   <span class="o">@</span> <span class="o">./</span><span class="n">boot</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">360</span> <span class="p">[</span><span class="n">inlined</span><span class="p">]</span>
- <span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="n">include_string</span><span class="p">(</span><span class="n">mapexpr</span><span class="p">::</span><span class="n">typeof</span><span class="p">(</span><span class="n">REPL</span><span class="o">.</span><span class="n">softscope</span><span class="p">),</span> <span class="n">mod</span><span class="p">::</span><span class="n">Module</span><span class="p">,</span> <span class="n">code</span><span class="p">::</span><span class="n">String</span><span class="p">,</span> <span class="n">filename</span><span class="p">::</span><span class="n">String</span><span class="p">)</span>
-   <span class="o">@</span> <span class="n">Base</span> <span class="o">./</span><span class="n">loading</span><span class="o">.</span><span class="n">jl</span><span class="p">:</span><span class="mi">1116</span>
-</pre></div>
-</div>
-</div>
+<img alt="../_images/2021-11-10-fem_19_0.svg" src="../_images/2021-11-10-fem_19_0.svg" /></div>
 </div>
 <ul class="simple">
 <li><p>What is interesting about this matrix structure?</p>
@@ -899,8 +875,8 @@ where <span class="math notranslate nohighlight">\(\tilde u = B \mathcal E_e u\)
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Results of Nonlinear Solver Algorithm
  * Algorithm: Newton with line-search
- * Starting Point: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
- * Zero: [1.0, 1.1739863026457675, 1.307777401051926, 1.4129878095812518, 1.4964042939005306, 1.5622906363804245, 1.6134021931347737, 1.6516021901518985, 1.6781120101275795, 1.6937298372175207, 1.698885489993836]
+ * Starting Point: [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+ * Zero: [1.0, 1.0562613160921506, 1.1576325990202827, 1.2590479765200593, 1.3315488441072163, 1.3634502374658097, 1.3932371719548644, 1.4481281730989712, 1.5041997855247982, 1.5445730865975467, 1.5622871531149463, 1.5787333640569756, 1.6085978073405816, 1.6380216706859818, 1.6579945342008353, 1.666258096607518, 1.6735545064531623, 1.6855249632772669, 1.6947698658243535, 1.6984415353929925, 1.698885490572898]
  * Inf-norm of residuals: 0.000000
  * Iterations: 6
  * Convergence: true
@@ -924,13 +900,13 @@ where <span class="math notranslate nohighlight">\(\tilde u = B \mathcal E_e u\)
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="advection-diffusion-time-independent">
 <h1>Advection-diffusion (time independent)<a class="headerlink" href="#advection-diffusion-time-independent" title="Permalink to this headline">¶</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-c3897ba6-1128-4a9a-9086-fd43cf3e4810">
-<span class="eqno">(45)<a class="headerlink" href="#equation-c3897ba6-1128-4a9a-9086-fd43cf3e4810" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-ba8727bc-552c-4fb1-85ec-d8b300e9e025">
+<span class="eqno">(45)<a class="headerlink" href="#equation-ba8727bc-552c-4fb1-85ec-d8b300e9e025" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \nabla\cdot\big[ \mathbf w u - \kappa \nabla u \big] &amp;= 1 &amp; \int_\Omega \nabla v \cdot \Big[-\mathbf w u + \kappa \nabla u \big] &amp;= \int_\Omega v 1, \forall v
 \end{align}\]</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">wind</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">wind</span> <span class="o">=</span> <span class="mi">50</span>
 <span class="n">fq</span><span class="p">(</span><span class="n">q</span><span class="p">,</span> <span class="n">u</span><span class="p">,</span> <span class="n">Du</span><span class="p">)</span> <span class="o">=</span> <span class="o">-</span><span class="n">one</span><span class="o">.</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="o">-</span><span class="n">wind</span> <span class="o">.*</span> <span class="n">u</span> <span class="o">+</span> <span class="mi">1</span> <span class="o">*</span> <span class="n">Du</span>
 <span class="n">N</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">fe</span><span class="o">.</span><span class="n">xn</span><span class="p">)</span>
 <span class="n">sol</span> <span class="o">=</span> <span class="n">nlsolve</span><span class="p">(</span><span class="n">u</span> <span class="o">-&gt;</span> <span class="n">fe_residual</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">fe</span><span class="p">,</span> <span class="n">fq</span><span class="p">;</span> <span class="n">bci</span><span class="o">=</span><span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="n">N</span><span class="p">],</span> <span class="n">bcv</span><span class="o">=</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]),</span> <span class="n">zero</span><span class="p">(</span><span class="n">fe</span><span class="o">.</span><span class="n">xn</span><span class="p">),</span> <span class="n">method</span><span class="o">=</span><span class="ss">:newton</span><span class="p">)</span>
@@ -1174,13 +1150,20 @@ where <span class="math notranslate nohighlight">\(\tilde u = B \mathcal E_e u\)
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">zero</span><span class="p">)</span>
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">sol</span><span class="o">.</span><span class="n">zero</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="ss">:auto</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <img alt="../_images/2021-11-10-fem_38_0.svg" src="../_images/2021-11-10-fem_38_0.svg" /></div>
 </div>
+<ul class="simple">
+<li><p>Why is this figure weird?</p>
+<ul>
+<li><p>How are the x nodes spaced, and how should they be spaced?</p></li>
+</ul>
+</li>
+</ul>
 </div>
 
     <script type="text/x-thebe-config">
