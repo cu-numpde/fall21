@@ -37,3 +37,4 @@ chapters:
   - file: slides/2021-11-05-galerkin.ipynb
   - file: slides/2021-11-08-galerkin-properties.ipynb
   - file: slides/2021-11-10-fem.ipynb
+  - file: slides/2021-11-15-stabilized.ipynb
