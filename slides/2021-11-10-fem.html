@@ -54,6 +54,7 @@
     <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2021-11-15 Stabilized FE" href="2021-11-15-stabilized.html" />
     <link rel="prev" title="2021-11-08 Galerkin properties" href="2021-11-08-galerkin-properties.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -259,6 +260,16 @@
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      2021-11-10 Finite elements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-15-stabilized.html">
+     2021-11-15 Stabilized FE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-19-mixed.html">
+     2021-11-19 Mixed methods
     </a>
    </li>
   </ul>
@@ -539,7 +550,8 @@
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>febasis (generic function with 1 method)
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>┌ Info: Precompiling Plots [91a5bcdd-55d7-5caf-9e0b-520d859cae80]
+└ @ Base loading.jl:1342
 </pre></div>
 </div>
 </div>
@@ -900,8 +912,8 @@ where <span class="math notranslate nohighlight">\(\tilde u = B \mathcal E_e u\)
 </div>
 <div class="tex2jax_ignore mathjax_ignore section" id="advection-diffusion-time-independent">
 <h1>Advection-diffusion (time independent)<a class="headerlink" href="#advection-diffusion-time-independent" title="Permalink to this headline">¶</a></h1>
-<div class="amsmath math notranslate nohighlight" id="equation-ba8727bc-552c-4fb1-85ec-d8b300e9e025">
-<span class="eqno">(45)<a class="headerlink" href="#equation-ba8727bc-552c-4fb1-85ec-d8b300e9e025" title="Permalink to this equation">¶</a></span>\[\begin{align}
+<div class="amsmath math notranslate nohighlight" id="equation-6172c97f-9dfa-4662-a325-4303f222497c">
+<span class="eqno">(45)<a class="headerlink" href="#equation-6172c97f-9dfa-4662-a325-4303f222497c" title="Permalink to this equation">¶</a></span>\[\begin{align}
 \nabla\cdot\big[ \mathbf w u - \kappa \nabla u \big] &amp;= 1 &amp; \int_\Omega \nabla v \cdot \Big[-\mathbf w u + \kappa \nabla u \big] &amp;= \int_\Omega v 1, \forall v
 \end{align}\]</div>
 <div class="cell docutils container">
@@ -1204,6 +1216,15 @@ where <span class="math notranslate nohighlight">\(\tilde u = B \mathcal E_e u\)
             </div>
         </a>
     </div>
+     <div id="next">
+        <a class="right-next" href="2021-11-15-stabilized.html" title="next page">
+            <div class="prevnext-info">
+                <p class="prevnext-label">next</p>
+                <p class="prevnext-title">2021-11-15 Stabilized FE</p>
+            </div>
+            <i class="prevnext-label fas fa-angle-right"></i>
+        </a>
+     </div>
 
 </div>
         

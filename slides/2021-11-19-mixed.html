@@ -1,0 +1,652 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-11-19 Mixed methods &#8212; Numerical Solution of Partial Differential Equations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2021-11-15 Stabilized FE" href="2021-11-15-stabilized.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Solution of Partial Differential Equations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../slides.html">
+   Slides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-23-first-day.html">
+     2021-08-23 First Day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-25-finite-difference.html">
+     2021-08-25 Finite Difference Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-27-finite-difference-2.html">
+     2021-08-27 Finite Difference 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-30-high-order.html">
+     2021-08-30 High order and boundaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-01-convergence-and-boundaries.html">
+     2021-09-01 Boundaries and Fourier methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-03-fourier.html">
+     2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-08-galerkin-properties.html">
+     2021-11-08 Galerkin properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-10-fem.html">
+     2021-11-10 Finite elements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-15-stabilized.html">
+     2021-11-15 Stabilized FE
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-11-19 Mixed methods
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/slides/2021-11-19-mixed.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cu-numpde/fall21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cu-numpde/fall21/issues/new?title=Issue%20on%20page%20%2Fslides/2021-11-19-mixed.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cu-numpde/fall21/main?urlpath=tree/slides/2021-11-19-mixed.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2021-11-19 Mixed methods
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#last-time">
+     Last time
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#today">
+     Today
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#community-presentations">
+   Community presentations
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#marcel-corchado-pfsspy">
+     Marcel Corchado: PFSSPY
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#morgan-byers-krylov-jl">
+     Morgan Byers: Krylov.jl
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-element-interfaces-deal-ii">
+   Finite element interfaces: Deal.II
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-element-interfaces-moose">
+   Finite element interfaces: MOOSE
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#materials">
+     Materials
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#composition-in-configuration-files">
+     Composition in configuration files
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#graphical-interface-peacock">
+     Graphical interface: Peacock
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#periodic-table-of-finite-elements">
+   Periodic table of finite elements
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#exactly-satisfies-discrete-identities-like">
+     Exactly satisfies discrete identities like
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#problems-with-constraints">
+     Problems with constraints
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="mixed-methods">
+<h1>2021-11-19 Mixed methods<a class="headerlink" href="#mixed-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="last-time">
+<h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Community presentations</p></li>
+<li><p>Petrov-Galerkin stabilization</p></li>
+<li><p>Mass lumping for time dependent problems</p></li>
+<li><p>Examples of finite element interfaces</p></li>
+</ul>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Community presentations</p></li>
+<li><p>More finite element interfaces: Deal.II and MOOSE</p></li>
+<li><p>Vector problems and mixed finite elements</p></li>
+</ul>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="community-presentations">
+<h1>Community presentations<a class="headerlink" href="#community-presentations" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="marcel-corchado-pfsspy">
+<h2><a class="reference external" href="https://github.com/dstansby/pfsspy">Marcel Corchado: PFSSPY</a><a class="headerlink" href="#marcel-corchado-pfsspy" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="morgan-byers-krylov-jl">
+<h2><a class="reference external" href="https://github.com/cu-numpde/2021-community/files/7571148/byers_pde_community.pdf">Morgan Byers: Krylov.jl</a><a class="headerlink" href="#morgan-byers-krylov-jl" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="finite-element-interfaces-deal-ii">
+<h1>Finite element interfaces: <a class="reference external" href="https://dealii.org">Deal.II</a><a class="headerlink" href="#finite-element-interfaces-deal-ii" title="Permalink to this headline">¶</a></h1>
+<div class="amsmath math notranslate nohighlight">
+\[\begin{gather*}
+    v^T F(u) \sim \int_\Omega v \cdot \color{olive}{f_0(u, \nabla u)} + \nabla v \!:\! \color{olive}{f_1(u, \nabla u)} \quad
+    v^T J w \sim \int_\Omega \begin{bmatrix} v \\ \nabla v \end{bmatrix}^T \color{teal}{\begin{bmatrix} f_{0,0} &amp; f_{0,1} \\ f_{1,0} &amp; f_{1,1} \end{bmatrix}}
+    \begin{bmatrix} w \\ \nabla w \end{bmatrix} \\
+    J w = \sum_e \mathcal E_e^T \underbrace{\begin{bmatrix} B_I \\ B_{\nabla} \end{bmatrix}^T
+    \begin{bmatrix} I &amp; \\ &amp; \left( \frac{\partial X}{\partial x}\right)^T \end{bmatrix}}_{\texttt{fe\_values}} W_q \color{teal}{\begin{bmatrix} f_{0,0} &amp; f_{0,1} \\ f_{1,0} &amp; f_{1,1} \end{bmatrix}} \underbrace{\begin{bmatrix} I &amp; \\ &amp; \left( \frac{\partial X}{\partial x}\right) \end{bmatrix} \begin{bmatrix} B_I \\ B_{\nabla} \end{bmatrix}}_{\texttt{fe\_values}} \mathcal E_e w_L
+\end{gather*}\]</div>
+<ul class="simple">
+<li><p>Deal.II <a class="reference external" href="https://dealii.org/developer/doxygen/deal.II/step_7.html">step-7</a></p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">elems</span><span class="p">:</span>
+    <span class="n">fe_values</span><span class="o">.</span><span class="n">reinit</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">q_points</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">test_functions</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="n">trial_functions</span>
+                <span class="n">K_e</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="n">j</span><span class="p">]</span> <span class="o">+=</span> <span class="o">...</span>
+            <span class="n">f_e</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+=</span> <span class="o">...</span>
+    <span class="k">for</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">e</span><span class="o">.</span><span class="n">faces</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">f</span><span class="o">.</span><span class="n">at_boundary</span><span class="p">():</span>
+            <span class="n">fe_face_values</span><span class="o">.</span><span class="n">reinit</span><span class="p">()</span>
+            <span class="k">for</span> <span class="n">q</span> <span class="ow">in</span> <span class="n">q_points</span><span class="p">:</span>
+                <span class="o">...</span>
+</pre></div>
+</div>
+<p><img alt="" src="https://dealii.org/images/wiki/gallery/Single_layer.jpeg" /></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="finite-element-interfaces-moose">
+<h1>Finite element interfaces: <a class="reference external" href="https://mooseframework.org/">MOOSE</a><a class="headerlink" href="#finite-element-interfaces-moose" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="materials">
+<h2><a class="reference external" href="https://mooseframework.inl.gov/modules/index.html">Materials</a><a class="headerlink" href="#materials" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Can be written without knowledge of finite elements</p></li>
+<li><p>Registration allows libraries of materials (some in MOOSE, others packaged separatle)</p></li>
+<li><p>Example: <a class="reference external" href="https://mooseframework.inl.gov/source/materials/crystal_plasticity/ComputeMultipleCrystalPlasticityStress.html">crystal plasticity</a></p></li>
+<li><p>Code is C++, so can do dirty things</p>
+<ul>
+<li><p>table lookups, proprietary code</p></li>
+<li><p>implicit materials (Newton solve at each quadrature point)</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="composition-in-configuration-files">
+<h2>Composition in configuration files<a class="headerlink" href="#composition-in-configuration-files" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Add fields and coupling</p></li>
+<li><p>Select materials from libraries</p></li>
+<li><p>Multiphysics composition</p></li>
+<li><p>Multiscale coupling</p></li>
+</ul>
+</div>
+<div class="section" id="graphical-interface-peacock">
+<h2>Graphical interface: <a class="reference external" href="https://mooseframework.inl.gov/application_usage/peacock.html">Peacock</a><a class="headerlink" href="#graphical-interface-peacock" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="periodic-table-of-finite-elements">
+<h1><a class="reference external" href="https://www-users.cse.umn.edu/~arnold/femtable/index.html">Periodic table of finite elements</a><a class="headerlink" href="#periodic-table-of-finite-elements" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="exactly-satisfies-discrete-identities-like">
+<h2>Exactly satisfies discrete identities like<a class="headerlink" href="#exactly-satisfies-discrete-identities-like" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[ \nabla\cdot\nabla\times u = 0\]</div>
+<div class="math notranslate nohighlight">
+\[ \nabla\times\nabla u = 0\]</div>
+<ul class="simple">
+<li><p>Generalized concept: Finite Element Exterior Calculus (FEEC)</p></li>
+<li><p>Improved stability or numerical properties</p></li>
+<li><p>Higher order of accuracy for quantity of interest despite non-smooth problem</p></li>
+</ul>
+</div>
+<div class="section" id="problems-with-constraints">
+<h2>Problems with constraints<a class="headerlink" href="#problems-with-constraints" title="Permalink to this headline">¶</a></h2>
+<p>Stokes equation: (slow) incompressible flow</p>
+<div class="amsmath math notranslate nohighlight" id="equation-53bb47e0-198d-4734-bbea-f30c508629b4">
+<span class="eqno">(47)<a class="headerlink" href="#equation-53bb47e0-198d-4734-bbea-f30c508629b4" title="Permalink to this equation">¶</a></span>\[\begin{align}
+-\nabla\cdot(\eta \nabla^s \mathbf u - pI) &amp;= 0 \\
+\nabla\cdot \mathbf u &amp;= 0
+\end{align}\]</div>
+<p>where <span class="math notranslate nohighlight">\(\nabla^s \mathbf u\)</span> is the symmetric part of the <span class="math notranslate nohighlight">\(3\times 3\)</span> gradient <span class="math notranslate nohighlight">\(\nabla \mathbf u\)</span>.</p>
+<p>Weak form: find <span class="math notranslate nohighlight">\((\mathbf u, p)\)</span> such that
+<div class="math notranslate nohighlight">
+\[ \int \nabla^s \mathbf v \!:\! \eta \!:\! \nabla^s \mathbf u - p \nabla\cdot \mathbf v - q \nabla\cdot \mathbf u = 0, \quad \forall (\mathbf v, q)\]</div>
+</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cu-numpde/fall21",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./slides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-11-15-stabilized.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-11-15 Stabilized FE</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jed Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
