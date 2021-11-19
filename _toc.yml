@@ -38,3 +38,4 @@ chapters:
   - file: slides/2021-11-08-galerkin-properties.ipynb
   - file: slides/2021-11-10-fem.ipynb
   - file: slides/2021-11-15-stabilized.ipynb
+  - file: slides/2021-11-19-mixed.ipynb

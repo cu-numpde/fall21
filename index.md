@@ -46,4 +46,5 @@ Welcome to **CSCI-5636: Numerical Solution of Partial Differential Equations**
   * [Elman, Silvester, Wathen, *Finite Elements and Fast Iterative Solvers with Applications in Incompressible Fluid Dynamics*](https://doi.org/10.1093/acprof:oso/9780199678792.001.0001) (CU students [click "Full Text" to read online](http://libraries.colorado.edu/record=b7826912~S3))
 * Papers
   * [Roache, *Code Verification by the Method of Manufactured Solutions*](https://doi.org/10.1115/1.1436090)
+  * [Turk, *Scaling a code in the human dimension*](https://dl.acm.org/doi/10.1145/2484762.2484782) [arXiv](https://arxiv.org/pdf/1301.7064.pdf)
 :::
