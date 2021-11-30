@@ -1,0 +1,1200 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-11-29 Finite Volume methods &#8212; Numerical Solution of Partial Differential Equations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2021-11-19 Mixed methods" href="2021-11-19-mixed.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Solution of Partial Differential Equations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../slides.html">
+   Slides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-23-first-day.html">
+     2021-08-23 First Day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-25-finite-difference.html">
+     2021-08-25 Finite Difference Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-27-finite-difference-2.html">
+     2021-08-27 Finite Difference 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-30-high-order.html">
+     2021-08-30 High order and boundaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-01-convergence-and-boundaries.html">
+     2021-09-01 Boundaries and Fourier methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-03-fourier.html">
+     2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-08-galerkin-properties.html">
+     2021-11-08 Galerkin properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-10-fem.html">
+     2021-11-10 Finite elements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-15-stabilized.html">
+     2021-11-15 Stabilized FE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-19-mixed.html">
+     2021-11-19 Mixed methods
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-11-29 Finite Volume methods
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/slides/2021-11-29-finite-volume.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cu-numpde/fall21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cu-numpde/fall21/issues/new?title=Issue%20on%20page%20%2Fslides/2021-11-29-finite-volume.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cu-numpde/fall21/main?urlpath=tree/slides/2021-11-29-finite-volume.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2021-11-29 Finite Volume methods
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#last-time">
+     Last time
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#today">
+     Today
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#unstructured-meshing">
+   Unstructured meshing
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#finite-volume-methods-for-hyperbolic-conservation-laws">
+   Finite Volume methods for hyperbolic conservation laws
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples-of-hyperbolic-conservation-laws-in-1d">
+   Examples of hyperbolic conservation laws in 1D
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#advection">
+     Advection
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#burger-s-equation">
+     Burger’s Equation
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traffic">
+     Traffic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#first-crack-at-a-numerical-flux">
+   First crack at a numerical flux
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#an-implementation">
+   An implementation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shocks-rarefactions-and-riemann-problems">
+   Shocks, rarefactions, and Riemann problems
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-solver-based-on-riemann-problems">
+   A solver based on Riemann problems
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#observations">
+     Observations
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rankine-hugoniot-condition">
+   Rankine-Hugoniot condition
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#burgers-riemann-problem-shock">
+   Burgers Riemann problem (shock)
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rarefactions">
+   Rarefactions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#physical-rarefactions">
+   Physical rarefactions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entropy-functions">
+   Entropy functions
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#entropy-solutions-epsilon-to-0">
+   Entropy solutions:
+   <span class="math notranslate nohighlight">
+    \(\epsilon\to 0\)
+   </span>
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#left-side">
+     Left side
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#right-side">
+     Right side
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mathematical-versus-physical-entropy">
+   Mathematical versus physical entropy
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#uniqueness">
+     Uniqueness
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#shallow-water">
+     Shallow water
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#looking-into-the-rarefaction-fan">
+   Looking into the rarefaction fan
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#traffic-equation">
+   Traffic equation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#further-resources">
+   Further resources
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#riemann-book-using-jupyter">
+     Riemann Book using Jupyter
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#riemann-solvers-and-gas-dynamics">
+     Riemann solvers and gas dynamics
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="finite-volume-methods">
+<h1>2021-11-29 Finite Volume methods<a class="headerlink" href="#finite-volume-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="last-time">
+<h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Community presentations</p></li>
+<li><p>More finite element interfaces: Deal.II and MOOSE</p></li>
+<li><p>Vector problems and mixed finite elements</p></li>
+</ul>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Notes on unstructured meshing workflow</p></li>
+<li><p>Finite volume methods for hyperbolic conservation laws</p></li>
+<li><p>Riemann solvers for scalar equations</p>
+<ul>
+<li><p>Shocks and the Rankine-Hugoniot condition</p></li>
+<li><p>Rarefactions and entropy solutions</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">LinearAlgebra</span>
+<span class="k">using</span> <span class="n">Plots</span>
+<span class="n">default</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">struct</span> <span class="kt">RKTable</span>
+    <span class="n">A</span><span class="o">::</span><span class="kt">Matrix</span>
+    <span class="n">b</span><span class="o">::</span><span class="kt">Vector</span>
+    <span class="n">c</span><span class="o">::</span><span class="kt">Vector</span>
+    <span class="k">function</span> <span class="n">RKTable</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">vec</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">new</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">rk4</span> <span class="o">=</span> <span class="n">RKTable</span><span class="p">([</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="mf">.5</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span> <span class="mf">.5</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="k">function</span> <span class="n">ode_rk_explicit</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">u0</span><span class="p">;</span> <span class="n">tfinal</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="n">rk4</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">u0</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">length</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">fY</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">thist</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">uhist</span> <span class="o">=</span> <span class="p">[</span><span class="n">u0</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">tfinal</span>
+        <span class="n">tnext</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">tfinal</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">tnext</span> <span class="o">-</span> <span class="n">t</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">s</span>
+            <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">table</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">Yi</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">sum</span><span class="p">(</span><span class="n">fY</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">fY</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">Yi</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="n">u</span> <span class="o">+=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">fY</span> <span class="o">*</span> <span class="n">table</span><span class="o">.</span><span class="n">b</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">tnext</span>
+        <span class="n">push!</span><span class="p">(</span><span class="n">thist</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="n">push!</span><span class="p">(</span><span class="n">uhist</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">thist</span><span class="p">,</span> <span class="n">hcat</span><span class="p">(</span><span class="n">uhist</span><span class="o">...</span><span class="p">)</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>ode_rk_explicit (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="unstructured-meshing">
+<h1>Unstructured meshing<a class="headerlink" href="#unstructured-meshing" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>CAD models: spline-based (NURBS) geometry</p>
+<ul>
+<li><p>Label materials, boundary surfaces</p></li>
+<li><p>Proprietary formats or lossy open formats</p></li>
+</ul>
+</li>
+<li><p>Geometry clean-up</p>
+<ul>
+<li><p>Remove rivets, welds, brazing, bolt/thread detail</p></li>
+</ul>
+</li>
+<li><p>Mesh generation</p>
+<ul>
+<li><p>Tetrahedral meshing mostly automatic</p></li>
+<li><p>Hexahedral meshes often more efficient (e.g., locking in elasticity)</p>
+<ul>
+<li><p>Manually decompose geometry</p></li>
+<li><p>Various algorithms with poor quality elements</p></li>
+</ul>
+</li>
+<li><p>Usually single node with lots of memory</p></li>
+</ul>
+</li>
+</ul>
+<ul class="simple">
+<li><p>Simulation</p>
+<ul>
+<li><p>Read, partition, solve, write output</p></li>
+</ul>
+</li>
+<li><p>Load in visualization software (e.g., Paraview, VisIt)</p>
+<ul>
+<li><p>Visualization outputs usually contain derived quantities</p>
+<ul>
+<li><p>Stress, velocity, pressure, temperature, vorticity</p></li>
+</ul>
+</li>
+<li><p>Frequent checkpoints are commonly a bottleneck</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="finite-volume-methods-for-hyperbolic-conservation-laws">
+<h1>Finite Volume methods for hyperbolic conservation laws<a class="headerlink" href="#finite-volume-methods-for-hyperbolic-conservation-laws" title="Permalink to this headline">¶</a></h1>
+<p>Hyperbolic conservation laws have the form</p>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial u}{\partial t} + \nabla\cdot f(u) = 0 \]</div>
+<p>where the (possibly nonlinear) function <span class="math notranslate nohighlight">\(f(u)\)</span> is called the <strong>flux</strong>.  If <span class="math notranslate nohighlight">\(u\)</span> has <span class="math notranslate nohighlight">\(m\)</span> components, <span class="math notranslate nohighlight">\(f(u)\)</span> is an <span class="math notranslate nohighlight">\(m\times d\)</span> matrix in <span class="math notranslate nohighlight">\(d\)</span> dimensions.</p>
+<p>We can express finite volume methods by choosing test functions <span class="math notranslate nohighlight">\(v(x)\)</span> that are piecewise constant on each element <span class="math notranslate nohighlight">\(e\)</span> and integrating by parts
+\begin{split} \int_\Omega v \frac{\partial u}{\partial t} + v \nabla\cdot f(u) = 0 \text{ for all } v \
+\frac{\partial}{\partial t} \left( \int_e u \right) + \int_{\partial e} f(u) \cdot \hat n = 0 \text{ for all } e .
+\end{split}</p>
+<p>In finite volume methods, we choose as our unknowns the average values <span class="math notranslate nohighlight">\(\bar u\)</span> on each element, leading to the discrete equation
+<div class="math notranslate nohighlight">
+\[ \lvert e \rvert \frac{\partial \bar u}{\partial t} + \int_{\partial e} f(u) \cdot \hat n = 0 \text{ for all } e \]</div>
+
+where <span class="math notranslate nohighlight">\(\lvert e \rvert\)</span> is the volume of element <span class="math notranslate nohighlight">\(e\)</span>.</p>
+<p>The most basic methods will compute the interface flux in the second term using the cell average <span class="math notranslate nohighlight">\(\bar u\)</span>, though higher order methods will perform a reconstruction using neighbors.
+Since <span class="math notranslate nohighlight">\(\bar u\)</span> is discontinuous at element interfaces, we will need to define a numerical flux using the (possibly reconstructed) value on each side.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="examples-of-hyperbolic-conservation-laws-in-1d">
+<h1>Examples of hyperbolic conservation laws in 1D<a class="headerlink" href="#examples-of-hyperbolic-conservation-laws-in-1d" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="advection">
+<h2>Advection<a class="headerlink" href="#advection" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial u}{\partial t} + \nabla\cdot (\underbrace{c u}_{f(u)}) = 0 \]</div>
+<p>where <span class="math notranslate nohighlight">\(c\)</span> is velocity.  In the absence of boundary conditions, this has the solution
+<div class="math notranslate nohighlight">
+\[ u(t,x) = u(0, x-ct) \]</div>
+
+in terms of the initial condition.  Lines of constant <span class="math notranslate nohighlight">\(x-ct\)</span> are called <strong>characteristics</strong>.</p>
+<ul class="simple">
+<li><p>The wave speed is <span class="math notranslate nohighlight">\(f'(u) = c\)</span>, a constant.</p></li>
+</ul>
+</div>
+<div class="section" id="burger-s-equation">
+<h2>Burger’s Equation<a class="headerlink" href="#burger-s-equation" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial u}{\partial t} + \nabla\cdot (\underbrace{u^2/2}_{f(u)}) = 0 \]</div>
+<p>is a model for nonlinear convection.</p>
+<ul class="simple">
+<li><p>The wave speed is <span class="math notranslate nohighlight">\(f'(u) = u\)</span>.</p></li>
+</ul>
+</div>
+<div class="section" id="traffic">
+<h2>Traffic<a class="headerlink" href="#traffic" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[ \frac{\partial u}{\partial t} + \nabla\cdot \big(\underbrace{u (1-u)}_{f(u)} \big) = 0 \]</div>
+<p>where <span class="math notranslate nohighlight">\(u \in [0,1]\)</span> represents density of cars and <span class="math notranslate nohighlight">\(1-u\)</span> is their speed.</p>
+<ul class="simple">
+<li><p>The wave speed is <span class="math notranslate nohighlight">\(f'(u) = 1 - 2u\)</span>, representing the speed at which kinematic waves travel.</p></li>
+<li><p>This is a non-convex flux function.</p></li>
+</ul>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="first-crack-at-a-numerical-flux">
+<h1>First crack at a numerical flux<a class="headerlink" href="#first-crack-at-a-numerical-flux" title="Permalink to this headline">¶</a></h1>
+<p>We represent the solution in terms of cell averages <span class="math notranslate nohighlight">\(\bar u\)</span>, but need to compute
+<div class="math notranslate nohighlight">
+\[ \int_{\partial e} f(u) \cdot \hat n \]</div>
+
+on the boundary of each cell (i.e., on each face).  For interior faces, the flux <span class="math notranslate nohighlight">\(f(u)\)</span> must be the same when viewed from either side.  As a first idea for an accurate numerical method, we could average the values from the left and right side of each face,
+<div class="math notranslate nohighlight">
+\[ u_{\text{face}} = \frac{\bar u_L + \bar u_R}{2} .\]</div>
+
+Let’s try that.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">testfunc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">max</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span>
+        <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">.&lt;</span> <span class="mf">.2</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">.&lt;</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">cospi</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">.^</span><span class="mi">2</span>
+    <span class="p">)</span>
+<span class="k">end</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">testfunc</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-29-finite-volume_13_0.svg" src="../_images/2021-11-29-finite-volume_13_0.svg" /></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="an-implementation">
+<h1>An implementation<a class="headerlink" href="#an-implementation" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">flux_advection</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="n">u</span>
+<span class="n">flux_burgers</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="n">u</span><span class="o">^</span><span class="mi">2</span><span class="o">/</span><span class="mi">2</span>
+<span class="n">flux_traffic</span><span class="p">(</span><span class="n">u</span><span class="p">)</span> <span class="o">=</span> <span class="n">u</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">u</span><span class="p">)</span>
+
+<span class="k">function</span> <span class="n">fv_solve0</span><span class="p">(</span><span class="n">flux</span><span class="p">,</span> <span class="n">u_init</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c"># cell midpoints (centroids)</span>
+    <span class="n">idxL</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">.%</span> <span class="n">n</span>
+    <span class="n">idxR</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="o">.%</span> <span class="n">n</span>
+    <span class="k">function</span> <span class="n">rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+        <span class="n">uL</span> <span class="o">=</span> <span class="mf">.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="n">idxL</span><span class="p">])</span>
+        <span class="n">uR</span> <span class="o">=</span> <span class="mf">.5</span> <span class="o">*</span> <span class="p">(</span><span class="n">u</span> <span class="o">+</span> <span class="n">u</span><span class="p">[</span><span class="n">idxR</span><span class="p">])</span>
+        <span class="p">(</span><span class="n">flux</span><span class="o">.</span><span class="p">(</span><span class="n">uL</span><span class="p">)</span> <span class="o">-</span> <span class="n">flux</span><span class="o">.</span><span class="p">(</span><span class="n">uR</span><span class="p">))</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="k">end</span>
+    <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_rk_explicit</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">u_init</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="n">tfinal</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fv_solve0 (generic function with 3 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">fv_solve0</span><span class="p">(</span><span class="n">flux_advection</span><span class="p">,</span> <span class="n">testfunc</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">.4</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">uhist</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="k">end</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-29-finite-volume_16_0.svg" src="../_images/2021-11-29-finite-volume_16_0.svg" /></div>
+</div>
+<p>Evidenitly our method has serious problems for discontinuous solutions and nonlinear problems.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="shocks-rarefactions-and-riemann-problems">
+<h1>Shocks, rarefactions, and Riemann problems<a class="headerlink" href="#shocks-rarefactions-and-riemann-problems" title="Permalink to this headline">¶</a></h1>
+<p>Burger’s equation evolved a discontinuity in finite time from a smooth initial condition.  It turns out that all nonlinear hyperbolic equations have this property.  For Burgers, the peak travels to the right, overtaking the troughs.</p>
+<ul class="simple">
+<li><p>This is called a <strong>shock</strong> and corresponds to characteristics converging when the gradient of the solution is negative.</p></li>
+<li><p>When the gradient is positive, the characteristics diverge to produce a <strong>rarefaction</strong>.  The relationship to positive and negative gradients is reversed for a non-convex flux like Traffic.</p></li>
+</ul>
+<p>We need a solution method that can correctly compute fluxes in case of a discontinuous solution.  Finite volume methods represent this in terms of a Riemann problem,
+<div class="math notranslate nohighlight">
+\[\begin{split} u(0, x) = \begin{cases}
+u_L &amp; \text{if} &amp; x &lt; 0 \\
+u_R &amp; \text{if} &amp; x &gt; 0
+\end{cases}
+\end{split}\]</div>
+
+where <span class="math notranslate nohighlight">\(u_L\)</span> and <span class="math notranslate nohighlight">\(u_R\)</span> are given.  The solution of a Riemann problem is the solution <span class="math notranslate nohighlight">\(u(t, x)\)</span> at positive times.  In our finite volume schemes, it will be sufficient to compute the flux at <span class="math notranslate nohighlight">\(x=0\)</span> at an infinitessimal positive time
+<div class="math notranslate nohighlight">
+\[\tilde f(u_L, u_R) = \lim_{t\to 0} f\big(u(t, 0) \big) . \]</div>
+
+We call <span class="math notranslate nohighlight">\(\tilde f\)</span> the <strong>numerical flux</strong> and require that it must be consistent when there is no discontinuity,
+<div class="math notranslate nohighlight">
+\[ \tilde f(u, u) = f(u) .\]</div>
+</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="a-solver-based-on-riemann-problems">
+<h1>A solver based on Riemann problems<a class="headerlink" href="#a-solver-based-on-riemann-problems" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">riemann_advection</span><span class="p">(</span><span class="n">uL</span><span class="p">,</span> <span class="n">uR</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">uL</span> <span class="c"># velocity is +1</span>
+
+
+<span class="k">function</span> <span class="n">fv_solve1</span><span class="p">(</span><span class="n">riemann</span><span class="p">,</span> <span class="n">u_init</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c"># cell midpoints (centroids)</span>
+    <span class="n">idxL</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">.%</span> <span class="n">n</span>
+    <span class="n">idxR</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="o">.%</span> <span class="n">n</span>
+    <span class="k">function</span> <span class="n">rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+        <span class="n">fluxL</span> <span class="o">=</span> <span class="n">riemann</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">idxL</span><span class="p">],</span> <span class="n">u</span><span class="p">)</span>
+        <span class="n">fluxR</span> <span class="o">=</span> <span class="n">riemann</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="n">idxR</span><span class="p">])</span>
+        <span class="p">(</span><span class="n">fluxL</span> <span class="o">-</span> <span class="n">fluxR</span><span class="p">)</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="k">end</span>
+    <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_rk_explicit</span><span class="p">(</span><span class="n">rhs</span><span class="p">,</span> <span class="n">u_init</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="n">tfinal</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fv_solve1 (generic function with 2 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">fv_solve1</span><span class="p">(</span><span class="n">riemann_advection</span><span class="p">,</span> <span class="n">testfunc</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">.5</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">uhist</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="k">end</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-29-finite-volume_23_0.svg" src="../_images/2021-11-29-finite-volume_23_0.svg" /></div>
+</div>
+<div class="section" id="observations">
+<h2>Observations<a class="headerlink" href="#observations" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Good: no oscillations/noisy artifacts: solutians are bounded between 0 and 1, just like exact solution.</p></li>
+<li><p>Bad: Lots of numerical diffusion.</p></li>
+</ul>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="rankine-hugoniot-condition">
+<h1>Rankine-Hugoniot condition<a class="headerlink" href="#rankine-hugoniot-condition" title="Permalink to this headline">¶</a></h1>
+<p>For a nonlinear equation, we need to know which direction the shock is moving.  If we move into the reference frame of the shock, the flux on the left must be equal to the flux on the right.  This leads to shock speed <span class="math notranslate nohighlight">\(s\)</span> satisfying
+<div class="math notranslate nohighlight">
+\[ s (\underbrace{u_R - u_L}_{\Delta u}) = (\underbrace{f(u_R) - f(u_L)}_{\Delta f}) \cdot \hat n \]</div>
+
+where <span class="math notranslate nohighlight">\(\hat n\)</span> is any direction (e.g., the normal to a face in a multi-dimensional finite volume method).
+This condition holds also for hyperbolic system.</p>
+<p>For Burger’s equation
+<div class="math notranslate nohighlight">
+\[ \frac{\partial u}{\partial t} + \nabla\cdot (u^2/2) = 0, \]</div>
+
+our Riemann problem produces a shock if <span class="math notranslate nohighlight">\(u_L &gt; u_R\)</span>, i.e., <span class="math notranslate nohighlight">\(\Delta u &lt; 0\)</span>.
+The shock moves to the right <span class="math notranslate nohighlight">\((s &gt; 0)\)</span> if <span class="math notranslate nohighlight">\(\Delta f &lt; 0\)</span>, i.e., <span class="math notranslate nohighlight">\(f(u_L) &gt; f(u_R)\)</span>.</p>
+<p><img alt="Toro (2009) Figure 2.13" src="../_images/Toro-Shock-2.13.png" /></p>
+<p>So if the solution is a shock, the numerical flux is the maximum of <span class="math notranslate nohighlight">\(f(u_L)\)</span> and <span class="math notranslate nohighlight">\(f(u_R)\)</span>.
+We still don’t know what to do in case of a rarefaction so will just average and see what happens.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="burgers-riemann-problem-shock">
+<h1>Burgers Riemann problem (shock)<a class="headerlink" href="#burgers-riemann-problem-shock" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">riemann_burgers_shock</span><span class="p">(</span><span class="n">uL</span><span class="p">,</span> <span class="n">uR</span><span class="p">)</span>
+    <span class="n">flux</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">uL</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">flux</span><span class="p">)</span>
+        <span class="n">flux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c"># shock</span>
+            <span class="n">max</span><span class="p">(</span><span class="n">flux_burgers</span><span class="p">(</span><span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]),</span> <span class="n">flux_burgers</span><span class="p">(</span><span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="k">else</span>
+            <span class="n">flux_burgers</span><span class="p">(</span><span class="mf">.5</span><span class="o">*</span><span class="p">(</span><span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">+</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]))</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">flux</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>riemann_burgers_shock (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">fv_solve1</span><span class="p">(</span>
+    <span class="n">riemann_burgers_shock</span><span class="p">,</span> <span class="n">cospi</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">uhist</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="o">:</span><span class="k">end</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-29-finite-volume_30_0.svg" src="../_images/2021-11-29-finite-volume_30_0.svg" /></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="rarefactions">
+<h1>Rarefactions<a class="headerlink" href="#rarefactions" title="Permalink to this headline">¶</a></h1>
+<p>This solution was better, but we still have odd ripples in the rarefaction. This is an <strong>expansion shock</strong>, which is a <strong>mathematical solution</strong> to the PDE, but not a physical solution.</p>
+<p><img alt="Toro (2009) Figure 2.14" src="../_images/Toro-ShockRarefaction-2.14.png" /></p>
+<p>but this violates the <strong>entropy condition</strong>
+<div class="math notranslate nohighlight">
+\[ f'(u_L) &gt; s &gt; f'(u_R) . \]</div>
+
+Shocks are compressive phenomena and physical solutions to the expansive scenario <span class="math notranslate nohighlight">\(f'(u_L) &lt; f'(u_R)\)</span> are rarefactions.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="physical-rarefactions">
+<h1>Physical rarefactions<a class="headerlink" href="#physical-rarefactions" title="Permalink to this headline">¶</a></h1>
+<p><img alt="Toro (2009) Figure 2.16" src="../_images/Toro-Rarefaction-2.16.png" /></p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="entropy-functions">
+<h1>Entropy functions<a class="headerlink" href="#entropy-functions" title="Permalink to this headline">¶</a></h1>
+<p>Consider a smooth function <span class="math notranslate nohighlight">\(\eta(u)\)</span> that is convex <span class="math notranslate nohighlight">\(\eta''(u) &gt; 0\)</span> and a smooth solution <span class="math notranslate nohighlight">\(u(t,x)\)</span>.
+Then
+<div class="math notranslate nohighlight">
+\[ u_t + f(u)_x = 0 \]</div>
+
+is equivalent to
+<div class="math notranslate nohighlight">
+\[ u_t + f'(u) u_x = 0 \]</div>
+
+and we can write
+<div class="math notranslate nohighlight">
+\[ \eta'(u) u_t + \eta'(u) f'(u) u_x = 0 . \]</div>
+
+If we find a function <span class="math notranslate nohighlight">\(\psi(u)\)</span> such that <span class="math notranslate nohighlight">\(\psi'(u) = \eta'(u) f'(u)\)</span>, the equation above is equivalent (for smooth solutions) to
+<div class="math notranslate nohighlight">
+\[ \eta(u)_t + \psi(u)_x = 0 \]</div>
+
+which is a conservation law for the entropy <span class="math notranslate nohighlight">\(\eta(u)\)</span> with entropy flux <span class="math notranslate nohighlight">\(\psi(u)\)</span>.</p>
+<p>Now consider the parabolic equation
+<div class="math notranslate nohighlight">
+\[ u_t + f(u)_x -\epsilon u_{xx} = 0 \]</div>
+
+for some positive epsilon.  This equation has a smooth solution for any <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span> and <span class="math notranslate nohighlight">\(t &gt; 0\)</span> so we can multiply by <span class="math notranslate nohighlight">\(\eta'(u)\)</span> as above and apply the chain rule to yield
+<div class="math notranslate nohighlight">
+\[ \eta(u)_t + \psi(u)_x - \epsilon \eta'(u) u_{xx} = 0 . \]</div>
+
+Rearranging the last term produces
+<div class="math notranslate nohighlight">
+\[ \eta(u)_t + \psi(u)_x - \epsilon \Big( \eta'(u) u_x \Big)_x = - \epsilon \eta''(u) u_x^2 . \]</div>
+
+If both terms involving <span class="math notranslate nohighlight">\(\epsilon\)</span> were to vanish, we would be left with conservation of entropy.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="entropy-solutions-epsilon-to-0">
+<h1>Entropy solutions: <span class="math notranslate nohighlight">\(\epsilon\to 0\)</span><a class="headerlink" href="#entropy-solutions-epsilon-to-0" title="Permalink to this headline">¶</a></h1>
+<div class="math notranslate nohighlight">
+\[ \eta(u)_t + \psi(u)_x - \epsilon \Big( \eta'(u) u_x \Big)_x = - \epsilon \eta''(u) u_x^2 \]</div>
+<div class="section" id="left-side">
+<h2>Left side<a class="headerlink" href="#left-side" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[ \int_a^b \Big( \eta'(u) u_x \Big)_x dx = \eta'(u) u_x |_{x=a}^b \]</div>
+<p>which is bounded independent of the values <span class="math notranslate nohighlight">\(u_x\)</span> may take inside the interval.  Consequently, the left hand side reduces to a conservation law in the limit <span class="math notranslate nohighlight">\(\epsilon\to 0\)</span>.</p>
+</div>
+<div class="section" id="right-side">
+<h2>Right side<a class="headerlink" href="#right-side" title="Permalink to this headline">¶</a></h2>
+<p>The integral of the right hand side, however, does not vanish in the limit since
+<div class="math notranslate nohighlight">
+\[\int_a^b u_x^2\]</div>
+ is unbounded as <span class="math notranslate nohighlight">\(u_x\)</span> grows.</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\eta(u)\)</span> being convex implies <span class="math notranslate nohighlight">\(\eta''(u) &gt; 0\)</span>.</p></li>
+</ul>
+<p>So entropy must be dissipated across shocks,
+<div class="math notranslate nohighlight">
+\[ \eta(u)_t + \psi(u)_x \le 0 \]</div>
+
+with equality for smooth solutions and strict inequality at shocks.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="mathematical-versus-physical-entropy">
+<h1>Mathematical versus physical entropy<a class="headerlink" href="#mathematical-versus-physical-entropy" title="Permalink to this headline">¶</a></h1>
+<p>Our choice of <span class="math notranslate nohighlight">\(\eta(u)\)</span> being a convex function <span class="math notranslate nohighlight">\(\eta''(u) &gt; 0\)</span> causes entropy to be <strong>dissipated</strong> across shocks.  This is the convention in math literature because convex analysis chose the sign (versus “concave analysis”).</p>
+<p>Physical entropy is <strong>produced</strong> by such processes, so <span class="math notranslate nohighlight">\(-\eta(u)\)</span> would make sense as a physical entropy.</p>
+<div class="section" id="uniqueness">
+<h2>Uniqueness<a class="headerlink" href="#uniqueness" title="Permalink to this headline">¶</a></h2>
+<p>While any convex function will work to show uniqueness for <strong>scalar</strong> conservation laws, that is not true of hyperbolic <strong>systems</strong>, for which the “entropy pair” <span class="math notranslate nohighlight">\((\eta, \psi)\)</span> should satisfy a symmetry property. A “physical entropy” exists for real systems, and may be used for this purpose.</p>
+</div>
+<div class="section" id="shallow-water">
+<h2>Shallow water<a class="headerlink" href="#shallow-water" title="Permalink to this headline">¶</a></h2>
+<div class="math notranslate nohighlight">
+\[\begin{split}\begin{bmatrix} h \\ h\mathbf u \end{bmatrix}_t + \nabla\cdot\begin{bmatrix} h\mathbf u \\ h \mathbf u \otimes \mathbf u + \frac{g}{2} h^2 \mathbf I \end{bmatrix} = 0\end{split}\]</div>
+<ul class="simple">
+<li><p>conserve mass and momentum</p></li>
+<li><p>energy is only conserved for smooth solutions</p></li>
+<li><p>shocks (crashing waves) produce heat, but energy is not a state variable.</p></li>
+<li><p>Energy is the “entropy” of shallow water
+<div class="math notranslate nohighlight">
+\[ \eta = \underbrace{\frac h 2 \lvert \mathbf u \rvert^2}_{\text{kinetic}} + \underbrace{\frac g 2 h^2}_{\text{potential}}\]</div>
+</p></li>
+</ul>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="looking-into-the-rarefaction-fan">
+<h1>Looking into the rarefaction fan<a class="headerlink" href="#looking-into-the-rarefaction-fan" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">riemann_burgers</span><span class="p">(</span><span class="n">uL</span><span class="p">,</span> <span class="n">uR</span><span class="p">)</span>
+    <span class="n">flux</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">uL</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">flux</span><span class="p">)</span>
+        <span class="n">fL</span> <span class="o">=</span> <span class="n">flux_burgers</span><span class="p">(</span><span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">fR</span> <span class="o">=</span> <span class="n">flux_burgers</span><span class="p">(</span><span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">flux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c"># shock</span>
+            <span class="n">max</span><span class="p">(</span><span class="n">fL</span><span class="p">,</span> <span class="n">fR</span><span class="p">)</span>
+        <span class="k">elseif</span> <span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c"># rarefaction all to the right</span>
+            <span class="n">fL</span>
+        <span class="k">elseif</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="c"># rarefaction all to the left</span>
+            <span class="n">fR</span>
+        <span class="k">else</span>
+            <span class="mi">0</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">flux</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>riemann_burgers (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">fv_solve1</span><span class="p">(</span>
+    <span class="n">riemann_burgers</span><span class="p">,</span> <span class="n">cospi</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">uhist</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="o">:</span><span class="k">end</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-29-finite-volume_47_0.svg" src="../_images/2021-11-29-finite-volume_47_0.svg" /></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="traffic-equation">
+<h1>Traffic equation<a class="headerlink" href="#traffic-equation" title="Permalink to this headline">¶</a></h1>
+<p>Our flux function is
+<div class="math notranslate nohighlight">
+\[ f(u) = u (1 - u) \]</div>
+
+and corresponding wave speed is
+<div class="math notranslate nohighlight">
+\[ f'(u) = 1 - 2 u . \]</div>
+</p>
+<ul class="simple">
+<li><p><strong>Shock</strong>
+The entropy condition for a shock
+<div class="math notranslate nohighlight">
+\[ f'(u_L) &gt; f'(u_R) \]</div>
+
+occurs whenever <span class="math notranslate nohighlight">\(u_L &lt; u_R\)</span>.
+By Rankine-Hugoniot
+<div class="math notranslate nohighlight">
+\[ s \Delta u = \Delta f, \]</div>
+
+the shock moves to the right when <span class="math notranslate nohighlight">\(\Delta f = f(u_R) - f(u_L)\)</span> is positive, in which case the flux is <span class="math notranslate nohighlight">\(f(u_L)\)</span>.  Taking the other case, the numerical flux for a shock is <span class="math notranslate nohighlight">\(\min[f(u_L), f(u_R)]\)</span>.</p></li>
+<li><p><strong>Rarefaction</strong>
+A rarefaction occurs when <span class="math notranslate nohighlight">\(u_L &gt; u_R\)</span> and moves to the right when <span class="math notranslate nohighlight">\(f'(u_L) &gt; 0\)</span> which is the case when <span class="math notranslate nohighlight">\(u_L &lt; 1/2\)</span>.
+Note that while <span class="math notranslate nohighlight">\(f'(1/2) = 0\)</span> appears within a sonic rarefaction, the flux <span class="math notranslate nohighlight">\(f(1/2) \ne 0\)</span>.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">riemann_traffic</span><span class="p">(</span><span class="n">uL</span><span class="p">,</span> <span class="n">uR</span><span class="p">)</span>
+    <span class="n">flux</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">uL</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">flux</span><span class="p">)</span>
+        <span class="n">fL</span> <span class="o">=</span> <span class="n">flux_traffic</span><span class="p">(</span><span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">fR</span> <span class="o">=</span> <span class="n">flux_traffic</span><span class="p">(</span><span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">flux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c"># shock</span>
+            <span class="n">min</span><span class="p">(</span><span class="n">fL</span><span class="p">,</span> <span class="n">fR</span><span class="p">)</span>
+        <span class="k">elseif</span> <span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">.5</span> <span class="c"># rarefaction all to the right</span>
+            <span class="n">fL</span>
+        <span class="k">elseif</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">.5</span> <span class="c"># rarefaction all to the left</span>
+            <span class="n">fR</span>
+        <span class="k">else</span>
+            <span class="n">flux_traffic</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">flux</span>
+<span class="k">end</span>
+<span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">fv_solve1</span><span class="p">(</span><span class="n">riemann_traffic</span><span class="p">,</span> <span class="n">testfunc</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">1</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">uhist</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="mi">5</span><span class="o">:</span><span class="k">end</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-11-29-finite-volume_50_0.svg" src="../_images/2021-11-29-finite-volume_50_0.svg" /></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="further-resources">
+<h1>Further resources<a class="headerlink" href="#further-resources" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="riemann-book-using-jupyter">
+<h2>Riemann Book using Jupyter<a class="headerlink" href="#riemann-book-using-jupyter" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="http://www.clawpack.org/riemann_book/">The Riemann Problem for Hyperbolic PDEs: Theory and Approximate Solvers</a> by David I. Ketcheson, Randall J. LeVeque, and Mauricio del Razo Sarmina is an excellent compilation of Jupyter notebooks for learning about hyperbolic conservation laws and Riemann solvers.</p>
+<p>You can <a class="reference external" href="https://mybinder.org/v2/gh/clawpack/riemann_book/master">run in Binder</a> to interact with the notebooks without needing to install Clawpack.</p>
+</div>
+<div class="section" id="riemann-solvers-and-gas-dynamics">
+<h2>Riemann solvers and gas dynamics<a class="headerlink" href="#riemann-solvers-and-gas-dynamics" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://link.springer.com/book/10.1007%2Fb79761#toc">Toro: Riemann Solvers and Numerical Methods for Fluid Dynamics</a> (free download for CU students)</p>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cu-numpde/fall21",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./slides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-11-19-mixed.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-11-19 Mixed methods</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jed Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
