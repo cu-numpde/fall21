@@ -1,0 +1,789 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>2021-12-01 Finite Volume methods &#8212; Numerical Solution of Partial Differential Equations</title>
+    
+  <link href="../_static/css/theme.css" rel="stylesheet" />
+  <link href="../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    
+      
+
+    
+    <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../_static/sphinx-book-theme.css?digest=c3fdc42140077d1ad13ad2f1588a4309" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+    
+  <link rel="preload" as="script" href="../_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/x-mathjax-config">MathJax.Hub.Config({"tex2jax": {"processClass": "tex2jax_process|mathjax_process|math|output_area"}})</script>
+    <script async="async" src="https://unpkg.com/thebe@0.5.1/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe,.cell"
+        const thebe_selector_input = "pre,.cell_input div.highlight"
+        const thebe_selector_output = ".output,.cell_output"
+    </script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="shortcut icon" href="../_static/cu-numpde-square.svg"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="prev" title="2021-11-29 Finite Volume methods" href="2021-11-29-finite-volume.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+    
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/cu-numpde.svg" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Numerical Solution of Partial Differential Equations</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../index.html">
+   Welcome
+  </a>
+ </li>
+</ul>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../syllabus.html">
+   Syllabus
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="../slides.html">
+   Slides
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-23-first-day.html">
+     2021-08-23 First Day
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-25-finite-difference.html">
+     2021-08-25 Finite Difference Intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-27-finite-difference-2.html">
+     2021-08-27 Finite Difference 2
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-08-30-high-order.html">
+     2021-08-30 High order and boundaries
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-01-convergence-and-boundaries.html">
+     2021-09-01 Boundaries and Fourier methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-03-fourier.html">
+     2021-09-03 Convergence and Fourier analysis
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-10-chebyshev.html">
+     2021-09-10 Chebyshev collocation
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-13-coefficients.html">
+     2021-09-13 Variable coefficients
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-15-advection.html">
+     2021-09-15 Advection and stability
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-17-sparsity.html">
+     2021-09-17 Sparsity, solvers, and nonlinear intro
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-20-nonlinear.html">
+     2021-09-20 Nonlinear solvers
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-22-nonlinear-ad.html">
+     2021-09-22 Newton linearization
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-24-transient.html">
+     2021-09-24 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-27-transient.html">
+     2021-09-27 Transient problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-09-29-stiffness.html">
+     2021-09-29 Handling stiffness
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-01-runge-kutta.html">
+     2021-10-01 Runge-Kutta methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-04-stiff-rk.html">
+     2021-10-04 RK methods for stiff problems
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-08-fd-2d.html">
+     2021-10-08 Finite Difference in 2D
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-13-wave-equation.html">
+     2021-10-13 Wave equations
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-15-sparse-linalg.html">
+     2021-10-15 Sparse Linear Algebra
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-18-iterative.html">
+     2021-10-18 Iterative methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-20-krylev.html">
+     2021-10-20 Krylov methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-22-preconditioners.html">
+     2021-10-22 Preconditioners
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-25-domain-decomposition.html">
+     2021-10-25 Domain Decomposition
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-10-27-multigrid.html">
+     2021-10-27 Multigrid
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-01-projects.html">
+     2021-11-01 Projects
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-03-discussion.html">
+     2021-11-03 Software discussion
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-05-galerkin.html">
+     2021-11-05 Galerkin methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-08-galerkin-properties.html">
+     2021-11-08 Galerkin properties
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-10-fem.html">
+     2021-11-10 Finite elements
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-15-stabilized.html">
+     2021-11-15 Stabilized FE
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-19-mixed.html">
+     2021-11-19 Mixed methods
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="2021-11-29-finite-volume.html">
+     2021-11-29 Finite Volume methods
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     2021-12-01 Finite Volume methods
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+          
+
+
+          
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+    
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+            
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            
+            
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+        
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="../_sources/slides/2021-12-01-slope-reconstruction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.ipynb</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/cu-numpde/fall21"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/cu-numpde/fall21/issues/new?title=Issue%20on%20page%20%2Fslides/2021-12-01-slope-reconstruction.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+        
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Launch interactive content"><i class="fas fa-rocket"></i></button>
+    <div class="dropdown-buttons">
+        
+        <a class="binder-button" href="https://mybinder.org/v2/gh/cu-numpde/fall21/main?urlpath=tree/slides/2021-12-01-slope-reconstruction.ipynb"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Launch Binder" data-toggle="tooltip"
+                data-placement="left"><img class="binder-button-logo"
+                    src="../_static/images/logo_binder.svg"
+                    alt="Interact on binder">Binder</button></a>
+        
+        
+        
+        <button type="button" class="btn btn-secondary topbarbtn"
+            onclick="initThebeSBT()" title="Launch Thebe" data-toggle="tooltip" data-placement="left"><i
+                class="fas fa-play"></i><span style="margin-left: .4em;">Live Code</span></button>
+        
+    </div>
+</div>
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+            
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav" aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   2021-12-01 Finite Volume methods
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#last-time">
+     Last time
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#today">
+     Today
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#godunov-s-theorem-1954">
+   Godunov’s Theorem (1954)
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#discontinuities">
+     Discontinuities
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slope-reconstruction">
+   Slope Reconstruction
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#question">
+     Question
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#slope-limiting">
+   Slope limiting
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#common-limiters">
+   Common limiters
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#a-slope-limited-solver">
+   A slope-limited solver
+  </a>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+        
+              <div>
+                
+  <div class="tex2jax_ignore mathjax_ignore section" id="finite-volume-methods">
+<h1>2021-12-01 Finite Volume methods<a class="headerlink" href="#finite-volume-methods" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="last-time">
+<h2>Last time<a class="headerlink" href="#last-time" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Notes on unstructured meshing workflow</p></li>
+<li><p>Finite volume methods for hyperbolic conservation laws</p></li>
+<li><p>Riemann solvers for scalar equations</p>
+<ul>
+<li><p>Shocks and the Rankine-Hugoniot condition</p></li>
+<li><p>Rarefactions and entropy solutions</p></li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="today">
+<h2>Today<a class="headerlink" href="#today" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p>Higher order methods</p></li>
+<li><p>Godunov’s Theorem</p></li>
+<li><p>Slope reconstruction</p></li>
+<li><p>Slope limiting</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">using</span> <span class="n">LinearAlgebra</span>
+<span class="k">using</span> <span class="n">Plots</span>
+<span class="n">default</span><span class="p">(</span><span class="n">linewidth</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+
+<span class="k">struct</span> <span class="kt">RKTable</span>
+    <span class="n">A</span><span class="o">::</span><span class="kt">Matrix</span>
+    <span class="n">b</span><span class="o">::</span><span class="kt">Vector</span>
+    <span class="n">c</span><span class="o">::</span><span class="kt">Vector</span>
+    <span class="k">function</span> <span class="n">RKTable</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+        <span class="n">s</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+        <span class="n">A</span> <span class="o">=</span> <span class="n">reshape</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+        <span class="n">c</span> <span class="o">=</span> <span class="n">vec</span><span class="p">(</span><span class="n">sum</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">dims</span><span class="o">=</span><span class="mi">2</span><span class="p">))</span>
+        <span class="n">new</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
+    <span class="k">end</span>
+<span class="k">end</span>
+
+<span class="n">rk4</span> <span class="o">=</span> <span class="n">RKTable</span><span class="p">([</span><span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="mf">.5</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span> <span class="mf">.5</span> <span class="mi">0</span> <span class="mi">0</span><span class="p">;</span> <span class="mi">0</span> <span class="mi">0</span> <span class="mi">1</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="o">/</span> <span class="mi">6</span><span class="p">)</span>
+
+<span class="k">function</span> <span class="n">ode_rk_explicit</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="n">u0</span><span class="p">;</span> <span class="n">tfinal</span><span class="o">=</span><span class="mf">1.</span><span class="p">,</span> <span class="n">h</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">table</span><span class="o">=</span><span class="n">rk4</span><span class="p">)</span>
+    <span class="n">u</span> <span class="o">=</span> <span class="n">copy</span><span class="p">(</span><span class="n">u0</span><span class="p">)</span>
+    <span class="n">t</span> <span class="o">=</span> <span class="mf">0.</span>
+    <span class="n">n</span><span class="p">,</span> <span class="n">s</span> <span class="o">=</span> <span class="n">length</span><span class="p">(</span><span class="n">u</span><span class="p">),</span> <span class="n">length</span><span class="p">(</span><span class="n">table</span><span class="o">.</span><span class="n">c</span><span class="p">)</span>
+    <span class="n">fY</span> <span class="o">=</span> <span class="n">zeros</span><span class="p">(</span><span class="n">n</span><span class="p">,</span> <span class="n">s</span><span class="p">)</span>
+    <span class="n">thist</span> <span class="o">=</span> <span class="p">[</span><span class="n">t</span><span class="p">]</span>
+    <span class="n">uhist</span> <span class="o">=</span> <span class="p">[</span><span class="n">u0</span><span class="p">]</span>
+    <span class="k">while</span> <span class="n">t</span> <span class="o">&lt;</span> <span class="n">tfinal</span>
+        <span class="n">tnext</span> <span class="o">=</span> <span class="n">min</span><span class="p">(</span><span class="n">t</span><span class="o">+</span><span class="n">h</span><span class="p">,</span> <span class="n">tfinal</span><span class="p">)</span>
+        <span class="n">h</span> <span class="o">=</span> <span class="n">tnext</span> <span class="o">-</span> <span class="n">t</span>
+        <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">s</span>
+            <span class="n">ti</span> <span class="o">=</span> <span class="n">t</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">table</span><span class="o">.</span><span class="n">c</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">Yi</span> <span class="o">=</span> <span class="n">u</span> <span class="o">+</span> <span class="n">h</span> <span class="o">*</span> <span class="n">sum</span><span class="p">(</span><span class="n">fY</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">table</span><span class="o">.</span><span class="n">A</span><span class="p">[</span><span class="n">i</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="n">i</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="n">dims</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
+            <span class="n">fY</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span><span class="p">(</span><span class="n">ti</span><span class="p">,</span> <span class="n">Yi</span><span class="p">)</span>
+        <span class="k">end</span>
+        <span class="n">u</span> <span class="o">+=</span> <span class="n">h</span> <span class="o">*</span> <span class="n">fY</span> <span class="o">*</span> <span class="n">table</span><span class="o">.</span><span class="n">b</span>
+        <span class="n">t</span> <span class="o">=</span> <span class="n">tnext</span>
+        <span class="n">push!</span><span class="p">(</span><span class="n">thist</span><span class="p">,</span> <span class="n">t</span><span class="p">)</span>
+        <span class="n">push!</span><span class="p">(</span><span class="n">uhist</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+    <span class="k">end</span>
+    <span class="n">thist</span><span class="p">,</span> <span class="n">hcat</span><span class="p">(</span><span class="n">uhist</span><span class="o">...</span><span class="p">)</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">testfunc</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">max</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="mi">4</span><span class="o">*</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="o">+</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">),</span>
+        <span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">.&lt;</span> <span class="mf">.2</span><span class="p">,</span>
+        <span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">abs</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">)</span> <span class="o">.&lt;</span> <span class="mf">.5</span><span class="p">)</span> <span class="o">*</span> <span class="n">cospi</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="n">x</span><span class="o">-</span><span class="mi">2</span><span class="o">/</span><span class="mi">3</span><span class="p">))</span><span class="o">.^</span><span class="mi">2</span>
+    <span class="p">)</span>
+<span class="k">end</span>
+
+<span class="n">riemann_advection</span><span class="p">(</span><span class="n">uL</span><span class="p">,</span> <span class="n">uR</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span><span class="o">*</span><span class="n">uL</span> <span class="c"># velocity is +1</span>
+
+<span class="k">function</span> <span class="n">fv_solve1</span><span class="p">(</span><span class="n">riemann</span><span class="p">,</span> <span class="n">u_init</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c"># cell midpoints (centroids)</span>
+    <span class="n">idxL</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">.%</span> <span class="n">n</span>
+    <span class="n">idxR</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="o">.%</span> <span class="n">n</span>
+    <span class="k">function</span> <span class="n">rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+        <span class="n">fluxL</span> <span class="o">=</span> <span class="n">riemann</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">idxL</span><span class="p">],</span> <span class="n">u</span><span class="p">)</span>
+        <span class="n">fluxR</span> <span class="o">=</span> <span class="n">riemann</span><span class="p">(</span><span class="n">u</span><span class="p">,</span> <span class="n">u</span><span class="p">[</span><span class="n">idxR</span><span class="p">])</span>
+        <span class="p">(</span><span class="n">fluxL</span> <span class="o">-</span> <span class="n">fluxR</span><span class="p">)</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="k">end</span>
+    <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_rk_explicit</span><span class="p">(</span>
+        <span class="n">rhs</span><span class="p">,</span> <span class="n">u_init</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="n">tfinal</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">riemann_burgers</span><span class="p">(</span><span class="n">uL</span><span class="p">,</span> <span class="n">uR</span><span class="p">)</span>
+    <span class="n">flux</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">uL</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">flux</span><span class="p">)</span>
+        <span class="n">fL</span> <span class="o">=</span> <span class="n">flux_burgers</span><span class="p">(</span><span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">fR</span> <span class="o">=</span> <span class="n">flux_burgers</span><span class="p">(</span><span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">flux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c"># shock</span>
+            <span class="n">max</span><span class="p">(</span><span class="n">fL</span><span class="p">,</span> <span class="n">fR</span><span class="p">)</span>
+        <span class="k">elseif</span> <span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mi">0</span> <span class="c"># rarefaction all to the right</span>
+            <span class="n">fL</span>
+        <span class="k">elseif</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">0</span> <span class="c"># rarefaction all to the left</span>
+            <span class="n">fR</span>
+        <span class="k">else</span>
+            <span class="mi">0</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">flux</span>
+<span class="k">end</span>
+
+<span class="k">function</span> <span class="n">riemann_traffic</span><span class="p">(</span><span class="n">uL</span><span class="p">,</span> <span class="n">uR</span><span class="p">)</span>
+    <span class="n">flux</span> <span class="o">=</span> <span class="n">zero</span><span class="p">(</span><span class="n">uL</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="k">in</span> <span class="mi">1</span><span class="o">:</span><span class="n">length</span><span class="p">(</span><span class="n">flux</span><span class="p">)</span>
+        <span class="n">fL</span> <span class="o">=</span> <span class="n">flux_traffic</span><span class="p">(</span><span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">fR</span> <span class="o">=</span> <span class="n">flux_traffic</span><span class="p">(</span><span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+        <span class="n">flux</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">=</span> <span class="k">if</span> <span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="c"># shock</span>
+            <span class="n">min</span><span class="p">(</span><span class="n">fL</span><span class="p">,</span> <span class="n">fR</span><span class="p">)</span>
+        <span class="k">elseif</span> <span class="n">uL</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mf">.5</span> <span class="c"># rarefaction all to the right</span>
+            <span class="n">fL</span>
+        <span class="k">elseif</span> <span class="n">uR</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&gt;</span> <span class="mf">.5</span> <span class="c"># rarefaction all to the left</span>
+            <span class="n">fR</span>
+        <span class="k">else</span>
+            <span class="n">flux_traffic</span><span class="p">(</span><span class="mf">.5</span><span class="p">)</span>
+        <span class="k">end</span>
+    <span class="k">end</span>
+    <span class="n">flux</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>riemann_traffic (generic function with 1 method)
+</pre></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="godunov-s-theorem-1954">
+<h1>Godunov’s Theorem (1954)<a class="headerlink" href="#godunov-s-theorem-1954" title="Permalink to this headline">¶</a></h1>
+<p>Linear numerical methods
+<div class="math notranslate nohighlight">
+\[ \dot u_i = \sum_j a_{ij} u_j \]</div>
+
+for solving time-dependent PDE can be at most first order accurate if they are monotone.</p>
+<p>For our purposes, monotonicity is equivalent to positivity preservation,
+<div class="math notranslate nohighlight">
+\[ \min_x u(0, x) \ge 0 \quad \Longrightarrow \quad \min_x u(t, 0) \ge 0 .\]</div>
+</p>
+<div class="section" id="discontinuities">
+<h2>Discontinuities<a class="headerlink" href="#discontinuities" title="Permalink to this headline">¶</a></h2>
+<p>A numerical method for representing a discontinuous function on a stationary grid can be no better than first order accurate in the <span class="math notranslate nohighlight">\(L^1\)</span> norm,
+<div class="math notranslate nohighlight">
+\[ \lVert u - u^* \rVert_{L^1} = \int \lvert u - u^* \rvert . \]</div>
+
+If we merely sample a discontinuous function, say
+<div class="math notranslate nohighlight">
+\[\begin{split} u(x) = \begin{cases} 0, &amp; x \le a \\ 1, &amp; x &gt; a \end{cases} \end{split}\]</div>
+
+onto a grid with element size <span class="math notranslate nohighlight">\(\Delta x\)</span> then we will have errors of order 1 on an interval proportional to <span class="math notranslate nohighlight">\(\Delta x\)</span>.</p>
+<p>In light of these two observations, we may still ask for numerical methods that are more than first order accurate for smooth solutions, but those methods must be nonlinear.</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="slope-reconstruction">
+<h1>Slope Reconstruction<a class="headerlink" href="#slope-reconstruction" title="Permalink to this headline">¶</a></h1>
+<p>One method for constructing higher order methods is to use the state in neighboring elements to perform a conservative reconstruction of a piecewise polynomial, then compute numerical fluxes by solving Riemann problems at the interfaces.  If <span class="math notranslate nohighlight">\(x_i\)</span> is the center of cell <span class="math notranslate nohighlight">\(i\)</span> and <span class="math notranslate nohighlight">\(g_i\)</span> is the reconstructed gradient inside cell <span class="math notranslate nohighlight">\(i\)</span>, our reconstructed solution is
+<div class="math notranslate nohighlight">
+\[ \tilde u_i(x) = u_i + g_i \cdot (x - x_i) . \]</div>
+
+We would like this reconstruction to be monotone in the sense that
+<div class="math notranslate nohighlight">
+\[ \Big(\tilde u_i(x) - \tilde u_j(x) \Big) \Big( u_i - u_j \Big) \ge 0 \]</div>
+
+for any <span class="math notranslate nohighlight">\(x\)</span> on the interface between element <span class="math notranslate nohighlight">\(i\)</span> and element <span class="math notranslate nohighlight">\(j\)</span>.</p>
+<div class="section" id="question">
+<h2>Question<a class="headerlink" href="#question" title="Permalink to this headline">¶</a></h2>
+<p>Is the symmetric slope
+<div class="math notranslate nohighlight">
+\[ \hat g_i = \frac{u_{i+1} - u_{i-1}}{2 \Delta x} \]</div>
+
+monotone?</p>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="slope-limiting">
+<h1>Slope limiting<a class="headerlink" href="#slope-limiting" title="Permalink to this headline">¶</a></h1>
+<p>We will determine gradients by “limiting” the above slope using a nonlinear function that reduces to 1 when the solution is smooth.  There are many ways to express limiters and our discussion here roughly follows <a class="reference external" href="https://www.nas.nasa.gov/assets/pdf/techreports/2005/nas-05-007.pdf">Berger, Aftosmis, and Murman (2005)</a>.</p>
+<p><img alt="Berger et al, figure 3b, Cell averages" src="../_images/Berger2005-3b-CellAverages.png" /></p>
+<p>We will express a slope limiter in terms of the ratio
+<div class="math notranslate nohighlight">
+\[ r_i = \frac{u_i - u_{i-1}}{u_{i+1} - u_{i-1}} \]</div>
+
+and use as a gradient,
+<div class="math notranslate nohighlight">
+\[ g_i = \phi(r_i) \frac{u_{i+1} - u_{i-1}}{2 \Delta x} . \]</div>
+
+Our functions <span class="math notranslate nohighlight">\(\phi\)</span> will be zero unless <span class="math notranslate nohighlight">\(0 &lt; r &lt; 1\)</span> and <span class="math notranslate nohighlight">\(\phi(1/2) = 1\)</span>.
+<img alt="Berger et al, figure 3a, Symmetric form of slope limiters" src="../_images/Berger2005-3a-SymSlope.png" />
+All of these limiters are second order accurate and TVD; those that fall below minmod are not second order accurate and those that are above Barth-Jesperson are not second order accurate, not TVD, or produce artifacts.</p>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="common-limiters">
+<h1>Common limiters<a class="headerlink" href="#common-limiters" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">limit_zero</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">limit_none</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">limit_minmod</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="n">min</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="mi">2</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">r</span><span class="p">)),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">limit_sin</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">0</span> <span class="o">&lt;</span> <span class="n">r</span> <span class="o">&amp;&amp;</span> <span class="n">r</span> <span class="o">&lt;</span> <span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="n">sinpi</span><span class="p">(</span><span class="n">r</span><span class="p">)</span>
+<span class="n">limit_vl</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">4</span><span class="o">*</span><span class="n">r</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">r</span><span class="p">),</span> <span class="mi">0</span><span class="p">)</span>
+<span class="n">limit_bj</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">=</span> <span class="n">max</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="n">min</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="n">r</span><span class="p">,</span> <span class="mi">4</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">-</span><span class="n">r</span><span class="p">)))</span>
+<span class="n">limiters</span> <span class="o">=</span> <span class="p">[</span><span class="n">limit_zero</span> <span class="n">limit_none</span> <span class="n">limit_minmod</span> <span class="n">limit_sin</span> <span class="n">limit_vl</span> <span class="n">limit_bj</span><span class="p">];</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">plot</span><span class="p">(</span><span class="n">limiters</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">limiters</span><span class="p">,</span> <span class="n">xlims</span><span class="o">=</span><span class="p">(</span><span class="o">-</span><span class="mf">.1</span><span class="p">,</span> <span class="mf">1.1</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-12-01-slope-reconstruction_14_0.svg" src="../_images/2021-12-01-slope-reconstruction_14_0.svg" /></div>
+</div>
+</div>
+<div class="tex2jax_ignore mathjax_ignore section" id="a-slope-limited-solver">
+<h1>A slope-limited solver<a class="headerlink" href="#a-slope-limited-solver" title="Permalink to this headline">¶</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="k">function</span> <span class="n">fv_solve2</span><span class="p">(</span><span class="n">riemann</span><span class="p">,</span> <span class="n">u_init</span><span class="p">,</span> <span class="n">n</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">limit</span><span class="o">=</span><span class="n">limit_sin</span><span class="p">)</span>
+    <span class="n">h</span> <span class="o">=</span> <span class="mi">2</span> <span class="o">/</span> <span class="n">n</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="kt">LinRange</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="o">+</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">-</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span> <span class="c"># cell midpoints (centroids)</span>
+    <span class="n">idxL</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="p">(</span><span class="n">n</span><span class="o">-</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="o">-</span><span class="mi">2</span><span class="p">)</span> <span class="o">.%</span> <span class="n">n</span>
+    <span class="n">idxR</span> <span class="o">=</span> <span class="mi">1</span> <span class="o">.+</span> <span class="p">(</span><span class="n">n</span><span class="o">+</span><span class="mi">1</span><span class="o">:</span><span class="mi">2</span><span class="o">*</span><span class="n">n</span><span class="p">)</span> <span class="o">.%</span> <span class="n">n</span>
+    <span class="k">function</span> <span class="n">rhs</span><span class="p">(</span><span class="n">t</span><span class="p">,</span> <span class="n">u</span><span class="p">)</span>
+        <span class="n">jump</span> <span class="o">=</span> <span class="n">u</span><span class="p">[</span><span class="n">idxR</span><span class="p">]</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="n">idxL</span><span class="p">]</span>
+        <span class="n">r</span> <span class="o">=</span> <span class="p">(</span><span class="n">u</span> <span class="o">-</span> <span class="n">u</span><span class="p">[</span><span class="n">idxL</span><span class="p">])</span> <span class="o">./</span> <span class="n">jump</span>
+        <span class="n">r</span><span class="p">[</span><span class="n">isnan</span><span class="o">.</span><span class="p">(</span><span class="n">r</span><span class="p">)]</span> <span class="o">.=</span> <span class="mi">0</span>
+        <span class="n">g</span> <span class="o">=</span> <span class="n">limit</span><span class="o">.</span><span class="p">(</span><span class="n">r</span><span class="p">)</span> <span class="o">.*</span> <span class="n">jump</span> <span class="o">/</span> <span class="mi">2</span><span class="n">h</span>
+        <span class="n">fluxL</span> <span class="o">=</span> <span class="n">riemann</span><span class="p">(</span><span class="n">u</span><span class="p">[</span><span class="n">idxL</span><span class="p">]</span> <span class="o">+</span> <span class="n">g</span><span class="p">[</span><span class="n">idxL</span><span class="p">]</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="n">u</span> <span class="o">-</span> <span class="n">g</span><span class="o">*</span><span class="n">h</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span>
+        <span class="n">fluxR</span> <span class="o">=</span> <span class="n">fluxL</span><span class="p">[</span><span class="n">idxR</span><span class="p">]</span>
+        <span class="p">(</span><span class="n">fluxL</span> <span class="o">-</span> <span class="n">fluxR</span><span class="p">)</span> <span class="o">/</span> <span class="n">h</span>
+    <span class="k">end</span>
+    <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">ode_rk_explicit</span><span class="p">(</span>
+        <span class="n">rhs</span><span class="p">,</span> <span class="n">u_init</span><span class="o">.</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="n">h</span><span class="o">=</span><span class="n">h</span><span class="p">,</span> <span class="n">tfinal</span><span class="o">=</span><span class="n">tfinal</span><span class="p">)</span>
+    <span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span>
+<span class="k">end</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fv_solve2 (generic function with 3 methods)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-julia notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">thist</span><span class="p">,</span> <span class="n">uhist</span> <span class="o">=</span> <span class="n">fv_solve2</span><span class="p">(</span><span class="n">riemann_advection</span><span class="p">,</span> <span class="n">testfunc</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mf">.5</span><span class="p">,</span>
+    <span class="n">limit_sin</span><span class="p">)</span>
+<span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">uhist</span><span class="p">[</span><span class="o">:</span><span class="p">,</span><span class="mi">1</span><span class="o">:</span><span class="mi">10</span><span class="o">:</span><span class="k">end</span><span class="p">],</span> <span class="n">legend</span><span class="o">=</span><span class="ss">:none</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/2021-12-01-slope-reconstruction_17_0.svg" src="../_images/2021-12-01-slope-reconstruction_17_0.svg" /></div>
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "cu-numpde/fall21",
+            ref: "main",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "julia-1.6"
+        },
+        kernelOptions: {
+            kernelName: "julia-1.6",
+            path: "./slides"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'julia-1.6'</script>
+
+              </div>
+              
+        
+            
+
+
+
+<div class='prev-next-bottom'>
+    
+    <div id="prev">
+        <a class="left-prev" href="2021-11-29-finite-volume.html" title="previous page">
+            <i class="prevnext-label fas fa-angle-left"></i>
+            <div class="prevnext-info">
+                <p class="prevnext-label">previous</p>
+                <p class="prevnext-title">2021-11-29 Finite Volume methods</p>
+            </div>
+        </a>
+    </div>
+
+</div>
+        
+        </div>
+    </div>
+    <footer class="footer">
+    <div class="container">
+      <p>
+        
+          By Jed Brown<br/>
+        
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+  
+  <script src="../_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+  
+  </body>
+</html>
